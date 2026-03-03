@@ -1,4 +1,4 @@
-const API_URL = process.env.PAYLOAD_API_URL ?? "http://localhost:3001";
+const API_URL = "http://localhost:3001";
 
 export interface ArticleIndex {
   slug: string;

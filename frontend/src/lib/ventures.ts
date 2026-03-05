@@ -1,4 +1,5 @@
 const API_URL = process.env.PAYLOAD_API_URL ?? "http://localhost:3001";
+export const dynamic = 'force-dynamic';
 
 export type VentureStatus = "Exploring" | "Active" | "Relaunching";
 

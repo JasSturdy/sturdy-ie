@@ -1,0 +1,4 @@
+# Force Docker build for backend deployment (monorepo root)
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"

@@ -1,4 +1,4 @@
-const API_URL = await fetch(`${process.env.PAYLOAD_API_URL}/api/ventures`)
+const API_URL = process.env.PAYLOAD_API_URL ?? "http://localhost:3001";
 
 export type VentureStatus = "Exploring" | "Active" | "Relaunching";
 

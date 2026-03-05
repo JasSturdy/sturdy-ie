@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3001";
+const API_URL = process.env.PAYLOAD_API_URL ?? "http://localhost:3001";
 
 export interface ArticleIndex {
   slug: string;
@@ -27,7 +27,10 @@ export const CATEGORY_STYLES: Record<string, { active: string; badge: string; ta
 export async function getArticlesIndex(): Promise<ArticleIndex[]> {
   const url = `${API_URL}/api/articles?limit=100&depth=0&sort=-date`;
   const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to fetch articles — ${res.status} ${res.statusText}`);
+  if (!res.ok) {
+    const errBody = await res.text();
+    throw new Error(`Failed to fetch articles — ${res.status} ${res.statusText}${errBody ? `: ${errBody.slice(0, 200)}` : ''}`);
+  }
 
   const { docs } = await res.json();
   return docs.map((a: any): ArticleIndex => ({
@@ -45,7 +48,10 @@ export async function getArticlesIndex(): Promise<ArticleIndex[]> {
 export async function getArticleBySlug(slug: string): Promise<ArticleDetail | null> {
   const url = `${API_URL}/api/articles?where[slug][equals]=${slug}&depth=0&limit=1`;
   const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to fetch article — ${res.status} ${res.statusText}`);
+  if (!res.ok) {
+    const errBody = await res.text();
+    throw new Error(`Failed to fetch article — ${res.status} ${res.statusText}${errBody ? `: ${errBody.slice(0, 200)}` : ''}`);
+  }
 
   const { docs } = await res.json();
   if (!docs.length) return null;

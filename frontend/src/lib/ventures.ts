@@ -32,7 +32,10 @@ export async function getVenturesIndex(): Promise<VentureIndex[]> {
     `${API_URL}/api/ventures?limit=100&depth=0`,
     { next: { revalidate: 60 } }
   );
-  if (!res.ok) throw new Error("Failed to fetch ventures");
+  if (!res.ok) {
+    const errBody = await res.text();
+    throw new Error(`Failed to fetch ventures — ${res.status} ${res.statusText}${errBody ? `: ${errBody.slice(0, 200)}` : ''}`);
+  }
 
   const { docs } = await res.json();
 
@@ -51,7 +54,10 @@ export async function getVentureBySlug(slug: string): Promise<VentureDetail | nu
     `${API_URL}/api/ventures?where[slug][equals]=${slug}&depth=0&limit=1`,
     { next: { revalidate: 60 } }
   );
-  if (!res.ok) throw new Error("Failed to fetch venture");
+  if (!res.ok) {
+    const errBody = await res.text();
+    throw new Error(`Failed to fetch venture — ${res.status} ${res.statusText}${errBody ? `: ${errBody.slice(0, 200)}` : ''}`);
+  }
 
   const { docs } = await res.json();
   if (!docs.length) return null;

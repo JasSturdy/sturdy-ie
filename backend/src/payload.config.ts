@@ -5,6 +5,14 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
+// Fail fast with clear errors when required env vars are missing (Railway, etc.)
+if (!process.env.PAYLOAD_SECRET?.trim()) {
+  throw new Error('PAYLOAD_SECRET is required. Set it in Railway Variables (e.g. run: openssl rand -base64 32)')
+}
+if (!process.env.DATABASE_URL?.trim()) {
+  throw new Error('DATABASE_URL is required. Add a Postgres database in Railway and link it to this service.')
+}
+
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Ventures } from './collections/Ventures'

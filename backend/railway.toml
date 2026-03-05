@@ -1,12 +1,10 @@
 # Railway configuration for Payload CMS backend (Next.js)
-# Ensure Root Directory is set to "backend" in Railway Dashboard:
-# Service Settings → Source → Root Directory = backend
+# Use Root Directory = "backend" in Railway Dashboard, or leave empty to use root Dockerfile
 
 [build]
-builder = "nixpacks"
-buildCommand = "corepack enable pnpm && pnpm install && pnpm run build"
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "pnpm run start"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10

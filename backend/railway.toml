@@ -4,9 +4,9 @@
 
 [build]
 builder = "nixpacks"
-buildCommand = "corepack enable pnpm && pnpm install && pnpm run build"
+buildCommand = "npm install && npm run build"
 
 [deploy]
-startCommand = "pnpm run start"
+startCommand = "npm run start"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 10

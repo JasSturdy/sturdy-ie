@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "../../../components/Header";
 import { FooterSection } from "../../../components/FooterSection";
 import { getVentureBySlug, STATUS_STYLES } from "../../../lib/ventures";
+export const dynamic = "force-dynamic";
 
 interface SectionBlockProps {
   label: string;

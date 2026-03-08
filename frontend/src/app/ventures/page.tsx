@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Header } from "../../components/Header";
 import { FooterSection } from "../../components/FooterSection";
 import { getVenturesIndex, STATUS_STYLES } from "../../lib/ventures";
+export const dynamic = "force-dynamic";
 
 export default async function VenturesPage() {
   const ventures = await getVenturesIndex();

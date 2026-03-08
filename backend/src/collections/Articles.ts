@@ -5,6 +5,10 @@ export const Articles: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'category', 'date', 'flagship'],
+    livePreview: {
+      url: ({ data }) => `${process.env.NEXT_PUBLIC_SITE_URL}/ventures/${data.slug}`,
+    },
+    preview: (data) => `${process.env.NEXT_PUBLIC_SITE_URL}/ventures/${data.slug}`,
   },
   access: {
     read: () => true,

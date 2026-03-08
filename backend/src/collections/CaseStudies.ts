@@ -5,6 +5,10 @@ export const CaseStudies: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'theme', 'context'],
+    livePreview: {
+      url: ({ data }) => `${process.env.NEXT_PUBLIC_SITE_URL}/ventures/${data.slug}`,
+    },
+    preview: (data) => `${process.env.NEXT_PUBLIC_SITE_URL}/ventures/${data.slug}`,
   },
   access: {
     read: () => true,

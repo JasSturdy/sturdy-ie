@@ -28,11 +28,13 @@ export const CaseStudies: CollectionConfig = {
       required: true,
       unique: true,
       admin: {
-        description: 'URL-safe identifier, e.g. "trusted-research-environment"',
+        description: 'Auto-filled from title. You can override it manually.',
+        condition: () => true,
       },
       hooks: {
         beforeValidate: [
           ({ value, data }) => {
+            // Always regenerate from title if slug is empty
             if (!value && data?.title) {
               return data.title
                 .toLowerCase()

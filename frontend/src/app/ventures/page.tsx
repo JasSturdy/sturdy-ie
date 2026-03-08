@@ -23,9 +23,9 @@ export default async function VenturesPage() {
             Ventures &amp; Initiatives
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 md:text-base">
-            Innovation initiatives exploring preventive health, data ecosystems,
-            and next-generation collaboration platforms through secure
-            infrastructure and analytics-driven models.
+            Innovation initiatives exploring preventive health, analytics, and
+            secure data ecosystems—applying governance-first infrastructure
+            principles to emerging platform and optimisation models.
           </p>
         </div>
       </section>

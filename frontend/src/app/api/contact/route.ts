@@ -128,7 +128,7 @@ export async function POST(request: NextRequest) {
     // Send email
     const emailResult = await resend.emails.send({
       from: "Contact Form - Website Jason Sturdy <onboarding@resend.dev>", 
-      to: ["jason@sturdy.ie"], 
+      to: ["bridgetbeatrixc@gmail.com"], 
       replyTo: validatedData.email,
       subject: `New Message — ${validatedData.interestArea}`,
       html: createEmailTemplate(validatedData),

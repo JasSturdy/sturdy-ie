@@ -7,7 +7,7 @@ const cards = [
     image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
   {
-    label: "Read Writing & Insights",
+    label: "Read My Insights",
     href: "/writing",
     image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },

@@ -25,19 +25,16 @@ export function CollaborationCtaSection() {
             </h2>
             <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
               Open to partnerships across research, regulated innovation, and
-              venture initiatives where secure environments, governance, and
-              standards-aligned exchange are critical.
+              venture initiatives where sovereign infrastructure, governance,
+              and standards-aligned data exchange are critical.
             </p>
-            <button
-               ><Link
-               type="button"
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#c5f018] px-7 py-3.5 text-sm font-semibold text-black shadow-md shadow-lime-300/20 transition hover:-translate-y-[1px] hover:bg-lime-300"
+            <Link
               href="/contact"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#c5f018] px-7 py-3.5 text-sm font-semibold text-black shadow-md shadow-lime-300/20 transition hover:-translate-y-[1px] hover:bg-lime-300"
             >
               <span>Get in touch</span>
               <span className="text-xs">&#8599;</span>
             </Link>
-            </button>
           </div>
         </div>
       </div>

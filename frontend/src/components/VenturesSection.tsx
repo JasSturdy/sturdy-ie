@@ -10,9 +10,9 @@ export function VenturesSection({ ventures }: { ventures: VentureIndex[] }) {
             Ventures &amp; Initiatives
           </h2>
           <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-            Innovation initiatives exploring preventive health, data ecosystems,
-            and next-generation collaboration platforms through secure
-            infrastructure and analytics-driven models.
+            Innovation initiatives exploring preventive health, analytics, and
+            secure data ecosystems—applying governance-first infrastructure
+            principles to emerging optimisation and collaboration models.
           </p>
         </div>
 

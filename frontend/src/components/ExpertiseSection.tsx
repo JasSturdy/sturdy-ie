@@ -2,20 +2,20 @@ import Link from "next/link";
 
 const EXPERTISE_ITEMS = [
   {
-    title: "Smart strategies",
-    body: "We craft strategies that propel your brand forward with accuracy.",
+    title: "Governance & Compliance",
+    body: "Operationalising regulatory frameworks into deployable environments with assurance, auditability, and defensible controls.",
   },
   {
-    title: "Expert team",
-    body: "Our team delivers tailored strategies that drive your organisation.",
+    title: "Sovereign Data Infrastructure",
+    body: "Designing mission-critical platforms aligned to resilience, security, and long-term operational integrity.",
   },
   {
-    title: "Market insights",
-    body: "We provide actionable insights that elevate your decision-making.",
+    title: "Secure Collaboration",
+    body: "Enabling cross-organisation collaboration through governed access models, secure environments, and trust boundaries.",
   },
   {
-    title: "Client focus",
-    body: "We design approaches centred on your needs, driving growth.",
+    title: "Interoperability & Data Exchange",
+    body: "Implementing standards-led architectures so data can be securely shared, understood, and reused across ecosystems.",
   },
 ];
 
@@ -28,16 +28,15 @@ export function ExpertiseSection() {
           <div>
             <div className="mb-4 flex items-center gap-2 text-xs font-medium text-zinc-300">
               <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
-              <span>Our expertise</span>
+              <span>Core Expertise</span>
             </div>
             <h2 className="text-3xl font-semibold leading-tight text-white md:text-4xl">
-              Driven by lasting{" "}
-              <span className="text-[#c5f018]">excellence</span>
+              Governance-led transformation in regulated ecosystems
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-300 md:text-base">
-              We design secure, governance-aligned environments that enable
-              institutions to collaborate and innovate responsibly across
-              regulated ecosystems.
+              I design governance-aligned environments that enable organisations to
+              modernise securely, collaborate responsibly, and operationalise
+              sensitive data at scale.
             </p>
 
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -67,21 +66,17 @@ export function ExpertiseSection() {
             <div className="overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900">
               <div className="h-64 w-full bg-[url('https://images.pexels.com/photos/1181567/pexels-photo-1181567.jpeg?auto=compress&cs=tinysrgb&w=1200')] bg-cover bg-center md:h-80" />
             </div>
-            <div className="space-y-4 text-sm leading-relaxed text-zinc-300 md:text-base">
-              <p>
-                We deliver innovative consulting solutions with focus and
-                precision, guiding organisations to achieve meaningful results,
-                drive sustainable growth, and create lasting success in every
-                project we undertake.
-              </p>
-            </div>
+            <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
+              Executive delivery across public sector, financial services, and
+              health—bridging innovation ambition with regulator-grade execution.
+            </p>
             <Link
-            href="/contact"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c5f018] bg-transparent px-7 py-3 text-sm font-semibold text-[#c5f018] transition hover:bg-[#c5f018] hover:text-black"
+              href="/partnerships"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#c5f018] bg-transparent px-7 py-3 text-sm font-semibold text-[#c5f018] transition hover:bg-[#c5f018] hover:text-black"
             >
-            Contact Today
-            <span className="text-xs">↗</span>
-          </Link>
+              Discuss Collaboration
+              <span className="text-xs">↗</span>
+            </Link>
           </div>
         </div>
       </div>

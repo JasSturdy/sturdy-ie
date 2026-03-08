@@ -17,29 +17,24 @@ export function HeroSection() {
           {/* Left copy */}
           <div className="max-w-xl space-y-8">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-lime-300/80">
-              Data Governance & Compliance
+              Technology, Data &amp; Governance
             </p>
 
             <div className="h-px w-16 bg-zinc-600/70" />
 
             <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl md:leading-[1.05]">
-              <span>Data Governance &amp;</span>
-              <br />
-              <span>Regulatory</span>
-              <br />
-              <span>Compliance Advisor</span>
+              Technology, Data &amp; Governance Transformation Executive
             </h1>
 
             <div className="space-y-3 text-[0.95rem] leading-relaxed text-zinc-200">
               <p>
-                Designing secure data collaboration environments, regulatory-aligned
-                platforms, and trusted research ecosystems across highly regulated
-                industries.
+                Designing sovereign data infrastructures and secure collaboration
+                platforms across regulated ecosystems.
               </p>
-              <p className="text-zinc-300">
-                Operating at the intersection of governance, secure data environments,
-                and regulated innovation to enable privacy-first collaboration and
-                institutional trust.
+              <p className="text-zinc-300 text-sm">
+                Delivering mission-critical digital, data, and AI transformation
+                across public sector, financial services, and health—aligning
+                innovation with governance, resilience, and regulator-grade execution.
               </p>
             </div>
 

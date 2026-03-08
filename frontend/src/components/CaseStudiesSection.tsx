@@ -1,106 +1,77 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { CaseStudyIndex } from "../lib/caseStudies";
 
-interface SlideItem {
-  number: number;
-  title: string;
-  img: string;
-  slug: string;
-}
+export function CaseStudiesSection({ caseStudies }: { caseStudies: CaseStudyIndex[] }) {
+  // Deduplicate by slug, take first 3
+  const unique = Array.from(
+    new Map(caseStudies.map((c) => [c.slug, c])).values()
+  ).slice(0, 3);
 
-function CaseStudySlide({ item }: { item: SlideItem }) {
   return (
-    <article className="relative flex min-h-screen w-full shrink-0 flex-col items-stretch md:min-h-0 md:h-full md:min-w-full md:flex-row md:items-center">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div
-          className="h-full w-full bg-cover bg-center"
-          style={{ backgroundImage: `url(${item.img})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
-      </div>
-
-      {/* Text */}
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-4 py-16 sm:px-8 md:px-20 lg:px-28">
-        <div className="space-y-4">
-          <div className="mb-4 flex items-center gap-3 text-xs font-medium text-zinc-300">
+    <section className="border-b border-zinc-900/60 bg-black">
+      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:px-10 md:py-24 lg:px-0">
+        <div className="max-w-2xl">
+          <div className="mb-4 flex items-center gap-2 text-xs font-medium text-zinc-300">
             <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
-            <span className="tracking-[0.25em] uppercase">Case studies</span>
+            <span>Case Studies</span>
           </div>
-          <h3 className="text-2xl font-semibold text-white md:text-3xl lg:text-4xl">
-            Case Study {item.number}
-          </h3>
-          <p className="max-w-2xl text-sm leading-relaxed text-zinc-200 md:text-lg">
-            {item.title}
+          <h2 className="text-xl font-semibold text-white md:text-2xl">
+            Case studies &amp; delivery examples
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-zinc-300">
+            Selected examples of governance-aligned delivery, sovereign
+            infrastructure, and secure collaboration across public sector,
+            financial services, and health.
           </p>
         </div>
-      </div>
 
-      {/* Number */}
-      <div className="relative z-10 flex justify-end px-4 pb-8 md:absolute md:right-0 md:top-0 md:flex md:h-full md:items-center md:px-8 md:pb-0 md:pr-12 lg:pr-16">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#c5f018] text-sm font-semibold text-black md:h-12 md:w-12">
-          {item.number}
-        </div>
-      </div>
-    </article>
-  );
-}
-
-export function CaseStudiesSection({ caseStudies }: { caseStudies: CaseStudyIndex[] }) {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [progress, setProgress] = useState(0);
-
-  const slides: SlideItem[] = caseStudies.map((c, i) => ({
-    number: i + 1,
-    title: c.summary,
-    img: c.img,
-    slug: c.slug,
-  }));
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const total = el.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(Math.max(-rect.top, 0), total);
-      setProgress(total > 0 ? scrolled / total : 0);
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  if (!slides.length) return null;
-
-  const translatePercent = -progress * (slides.length - 1) * 100;
-
-  return (
-    <section
-      ref={sectionRef}
-      className="relative border-b border-zinc-900/60 bg-black md:h-[300vh]"
-    >
-      {/* Mobile: vertical stack */}
-      <div className="flex flex-col md:hidden">
-        {slides.map((item) => (
-          <CaseStudySlide key={item.slug} item={item} />
-        ))}
-      </div>
-
-      {/* Desktop: sticky horizontal slide */}
-      <div className="hidden h-full md:block">
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
-          <div
-            className="flex h-full w-full will-change-transform"
-            style={{ transform: `translateX(${translatePercent}%)` }}
-          >
-            {slides.map((item) => (
-              <CaseStudySlide key={item.slug} item={item} />
+        {unique.length > 0 ? (
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {unique.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/case-studies/${c.slug}`}
+                className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/80 transition hover:border-zinc-700"
+              >
+                <div
+                  className="h-40 bg-cover bg-center opacity-80 transition-opacity group-hover:opacity-90"
+                  style={
+                    c.img?.trim()
+                      ? { backgroundImage: `url(${c.img})` }
+                      : undefined
+                  }
+                >
+                  {!c.img?.trim() && (
+                    <div className="flex h-full items-center justify-center bg-zinc-800">
+                      <span className="text-4xl text-zinc-600">◈</span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-base font-semibold text-white transition-colors group-hover:text-[#c5f018]">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-zinc-400">
+                    {c.summary}
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
+        ) : (
+          <div className="mt-10 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-12 text-center text-sm text-zinc-500">
+            No case studies published yet. Check back soon.
+          </div>
+        )}
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/case-studies"
+            className="inline-flex items-center gap-2 rounded-full border border-[#c5f018] bg-transparent px-6 py-3 text-sm font-semibold text-[#c5f018] transition hover:bg-[#c5f018] hover:text-black"
+          >
+            View all case studies
+            <span className="text-xs">↗</span>
+          </Link>
         </div>
       </div>
     </section>

@@ -5,7 +5,7 @@ const FOOTER_NAV_ITEMS = [
   { label: "About", href: "/about" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Ventures", href: "/ventures" },
-  { label: "Writings & Insights", href: "/writing" },
+  { label: "My Insights", href: "/writing" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -99,8 +99,8 @@ export function FooterSection() {
       <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-0">
         {/* Tagline */}
         <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-white md:text-base">
-          Designing trusted environments for secure data collaboration,
-          regulated innovation, and research partnerships
+          Designing sovereign data infrastructures and secure collaboration
+          environments for regulated ecosystems.
         </p>
 
         {/* Social icons */}

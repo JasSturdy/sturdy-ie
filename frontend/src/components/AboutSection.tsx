@@ -26,8 +26,8 @@ export function AboutSection() {
           {/* Right - Subtitle */}
           <div className="flex items-center justify-end">
             <p className="max-w-xl text-center text-lg leading-relaxed text-white md:text-xl">
-              Building trusted environments for secure data collaboration and
-              regulated innovation.
+              Executive leadership across sovereign data, governance, and
+              regulated transformation.
             </p>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { CaseStudyIndex } from "../lib/caseStudies";
+import { CaseStudyIndex, getCaseStudySummary } from "../lib/caseStudies";
 
 const AUTO_SLIDE_INTERVAL_MS = 2000;
 

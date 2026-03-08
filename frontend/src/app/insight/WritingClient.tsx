@@ -80,7 +80,7 @@ export function WritingClient({ articles }: { articles: ArticleIndex[] }) {
               {paginated.map((article) => {
                 const tagStyle = CATEGORY_STYLES[article.category]?.tag || "border-zinc-700 text-zinc-400";
                 return (
-                  <Link key={article.slug} href={`/insight/${article.slug}`} className="group block">
+                  <Link key={article.slug} href={`/writing/${article.slug}`} className="group block">
                     <div className="relative overflow-hidden aspect-video bg-zinc-900 mb-5">
                       <img
                         src={article.image}

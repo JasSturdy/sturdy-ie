@@ -3,23 +3,28 @@ import { useRef, useEffect } from "react";
 
 const CAPABILITIES = [
   {
-    title: "20+ years delivering in regulated environments",
+    title: "Enterprise-scale transformation leadership",
+    subtitle: "Delivery of mission-critical programmes across regulated ecosystems.",
     img: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    title: "Trusted Research Environment design & operation",
+    title: "Sovereign data infrastructure delivery",
+    subtitle: "Trusted platforms designed for resilience, security, and control.",
     img: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    title: "Federated collaboration and privacy-preserving analytics models",
+    title: "Secure collaboration & TRE environments",
+    subtitle: "Governed access models enabling compliant research and analytics.",
     img: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    title: "Federated collaboration and privacy-preserving analytics models",
+    title: "Federated analytics & privacy-preserving models",
+    subtitle: "Cross-organisation insight without centralising sensitive datasets.",
     img: "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    title: "Governance automation, assurance, and auditability (RegTech)",
+    title: "Governance automation & regulatory assurance (RegTech)",
+    subtitle: "Auditability, policy enforcement, traceability embedded by design.",
     img: "https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800",
   },
 ];
@@ -69,9 +74,16 @@ export function CapabilitiesSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
               <div className="relative flex h-full flex-col justify-between p-5">
                 <span className="h-3 w-3 rounded-sm bg-[#c5f018]" />
-                <h3 className="text-base font-semibold text-white md:text-lg">
-                  {card.title}
-                </h3>
+                <div>
+                  <h3 className="text-base font-semibold text-white md:text-lg">
+                    {card.title}
+                  </h3>
+                  {card.subtitle && (
+                    <p className="mt-2 text-xs leading-relaxed text-zinc-400 md:text-sm">
+                      {card.subtitle}
+                    </p>
+                  )}
+                </div>
               </div>
             </article>
           ))}

@@ -184,9 +184,9 @@ export interface Venture {
   id: number;
   title: string;
   /**
-   * URL-safe identifier, e.g. "trusted-research-environment"
+   * Auto-filled from title. You can override it manually.
    */
-  slug: string;
+  slug?: string | null;
   /**
    * Upload or select image.
    */
@@ -286,9 +286,9 @@ export interface Article {
   id: number;
   title: string;
   /**
-   * URL-safe identifier, e.g. "trusted-research-environment"
+   * Auto-filled from title. You can override it manually.
    */
-  slug: string;
+  slug?: string | null;
   category:
     | 'Governance & Compliance'
     | 'Research Collaboration'
@@ -354,9 +354,9 @@ export interface CaseStudy {
   id: number;
   title: string;
   /**
-   * URL-safe identifier, e.g. "trusted-research-environment"
+   * Auto-filled from title. You can override it manually.
    */
-  slug: string;
+  slug?: string | null;
   /**
    * Short description shown on listing cards.
    */

@@ -6,7 +6,7 @@ export interface VentureIndex {
   slug: string;
   title: string;
   status: VentureStatus;
-  overview: string; 
+  overview: string;
 }
 
 export interface VentureDetail {
@@ -14,10 +14,10 @@ export interface VentureDetail {
   title: string;
   status: VentureStatus;
   headerIntro: string;
-  ventureOverview: string;
-  problemSpace: string;
-  innovationDirection: string;
-  dataAnalytics: string;
+  ventureOverview: any;
+  problemSpace: any;
+  innovationDirection: any;
+  dataAnalytics: any;
   collaboration: string;
 }
 
@@ -26,6 +26,17 @@ export const STATUS_STYLES: Record<VentureStatus, string> = {
   Active: "border-[#c5f018]/40 bg-[#c5f018]/10 text-[#c5f018]",
   Relaunching: "border-sky-400/40 bg-sky-400/10 text-sky-400",
 };
+
+function lexicalToPlainText(content: any): string {
+  if (!content || !content.root) return '';
+
+  return content.root.children
+    .map((node: any) =>
+      node.children?.map((child: any) => child.text ?? '').join('') ?? ''
+    )
+    .join(' ')
+    .trim();
+}
 
 export async function getVenturesIndex(): Promise<VentureIndex[]> {
   const res = await fetch(
@@ -40,7 +51,7 @@ export async function getVenturesIndex(): Promise<VentureIndex[]> {
     slug: v.slug,
     title: v.title,
     status: v.status,
-    overview: v.ventureOverview?.split(".")[0]?.trim() ?? "",
+    overview: lexicalToPlainText(v.ventureOverview)?.split(".")[0]?.trim() ?? "",
   }));
 }
 
@@ -62,10 +73,10 @@ export async function getVentureBySlug(slug: string): Promise<VentureDetail | nu
     title: v.title,
     status: v.status,
     headerIntro: v.headerIntro ?? "",
-    ventureOverview: v.ventureOverview ?? "",
-    problemSpace: v.problemSpace ?? "",
-    innovationDirection: v.innovationDirection ?? "",
-    dataAnalytics: v.dataAnalytics ?? "",
+    ventureOverview: lexicalToPlainText(v.ventureOverview),
+    problemSpace: lexicalToPlainText(v.problemSpace),
+    innovationDirection: lexicalToPlainText(v.innovationDirection),
+    dataAnalytics: lexicalToPlainText(v.dataAnalytics),
     collaboration: v.collaboration ?? "",
   };
 }

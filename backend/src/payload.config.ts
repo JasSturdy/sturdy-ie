@@ -1,5 +1,17 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import {
+  lexicalEditor,
+  HeadingFeature,
+  BoldFeature,
+  ItalicFeature,
+  UnderlineFeature,
+  StrikethroughFeature,
+  OrderedListFeature,
+  UnorderedListFeature,
+  LinkFeature,
+  BlockquoteFeature,
+  UploadFeature,
+} from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -25,14 +37,30 @@ export default buildConfig({
       collections: ['articles', 'case-studies', 'ventures'],
     },
   },
-  cors: ['http://localhost:3000',
-         'http://localhost:3001',
+  cors: [
+    'http://localhost:3000',
+    'http://localhost:3001',
   ],
-  csrf: ['http://localhost:3000',
-         'http://localhost:3001',
+  csrf: [
+    'http://localhost:3000',
+    'http://localhost:3001',
   ],
   collections: [Users, Media, Ventures, Articles, CaseStudies],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+      BoldFeature(),
+      ItalicFeature(),
+      UnderlineFeature(),
+      StrikethroughFeature(),
+      OrderedListFeature(),
+      UnorderedListFeature(),
+      LinkFeature(),
+      BlockquoteFeature(),
+      UploadFeature(),
+    ],
+  }),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

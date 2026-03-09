@@ -25,9 +25,6 @@ import { CaseStudies } from './collections/CaseStudies'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-console.log('S3 BUCKET:', process.env.S3_BUCKET)
-console.log('S3 ENDPOINT:', process.env.S3_ENDPOINT)
-console.log('S3 ACCESS KEY:', process.env.S3_ACCESS_KEY)
 
 export default buildConfig({
   admin: {

@@ -47,7 +47,7 @@ export async function getCaseStudiesIndex(): Promise<CaseStudyIndex[]> {
     theme:   c.theme,
     context: lexicalToText(c.context),
     period:  c.period ?? "",
-    img:     c.img?.url ?? "",
+    img:     c.img?.url ? `${API_URL}${c.img.url}` : "",
   }));
 }
 
@@ -67,12 +67,12 @@ export async function getCaseStudyBySlug(slug: string): Promise<CaseStudyDetail 
     theme:                     c.theme,
     context:                   lexicalToText(c.context),
     period:                    c.period ?? "",
-    img:                       c.img?.url ?? "",
+    img:                       c.img?.url ? `${API_URL}${c.img.url}` : "",
     overviewContext:            lexicalToText(c.overviewContext),
     environmentModel:          lexicalToText(c.environmentModel),
     governanceControls:        lexicalToText(c.governanceControls),
     standardsInteroperability: lexicalToText(c.standardsInteroperability),
-    outcomesImpact:            lexicalToText(c.outcomesImpact),
-    partnershipRelevance:      lexicalToText(c.partnershipRelevance),
+    outcomesImpact:             lexicalToText(c.outcomesImpact),
+    partnershipRelevance:       lexicalToText(c.partnershipRelevance),
   };
 }

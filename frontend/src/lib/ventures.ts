@@ -50,7 +50,7 @@ function lexicalToPlainText(content: any): string {
 function parseImage(img: any): VentureImage | null {
   if (!img || typeof img !== 'object') return null;
   return {
-    url:    img.url ?? '',
+    url:    img.url ? `${API_URL}${img.url}` : '',
     alt:    img.alt ?? '',
     width:  img.width ?? 1200,
     height: img.height ?? 630,

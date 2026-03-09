@@ -45,7 +45,7 @@ export async function getMyInsightsIndex(): Promise<MyInsightIndex[]> {
     category: a.category,
     date:     formatDate(a.date),
     author:   a.author,
-    image:    a.img?.url ?? "",
+    image:    a.img?.url ? `${API_URL}${a.img.url}` : "",
     excerpt:  a.excerpt,
     flagship: a.flagship ?? false,
   }));
@@ -66,7 +66,7 @@ export async function getMyInsightBySlug(slug: string): Promise<MyInsightDetail 
     category: a.category,
     date:     formatDate(a.date),
     author:   a.author,
-    image:    a.img?.url ?? "",
+    image:    a.img?.url ? `${API_URL}${a.img.url}` : "",
     excerpt:  a.excerpt,
     flagship: a.flagship ?? false,
     sections: a.sections ?? [],

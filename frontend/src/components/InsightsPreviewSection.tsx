@@ -33,7 +33,7 @@ export function InsightsPreviewSection({ myInsights }: { myInsights: MyInsightIn
               return (
                 <Link
                   key={myInsight.slug}
-                  href={`/myinsights/${myInsight.slug}`}
+                  href={`/myinsight/${myInsight.slug}`}
                   className="group flex flex-col rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition hover:border-zinc-700"
                 >
                   <h3 className="text-base font-semibold text-white transition-colors group-hover:text-[#c5f018]">

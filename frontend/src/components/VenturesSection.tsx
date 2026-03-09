@@ -25,7 +25,7 @@ export function VenturesSection({ ventures }: { ventures: VentureIndex[] }) {
             >
               <div>
                 <span
-                  className={`inline-block rounded-full border px-3 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider ${STATUS_STYLES[v.status]}`}
+                  className={`inline-block rounded-full border px-3 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider ${STATUS_STYLES[v.status] ?? "border-zinc-600 bg-zinc-800/50 text-zinc-400"}`}
                 >
                   {v.status}
                 </span>

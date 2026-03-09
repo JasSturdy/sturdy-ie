@@ -1,4 +1,4 @@
-const API_URL = process.env.PAYLOAD_API_URL ?? "http://localhost:3001";
+const API_URL = (process.env.PAYLOAD_API_URL ?? "http://localhost:3001").replace(/\/$/, "");
 
 export type VentureStatus = "Exploring" | "Active" | "Relaunching";
 
@@ -58,21 +58,26 @@ function parseImage(img: any): VentureImage | null {
 }
 
 export async function getVenturesIndex(): Promise<VentureIndex[]> {
-  const res = await fetch(
-    `${API_URL}/api/ventures?limit=100&depth=1`,
-    { next: { revalidate: 60 } }
-  );
-  if (!res.ok) throw new Error("Failed to fetch ventures");
+  try {
+    const res = await fetch(
+      `${API_URL}/api/ventures?limit=100&depth=1`,
+      { next: { revalidate: 60 } }
+    );
+    if (!res.ok) return [];
 
-  const { docs } = await res.json();
+    const { docs } = await res.json();
+    if (!Array.isArray(docs)) return [];
 
-  return docs.map((v: any): VentureIndex => ({
+    return docs.map((v: any): VentureIndex => ({
     slug:     v.slug,
     title:    v.title,
     status:   v.status,
     overview: lexicalToPlainText(v.ventureOverview)?.split(".")[0]?.trim() ?? "",
     img:      parseImage(v.img),
   }));
+  } catch {
+    return [];
+  }
 }
 
 export async function getVentureBySlug(slug: string): Promise<VentureDetail | null> {

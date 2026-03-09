@@ -1,4 +1,4 @@
-const API_URL = process.env.PAYLOAD_API_URL ?? "http://localhost:3001";
+const API_URL = (process.env.PAYLOAD_API_URL ?? "http://localhost:3001").replace(/\/$/, "");
 
 export interface MyInsightIndex {
   slug: string;
@@ -34,12 +34,15 @@ function formatDate(date: string | null | undefined): string {
 }
 
 export async function getMyInsightsIndex(): Promise<MyInsightIndex[]> {
-  const url = `${API_URL}/api/myinsights?limit=100&depth=1&sort=-date`;
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to fetch insights — ${res.status} ${res.statusText}`);
+  try {
+    const url = `${API_URL}/api/myinsights?limit=100&depth=1&sort=-date`;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) return [];
 
-  const { docs } = await res.json();
-  return docs.map((a: any): MyInsightIndex => ({
+    const { docs } = await res.json();
+    if (!Array.isArray(docs)) return [];
+
+    return docs.map((a: any): MyInsightIndex => ({
     slug:     a.slug,
     title:    a.title,
     category: a.category,
@@ -49,6 +52,9 @@ export async function getMyInsightsIndex(): Promise<MyInsightIndex[]> {
     excerpt:  a.excerpt,
     flagship: a.flagship ?? false,
   }));
+  } catch {
+    return [];
+  }
 }
 
 export async function getMyInsightBySlug(slug: string): Promise<MyInsightDetail | null> {

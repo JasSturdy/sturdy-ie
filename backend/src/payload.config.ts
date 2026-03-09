@@ -43,10 +43,14 @@ export default buildConfig({
   cors: [
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://unnecessary-dahlia-beatrixbbc-c1438312.koyeb.app',
+  process.env.NEXT_PUBLIC_SITE_URL ?? '',
   ],
   csrf: [
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://unnecessary-dahlia-beatrixbbc-c1438312.koyeb.app',
+  process.env.NEXT_PUBLIC_SITE_URL ?? '',
   ],
   collections: [Users, Media, Ventures, MyInsight, CaseStudies],
   editor: lexicalEditor({

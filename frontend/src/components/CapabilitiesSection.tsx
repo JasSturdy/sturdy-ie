@@ -17,7 +17,7 @@ const CAPABILITIES = [
 
 export function CapabilitiesSection() {
   return (
-    <section className="overflow-visible mx-auto max-w-8xl md:justify-center md:px-16">
+    <section className="overflow-visible mx-auto max-w-8xl md:justify-center md:px-12">
       <div className=" px-4 py-10 sm:px-6 lg:px-0 lg:overflow-x-auto"
       style={{ opacity: 0, animation: 'fadeUp 0.8s ease-out 0.2s forwards' }}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:flex lg:flex-row">

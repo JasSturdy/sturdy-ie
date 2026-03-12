@@ -1,57 +1,58 @@
 import Link from "next/link";
-import { VentureIndex, STATUS_STYLES } from "../lib/ventures";
 
-export function VenturesSection({ ventures }: { ventures: VentureIndex[] }) {
+const VENTURES = [
+  {
+    year: "2015",
+    title: "Founded",
+    body: "Started with a bold vision to transform consulting.",
+    href: "/ventures/founded",
+    bars: 1,
+  },
+  {
+    year: "2018",
+    title: "First Enterprise Client",
+    body: "Secured first major enterprise contract in the public sector.",
+    href: "/ventures/enterprise",
+    bars: 2,
+  },
+  {
+    year: "2021",
+    title: "Data Governance Platform",
+    body: "Launched a sovereign data infrastructure platform for regulated industries.",
+    href: "/ventures/platform",
+    bars: 3,
+  },
+];
+
+export function VenturesSection() {
   return (
-    <section className="border-b border-zinc-900/60 bg-black">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-0">
-        <div className="max-w-2xl">
-          <h2 className="text-xl font-semibold text-white md:text-2xl">
-            Ventures &amp; Initiatives
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-            Innovation initiatives exploring preventive health, analytics, and
-            secure data ecosystems—applying governance-first infrastructure
-            principles to emerging optimisation and collaboration models.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ventures.map((v) => (
-            <Link
-              key={v.slug}
-              href={`/ventures/${v.slug}`}
-              className="group flex flex-col justify-between rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6 transition hover:border-zinc-700"
-            >
-              <div>
-                <span
-                  className={`inline-block rounded-full border px-3 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wider ${STATUS_STYLES[v.status] ?? "border-zinc-600 bg-zinc-800/50 text-zinc-400"}`}
-                >
-                  {v.status}
-                </span>
-                <h3 className="mt-4 text-base font-semibold text-white transition-colors group-hover:text-[#c5f018]">
-                  {v.title}
-                </h3>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                  {v.overview}
-                </p>
-              </div>
-              <span className="mt-6 inline-flex items-center gap-1 text-xs font-medium text-[#c5f018]">
-                View details <span>→</span>
-              </span>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-10 text-center">
+    <section className="mx-auto max-w-8xl bg-black px-8 py-8 md:px-16">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {VENTURES.map((v) => (
           <Link
-            href="/ventures"
-            className="inline-flex items-center gap-2 rounded-full border border-[#c5f018] bg-transparent px-6 py-3 text-sm font-semibold text-[#c5f018] transition hover:bg-[#c5f018] hover:text-black"
+            key={v.year}
+            href={v.href}
+            className="group flex flex-col justify-between rounded-xl bg-zinc-800/80 p-8 transition-all duration-1000 hover:shadow-sm hover:shadow-white border border-transparent hover:border-[#c5f018]"
           >
-            Explore all ventures
-            <span className="text-xs">→</span>
+            <div className="flex justify-between items-start">
+              <h3 className="text-5xl font-light text-white">{v.year}</h3>
+              <div className="flex gap-1 pt-2">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className={`w-[3px] h-6 ${i <= v.bars ? 'bg-[#c5f018]' : 'bg-zinc-600'}`}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="mt-12 space-y-2">
+              <h4 className="text-2xl text-white transition-colors">
+                {v.title}
+              </h4>
+              <p className="text-sm mt-4 leading-relaxed text-white">{v.body}</p>
+            </div>
           </Link>
-        </div>
+        ))}
       </div>
     </section>
   );

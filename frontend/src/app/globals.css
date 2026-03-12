@@ -4,11 +4,63 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .scroll-touch {
     -webkit-overflow-scrolling: touch;
+  }
+
+  @keyframes grow {
+    from {
+      transform: scaleX(0);
+      transform-origin: left;
+    }
+
+    to {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    to {
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+  }
+
+  @keyframes dotPulse {
+
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+
+    50% {
+      transform: scale(2);
+      opacity: 1;
+    }
   }
 }

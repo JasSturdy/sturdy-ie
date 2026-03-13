@@ -146,7 +146,7 @@ export function TestimonialsSection() {
           </div>
           <Link
             href="/contact"
-            className="relative flex gap-2 justify-center rounded-lg bg-[#c5f018] px-6 py-4 text-lg sm:text-xs font-medium text-black transition duration-300 hover:border hover:border-white hover:text-[#c5f018] hover:bg-black"
+            className="relative flex gap-2 justify-center rounded-lg bg-[#c5f018] px-6 py-4 text-lg font-medium text-black transition duration-300 hover:border hover:border-white hover:text-[#c5f018] hover:bg-black"
           >
             Contact Us ↗
           </Link>

@@ -96,8 +96,7 @@ export function TestimonialsSection() {
 
         {/* Testimonial card */}
         <div className="flex-[1] rounded-3xl border border-[#c5f018] p-[1px]">
-          <div className="flex h-full flex-col justify-between rounded-[1.4rem] bg-[#395407] px-8 py-10 md:px-10 md:py-12 relative overflow-hidden">
-            {/* top center glow */}
+          <div className="flex h-full flex-col justify-between rounded-[1.4rem] bg-gradient-to-b from-[#395407] to-[#090d00] px-8 py-10 md:px-10 md:py-12 relative overflow-hidden"> 
             <div className="pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-80 h-48 bg-[radial-gradient(circle,rgba(197,240,24,0.65)_0%,transparent_70%)] blur-2xl" />
             <div className="relative p-4 md:p-10">
               <h3 className="text-2xl font-light text-white md:text-4xl">

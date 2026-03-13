@@ -15,6 +15,8 @@ import { ServicesSection } from "@/components/Services";
 import { CaseStudiesTitleSection } from "@/components/CaseStudiesTitleSection";
 import { PricingSection } from "@/components/PricingSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { TeamSection } from "@/components/TeamSection";
+import { HomeContactSection } from "@/components/HomeContactSection";
 
 export default async function Home() {
   const [caseStudies, ventures, myInsights] = await Promise.all([
@@ -37,6 +39,8 @@ export default async function Home() {
       <CaseStudiesSection caseStudies={caseStudies} />
       <PricingSection />
       <TestimonialsSection />
+      <TeamSection />
+      <HomeContactSection />
       <CollaborationCtaSection />
       <FooterSection />
     </main>

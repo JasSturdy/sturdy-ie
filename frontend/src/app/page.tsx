@@ -41,6 +41,7 @@ export default async function Home() {
       <TestimonialsSection />
       <TeamSection />
       <HomeContactSection />
+      <InsightsPreviewSection myInsights={myInsights} />
       <CollaborationCtaSection />
       <FooterSection />
     </main>

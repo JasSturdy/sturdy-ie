@@ -82,9 +82,9 @@ export function InsightsPreviewSection({ myInsights }: { myInsights: MyInsightIn
             style={{ opacity: 0, animation: 'fadeUp 0.8s ease-out 0.2s forwards' }}>
             <span className="h-2 w-2 rounded-full bg-[#c5f018]"
               style={{ animation: 'dotPulse 1s ease-in-out infinite' }} />
-            <span className="text-lg">My Insights</span>
+            <span className="text-sm md:text-lg">My Insights</span>
           </div>
-          <h2 className="text-3xl font-semibold text-[#c5f018] md:text-5xl leading-tight">
+          <h2 className="text-2xl font-semibold text-[#c5f018] md:text-5xl leading-tight">
             Executive <span className="text-white font-light">Perspectives <br />on Governance, Infrastructure, <br />and Regulated Innovation</span>
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300">
@@ -97,7 +97,7 @@ export function InsightsPreviewSection({ myInsights }: { myInsights: MyInsightIn
             style={{ opacity: 0, animation: 'fadeUp 0.8s ease-out 0.2s forwards' }}>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+              className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
             >
               Discuss Collaboration
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

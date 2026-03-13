@@ -60,9 +60,9 @@ export function ServicesSection() {
             <div className="mb-4 flex items-center gap-2 text-white">
               <span className="h-2 w-2 rounded-full bg-[#c5f018]"
                 style={{ animation: 'dotPulse 1s ease-in-out infinite' }} />
-              <span className="text-lg">Lorem ipsum</span>
+              <span className="md:text-lg text-sm">Lorem ipsum</span>
             </div>
-            <h2 className="text-3xl font-semibold leading-tight text-[#c5f018] md:text-5xl">
+            <h2 className="text-2xl font-semibold leading-tight text-[#c5f018] md:text-5xl">
               Discover <span className="text-white font-light">the range of</span>
             </h2>
             <div className="mt-12 h-64 sm:h-120 lg:h-[510px] w-full rounded-2xl bg-[url('https://images.pexels.com/photos/1181567/pexels-photo-1181567.jpeg?auto=compress&cs=tinysrgb&w=1200')] bg-cover bg-center" />

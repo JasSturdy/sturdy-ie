@@ -32,9 +32,9 @@ export function ExpertiseSection() {
         <div className="mb-4 flex items-center gap-2 text-white">
           <span className="h-2 w-2 rounded-full bg-[#c5f018]"
             style={{ animation: 'dotPulse 1s ease-in-out infinite' }} />
-          <span className="text-lg">Expertise</span>
+          <span className="text-sm md:text-lg">Expertise</span>
         </div>
-        <h2 className="text-3xl font-semibold leading-tight text-[#c5f018] md:text-5xl">
+        <h2 className="text-2xl font-semibold leading-tight text-[#c5f018] md:text-6xl">
           Governance-led <span className="text-white font-light">transformation in regulated ecosystems</span>
         </h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
@@ -47,7 +47,7 @@ export function ExpertiseSection() {
                 <span className="h-5 w-5 rounded-xl border border-[#c5f018]" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-3xl text-white">{item.title}</h3>
+                <h3 className="text-xl md:text-3xl text-white">{item.title}</h3>
                 <p className="text-sm leading-relaxed md:text-lg">{item.body}</p>
               </div>
             </article>
@@ -66,7 +66,7 @@ export function ExpertiseSection() {
         </p>
         <Link
           href="/contact"
-          className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-lg font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+          className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm md:text-xl font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
         >
           Discuss Collaboration
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

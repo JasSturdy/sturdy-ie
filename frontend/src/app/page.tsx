@@ -12,6 +12,8 @@ import { getCaseStudiesIndex } from "../lib/caseStudies";
 import { getVenturesIndex } from "../lib/ventures";
 import { getMyInsightsIndex } from "../lib/myInsight";
 import { ServicesSection } from "@/components/Services";
+import { CaseStudiesTitleSection } from "@/components/CaseStudiesTitleSection";
+import { PricingSection } from "@/components/PricingSection";
 
 export default async function Home() {
   const [caseStudies, ventures, myInsights] = await Promise.all([
@@ -30,7 +32,9 @@ export default async function Home() {
       <InsightsPreviewSection myInsights={myInsights} />
       <VenturesSection />
       <ServicesSection />
+      <CaseStudiesTitleSection />
       <CaseStudiesSection caseStudies={caseStudies} />
+      <PricingSection />
       <CollaborationCtaSection />
       <FooterSection />
     </main>

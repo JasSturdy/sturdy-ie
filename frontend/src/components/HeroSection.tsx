@@ -21,7 +21,7 @@ export function HeroSection() {
               Jason <span className="text-[#c5f018]">Sturdy</span>
             </h1>
 
-            <div className="space-y-3 text-2xl sm:text-3xl md:text-5xl lg:text-3xl leading-relaxed text-zinc-200">
+            <div className="space-y-3 text-2xl sm:text-3xl md:text-6xl lg:text-3xl leading-relaxed text-zinc-200">
               <p>
                 Designing Trusted Digital Infrastructure
               </p>

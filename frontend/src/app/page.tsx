@@ -5,7 +5,6 @@ import { ExpertiseSection } from "../components/ExpertiseSection";
 import { InsightsPreviewSection } from "../components/InsightsPreviewSection";
 import { VenturesSection } from "../components/VenturesSection";
 import { CaseStudiesSection } from "../components/CaseStudiesSection";
-import { CollaborationCtaSection } from "../components/CollaborationCtaSection";
 import { FooterSection } from "../components/FooterSection";
 import { HomeAboutSection } from "../components/HomeAboutSection";
 import { getCaseStudiesIndex } from "../lib/caseStudies";
@@ -16,8 +15,8 @@ import { CaseStudiesTitleSection } from "@/components/CaseStudiesTitleSection";
 import { PricingSection } from "@/components/PricingSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { TeamSection } from "@/components/TeamSection";
-import { HomeContactSection } from "@/components/HomeContactSection";
 import { ContactUsCtaSection } from "@/components/ContactUsCtaSection";
+import { BlogSection } from "@/components/BlogSection";
 
 export default async function Home() {
   const [caseStudies, ventures, myInsights] = await Promise.all([
@@ -40,9 +39,9 @@ export default async function Home() {
       <CaseStudiesSection caseStudies={caseStudies} />
       <PricingSection />
       <TestimonialsSection />
-      <ContactUsCtaSection />
       <TeamSection />
-      <CollaborationCtaSection />
+      <ContactUsCtaSection />
+      <BlogSection />
       <FooterSection />
     </main>
   );

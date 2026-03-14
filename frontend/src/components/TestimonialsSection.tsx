@@ -55,7 +55,7 @@ export function TestimonialsSection() {
   const [active, setActive] = useState<Testimonial>(TESTIMONIALS[0]);
 
   return (
-    <section className="py-8 px-8 md:px-16 mx-auto max-w-8xl">
+    <section className="py-8 mx-auto max-w-8xl px-4 md:px-0">
       <div className="flex justify-center items-center gap-2 py-4">
         <span
           className="h-2 w-2 rounded-sm bg-[#c5f018]"
@@ -145,7 +145,7 @@ export function TestimonialsSection() {
           </div>
           <Link
             href="/contact"
-            className="relative flex gap-2 justify-center items-center rounded-lg bg-[#c5f018] px-6 py-4 text-lg font-medium text-black transition duration-300 hover:border hover:border-white hover:text-[#c5f018] hover:bg-black"
+            className="relative flex gap-2 mt-4 md:mt-0 justify-center items-center rounded-lg bg-[#c5f018] px-6 py-4 text-sm md:text-lg font-medium text-black transition duration-300 hover:border hover:border-white hover:text-[#c5f018] hover:bg-black"
           >
             Contact Us 
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

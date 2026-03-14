@@ -49,7 +49,7 @@ const SERVICES_ITEMS = [
 
 export function ServicesSection() {
   return (
-    <section className="bg-black px-8 py-8 sm:px-8 md:px-16 md:py-16">
+    <section className="bg-black px-4 py-8 sm:px-8 md:px-0 md:py-16">
       <div className="mx-auto max-w-8xl">
         <div
           className="flex flex-col lg:flex-row gap-10 lg:gap-20"
@@ -71,27 +71,27 @@ export function ServicesSection() {
           {/* Right */}
           <div className="w-full lg:w-1/2 space-y-4">
             {SERVICES_ITEMS.map((item) => (
-              <div
-                key={item.title}
-                className="group flex items-center gap-8 md:gap-12 rounded-lg md:rounded-2xl border border-[#677f06]"
-              >
-                {/* Icon box */}
-                <div className="flex-shrink-0 flex h-28 md:h-38 w-20 md:w-40 items-center justify-center rounded-xl bg-[#c5f018] text-black">
-                <div className="w-8 h-8 md:w-14 md:h-14">
-                  {item.icon}
-                  </div>
-                </div>
-                {/* Text */}
-                <div className=" space-y-2 md:space-y-4">
-                  <h3 className="md:text-2xl text-md text-white">
-                    {item.title}
-                  </h3>
-                  <p className="md:text-sm text-xs leading-tight md:leading-relaxed text-white">
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))}
+  <div
+    key={item.title}
+    className="group flex flex-col items-center md:flex-row md:items-center gap-4 md:gap-12 rounded-lg md:rounded-2xl border border-[#677f06] p-6 md:p-0"
+  >
+    {/* Icon box */}
+    <div className="flex-shrink-0 flex h-14 w-14 md:h-38 md:w-40 items-center justify-center rounded-xl md:rounded-l-2xl md:rounded-r-none bg-[#c5f018] text-black">
+      <div className="w-7 h-7 md:w-14 md:h-14">
+        {item.icon}
+      </div>
+    </div>
+    {/* Text */}
+    <div className="space-y-2 md:space-y-4 text-center md:text-left md:px-0 md:pb-0">
+      <h3 className="md:text-2xl text-base font-medium text-white">
+        {item.title}
+      </h3>
+      <p className="md:text-sm text-xs leading-relaxed text-zinc-300">
+        {item.body}
+      </p>
+    </div>
+  </div>
+))}
           </div>
 
         </div>

@@ -75,7 +75,7 @@ export function InsightsPreviewSection({ myInsights }: { myInsights: MyInsightIn
   const featured = myInsights.slice(0, 3);
 
   return (
-    <section className="mx-auto max-w-8xl justify-center px-8 py-8 md:px-16 bg-black">
+    <section className="mx-auto max-w-8xl justify-center px-4 py-4 md:px-0">
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
         <div className="mb-10 lg:w-1/2">
           <div className="mb-4 flex items-center gap-2 text-xs font-medium text-zinc-300"

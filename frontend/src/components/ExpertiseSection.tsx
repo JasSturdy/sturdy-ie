@@ -21,7 +21,7 @@ const EXPERTISE_ITEMS = [
 
 export function ExpertiseSection() {
   return (
-    <section className="bg-black px-8 py-8 sm:px-8 md:px-16 md:py-16">
+    <section className="px-4 py-8 sm:px-8 md:px-0 md:py-16">
   <div className="mx-auto max-w-8xl">
     <div
       className="flex flex-col lg:flex-row gap-10 lg:gap-20"

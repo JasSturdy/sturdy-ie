@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --max-width-8xl: 88rem;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

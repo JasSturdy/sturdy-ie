@@ -17,7 +17,6 @@ function CaseStudySlide({
       href={`/case-studies/${item.slug}`}
       className="group relative flex min-h-screen w-full shrink-0 flex-col items-stretch md:min-h-0 md:h-full md:min-w-full md:w-full md:flex-row md:items-center overflow-hidden"
     >
-      {/* Background image */}
       {item.img?.trim() ? (
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
@@ -26,10 +25,7 @@ function CaseStudySlide({
       ) : (
         <div className="absolute inset-0 bg-zinc-900" />
       )}
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/60" />
-
-      {/* Text */}
       <div className="relative z-10 flex flex-1 flex-col justify-end px-4 py-10 sm:px-8 md:px-20 lg:px-28 md:justify-center">
         <div className="space-y-4">
           <div className="mb-4 flex items-center gap-3 font-medium text-white">
@@ -64,7 +60,6 @@ function CaseStudyCard({
       className="group relative flex h-64 w-full shrink-0 overflow-hidden rounded-2xl"
       style={{ opacity: 0, animation: `fadeUp 0.6s ease-out ${index * 0.1}s forwards` }}
     >
-      {/* Background */}
       {item.img?.trim() ? (
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
@@ -74,8 +69,6 @@ function CaseStudyCard({
         <div className="absolute inset-0 bg-zinc-800" />
       )}
       <div className="absolute inset-0 bg-black/60" />
-
-      {/* Content */}
       <div className="relative z-10 flex h-full w-full flex-col justify-end p-5 items-center text-center">
         <h3 className="text-lg font-light text-white">{item.title}</h3>
         <p className="mt-1 text-xs leading-relaxed text-zinc-300 line-clamp-2">
@@ -127,17 +120,7 @@ export function CaseStudiesSection({ caseStudies }: { caseStudies: CaseStudyInde
 
   return (
     <>
-      {/* Mobile: card grid */}
-      <div className="block md:hidden bg-black px-4 py-10">
-        <div className="mb-6 flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-sm bg-[#c5f018]" />
-            <span className="text-sm text-white">Case Studies</span>
-          </div>
-          <p className="text-center text-2xl text-white">
-            From challenge to <span className="text-[#c5f018]">change</span>
-          </p>
-        </div>
+      <div className="block md:hidden bg-black px-4 py-2 md:py-10">
         {unique.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {unique.map((c, i) => (
@@ -151,7 +134,6 @@ export function CaseStudiesSection({ caseStudies }: { caseStudies: CaseStudyInde
         )}
       </div>
 
-      {/* Desktop: horizontal carousel */}
       <div className="hidden md:block min-h-0 md:min-h-[140vh]">
         <section
           className="relative flex w-full flex-col border-b border-zinc-900/60 bg-black md:sticky md:top-0 md:h-screen md:min-h-screen"

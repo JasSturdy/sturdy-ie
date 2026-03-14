@@ -91,96 +91,95 @@ export function BlogSection() {
                 </div>
             </div>
 
-            {/* Featured post */}
-            <Link href={FEATURED_POST.href} className="block group mb-4 border border-[#68800a] rounded-xl">
-                <div className="relative flex flex-col md:flex-row rounded-xl overflow-hidden bg-zinc-900 transition-colors duration-300">
-                    <div
-                        ref={imgRef}
-                        className="relative w-full md:w-[45%] shrink-0 overflow-hidden cursor-none"
-                        onMouseMove={handleMouseMove}
-                        onMouseEnter={() => setHovered(true)}
-                        onMouseLeave={() => setHovered(false)}
-                    >
-                        <img
-                            src={FEATURED_POST.img}
-                            alt={FEATURED_POST.title}
-                            className="w-full h-56 md:h-120 object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
-                        <div
-                            className="absolute pointer-events-none top-0 left-0"
-                            style={{
-                                transform: `translate(${pos.x - 32}px, ${pos.y - 32}px)`,
-                                opacity: hovered ? 1 : 0,
-                                transition: 'opacity 0.3s ease, transform 0.06s linear',
-                                willChange: 'transform',
-                            }}
-                        >
-                            <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-black/40 backdrop-blur-sm">
-                                <div className="absolute inset-0 rounded-full border-2 border-[#c5f018] shadow-[0_0_24px_6px_rgba(197,240,24,0.65)]" />
-                                <svg width="24" height="24" viewBox="0 0 16 16" fill="none">
-                                    <path d="M3 13L13 3M13 3H5M13 3V11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex flex-col justify-between p-6 md:p-8 flex-1">
-                        <h3 className="text-2xl md:text-5xl font-light text-white leading-tight">
-                            {FEATURED_POST.title}
-                        </h3>
-                        <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
-                            <div className="flex items-center gap-3">
-                                <img
-                                    src={FEATURED_POST.author.avatar}
-                                    alt={FEATURED_POST.author.name}
-                                    className="w-12 h-12 rounded-lg object-cover shrink-0"
-                                />
-                                <span className="text-[#c5f018] font-light text-lg">{FEATURED_POST.author.name}</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm">
-                                <CalendarIcon />
-                                <span>{FEATURED_POST.date}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </Link>
+           {/* Featured post */}
+<Link href={FEATURED_POST.href} className="block group mb-4 border border-[#68800a] rounded-xl">
+  <div className="relative flex flex-col sm:flex-row rounded-xl overflow-hidden bg-zinc-900 transition-colors duration-300">
+    <div
+      ref={imgRef}
+      className="relative w-full sm:w-[40%] shrink-0 overflow-hidden cursor-none"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <img
+        src={FEATURED_POST.img}
+        alt={FEATURED_POST.title}
+        className="w-full h-48 sm:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
+      <div
+        className="absolute pointer-events-none top-0 left-0"
+        style={{
+          transform: `translate(${pos.x - 32}px, ${pos.y - 32}px)`,
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 0.3s ease, transform 0.06s linear',
+          willChange: 'transform',
+        }}
+      >
+        <div className="relative flex items-center justify-center w-20 h-20 rounded-full bg-black/40 backdrop-blur-sm">
+          <div className="absolute inset-0 rounded-full border-2 border-[#c5f018] shadow-[0_0_24px_6px_rgba(197,240,24,0.65)]" />
+          <svg width="24" height="24" viewBox="0 0 16 16" fill="none">
+            <path d="M3 13L13 3M13 3H5M13 3V11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div className="flex flex-col justify-between p-4 sm:p-5 lg:p-8 flex-1">
+      <h3 className="text-xl sm:text-2xl lg:text-5xl font-light text-white leading-tight">
+        {FEATURED_POST.title}
+      </h3>
+      <div className="mt-4 flex flex-col xs:flex-row xs:items-center gap-3 xs:justify-between">
+        <div className="flex items-center gap-2">
+          <img
+            src={FEATURED_POST.author.avatar}
+            alt={FEATURED_POST.author.name}
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-cover shrink-0"
+          />
+          <span className="text-[#c5f018] font-light text-sm sm:text-base">{FEATURED_POST.author.name}</span>
+        </div>
+        <div className="flex items-center gap-2 text-xs sm:text-sm">
+          <CalendarIcon />
+          <span>{FEATURED_POST.date}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</Link>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {SMALL_POSTS.map((post, i) => (
-                    <Link key={i} href={post.href} className="group block">
-                        <div className="flex flex-row border border-[#68800a] rounded-xl overflow-hidden transition-colors duration-300 h-full">
-                            <div className="relative w-36 md:w-75 md:h-70 shrink-0 overflow-hidden">
-                                <img
-                                    src={post.img}
-                                    alt={post.title}
-                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                            {/* Content */}
-                            <div className="flex flex-col justify-between p-4 md:p-8 flex-1">
-                                <h3 className="text-lg sm:text-2xl font-light text-white leading-snug">
-                                    {post.title}
-                                </h3>
-                                <div className="mt-3">
-                                    <div className="flex items-center gap-2">
-                                        <img
-                                            src={post.author.avatar}
-                                            alt={post.author.name}
-                                            className="w-8 h-8 rounded-full object-cover shrink-0"
-                                        />
-                                        <span className="text-[#c5f018] text-sm font-light">{post.author.name}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 mt-4 text-sm">
-                                        <CalendarIcon />
-                                        <span>{post.date}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
-                ))}
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  {SMALL_POSTS.map((post, i) => (
+    <Link key={i} href={post.href} className="group block">
+      <div className="flex flex-row border border-[#68800a] rounded-xl overflow-hidden transition-colors duration-300 h-full">
+        <div className="relative w-28 sm:w-32 lg:w-75 shrink-0 overflow-hidden">
+          <img
+            src={post.img}
+            alt={post.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div className="flex flex-col justify-between p-3 sm:p-4 lg:p-8 flex-1 min-w-0">
+          <h3 className="text-sm sm:text-base lg:text-2xl font-light text-white leading-snug line-clamp-2">
+            {post.title}
+          </h3>
+          <div className="mt-2 sm:mt-3">
+            <div className="flex items-center gap-2">
+              <img
+                src={post.author.avatar}
+                alt={post.author.name}
+                className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover shrink-0"
+              />
+              <span className="text-[#c5f018] text-xs sm:text-sm font-light truncate">{post.author.name}</span>
             </div>
+            <div className="flex items-center gap-2 mt-2 text-xs sm:text-sm">
+              <CalendarIcon />
+              <span>{post.date}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
         </section>
     );
 }

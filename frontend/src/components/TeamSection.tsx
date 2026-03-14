@@ -2,7 +2,7 @@ import { TEAM } from "@/lib/team";
 
 export function TeamSection() {
   return (
-    <section id="team" className="mx-auto max-w-8xl px-8 py-16 md:px-16 md:py-24">
+    <section id="team" className="mx-auto max-w-8xl py-16 md:py-24 px-4 md:px-0">
       {/* Label */}
       <div className="flex items-center justify-center gap-2 py-4">
         <span

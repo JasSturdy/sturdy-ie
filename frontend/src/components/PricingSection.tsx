@@ -52,7 +52,7 @@ export function PricingSection() {
     const [yearly, setYearly] = useState(true);
 
     return (
-        <section className="relative mx-auto flex max-w-8xl flex-col py-8 md:py-24 px-8 md:px-16">
+        <section className="relative mx-auto flex max-w-8xl flex-col py-8 md:py-24 px-4 md:px-0">
             {/* Header */}
             <div
                 className="space-y-5"

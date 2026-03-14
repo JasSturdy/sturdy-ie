@@ -4,7 +4,7 @@ const FOOTER_NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Ventures", href: "/ventures" },
+  // { label: "Ventures", href: "/ventures" },
   { label: "My Insights", href: "/myinsights" },
   { label: "Contact", href: "/contact" },
 ];
@@ -51,16 +51,16 @@ const SOCIALS = [
 export function FooterSection() {
   return (
     <footer
-      className="relative overflow-hidden"
+      className="relative overflow-hidden mx-auto w-full  max-w-8xl rounded-xl border border-zinc-500"
       style={{
-        background: "radial-gradient(ellipse at 50% 40%, rgba(74, 110, 8, 0.95) 0%, rgba(45, 68, 5, 0.85) 30%, rgba(20, 30, 3, 0.9) 60%, #0a0a0a 100%)",
+        background: "radial-gradient(ellipse at 50% 20%, rgba(74, 110, 8, 0.95) 0%, rgba(45, 68, 5, 0.85) 40%, rgba(20, 30, 3, 0.9) 60%, #0a0a0a 100%)",
       }}
     >
       {/* Decorative gradient arcs — left */}
-      <div className="pointer-events-none absolute -left-28 top-1/4 -translate-y-1/2">
+      <div className="-z-10 pointer-events-none absolute -left-28 top-1/6 -translate-y-1/2">
         <svg
-          width="280"
-          height="320"
+          width="300"
+          height="330"
           viewBox="0 0 260 320"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -68,19 +68,19 @@ export function FooterSection() {
           <defs>
             <linearGradient id="arcGradL1" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#D0F347" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#c5f018" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#95CA31" stopOpacity="0.65" />
             </linearGradient>
           </defs>
-          <circle cx="60" cy="40" r="170" stroke="url(#arcGradL1)" strokeWidth="32" />
+          <circle cx="60" cy="40" r="170" stroke="url(#arcGradL1)" strokeWidth="42" />
           <circle cx="60" cy="40" r="125" stroke="url(#arcGradL2)" strokeWidth="30" />
         </svg>
       </div>
 
       {/* Decorative gradient arcs — right */}
-      <div className="pointer-events-none absolute -right-28 top-1/2 -translate-y-1/2">
+      <div className="-z-10 pointer-events-none absolute -right-28 top-1/2 -translate-y-1/2">
         <svg
           width="340"
-          height="350"
+          height="400"
           viewBox="0 0 300 320"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -88,30 +88,39 @@ export function FooterSection() {
           <defs>
             <linearGradient id="arcGradR1" x1="1" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#c5f018" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#739F21" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#95CA31" stopOpacity="0.55" />
             </linearGradient>
           </defs>
-          <circle cx="210" cy="160" r="120" stroke="url(#arcGradR1)" strokeWidth="32" />
+          <circle cx="210" cy="160" r="120" stroke="url(#arcGradR1)" strokeWidth="42" />
           <circle cx="210" cy="160" r="85" stroke="url(#arcGradR2)" strokeWidth="20" />
         </svg>
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-0">
+      <div className="py-8 md:py-16">
+        {/* Logo */}
+        <div className="flex justify-center mb-10">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-2xl md:text-4xl font-medium tracking-wide text-zinc-300">
+              Jason<span className="font-semibold text-white">Sturdy</span>
+            </span>
+          </Link>
+        </div>
+
         {/* Tagline */}
-        <p className="mx-auto max-w-2xl text-center text-sm leading-relaxed text-white md:text-base">
+        <p className="mx-auto max-w-xs md:max-w-2xl text-center text-sm leading-relaxed text-white md:text-base">
           Designing sovereign data infrastructures and secure collaboration
           environments for regulated ecosystems.
         </p>
 
         {/* Social icons */}
-        <div className="mt-10 flex items-center justify-center gap-4">
+        <div className="mt-10 md:mt-20 flex items-center justify-center gap-6 md:gap-10">
           {SOCIALS.map((social) => (
             <a
               key={social.label}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900/60 text-zinc-300 transition hover:border-[#c5f018]/50 hover:text-[#c5f018]"
+              className="flex h-12 w-12 items-center justify-center rounded-sm border border-zinc-400 text-zinc-300 transition-all duration-600 ease-in-out hover:bg-black hover:scale-120"
               aria-label={social.label}
             >
               {social.icon}
@@ -120,12 +129,12 @@ export function FooterSection() {
         </div>
 
         {/* Nav links */}
-        <nav className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <nav className="mt-10 md:mt-20 z-5 flex flex-wrap items-center justify-center gap-2 sm:gap-8">
           {FOOTER_NAV_ITEMS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg bg-[#2a2d26] px-8 py-4 text-sm font-medium text-white transition hover:border-[#c5f018]/40 hover:text-[#c5f018]"
+              className="rounded-lg bg-[#31332d] px-4 md:px-8 py-4 text-sm font-medium text-white transition-all duration-600 ease-in-out hover:scale-110"
             >
               {item.label}
             </Link>
@@ -133,9 +142,9 @@ export function FooterSection() {
         </nav>
 
         {/* Divider + copyright */}
-        <div className="mt-12 border-t border-[rgba(219,255,73,0.9)]  pt-6">
-          <p className="text-center text-sm text-white">
-            Copyright &copy; Jason Sturdy
+        <div className="mt-10 md:mt-16 mx-auto max-w-xs md:max-w-6xl px-8 border-t border-[rgba(219,255,73,0.9)] pt-6 pb-8">
+          <p className="text-center mt-6 md:mt-8 text-sm md:text-lg text-white">
+            Copyright &copy; All Rights Reserved Jason Sturdy
           </p>
         </div>
       </div>

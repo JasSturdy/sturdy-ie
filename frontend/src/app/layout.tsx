@@ -18,7 +18,7 @@ export default function RootLayout({
         className="antialiased bg-black text-zinc-100"
         style={{ fontFamily: "'Poppins', sans-serif" }}
       >
-        <div className="flex min-h-screen min-w-0 justify-center">
+        <div className="flex min-h-screen min-w-0 justify-center overflow-visible">
           {children}
         </div>
       </body>

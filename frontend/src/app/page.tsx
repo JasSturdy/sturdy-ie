@@ -26,7 +26,7 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="relative min-w-0 w-full max-w-full text-sm text-zinc-200">
+    <main className="relative min-w-0 w-full max-w-full overflow-visible text-sm text-zinc-200">
       <Header />
       <HeroSection />
       <HomeAboutSection />

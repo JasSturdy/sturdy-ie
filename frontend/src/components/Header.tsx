@@ -45,11 +45,11 @@ export function Header() {
   }, [menuOpen, handleClickOutside]);
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent md:px-16 px-8 py-8">
-      <div className="mx-auto flex max-w-8xl items-center justify-between">
+    <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
+      <div className="mx-auto flex max-w-8xl items-center justify-between md:px-16 px-8 py-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="h-7 w-7 rounded-md border border-lime-400/40 bg-gradient-to-br from-lime-400/10 to-lime-500/0" />
+        
           <span className="text-sm font-medium tracking-wide text-zinc-300">
             Jason<span className="font-semibold text-white">Sturdy</span>
           </span>

@@ -61,7 +61,7 @@ export default async function CaseStudyDetailPage({
         {/* Body sections (matches My Insight slug structure) */}
         <article className="space-y-14">
           {SECTIONS.map(({ key, heading }) => {
-            const body = (study as Record<string, string>)[key];
+            const body = (study as unknown as Record<string, string>)[key];
             if (!body?.trim()) return null;
             return (
               <section key={key}>

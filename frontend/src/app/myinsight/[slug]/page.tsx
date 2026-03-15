@@ -45,10 +45,10 @@ export default async function MyInsightDetailPage({
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
         {/* Centered header: title, tagline, author */}
         <div className="pt-16 pb-8 text-center">
-          <h1 className="text-3xl text-white leading-tight md:text-4xl lg:text-5xl">
+          <h1 className="text-[64px] text-white leading-tight">
             {myInsight.title}
           </h1>
-          <p className="mt-6 text-base leading-relaxed text-white max-w-2xl mx-auto">
+          <p className="mt-6 text-[16px] leading-relaxed text-white max-w-2xl mx-auto">
             {myInsight.excerpt}
           </p>
           <div className="mt-6 flex items-center justify-center gap-3">
@@ -65,7 +65,7 @@ export default async function MyInsightDetailPage({
         {/* Hero image */}
         <div className="relative w-full overflow-hidden bg-zinc-900 mb-14">
           {myInsight.image && (
-            <img src={myInsight.image} alt={myInsight.title} className="w-full aspect-video object-cover" />
+            <img src={myInsight.image} alt={myInsight.title} className="w-full aspect-[1160/480] object-cover" />
           )}
         </div>
 
@@ -73,16 +73,16 @@ export default async function MyInsightDetailPage({
         <article className="space-y-14">
           {myInsight.sections.map((section, i) => (
             <section key={i}>
-              <h2 className="text-xl font-bold text-white mb-5 md:text-2xl">
+              <h2 className="text-[48px] font-bold text-white mb-5">
                 {section.heading}
               </h2>
               <div className="space-y-5">
                 {typeof section.body === "string"
                   ? section.body.split("\n\n").map((para: string, j: number) => (
-                    <p key={j} className="text-base leading-8 text-white">{para.trim()}</p>
+                    <p key={j} className="text-[16px] leading-8 text-white">{para.trim()}</p>
                   ))
                   : renderLexical(section.body).map((para, j) => (
-                    <p key={j} className="text-base leading-8 text-white">{para}</p>
+                    <p key={j} className="text-[16px] leading-8 text-white">{para}</p>
                   ))
                 }
               </div>
@@ -91,7 +91,7 @@ export default async function MyInsightDetailPage({
 
           {/* CTA */}
           <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-10 text-center">
-            <h3 className="text-lg font-bold text-white mb-3">Interested in collaborating?</h3>
+            <h3 className="text-[48px] font-bold text-white mb-3">Interested in collaborating?</h3>
             <p className="text-sm text-zinc-400 mb-6 leading-relaxed max-w-md mx-auto">
               If this perspective resonates and you are exploring collaboration across research, governance, or secure data environments, I welcome the conversation.
             </p>
@@ -115,7 +115,7 @@ export default async function MyInsightDetailPage({
                 <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
                 Our blogs
               </p>
-              <h2 className="text-2xl font-bold text-white md:text-3xl">
+              <h2 className="text-[36px] font-bold text-white">
                 Recent <span className="text-[#c5f018]">articles</span>
               </h2>
             </div>
@@ -139,8 +139,8 @@ export default async function MyInsightDetailPage({
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <p className="text-xs text-zinc-500 mb-2">{insight.author} • {insight.date}</p>
-                <h3 className="text-lg font-bold text-white leading-snug group-hover:text-zinc-200 transition-colors">
+                <p className="text-[16px] text-zinc-500 mb-2">{insight.author} • {insight.date}</p>
+                <h3 className="text-[36px] font-bold text-white leading-snug group-hover:text-zinc-200 transition-colors">
                   {insight.title}
                 </h3>
               </Link>

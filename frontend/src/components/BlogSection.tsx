@@ -17,7 +17,7 @@ const authorAvatarClassName =
 const FEATURED_POST = {
   img: "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&auto=format&fit=crop&q=80",
   title: "Designing Trust Into Digital Infrastructure",
-  date: "Thought leadership",
+  date: "Insights",
   href: "/myinsight/designing-trust-into-digital-infrastructure",
 };
 
@@ -25,13 +25,13 @@ const SMALL_POSTS = [
   {
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=80",
     title: "Governance in Regulated Data Ecosystems",
-    date: "Thought leadership",
+    date: "Insights",
     href: "/myinsight/governance-in-regulated-data-ecosystems",
   },
   {
     img: "https://images.unsplash.com/photo-1639322537504-6427a16b0a28?w=400&auto=format&fit=crop&q=80",
     title: "Standards and the Future of Data Exchange",
-    date: "Thought leadership",
+    date: "Insights",
     href: "/myinsight/standards-and-the-future-of-data-exchange",
   },
 ];

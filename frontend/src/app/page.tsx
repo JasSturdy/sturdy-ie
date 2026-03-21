@@ -11,7 +11,6 @@ import { getVenturesIndex } from "../lib/ventures";
 import { getMyInsightsIndex } from "../lib/myInsight";
 import { ServicesSection } from "@/components/Services";
 import { CaseStudiesTitleSection } from "@/components/CaseStudiesTitleSection";
-import { Innovation } from "@/components/Innovation";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ProfileSection } from "@/components/ProfileSection";
 import { ContactUsCtaSection } from "@/components/ContactUsCtaSection";
@@ -35,7 +34,6 @@ export default async function Home() {
       <VenturesSection />
       <CaseStudiesTitleSection />
       <CaseStudiesSection caseStudies={caseStudies} />
-      <Innovation/>
       <TestimonialsSection />
       <ProfileSection />
       <ContactUsCtaSection />

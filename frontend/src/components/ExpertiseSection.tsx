@@ -64,7 +64,7 @@ type ExpertiseItem = {
 
 const EXPERTISE_ITEMS: ExpertiseItem[] = [
   {
-    title: "Governance & Compliance",
+    title: "Governance Complexity",
     body: "Turning policy into operational systems",
     icon: <IconGovernance />,
   },

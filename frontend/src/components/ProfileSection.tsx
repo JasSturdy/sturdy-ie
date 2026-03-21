@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView } from "motion/react";
 
 const strokeIcon = {
@@ -45,6 +45,7 @@ function IconRegulatorySystems() {
     </svg>
   );
 }
+
 function IconInstitutionalInfrastructure() {
   return (
     <svg {...strokeIcon} aria-hidden>
@@ -176,25 +177,17 @@ function FocusCard({
   index: number;
   sectionInView: boolean;
 }) {
-  const cardRef = useRef(null);
-  const cardInView = useInView(cardRef, {
-    once: true,
-    margin: "0px 0px -12% 0px",
-  });
-
-  const show = sectionInView && cardInView;
-
   return (
     <motion.article
-      ref={cardRef}
       initial={{ opacity: 0, y: 36 }}
-      animate={show ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
+      animate={sectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
       transition={{
         duration: 0.65,
-        delay: 0.08 * index,
+        delay: 0.08 * Math.min(index, 3),
         ease: [0.22, 1, 0.36, 1],
       }}
       className="group relative"
+      style={{ flex: "0 0 calc(25% - 1.125rem)", minWidth: "220px" }}
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-zinc-800/90 bg-zinc-950 shadow-black/40 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-[#c5f018]/50 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.65),0_0_0_1px_rgba(197,240,24,0.12)]">
         <img
@@ -250,6 +243,50 @@ export function ProfileSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  // Intercept wheel events and redirect them horizontally
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      el.scrollLeft += e.deltaY + e.deltaX;
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    isDragging.current = true;
+    startX.current = e.pageX - (scrollRef.current?.offsetLeft ?? 0);
+    scrollLeft.current = scrollRef.current?.scrollLeft ?? 0;
+    if (scrollRef.current) scrollRef.current.style.cursor = "grabbing";
+  };
+
+  const onMouseLeave = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = "grab";
+  };
+
+  const onMouseUp = () => {
+    isDragging.current = false;
+    if (scrollRef.current) scrollRef.current.style.cursor = "grab";
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current) return;
+    e.preventDefault();
+    const x = e.pageX - (scrollRef.current?.offsetLeft ?? 0);
+    const walk = (x - startX.current) * 1.2;
+    if (scrollRef.current) scrollRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
   return (
     <section id="profile" className="mx-auto max-w-8xl px-4 py-16 md:px-4 md:py-24 lg:px-4">
       <motion.div
@@ -272,7 +309,7 @@ export function ProfileSection() {
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
         className="text-center text-2xl font-light leading-tight text-white md:text-6xl"
       >
-        <h1>Standards, Frameworks & Ecosystems </h1>
+        <h1>Standards, Frameworks & Ecosystems</h1>
       </motion.h2>
 
       <motion.div
@@ -282,11 +319,50 @@ export function ProfileSection() {
         className="mx-auto mt-6 max-w-4xl space-y-4 text-center text-sm leading-relaxed text-zinc-300 md:text-lg"
       >
         <p>
-          Operating within established standards and regulatory frameworks to ensure governance, interoperability, security, and trust across complex environments.
+          Operating within established standards and regulatory frameworks to ensure governance,
+          interoperability, security, and trust across complex environments.
         </p>
       </motion.div>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 md:mt-20 lg:grid-cols-4 lg:gap-6">
+      {/* Scroll hint */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+        className="mt-8 flex items-center justify-end gap-2 md:mt-16"
+      >
+        <span className="text-xs text-zinc-500 md:text-sm">Scroll to explore</span>
+        <svg
+          className="h-4 w-4 text-[#c5f018]"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={1.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+          />
+        </svg>
+      </motion.div>
+
+      {/* Horizontal scroll container */}
+      <div
+        ref={scrollRef}
+        className="mt-4 flex gap-6 overflow-x-auto pb-6 md:mt-6 select-none"
+        style={{
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+          scrollbarWidth: "thin",
+          scrollbarColor: "rgba(197,240,24,0.35) transparent",
+          cursor: "grab",
+        }}
+        onMouseDown={onMouseDown}
+        onMouseLeave={onMouseLeave}
+        onMouseUp={onMouseUp}
+        onMouseMove={onMouseMove}
+      >
         {PROFILE_FOCUS.map((card, index) => (
           <FocusCard
             key={card.slug}

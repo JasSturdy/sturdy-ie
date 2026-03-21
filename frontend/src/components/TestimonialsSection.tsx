@@ -34,12 +34,30 @@ function IconStandards() {
   );
 }
 
+function IconControl() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
 function IconResilience() {
   return (
     <svg {...iconBtnProps} aria-hidden>
       <ellipse cx="12" cy="5" rx="9" ry="3" />
       <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
       <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+    </svg>
+  );
+}
+
+function IconExplore() {
+  return (
+    <svg {...iconBtnProps} aria-hidden viewBox="0 0 24 24" width="100%" height="100%">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.35-4.35" />
     </svg>
   );
 }
@@ -62,18 +80,26 @@ const PRINCIPLES: Principle[] = [
   },
   {
     id: 2,
-    title: "Standards",
-    body: "Interoperability depends on shared frameworks",
-    icon: <IconStandards />,
+    title: "Control",
+    body: "Clear ownership, access, and data responsibility",
+    icon: <IconControl />,
     bars: 2,
   },
   {
     id: 3,
-    title: "Resilience",
-    body: "Infrastructure must support long-term capability",
-    icon: <IconResilience />,
+    title: "Standards",
+    body: "Alignment with regulatory and interoperability frameworks",
+    icon: <IconStandards />,
     bars: 3,
   },
+  {
+    id: 4,
+    title: "Resilience",
+    body: "Systems designed to operate reliably at scale",
+    icon: <IconResilience />,
+    bars: 4,
+  },
+  
 ];
 
 export function TestimonialsSection() {
@@ -107,8 +133,8 @@ export function TestimonialsSection() {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="mb-12 text-center text-3xl font-light text-white md:mb-16 md:text-6xl"
       >
-        <span className="font-semibold text-[#c5f018]">Ideas</span>
-        <span className="text-white"> That Guide My Work</span>
+        <span className="font-semibold text-[#c5f018]">Principles</span>
+        <span className="text-white"> for System Design</span>
       </motion.h2>
 
       <div className="flex flex-col items-stretch gap-6 md:flex-row">
@@ -147,7 +173,7 @@ export function TestimonialsSection() {
                   Principle
                 </p>
                 <div className="flex gap-1">
-                  {[1, 2, 3].map((i) => (
+                  {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
                       className={`h-6 w-[3px] rounded-full ${
@@ -174,21 +200,15 @@ export function TestimonialsSection() {
         >
           <div className="pointer-events-none absolute inset-0 bg-black/20" />
           <div className="relative z-[1] space-y-6">
-            <div className="flex items-center">
-              <img
-                src="/contact.svg"
-                alt=""
-                className="h-16 w-16"
-                aria-hidden
-              />
+            <div className="flex items-center h-16 w-16 text-[#c5f018]">
+              <IconExplore />
             </div>
             <div>
               <h3 className="text-2xl font-light text-white md:text-3xl">
-                Discuss Collaboration
+                Explore My Work
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-white">
-                I welcome discussions with organisations working on digital
-                infrastructure and data systems
+                Examples of systems, platforms, and environments designed for regulated ecosystems
               </p>
             </div>
           </div>
@@ -201,10 +221,10 @@ export function TestimonialsSection() {
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
           >
             <Link
-              href="/contact"
+              href="/case-studies"
               className="relative mt-6 flex items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-6 py-4 text-sm font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] md:mt-0 md:text-lg"
             >
-              Contact
+              View Case Studies
               <svg
                 width="16"
                 height="16"

@@ -45,21 +45,57 @@ function IconRegulatorySystems() {
     </svg>
   );
 }
-
 function IconInstitutionalInfrastructure() {
   return (
     <svg {...strokeIcon} aria-hidden>
-      <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-      <path d="M9 22v-4h6v4" />
-      <path d="M8 6h.01" />
-      <path d="M16 6h.01" />
-      <path d="M12 6h.01" />
-      <path d="M12 10h.01" />
-      <path d="M12 14h.01" />
-      <path d="M16 10h.01" />
-      <path d="M16 14h.01" />
-      <path d="M8 10h.01" />
-      <path d="M8 14h.01" />
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
+function IconHealth() {
+  return (
+    <svg {...strokeIcon} aria-hidden>
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+      <path d="M12 12v5" />
+      <path d="M9.5 14.5l2.5-2.5 2.5 2.5" />
+    </svg>
+  );
+}
+
+function IconResearch() {
+  return (
+    <svg {...strokeIcon} aria-hidden>
+      <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" />
+    </svg>
+  );
+}
+
+function IconFinancial() {
+  return (
+    <svg {...strokeIcon} aria-hidden>
+      <line x1="12" y1="1" x2="12" y2="23" />
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+    </svg>
+  );
+}
+
+function IconEuropeanData() {
+  return (
+    <svg {...strokeIcon} aria-hidden>
+      <circle cx="12" cy="12" r="3" />
+      <circle cx="4" cy="6" r="2" />
+      <circle cx="20" cy="6" r="2" />
+      <circle cx="4" cy="18" r="2" />
+      <circle cx="20" cy="18" r="2" />
+      <path d="M6 6.5l4 4" />
+      <path d="M18 6.5l-4 4" />
+      <path d="M6 17.5l4-4" />
+      <path d="M18 17.5l-4-4" />
     </svg>
   );
 }
@@ -74,32 +110,60 @@ type FocusCard = {
 
 const PROFILE_FOCUS: FocusCard[] = [
   {
-    slug: "data-governance",
-    title: "Data Governance",
-    tagline: "Accountable data lifecycle and policy alignment",
+    slug: "data-protection-privacy",
+    title: "Data Protection & Privacy",
+    tagline: "GDPR, data governance, and lawful processing frameworks",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=80",
     icon: <IconDataGovernance />,
   },
   {
-    slug: "security-architecture",
-    title: "Security Architecture",
-    tagline: "Resilient, threat-aware platform design",
+    slug: "security-resilience-frameworks",
+    title: "Security & Resilience Frameworks",
+    tagline: "NIS2, DORA, and operational resilience standards",
     img: "/profile-security-digital-lock.png",
     icon: <IconSecurityArchitecture />,
   },
   {
-    slug: "regulatory-systems",
-    title: "Regulatory Systems",
-    tagline: "RegTech and SupTech delivery at scale",
+    slug: "ai-governance-regulation",
+    title: "AI Governance & Regulation",
+    tagline: "EU AI Act, model risk, and responsible AI systems",
     img: "https://images.unsplash.com/photo-1633265486064-086b219458ec?w=900&auto=format&fit=crop&q=80",
     icon: <IconRegulatorySystems />,
   },
   {
-    slug: "institutional-infrastructure",
-    title: "Institutional Infrastructure",
-    tagline: "Long-horizon digital capability for institutions",
+    slug: "data-standards-interoperability",
+    title: "Data Standards & Interoperability",
+    tagline: "FAIR principles, data quality, and exchange frameworks",
     img: "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=900",
     icon: <IconInstitutionalInfrastructure />,
+  },
+  {
+    slug: "health-clinical-standards",
+    title: "Health & Clinical Standards",
+    tagline: "HL7, FHIR, openEHR, and clinical interoperability",
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&q=80",
+    icon: <IconHealth />,
+  },
+  {
+    slug: "research-analytical-models",
+    title: "Research & Analytical Models",
+    tagline: "OMOP, CDISC, and structured research data models",
+    img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&auto=format&fit=crop&q=80",
+    icon: <IconResearch />,
+  },
+  {
+    slug: "financial-regulatory-systems",
+    title: "Financial & Regulatory Systems",
+    tagline: "Risk, reporting, and compliance in regulated financial environments",
+    img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&auto=format&fit=crop&q=80",
+    icon: <IconFinancial />,
+  },
+  {
+    slug: "european-data-ecosystems",
+    title: "European Data Ecosystems",
+    tagline: "GAIA-X, EOSC, and cross-border data collaboration",
+    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&auto=format&fit=crop&q=80",
+    icon: <IconEuropeanData />,
   },
 ];
 
@@ -199,7 +263,7 @@ export function ProfileSection() {
           className="h-2 w-2 shrink-0 rounded-full bg-[#c5f018]"
           style={{ animation: "dotPulse 1s ease-in-out infinite" }}
         />
-        <span className="text-sm text-white md:text-lg">Profile</span>
+        <span className="text-sm text-white md:text-lg">Standards</span>
       </motion.div>
 
       <motion.h2
@@ -208,8 +272,7 @@ export function ProfileSection() {
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
         className="text-center text-2xl font-light leading-tight text-white md:text-6xl"
       >
-        <span className="text-white">Leadership </span>
-        <span className="font-semibold text-[#c5f018]">Perspective</span>
+        <h1>Standards, Frameworks & Ecosystems </h1>
       </motion.h2>
 
       <motion.div
@@ -219,12 +282,7 @@ export function ProfileSection() {
         className="mx-auto mt-6 max-w-4xl space-y-4 text-center text-sm leading-relaxed text-zinc-300 md:text-lg"
       >
         <p>
-          Operating at executive and board level, I bridge product strategy with
-          regulator-grade delivery.
-        </p>
-        <p>
-          My work supports RegTech, SupTech, AI governance, and cross-border
-          collaboration.
+          Operating within established standards and regulatory frameworks to ensure governance, interoperability, security, and trust across complex environments.
         </p>
       </motion.div>
 

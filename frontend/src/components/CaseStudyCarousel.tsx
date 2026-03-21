@@ -28,7 +28,7 @@ export function CaseStudyCarousel({ caseStudies }: { caseStudies: CaseStudyIndex
 
   return (
     <section className="relative border-b border-zinc-900/60 bg-black py-8 md:py-12">
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 md:px-10 lg:px-0">
+      <div className="mx-auto w-full">
         <div className="relative aspect-[16/10] overflow-hidden rounded-lg md:aspect-[21/9]">
           <div
             className="flex h-full w-full transition-transform duration-500 ease-out will-change-transform"

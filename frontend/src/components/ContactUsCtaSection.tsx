@@ -55,9 +55,12 @@ export function ContactUsCtaSection() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto max-w-4xl text-2xl font-light leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
           >
-            Exploring the future of{" "}
+            Building  {" "}
             <span className="font-medium text-[#c5f018]">
-              trusted data systems
+              Trusted Systems {" "}
+            </span>
+            <span className="text-white">
+              for Regulated Environments
             </span>
           </motion.h2>
 
@@ -71,8 +74,7 @@ export function ContactUsCtaSection() {
             }}
             className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-zinc-300 sm:text-base md:text-lg"
           >
-            As institutions increasingly rely on data, the design of digital
-            infrastructure becomes a critical challenge.
+            Where policy, infrastructure, and data must work in practice
           </motion.p>
 
           <motion.div
@@ -88,13 +90,13 @@ export function ContactUsCtaSection() {
             className="mt-8 inline-block sm:mt-10"
           >
             <Link
-              href="/contact"
+              href="/case-studies"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-6 py-3 text-sm font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-10 sm:py-4 sm:text-lg md:text-xl"
             >
-              Get in Touch
+              Explore My Work
               <svg
-                width="16"
-                height="16"
+                width="20"
+                height="18"
                 viewBox="0 0 16 16"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +116,7 @@ export function ContactUsCtaSection() {
           <div className="relative mt-12 sm:mt-16 md:mt-20">
             <div className="absolute bottom-4 left-0 right-0 z-0 flex items-center px-2 sm:bottom-6 sm:px-4">
               <div
-                className="flex h-8 w-8 shrink-0 items-center justify-center sm:h-12 sm:w-12"
+                className="flex h-8 w-8 shrink-0 items-center justify-center sm:h-12 sm:w-16"
                 style={{
                   opacity: 0,
                   animation: "fade-in-star-left 4s ease-out infinite",
@@ -135,7 +137,7 @@ export function ContactUsCtaSection() {
                 }}
               />
               <div
-                className="flex h-8 w-8 shrink-0 items-center justify-center sm:h-12 sm:w-12"
+                className="flex h-8 w-8 shrink-0 items-center justify-center sm:h-12 sm:w-16"
                 style={{
                   opacity: 0,
                   animation: "fade-in-star-right 4s ease-out infinite",

@@ -14,30 +14,30 @@ type FocusCard = {
 const FOCUS_CARDS: FocusCard[] = [
   {
     img: "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
-    title: "Sovereign Data Infrastructure",
+    title: "Data Governance & Compliance",
     description:
-      "Platforms enabling institutions to control and exchange data securely",
+      "Translating policy, regulation, and standards into working systems",
     variant: "frameWhite",
   },
   {
     img: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-    title: "Regulated Data Ecosystems",
+    title: "Security Architecture",
     description:
-      "Infrastructure supporting governance, compliance, and trusted data exchange",
+      "Designing environments with control, access, and resilience built in",
     variant: "limeSplit",
   },
   {
     img: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
-    title: "Research & Health Data Systems",
+    title: "Data Infrastructure",
     description:
-      "Digital environments enabling collaboration across research and health institutions",
+      "Enabling integration, interoperability, and structured data exchange",
     variant: "frostBand",
   },
   {
     img: "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=800",
-    title: "AI & Data Governance",
+    title: "Operating Models & Delivery",
     description:
-      "Frameworks supporting responsible deployment of advanced analytics",
+      "Operating Models & Delivery",
     variant: "frameAccent",
   },
 ];
@@ -59,7 +59,7 @@ function CardInterior({
           <div className="absolute bottom-4 left-4 right-4 z-[1] sm:bottom-6 sm:left-6 sm:right-6">
             <div className="bg-white p-3 sm:p-5 md:p-6 transition-transform duration-500 ease-out group-hover/card:translate-y-[-2px]">
               <div className="ml-auto flex max-w-full flex-col items-end gap-2 text-right sm:max-w-[min(100%,22rem)]">
-                <span className="text-base font-semibold leading-snug text-black sm:text-lg md:text-xl lg:text-2xl [overflow-wrap:anywhere]">
+                <span className="text-base font-semibold leading-snug text-black sm:text-lg md:text-2xl lg:text-2xl [overflow-wrap:anywhere]">
                   {title}
                 </span>
                 <span className="text-[0.7rem] leading-snug text-black/80 sm:text-xs md:text-sm [overflow-wrap:anywhere]">
@@ -76,7 +76,7 @@ function CardInterior({
         <div className="relative z-[1] flex h-full min-h-0 flex-col justify-between gap-4 transition-transform duration-500 ease-out group-hover/card:translate-y-[-2px]">
           <div className="flex min-w-0 items-start gap-3">
             <span className="mt-1.5 h-3 w-3 shrink-0 bg-[#c5f018] transition-transform duration-500 group-hover/card:scale-110" />
-            <span className="min-w-0 text-base font-medium leading-snug text-white sm:text-lg md:text-2xl [overflow-wrap:anywhere]">
+            <span className="min-w-0 text-base font-medium leading-snug text-white sm:text-lg md:text-2xl lg:text-2xl [overflow-wrap:anywhere]">
               {title}
             </span>
           </div>
@@ -93,7 +93,7 @@ function CardInterior({
             <p className="mb-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[#c5f018] sm:text-xs">
               {String(index + 1).padStart(2, "0")}
             </p>
-            <h3 className="mb-2 text-sm font-semibold leading-snug text-white sm:text-base md:text-lg [overflow-wrap:anywhere]">
+            <h3 className="mb-2 text-sm font-semibold leading-snug text-white sm:text-base md:text-2xl [overflow-wrap:anywhere]">
               {title}
             </h3>
             <p className="text-[0.7rem] leading-relaxed text-zinc-300 sm:text-xs md:text-sm [overflow-wrap:anywhere]">
@@ -109,7 +109,7 @@ function CardInterior({
           <div className="pointer-events-none absolute inset-4 border border-white/40 sm:inset-6" />
           <div className="absolute bottom-4 left-4 right-4 z-[1] sm:bottom-6 sm:left-6 sm:right-6">
             <div className="mr-auto max-w-[min(100%,20rem)] border-l-4 border-[#c5f018] bg-white/95 p-3 shadow-lg transition-transform duration-500 ease-out group-hover/card:translate-y-[-2px] sm:p-5">
-              <h3 className="mb-2 text-base font-semibold leading-snug text-black sm:text-lg md:text-xl [overflow-wrap:anywhere]">
+              <h3 className="mb-2 text-base font-semibold leading-snug text-black sm:text-lg md:text-2xl lg:text-2xl [overflow-wrap:anywhere]">
                 {title}
               </h3>
               <p className="text-left text-[0.7rem] leading-relaxed text-black/75 sm:text-xs md:text-sm [overflow-wrap:anywhere]">
@@ -171,15 +171,11 @@ export function CapabilitiesSection() {
         </div>
         <div className="space-y-4 text-[0.95rem] leading-relaxed text-zinc-300 md:max-w-xl md:flex-1">
           <p className="text-base md:text-lg">
-            My work focuses on designing trusted digital infrastructure that
-            enables institutions to govern, exchange, and analyse complex data
-            ecosystems.
+            Across public sector, financial services, and health systems, organisations operate under increasing regulatory expectations while managing complex data environments.
+            The challenge is not a lack of data or policy. It is making both work together in practice.
           </p>
           <p className="text-base md:text-lg">
-            This includes platforms and frameworks that support secure
-            collaboration, regulatory alignment, and responsible data innovation
-            across healthcare, research, financial systems, and the public
-            sector.
+            My work focuses on bridging that gap, designing systems and operating models that align governance, infrastructure, and day-to-day use.
           </p>
         </div>
       </div>

@@ -43,7 +43,7 @@ export function HeroSection() {
               transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
               className="space-y-3 text-2xl sm:text-3xl md:text-6xl lg:text-3xl leading-relaxed text-zinc-200"
             >
-              <p>Designing Trusted Digital Infrastructure</p>
+              <p>Building Trusted Systems from Policy to Practice</p>
             </motion.div>
 
             {/* Supporting line */}
@@ -53,7 +53,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.22 }}
               className="text-base sm:text-lg text-zinc-300"
             >
-              Data Governance • Security Architecture • Regulatory Systems • Digital Infrastructure
+              Data Governance • Security Architecture • Operating Models • Digital Infrastructure
             </motion.p>
 
             {/* Micro line */}
@@ -61,9 +61,9 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.28 }}
-              className="text-sm text-zinc-500"
+              className="text-sm text-zinc-400 max-w-4xl"
             >
-              Working across healthcare, financial systems, research infrastructure, and the public sector.
+              I design systems and operating models that enable organisations to use data in practice, translating policy, regulation, and governance into infrastructure that is secure, usable, and trusted.
             </motion.p>
 
             {/* Hero paragraphs

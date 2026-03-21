@@ -65,22 +65,22 @@ type ExpertiseItem = {
 const EXPERTISE_ITEMS: ExpertiseItem[] = [
   {
     title: "Governance & Compliance",
-    body: "Operationalising regulatory frameworks into deployable environments",
+    body: "Turning policy into operational systems",
     icon: <IconGovernance />,
   },
   {
     title: "Sovereign Data Infrastructure",
-    body: "Designing platforms aligned to resilience and long-term integrity",
+    body: "Control, resilience, and long-term integrity",
     icon: <IconInfrastructure />,
   },
   {
     title: "Secure Collaboration",
-    body: "Enabling trusted collaboration across organisations",
+    body: "Trusted data sharing across organisations",
     icon: <IconCollaboration />,
   },
   {
     title: "Interoperability & Data Exchange",
-    body: "Standards-led architectures enabling secure data sharing",
+    body: "Standards-based, secure data flows",
     icon: <IconInteroperability />,
   },
 ];
@@ -127,7 +127,7 @@ export function ExpertiseSection() {
             <div className="mb-4 flex items-center gap-2 text-white">
               <span className="h-2 w-2 rounded-full bg-[#c5f018]"
                 style={{ animation: 'dotPulse 1s ease-in-out infinite' }} />
-              <span className="text-sm md:text-lg">Expertise</span>
+              <span className="text-sm md:text-lg">Challenge</span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-semibold leading-tight text-[#c5f018]">
@@ -136,6 +136,17 @@ export function ExpertiseSection() {
                 transformation in regulated ecosystems
               </span>
             </h2>
+
+            <p
+              className="text-sm leading-relaxed text-white md:text-base"
+              style={{
+                opacity: 0,
+                animation: visible ? 'fadeUp 1.5s ease-out 0.4s forwards' : 'none',
+              }}
+            >
+              Across regulated environments, the challenge is not technology.
+              <br/>It is aligning governance, systems, and operations so data can be used in practice.
+            </p>
 
             <div className="mt-10 grid gap-4 grid-cols-2">
               {EXPERTISE_ITEMS.map((item, i) => (
@@ -185,19 +196,18 @@ export function ExpertiseSection() {
                 animation: visible ? 'fadeUp 1.5s ease-out 0.4s forwards' : 'none',
               }}
             >
-              Executive delivery across public sector, financial services, and
-              health
+              Executive delivery across public sector, financial services, and health systems
             </p>
 
             <Link
-              href="/contact"
+              href="/case-studies"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#c5f018] bg-transparent px-6 py-4 text-sm md:text-base font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
               style={{
                 opacity: 0,
                 animation: visible ? 'fadeUp 1.5s ease-out 0.6s forwards' : 'none',
               }}
             >
-              Discuss Collaboration
+              Explore My Work
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useRef } from "react";
+import { useRef} from "react";
 import { motion, useInView } from "motion/react";
+import Link from "next/link";
 
 const iconProps = {
   width: "100%",
@@ -54,6 +55,7 @@ function IconInstitutional() {
 }
 
 type Pillar = {
+  body: ReactNode;
   title: string;
   featured: boolean;
   bars: number;
@@ -62,21 +64,24 @@ type Pillar = {
 
 const INNOVATION_PILLARS: Pillar[] = [
   {
-    title: "Research Platforms",
+    title: "Governance by Design",
     featured: false,
     bars: 1,
+    body: "Embedding policy and control into system architecture",
     icon: <IconResearch />,
   },
   {
-    title: "Health Data Infrastructure",
+    title: "Standards-Led Infrastructure",
     featured: true,
     bars: 2,
+    body: "Aligning systems with regulatory frameworks",
     icon: <IconHealth />,
   },
   {
-    title: "Institutional Data Ecosystems",
+    title: "Institutional Collaboration",
     featured: false,
     bars: 3,
+    body: "Enabling trusted data exchange across organisations",
     icon: <IconInstitutional />,
   },
 ];
@@ -142,6 +147,9 @@ function InnovationCard({ pillar, index }: { pillar: Pillar; index: number }) {
         <h3 className="text-2xl font-light leading-snug text-white md:text-3xl lg:text-4xl">
           {pillar.title}
         </h3>
+        <p className="mt-4 text-xs leading-relaxed text-white md:text-sm">
+          {pillar.body}
+        </p>
       </motion.div>
     </motion.article>
   );
@@ -168,22 +176,20 @@ export function Innovation() {
             className="h-2 w-2 rounded-sm bg-[#c5f018]"
             style={{ animation: "dotPulse 1s ease-in-out infinite" }}
           />
-          <span className="text-lg text-white">Innovation</span>
+          <span className="text-lg text-white">Response</span>
         </div>
         <h2 className="text-3xl leading-tight text-white md:text-6xl">
-          Infrastructure for{" "}
+          Designing Systems That {" "}
           <span className="font-semibold text-[#c5f018]">
-            Responsible Innovation
+            Work in Practice
           </span>
         </h2>
-        <div className="max-w-3xl space-y-4 text-lg text-zinc-300">
+        <div className="max-w-8xl space-y-4 text-lg text-zinc-300">
           <p>
-            My work focuses on advancing secure, standards-led infrastructure
-            that enables innovation while safeguarding public trust.
+            Addressing the gap between policy, systems, and real-world use requires more than technology.
           </p>
           <p>
-            These systems allow institutions to collaborate and build resilient
-            digital ecosystems.
+            It requires approaches that embed governance, standards, and collaboration into how systems are designed and operated.
           </p>
         </div>
       </motion.div>

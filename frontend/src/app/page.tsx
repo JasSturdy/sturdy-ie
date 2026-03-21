@@ -30,9 +30,9 @@ export default async function Home() {
       <HeroSection />
       <CapabilitiesSection />
       <ExpertiseSection />
+      <ServicesSection />
       <InsightsPreviewSection myInsights={myInsights} />
       <VenturesSection />
-      <ServicesSection />
       <CaseStudiesTitleSection />
       <CaseStudiesSection caseStudies={caseStudies} />
       <Innovation/>

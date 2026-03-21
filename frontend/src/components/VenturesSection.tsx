@@ -2,19 +2,19 @@ const VENTURES = [
   {
     indexLabel: "01",
     title: "Governance by Design",
-    body: "Embedding compliance and accountability into architecture",
+    body: "Embedding policy and control into system architecture",
     bars: 1,
   },
   {
     indexLabel: "02",
     title: "Standards-Led Infrastructure",
-    body: "Aligning systems with international frameworks",
+    body: "Aligning systems with regulatory frameworks",
     bars: 2,
   },
   {
     indexLabel: "03",
     title: "Institutional Collaboration",
-    body: "Designing environments for secure data exchange",
+    body: "Enabling trusted data exchange across organisations",
     bars: 3,
   },
 ];

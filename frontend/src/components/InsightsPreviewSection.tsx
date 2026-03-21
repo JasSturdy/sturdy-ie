@@ -95,22 +95,24 @@ export function InsightsPreviewSection({ myInsights }: { myInsights: MyInsightIn
               className="h-2 w-2 rounded-full bg-[#c5f018]"
               style={{ animation: 'dotPulse 1s ease-in-out infinite' }}
             />
-            <span className="text-sm md:text-lg">My Insights</span>
+            <span className="text-sm md:text-lg">Response</span>
           </div>
 
           {/* Heading — no animation */}
           <h2 className="text-2xl font-semibold leading-tight text-[#c5f018] md:text-5xl">
-            Executive{" "}
+            Designing Systems{" "}
             <span className="font-light text-white">
-              Perspectives on Governance, Infrastructure, and Regulated
-              Innovation
+              That Work in Practice
             </span>
           </h2>
 
           {/* Description — no animation */}
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 md:text-base">
-            Short perspectives drawn from building and governing
-            mission-critical platforms across regulated ecosystems.
+            Addressing the gap between policy, systems, and real-world use requires more than technology.
+            <br />
+            <br />
+            It requires approaches that embed governance, standards, and collaboration into how systems are designed and operated.
+
           </p>
 
           {/* Button — animated */}
@@ -122,10 +124,10 @@ export function InsightsPreviewSection({ myInsights }: { myInsights: MyInsightIn
             }}
           >
             <Link
-              href="/contact"
+              href="/myinsights"
               className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
             >
-              Discuss Collaboration
+              Explore Insights
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>

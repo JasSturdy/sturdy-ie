@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "why-most-health-data-initiatives-fail",
+    "title": "Why Most Health Data Initiatives Fail",
+    "category": "AI & Regulated Data",
+    "date": "2026-03-14",
+    "author": "Jason Sturdy",
+    "image": "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&auto=format&fit=crop&q=80",
+    "excerpt": "Most health data initiatives fail not because of tools, but because of fragmented and under-designed data infrastructure.",
+    "flagship": true,
+    "sections": [
+      {
+        "heading": "Why Most Health Data Initiatives Fail",
+        "body": "Across healthcare and research systems, organisations are investing heavily in digital platforms, analytics tools, and artificial intelligence.\nYet many of these initiatives struggle to deliver lasting value.\nThe reason is rarely a lack of technology.\nMore often, the failure lies in how data ecosystems are designed.\n\nMost health data initiatives focus on visible outputs: dashboards, analytics tools, and machine learning models. These capabilities are important, but they sit at the very top of the data ecosystem.\nWhat is frequently missing is the infrastructure beneath them.\n\nClinical records, laboratory systems, registries, and research datasets are often distributed across multiple institutions, stored in incompatible formats, and governed by different policies. Without architectural alignment, each new initiative simply adds another layer to an already fragmented system.\n\nThe result is familiar to many research teams:\nResearchers spend months locating and preparing datasets before analysis can even begin.\nPublic health agencies struggle to integrate signals across surveillance systems.\nClinical networks generate large volumes of data that remain difficult to reuse for research.\n\nTechnology alone cannot solve these challenges.\nWhat is required is infrastructure designed to support collaboration at scale.\n\nThat means:\n• interoperable data models\n• governed access frameworks\n• secure research environments\n• traceable analytical workflows\n• institutional collaboration mechanisms\n\nWhen these foundations are in place, innovation accelerates naturally.\nWithout them, even the most sophisticated analytics platforms struggle to deliver meaningful impact.\n\nThe future of health data will be determined less by the tools we build, and more by the infrastructures that allow institutions to collaborate responsibly."
+      }
+    ]
+  }
+]

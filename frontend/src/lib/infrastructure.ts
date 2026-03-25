@@ -2,7 +2,8 @@ const API_URL = (process.env.PAYLOAD_API_URL ?? "http://localhost:3001").replace
 
 export type RichTextNode = {
   root: {
-    children: unknown[];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    children: any[];
     [key: string]: unknown;
   };
 };

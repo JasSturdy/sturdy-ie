@@ -16,15 +16,33 @@ import { ProfileSection } from "@/components/ProfileSection";
 import { ContactUsCtaSection } from "@/components/ContactUsCtaSection";
 import { BlogSection } from "@/components/BlogSection";
 import { getHeroData } from "../lib/hero";
-import { getResponseData } from "../lib/response"; // ← add this
+import { getResponseData } from "../lib/response";
+import { getPrinciplesData } from "../lib/principles";
+import { getCtaData } from "@/lib/cta";
+import { getStandardsData } from "@/lib/standards";
+import { getFooterData } from "@/lib/footer";
 
 export default async function Home() {
-  const [caseStudies, challengeData, heroData, infrastructureData, responseData] = await Promise.all([
+  const [
+    caseStudies,
+    challengeData,
+    heroData,
+    infrastructureData,
+    responseData,
+    principlesData,
+    standardsData,
+    ctaData,
+    footerData,
+  ] = await Promise.all([
     getCaseStudiesIndex(),
     getChallengeData(),
     getHeroData(),
     getInfrastructureData(),
     getResponseData(),
+    getPrinciplesData(),
+    getStandardsData(),
+    getCtaData(),
+    getFooterData(),
   ]);
 
   return (
@@ -38,11 +56,14 @@ export default async function Home() {
       <VenturesSection />
       <CaseStudiesTitleSection />
       <CaseStudiesSection caseStudies={caseStudies} />
-      <TestimonialsSection />
-      <ProfileSection />
-      <ContactUsCtaSection />
+      <TestimonialsSection
+        principles={principlesData.principles}
+        exploreCard={principlesData.exploreCard}
+      />
+      <ProfileSection data={standardsData}/>
+      <ContactUsCtaSection data={ctaData} />
       <BlogSection />
-      <FooterSection />
+      <FooterSection data={footerData} />
     </main>
   );
 }

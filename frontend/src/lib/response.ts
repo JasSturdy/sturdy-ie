@@ -2,7 +2,7 @@ const API_URL = (process.env.PAYLOAD_API_URL ?? "http://localhost:3001").replace
 
 export type RichTextNode = {
   root: {
-    children: unknown[];
+    children: { type: string; [key: string]: unknown }[];
     [key: string]: unknown;
   };
 };

@@ -77,6 +77,9 @@ export interface Config {
     infrastructure: Infrastructure;
     response: Response;
     response_card: ResponseCard;
+    principles: Principle;
+    standards: Standard;
+    cta: Cta;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +97,9 @@ export interface Config {
     infrastructure: InfrastructureSelect<false> | InfrastructureSelect<true>;
     response: ResponseSelect<false> | ResponseSelect<true>;
     response_card: ResponseCardSelect<false> | ResponseCardSelect<true>;
+    principles: PrinciplesSelect<false> | PrinciplesSelect<true>;
+    standards: StandardsSelect<false> | StandardsSelect<true>;
+    cta: CtaSelect<false> | CtaSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -103,8 +109,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    footer: Footer;
+  };
+  globalsSelect: {
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -842,6 +852,187 @@ export interface ResponseCard {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "principles".
+ */
+export interface Principle {
+  id: number;
+  /**
+   * Internal label to identify this document in the CMS list.
+   */
+  sectionLabel?: string | null;
+  exploreHeading?: string | null;
+  exploreBody?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  exploreCtaLabel?: string | null;
+  exploreCtaHref?: string | null;
+  exploreBackgroundImage?: (number | null) | Media;
+  /**
+   * Add, remove, or reorder cards here. Drag rows to reorder.
+   */
+  items?:
+    | {
+        /**
+         * Card title (e.g. "Trust").
+         */
+        title: string;
+        /**
+         * Description shown in the active card.
+         */
+        body: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        icon: 'trust' | 'control' | 'standards' | 'resilience';
+        /**
+         * Number of lime bars (1–8).
+         */
+        bars: number;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "standards".
+ */
+export interface Standard {
+  id: number;
+  /**
+   * Small badge label above the heading (e.g. "Standards").
+   */
+  badge?: string | null;
+  /**
+   * Main heading of the section.
+   */
+  heading: string;
+  /**
+   * Paragraph text beneath the heading.
+   */
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * The horizontally scrollable focus area cards.
+   */
+  cards?:
+    | {
+        /**
+         * URL-safe identifier (e.g. "data-protection-privacy").
+         */
+        slug: string;
+        title: string;
+        /**
+         * Short descriptor shown on card hover.
+         */
+        tagline: string;
+        /**
+         * Background image for the card.
+         */
+        image: number | Media;
+        /**
+         * Pick the icon that best represents this focus area.
+         */
+        icon:
+          | 'data-governance'
+          | 'security-architecture'
+          | 'regulatory-systems'
+          | 'institutional-infrastructure'
+          | 'health'
+          | 'research'
+          | 'financial'
+          | 'european-data';
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cta".
+ */
+export interface Cta {
+  id: number;
+  /**
+   * First part of heading (white, light weight).
+   */
+  headingStart?: string | null;
+  /**
+   * Middle part of heading (lime, medium weight).
+   */
+  headingMiddle: string;
+  /**
+   * Last part of heading (white).
+   */
+  headingEnd?: string | null;
+  /**
+   * Paragraph below the heading.
+   */
+  subheading?: string | null;
+  /**
+   * CTA button text.
+   */
+  buttonLabel?: string | null;
+  /**
+   * CTA button link (e.g. /case-studies).
+   */
+  buttonHref?: string | null;
+  /**
+   * Exactly 3 images shown in the fan layout at the bottom.
+   */
+  cards?:
+    | {
+        image: number | Media;
+        /**
+         * Alt text for accessibility.
+         */
+        alt: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -903,6 +1094,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'response_card';
         value: number | ResponseCard;
+      } | null)
+    | ({
+        relationTo: 'principles';
+        value: number | Principle;
+      } | null)
+    | ({
+        relationTo: 'standards';
+        value: number | Standard;
+      } | null)
+    | ({
+        relationTo: 'cta';
+        value: number | Cta;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1184,6 +1387,71 @@ export interface ResponseCardSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "principles_select".
+ */
+export interface PrinciplesSelect<T extends boolean = true> {
+  sectionLabel?: T;
+  exploreHeading?: T;
+  exploreBody?: T;
+  exploreCtaLabel?: T;
+  exploreCtaHref?: T;
+  exploreBackgroundImage?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        body?: T;
+        icon?: T;
+        bars?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "standards_select".
+ */
+export interface StandardsSelect<T extends boolean = true> {
+  badge?: T;
+  heading?: T;
+  body?: T;
+  cards?:
+    | T
+    | {
+        slug?: T;
+        title?: T;
+        tagline?: T;
+        image?: T;
+        icon?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cta_select".
+ */
+export interface CtaSelect<T extends boolean = true> {
+  headingStart?: T;
+  headingMiddle?: T;
+  headingEnd?: T;
+  subheading?: T;
+  buttonLabel?: T;
+  buttonHref?: T;
+  cards?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -1221,6 +1489,56 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  tagline: string;
+  copyright: string;
+  navItems?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  socials?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  tagline?: T;
+  copyright?: T;
+  navItems?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  socials?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

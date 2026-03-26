@@ -48,15 +48,11 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
                   <span className="rounded-full border border-zinc-700 px-2.5 py-0.5 font-medium text-zinc-400">
                     {post.theme}
                   </span>
-                  {post.period && (
-                    <span className="text-zinc-600">Period: {post.period}</span>
-                  )}
                 </div>
                 <h3 className="text-xl font-semibold text-white transition-colors group-hover:text-[#c5f018] md:text-2xl">
                   <Link href={`/case-studies/${post.slug}`}>{post.title}</Link>
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-400">{post.summary}</p>
-                <p className="mt-1 text-xs text-zinc-600">{post.context}</p>
                 <Link
                   href={`/case-studies/${post.slug}`}
                   className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-[#c5f018] transition-opacity hover:opacity-80"

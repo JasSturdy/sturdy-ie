@@ -50,15 +50,12 @@ export function CaseStudyCarousel({ caseStudies }: { caseStudies: CaseStudyIndex
                 <div className="relative z-10 flex h-full flex-1 items-center px-4 sm:px-8 md:px-12 lg:px-16">
                   <div className="space-y-3">
                     <div className="flex items-center gap-3 text-xs font-medium text-zinc-300">
-                      <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
-                      <span className="tracking-[0.25em] uppercase">Featured case study</span>
+                      {/* <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
+                      <span className="tracking-[0.25em] uppercase">Featured case study</span> */}
                     </div>
                     <h3 className="text-xl font-semibold text-white md:text-2xl lg:text-3xl">
                       {item.title}
                     </h3>
-                    <p className="max-w-2xl text-sm leading-relaxed text-zinc-200 md:text-base">
-                      {item.summary}
-                    </p>
                     <Link
                       href={`/case-studies/${item.slug}`}
                       className="inline-flex items-center gap-2 text-sm font-medium text-[#c5f018] hover:opacity-80 transition-opacity"

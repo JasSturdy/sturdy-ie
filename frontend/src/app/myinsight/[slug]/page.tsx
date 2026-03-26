@@ -61,13 +61,11 @@ export default async function MyInsightDetailPage({
           {myInsight.flagship && (
             <span className="rounded-full bg-[#c5f018] px-3 py-1 text-[10px] font-bold text-black">Cornerstone Article</span>
           )}
-          <span className="text-xs text-zinc-500">{myInsight.date}</span>
-          <span className="text-zinc-700">-</span>
-          <span className="text-xs text-zinc-500">{myInsight.author}</span>
+          {/* <span className="text-xs text-zinc-500">{myInsight.date}</span> */}
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl font-semibold text-white leading-tight mb-12 md:text-4xl lg:text-5xl">
+        <h1 className="text-3xl font-light text-white leading-tight mb-12 md:text-4xl lg:text-6xl">
           {myInsight.title}
         </h1>
 
@@ -77,10 +75,10 @@ export default async function MyInsightDetailPage({
         <article className="space-y-14 pb-24">
           {myInsight.sections.map((section, i) => (
             <section key={i}>
-              <h2 className="text-[11px] font-bold uppercase tracking-widest text-[#c5f018] mb-5">
+              <h2 className="text-xl font-semibold uppercase tracking-widest text-[#c5f018] mb-5">
                 {section.heading}
               </h2>
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {typeof section.body === "string"
                   ? section.body.split("\n\n").map((para: string, j: number) => (
                     <p key={j} className="text-base leading-8 text-zinc-300">{para.trim()}</p>

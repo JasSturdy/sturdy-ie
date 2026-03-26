@@ -60,7 +60,7 @@ export default async function Home() {
         principles={principlesData.principles}
         exploreCard={principlesData.exploreCard}
       />
-      <ProfileSection data={standardsData}/>
+      <ProfileSection data={standardsData} />
       <ContactUsCtaSection data={ctaData} />
       <BlogSection />
       <FooterSection data={footerData} />

@@ -10,6 +10,7 @@ export interface CaseStudyIndex {
   theme: string;
   context: string;
   period: string;
+  date?: string;
   img: string;
 }
 
@@ -58,6 +59,7 @@ function mapBackendDocToIndex(c: any): CaseStudyIndex {
     theme: c.theme,
     context: lexicalToText(c.context),
     period: c.period ?? "",
+    date: c.date ?? "",
     img: c.img?.url ? `${API_URL}${c.img.url}` : "",
   };
 }
@@ -70,6 +72,7 @@ function mapBackendDocToDetail(c: any): CaseStudyDetail {
     theme: c.theme,
     context: lexicalToText(c.context),
     period: c.period ?? "",
+    date: c.date ?? "",
     img: c.img?.url ? `${API_URL}${c.img.url}` : "",
     overviewContext: lexicalToText(c.overviewContext),
     environmentModel: lexicalToText(c.environmentModel),
@@ -83,13 +86,14 @@ function mapBackendDocToDetail(c: any): CaseStudyDetail {
 export async function getCaseStudiesIndex(): Promise<CaseStudyIndex[]> {
   const mock = await getMockCaseStudies();
   if (mock.length > 0) {
-    return mock.map(({ slug, title, summary, theme, context, period, img }) => ({
+    return mock.map(({ slug, title, summary, theme, context, period, date, img }) => ({
       slug,
       title,
       summary,
       theme,
       context,
       period,
+      date,
       img,
     }));
   }

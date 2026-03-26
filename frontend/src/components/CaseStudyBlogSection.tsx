@@ -50,7 +50,7 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
                     </span>
                     <span className="text-zinc-700">•</span>
                     <span className="text-zinc-500">
-                      {post.period ? post.period : "Case study"}
+                      {post.date ? post.date : post.period ? post.period : "Case study"}
                     </span>
                   </div>
 

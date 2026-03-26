@@ -64,7 +64,7 @@ const FALLBACK: ResponseData = {
 
 // Stacked positions for up to 3 images [top-left, middle, bottom-right]
 const STACK_POSITIONS = [
-  { startLeft: 30, endLeft: 0,  startTop: 30, endTop: 0  },
+  { startLeft: 30, endLeft: 0, startTop: 30, endTop: 0 },
   { startLeft: 33, endLeft: 15, startTop: 33, endTop: 22 },
   { startLeft: 36, endLeft: 38, startTop: 36, endTop: 45 },
 ];
@@ -119,12 +119,28 @@ function StackedImages({ images }: { images: ResponseImage[] }) {
 }
 
 const ArrowIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3 13L13 3M13 3H5M13 3V11"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
-export function InsightsPreviewSection({ data }: { data?: ResponseData | null }) {
+export function InsightsPreviewSection({
+  data,
+}: {
+  data?: ResponseData | null;
+}) {
   const d = data ?? FALLBACK;
 
   const ref = useRef<HTMLElement>(null);
@@ -138,17 +154,19 @@ export function InsightsPreviewSection({ data }: { data?: ResponseData | null })
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={ref} className="mx-auto max-w-8xl justify-center px-4 py-8 md:px-4 lg:px-4 bg-black">
+    <section
+      ref={ref}
+      className="mx-auto max-w-8xl justify-center px-4 py-8 md:px-4 lg:px-4 bg-black"
+    >
       <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
         <div className="mb-10 lg:w-1/2">
-
           {/* Badge */}
           <div
             className="mb-4 flex items-center gap-2 text-xs font-medium text-zinc-300"

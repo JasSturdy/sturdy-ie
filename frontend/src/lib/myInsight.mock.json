@@ -14,5 +14,85 @@
         "body": "Across healthcare and research systems, organisations are investing heavily in digital platforms, analytics tools, and artificial intelligence.\nYet many of these initiatives struggle to deliver lasting value.\nThe reason is rarely a lack of technology.\nMore often, the failure lies in how data ecosystems are designed.\n\nMost health data initiatives focus on visible outputs: dashboards, analytics tools, and machine learning models. These capabilities are important, but they sit at the very top of the data ecosystem.\nWhat is frequently missing is the infrastructure beneath them.\n\nClinical records, laboratory systems, registries, and research datasets are often distributed across multiple institutions, stored in incompatible formats, and governed by different policies. Without architectural alignment, each new initiative simply adds another layer to an already fragmented system.\n\nThe result is familiar to many research teams:\nResearchers spend months locating and preparing datasets before analysis can even begin.\nPublic health agencies struggle to integrate signals across surveillance systems.\nClinical networks generate large volumes of data that remain difficult to reuse for research.\n\nTechnology alone cannot solve these challenges.\nWhat is required is infrastructure designed to support collaboration at scale.\n\nThat means:\n• interoperable data models\n• governed access frameworks\n• secure research environments\n• traceable analytical workflows\n• institutional collaboration mechanisms\n\nWhen these foundations are in place, innovation accelerates naturally.\nWithout them, even the most sophisticated analytics platforms struggle to deliver meaningful impact.\n\nThe future of health data will be determined less by the tools we build, and more by the infrastructures that allow institutions to collaborate responsibly."
       }
     ]
+  },
+  {
+    "slug": "governing-ai-in-clinical-environments",
+    "title": "Governing AI in Clinical Environments",
+    "category": "Governance & Policy",
+    "date": "2026-02-28",
+    "author": "Jason Sturdy",
+    "image": "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1600&auto=format&fit=crop&q=80",
+    "excerpt": "As AI systems move into clinical workflows, governance cannot be an afterthought. It must be designed into the environment from the outset.",
+    "flagship": false,
+    "sections": [
+      {
+        "heading": "The Governance Gap in Clinical AI",
+        "body": "Artificial intelligence is entering clinical environments faster than governance frameworks can keep pace.\nDiagnostic support tools, predictive risk models, and automated triage systems are being deployed across hospitals and health networks with limited standardisation in how they are evaluated, monitored, or controlled.\n\nThis is not a criticism of the technology itself.\nMany AI tools demonstrate genuine clinical utility in controlled settings.\nThe problem is the transition from research validation to operational deployment.\n\nOnce an AI system enters a clinical workflow, several questions become urgent:\nWho is accountable when the system produces an incorrect output?\nHow is model performance monitored over time as patient populations shift?\nWhat mechanisms exist for clinicians to override or escalate decisions?\n\nThese are governance questions, not technical ones.\nAnd in most health systems today, they remain unanswered."
+      },
+      {
+        "heading": "What Responsible Deployment Requires",
+        "body": "Responsible AI deployment in clinical settings requires more than regulatory approval at the point of launch.\nIt requires ongoing oversight infrastructure that persists throughout the system's operational life.\n\nThat means:\n• clearly defined clinical accountability at every decision point\n• continuous performance monitoring against real-world outcomes\n• transparent audit trails accessible to clinicians and administrators\n• structured processes for flagging and investigating anomalies\n• regular review cycles that include both technical and clinical stakeholders\n\nOrganisations that build these mechanisms before deployment are better positioned to detect problems early, maintain clinician trust, and respond to regulatory scrutiny.\n\nThose that treat governance as a compliance checkbox tend to encounter problems later, at greater cost and with greater disruption to care delivery.\n\nThe clinical environment demands a higher standard. AI governance frameworks must be designed to meet it."
+      }
+    ]
+  },
+  {
+    "slug": "the-case-for-federated-research-infrastructure",
+    "title": "The Case for Federated Research Infrastructure",
+    "category": "Research Infrastructure",
+    "date": "2026-02-10",
+    "author": "Jason Sturdy",
+    "image": "https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=1600&auto=format&fit=crop&q=80",
+    "excerpt": "Federated approaches to research infrastructure offer a path beyond the limitations of centralised data models — but only when designed with governance in mind.",
+    "flagship": false,
+    "sections": [
+      {
+        "heading": "Why Centralisation Has Limits",
+        "body": "For decades, the dominant model for research data infrastructure has been centralisation.\nAggregating data into large, shared repositories was seen as the most efficient path to enabling research at scale.\n\nIn many contexts, that assumption held.\nBut across healthcare, government, and regulated industries, centralisation has encountered persistent barriers.\n\nData sovereignty concerns prevent institutions from transferring sensitive records to external repositories.\nLegal frameworks restrict cross-border data movement.\nPatient consent models vary in ways that complicate pooling.\nInstitutions are often unwilling to cede control over data they have invested heavily in collecting and curating.\n\nThe result is that many of the most valuable datasets for population health research remain siloed, even when the will to collaborate exists.\n\nFederated infrastructure offers a different model.\nInstead of moving data to a central location, computation is brought to the data.\nEach institution retains custody of its own records while contributing to shared analytical outputs."
+      },
+      {
+        "heading": "What Federation Actually Requires",
+        "body": "Federated research infrastructure is technically achievable.\nBut technical feasibility is only one part of the challenge.\n\nFor federation to deliver research value, several conditions must be in place:\n• harmonised data models across participating institutions\n• agreed definitions for key clinical and research variables\n• consistent data quality standards and validation processes\n• governance frameworks that define who can initiate queries and under what conditions\n• audit mechanisms that provide transparency without exposing sensitive records\n\nWithout these foundations, federated queries produce outputs that are difficult to interpret and impossible to compare across sites.\n\nThe institutions that have succeeded with federated models are those that invested in governance design before building technical infrastructure.\nThey treated the social and institutional dimensions of collaboration as primary constraints, not secondary considerations.\n\nFederation is not a shortcut to research scale.\nIt is a different kind of infrastructure challenge — one that rewards careful design over rapid deployment."
+      }
+    ]
+  },
+  {
+    "slug": "data-access-agreements-what-researchers-get-wrong",
+    "title": "Data Access Agreements: What Researchers Get Wrong",
+    "category": "Governance & Policy",
+    "date": "2026-01-22",
+    "author": "Jason Sturdy",
+    "image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&auto=format&fit=crop&q=80",
+    "excerpt": "Data access agreements are often treated as legal formalities. They should be treated as the foundation of a research relationship.",
+    "flagship": false,
+    "sections": [
+      {
+        "heading": "The Agreement as Afterthought",
+        "body": "In many research collaborations, the data access agreement arrives late in the process.\nThe research question has been scoped, the team assembled, the funding secured.\nOnly then does someone turn to the question of how data will actually be accessed, under what conditions, and with what obligations.\n\nThis sequencing creates predictable problems.\nNegotiations stall because institutional requirements were not factored into project timelines.\nScope changes during the project create ambiguity about what the original agreement permits.\nData custodians feel their governance obligations have been treated as obstacles rather than foundations.\n\nThe result is delayed research, frustrated collaborators, and — in some cases — data access that never materialises at all."
+      },
+      {
+        "heading": "What a Well-Designed Agreement Looks Like",
+        "body": "A well-designed data access agreement is not primarily a legal document.\nIt is a structured description of a research relationship — one that defines expectations clearly enough to prevent disputes and flexibly enough to accommodate the realities of research.\n\nEffective agreements address:\n• the specific datasets covered and their known limitations\n• permitted analytical methods and any restrictions on linkage or re-identification\n• data storage, security, and destruction requirements\n• publication and disclosure obligations\n• processes for handling unexpected findings with potential clinical or public health significance\n• mechanisms for amending the agreement if the research scope evolves\n\nOrganisations that treat access agreements as living documents — rather than one-time sign-offs — tend to build more durable research partnerships.\n\nThe agreement is not the end of the governance conversation.\nIt is where the conversation begins."
+      }
+    ]
+  },
+  {
+    "slug": "when-ai-meets-sensitive-data",
+    "title": "When AI Meets Sensitive Data",
+    "category": "AI & Regulated Data",
+    "date": "2026-01-08",
+    "author": "Jason Sturdy",
+    "image": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1600&auto=format&fit=crop&q=80",
+    "excerpt": "Applying AI to sensitive data requires more than technical safeguards. It requires a governance posture that treats privacy as a design constraint, not a compliance requirement.",
+    "flagship": false,
+    "sections": [
+      {
+        "heading": "The Tension Between AI and Privacy",
+        "body": "Artificial intelligence performs best with large, rich, and representative datasets.\nSensitive data — clinical records, financial histories, demographic profiles — often contains exactly the kind of signal that makes AI models powerful.\n\nThis creates a fundamental tension.\nThe datasets most valuable for AI development are frequently the ones subject to the strongest privacy protections.\nAnd the techniques that make AI effective — pattern recognition across large populations, transfer learning from related domains, continuous model updating — can conflict with the consent frameworks and data minimisation principles that underpin modern privacy law.\n\nOrganisations navigating this tension are increasingly finding that technical safeguards alone are insufficient.\nDifferential privacy, synthetic data generation, and secure computation are valuable tools.\nBut they operate within a governance context that must be designed deliberately."
+      },
+      {
+        "heading": "Designing for Privacy from the Start",
+        "body": "Privacy-preserving AI is not primarily a technical problem.\nIt is a design problem that must be addressed before a single model is trained.\n\nOrganisations that handle sensitive data responsibly tend to share several characteristics:\n• they define the minimum data required for each analytical objective before accessing any records\n• they build consent and transparency obligations into the data pipeline, not around it\n• they apply privacy impact assessments at the point of model design, not post-deployment\n• they maintain clear separation between research environments and production systems\n• they establish explicit review processes for any output that could enable re-identification\n\nThis posture requires investment.\nIt slows early-stage development in ways that can feel frustrating to research teams operating under time pressure.\n\nBut organisations that build privacy into their AI infrastructure from the outset are better positioned to scale, to sustain public trust, and to operate across the regulatory environments that govern sensitive data.\n\nPrivacy is not a constraint on innovation.\nIt is a condition for its sustainability."
+      }
+    ]
   }
 ]

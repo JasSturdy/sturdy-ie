@@ -191,7 +191,7 @@ export default async function MyInsightDetailPage({
           })}
 
           {/* CTA */}
-          <section className="pt-16">
+          <section className="pt-16 mb-20">
             <div className="rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950 to-black px-6 py-14 text-center shadow-[0_30px_120px_rgba(0,0,0,0.75)] md:px-10">
               <h3 className="text-[48px] font-light leading-[1.1] text-white">
                 Interested in{" "}

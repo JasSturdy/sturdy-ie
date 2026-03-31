@@ -187,14 +187,14 @@ export function CapabilitiesSection({
         {d.cards.map((card, index) => (
           <div
             key={card.title}
-            className="group border border-white/15 transition-all duration-500 cursor-pointer hover:-translate-y-4"
+            className="group border border-white/15 overflow-hidden transition-all duration-500 cursor-pointer hover:-translate-y-4"
             style={{
               opacity: visible ? undefined : 0,
               animation: visible ? "fadeUp 0.75s ease forwards" : "none",
               animationDelay: visible ? `${120 + index * 95}ms` : "0ms",
             }}
           >
-            <article className="group/card relative w-full overflow-hidden bg-zinc-950/80 h-64 sm:h-80 md:h-96 lg:h-[28rem]">
+            <article className="group/card relative w-full bg-zinc-950/80 h-64 sm:h-80 md:h-96 lg:h-[28rem]">
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-60 transition-all duration-500 group-hover:opacity-80 group-hover:scale-105"
                 style={{ backgroundImage: `url(${card.imageUrl})` }}

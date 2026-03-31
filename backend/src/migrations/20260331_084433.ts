@@ -9,9 +9,10 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum_hero_blocks_rich_text_section_position" AS ENUM('above-heading', 'below-heading', 'below-subheading', 'below-tagline', 'above-cta', 'below-cta');
   CREATE TYPE "public"."enum_hero_blocks_bullet_list_position" AS ENUM('above-heading', 'below-heading', 'below-subheading', 'below-tagline', 'above-cta', 'below-cta');
   CREATE TYPE "public"."enum_response_card_bars" AS ENUM('1', '2', '3');
-  CREATE TYPE "public"."enum_principles_items_icon" AS ENUM('trust', 'control', 'standards', 'resilience');
+  CREATE TYPE "public"."enum_challenge_about_items_icon" AS ENUM('trust', 'control', 'standards', 'resilience');
   CREATE TYPE "public"."enum_standards_cards_icon" AS ENUM('data-governance', 'security-architecture', 'regulatory-systems', 'institutional-infrastructure', 'health', 'research', 'financial', 'european-data');
   CREATE TYPE "public"."enum_application_cards_icon" AS ENUM('data-governance', 'security-architecture', 'regulatory-systems', 'institutional-infrastructure', 'health', 'research', 'financial', 'european-data');
+  CREATE TYPE "public"."enum_focus_cards_icon" AS ENUM('governance', 'security', 'infrastructure', 'operating', 'regulatory', 'collaboration');
   CREATE TABLE "users_sessions" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -237,23 +238,29 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
   
-  CREATE TABLE "principles_items" (
+  CREATE TABLE "challenge_about_items" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
   	"id" varchar PRIMARY KEY NOT NULL,
   	"title" varchar NOT NULL,
   	"body" jsonb NOT NULL,
-  	"icon" "enum_principles_items_icon" DEFAULT 'trust' NOT NULL,
+  	"icon" "enum_challenge_about_items_icon" DEFAULT 'trust' NOT NULL,
   	"bars" numeric DEFAULT 1 NOT NULL
   );
   
-  CREATE TABLE "principles" (
+  CREATE TABLE "challenge_about" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"section_label" varchar DEFAULT 'Principles',
+  	"section_label" varchar DEFAULT 'Challenge',
+  	"badge" varchar DEFAULT 'Challenge',
+  	"heading_accent" varchar DEFAULT 'How',
+  	"heading" varchar DEFAULT 'I Work',
+  	"body" jsonb,
   	"explore_heading" varchar DEFAULT 'Explore My Work',
-  	"explore_body" jsonb DEFAULT '{"root":{"type":"root","direction":"ltr","format":"","indent":0,"version":1,"children":[{"type":"paragraph","version":1,"direction":"ltr","format":"","indent":0,"children":[{"type":"text","version":1,"text":"Examples of systems, platforms, and environments designed for regulated ecosystems","format":0,"detail":0,"mode":"normal","style":""}]}]}}'::jsonb,
+  	"explore_body" jsonb,
   	"explore_cta_label" varchar DEFAULT 'View Case Studies',
   	"explore_cta_href" varchar DEFAULT '/case-studies',
+  	"explore_cta_label2" varchar DEFAULT 'Explore Insights',
+  	"explore_cta_href2" varchar DEFAULT '/insights',
   	"explore_background_image_id" integer,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
@@ -301,6 +308,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
   
+  CREATE TABLE "about" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"heading" varchar DEFAULT 'About' NOT NULL,
+  	"subtitle" varchar DEFAULT 'Executive leadership across sovereign data, governance, and regulated systems' NOT NULL,
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
   CREATE TABLE "cta_cards" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -317,6 +332,72 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"subheading" varchar DEFAULT 'Where policy, infrastructure, and data must work in practice',
   	"button_label" varchar DEFAULT 'Explore My Work',
   	"button_href" varchar DEFAULT '/case-studies',
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "executive_profile_paragraphs" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"text" varchar NOT NULL,
+  	"is_bold" boolean DEFAULT false
+  );
+  
+  CREATE TABLE "executive_profile" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"title" varchar NOT NULL,
+  	"image_id" integer NOT NULL,
+  	"order" numeric DEFAULT 0,
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "perspective_images" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"image_id" integer NOT NULL,
+  	"alt" varchar DEFAULT ''
+  );
+  
+  CREATE TABLE "perspective" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"badge" varchar DEFAULT 'Perspective',
+  	"heading" varchar DEFAULT 'Designing Systems' NOT NULL,
+  	"heading_light" varchar DEFAULT 'That Work in Practice',
+  	"body" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","version":1,"children":[{"type":"text","text":"Addressing the gap between policy, systems, and real-world use requires more than technology.","version":1}]},{"type":"paragraph","version":1,"children":[{"type":"text","text":"It requires approaches that embed governance, standards, and collaboration into how systems are designed and operated.","version":1}]}],"direction":"ltr","format":"","indent":0,"version":1}}'::jsonb,
+  	"cta_label" varchar DEFAULT 'Explore Insights',
+  	"cta_href" varchar DEFAULT '/myinsights',
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "impact" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"badge" varchar DEFAULT 'Impact',
+  	"heading_accent" varchar DEFAULT 'Why' NOT NULL,
+  	"heading" varchar DEFAULT 'This Matters' NOT NULL,
+  	"body" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","version":1,"children":[{"type":"text","version":1,"text":"Across government, financial systems, healthcare, and research, the issue is rarely a lack of data or regulation. Both already exist."}]},{"type":"paragraph","version":1,"children":[{"type":"text","version":1,"text":"The problem is that data is difficult to use, and regulatory intent is hard to translate into systems that work in practice. Too much effort is spent working around systems rather than benefiting from them."}]},{"type":"paragraph","version":1,"children":[{"type":"text","version":1,"text":"My work focuses on aligning data, policy, and infrastructure so organisations can operate with clarity, confidence, and control. This enables better decision-making, stronger oversight, and more effective collaboration across institutions."}]}],"direction":"ltr","format":"","indent":0,"version":1}}'::jsonb,
+  	"image_id" integer NOT NULL,
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "focus_cards" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"icon" "enum_focus_cards_icon" DEFAULT 'governance' NOT NULL,
+  	"title" varchar NOT NULL,
+  	"description" varchar NOT NULL
+  );
+  
+  CREATE TABLE "focus" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"badge" varchar DEFAULT 'Focus',
+  	"heading_accent" varchar DEFAULT 'Core',
+  	"heading" varchar DEFAULT 'Areas of Focus' NOT NULL,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
@@ -349,10 +430,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"industries_id" integer,
   	"response_id" integer,
   	"response_card_id" integer,
-  	"principles_id" integer,
+  	"challenge_about_id" integer,
   	"standards_id" integer,
   	"application_id" integer,
-  	"cta_id" integer
+  	"about_id" integer,
+  	"cta_id" integer,
+  	"executive_profile_id" integer,
+  	"perspective_id" integer,
+  	"impact_id" integer,
+  	"focus_id" integer
   );
   
   CREATE TABLE "payload_preferences" (
@@ -399,6 +485,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"id" serial PRIMARY KEY NOT NULL,
   	"tagline" varchar NOT NULL,
   	"copyright" varchar DEFAULT 'Copyright © All Rights Reserved Jason Sturdy' NOT NULL,
+  	"cta_label" varchar,
+  	"cta_href" varchar,
   	"updated_at" timestamp(3) with time zone,
   	"created_at" timestamp(3) with time zone
   );
@@ -420,14 +508,20 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "industries_cards" ADD CONSTRAINT "industries_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."industries"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "response_images" ADD CONSTRAINT "response_images_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "response_images" ADD CONSTRAINT "response_images_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."response"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "principles_items" ADD CONSTRAINT "principles_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."principles"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "principles" ADD CONSTRAINT "principles_explore_background_image_id_media_id_fk" FOREIGN KEY ("explore_background_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "challenge_about_items" ADD CONSTRAINT "challenge_about_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."challenge_about"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "challenge_about" ADD CONSTRAINT "challenge_about_explore_background_image_id_media_id_fk" FOREIGN KEY ("explore_background_image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "standards_cards" ADD CONSTRAINT "standards_cards_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "standards_cards" ADD CONSTRAINT "standards_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."standards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "application_cards" ADD CONSTRAINT "application_cards_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "application_cards" ADD CONSTRAINT "application_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."application"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "cta_cards" ADD CONSTRAINT "cta_cards_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "cta_cards" ADD CONSTRAINT "cta_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."cta"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "executive_profile_paragraphs" ADD CONSTRAINT "executive_profile_paragraphs_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."executive_profile"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "executive_profile" ADD CONSTRAINT "executive_profile_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "perspective_images" ADD CONSTRAINT "perspective_images_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "perspective_images" ADD CONSTRAINT "perspective_images_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."perspective"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "impact" ADD CONSTRAINT "impact_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "focus_cards" ADD CONSTRAINT "focus_cards_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."focus"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_locked_documents"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
@@ -439,10 +533,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_industries_fk" FOREIGN KEY ("industries_id") REFERENCES "public"."industries"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_response_fk" FOREIGN KEY ("response_id") REFERENCES "public"."response"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_response_card_fk" FOREIGN KEY ("response_card_id") REFERENCES "public"."response_card"("id") ON DELETE cascade ON UPDATE no action;
-  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_principles_fk" FOREIGN KEY ("principles_id") REFERENCES "public"."principles"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_challenge_about_fk" FOREIGN KEY ("challenge_about_id") REFERENCES "public"."challenge_about"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_standards_fk" FOREIGN KEY ("standards_id") REFERENCES "public"."standards"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_application_fk" FOREIGN KEY ("application_id") REFERENCES "public"."application"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_about_fk" FOREIGN KEY ("about_id") REFERENCES "public"."about"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_cta_fk" FOREIGN KEY ("cta_id") REFERENCES "public"."cta"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_executive_profile_fk" FOREIGN KEY ("executive_profile_id") REFERENCES "public"."executive_profile"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_perspective_fk" FOREIGN KEY ("perspective_id") REFERENCES "public"."perspective"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_impact_fk" FOREIGN KEY ("impact_id") REFERENCES "public"."impact"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_focus_fk" FOREIGN KEY ("focus_id") REFERENCES "public"."focus"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_preferences"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "footer_nav_items" ADD CONSTRAINT "footer_nav_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."footer"("id") ON DELETE cascade ON UPDATE no action;
@@ -501,11 +600,11 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "response_created_at_idx" ON "response" USING btree ("created_at");
   CREATE INDEX "response_card_updated_at_idx" ON "response_card" USING btree ("updated_at");
   CREATE INDEX "response_card_created_at_idx" ON "response_card" USING btree ("created_at");
-  CREATE INDEX "principles_items_order_idx" ON "principles_items" USING btree ("_order");
-  CREATE INDEX "principles_items_parent_id_idx" ON "principles_items" USING btree ("_parent_id");
-  CREATE INDEX "principles_explore_background_image_idx" ON "principles" USING btree ("explore_background_image_id");
-  CREATE INDEX "principles_updated_at_idx" ON "principles" USING btree ("updated_at");
-  CREATE INDEX "principles_created_at_idx" ON "principles" USING btree ("created_at");
+  CREATE INDEX "challenge_about_items_order_idx" ON "challenge_about_items" USING btree ("_order");
+  CREATE INDEX "challenge_about_items_parent_id_idx" ON "challenge_about_items" USING btree ("_parent_id");
+  CREATE INDEX "challenge_about_explore_background_image_idx" ON "challenge_about" USING btree ("explore_background_image_id");
+  CREATE INDEX "challenge_about_updated_at_idx" ON "challenge_about" USING btree ("updated_at");
+  CREATE INDEX "challenge_about_created_at_idx" ON "challenge_about" USING btree ("created_at");
   CREATE INDEX "standards_cards_order_idx" ON "standards_cards" USING btree ("_order");
   CREATE INDEX "standards_cards_parent_id_idx" ON "standards_cards" USING btree ("_parent_id");
   CREATE INDEX "standards_cards_image_idx" ON "standards_cards" USING btree ("image_id");
@@ -516,11 +615,30 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "application_cards_image_idx" ON "application_cards" USING btree ("image_id");
   CREATE INDEX "application_updated_at_idx" ON "application" USING btree ("updated_at");
   CREATE INDEX "application_created_at_idx" ON "application" USING btree ("created_at");
+  CREATE INDEX "about_updated_at_idx" ON "about" USING btree ("updated_at");
+  CREATE INDEX "about_created_at_idx" ON "about" USING btree ("created_at");
   CREATE INDEX "cta_cards_order_idx" ON "cta_cards" USING btree ("_order");
   CREATE INDEX "cta_cards_parent_id_idx" ON "cta_cards" USING btree ("_parent_id");
   CREATE INDEX "cta_cards_image_idx" ON "cta_cards" USING btree ("image_id");
   CREATE INDEX "cta_updated_at_idx" ON "cta" USING btree ("updated_at");
   CREATE INDEX "cta_created_at_idx" ON "cta" USING btree ("created_at");
+  CREATE INDEX "executive_profile_paragraphs_order_idx" ON "executive_profile_paragraphs" USING btree ("_order");
+  CREATE INDEX "executive_profile_paragraphs_parent_id_idx" ON "executive_profile_paragraphs" USING btree ("_parent_id");
+  CREATE INDEX "executive_profile_image_idx" ON "executive_profile" USING btree ("image_id");
+  CREATE INDEX "executive_profile_updated_at_idx" ON "executive_profile" USING btree ("updated_at");
+  CREATE INDEX "executive_profile_created_at_idx" ON "executive_profile" USING btree ("created_at");
+  CREATE INDEX "perspective_images_order_idx" ON "perspective_images" USING btree ("_order");
+  CREATE INDEX "perspective_images_parent_id_idx" ON "perspective_images" USING btree ("_parent_id");
+  CREATE INDEX "perspective_images_image_idx" ON "perspective_images" USING btree ("image_id");
+  CREATE INDEX "perspective_updated_at_idx" ON "perspective" USING btree ("updated_at");
+  CREATE INDEX "perspective_created_at_idx" ON "perspective" USING btree ("created_at");
+  CREATE INDEX "impact_image_idx" ON "impact" USING btree ("image_id");
+  CREATE INDEX "impact_updated_at_idx" ON "impact" USING btree ("updated_at");
+  CREATE INDEX "impact_created_at_idx" ON "impact" USING btree ("created_at");
+  CREATE INDEX "focus_cards_order_idx" ON "focus_cards" USING btree ("_order");
+  CREATE INDEX "focus_cards_parent_id_idx" ON "focus_cards" USING btree ("_parent_id");
+  CREATE INDEX "focus_updated_at_idx" ON "focus" USING btree ("updated_at");
+  CREATE INDEX "focus_created_at_idx" ON "focus" USING btree ("created_at");
   CREATE UNIQUE INDEX "payload_kv_key_idx" ON "payload_kv" USING btree ("key");
   CREATE INDEX "payload_locked_documents_global_slug_idx" ON "payload_locked_documents" USING btree ("global_slug");
   CREATE INDEX "payload_locked_documents_updated_at_idx" ON "payload_locked_documents" USING btree ("updated_at");
@@ -538,10 +656,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_locked_documents_rels_industries_id_idx" ON "payload_locked_documents_rels" USING btree ("industries_id");
   CREATE INDEX "payload_locked_documents_rels_response_id_idx" ON "payload_locked_documents_rels" USING btree ("response_id");
   CREATE INDEX "payload_locked_documents_rels_response_card_id_idx" ON "payload_locked_documents_rels" USING btree ("response_card_id");
-  CREATE INDEX "payload_locked_documents_rels_principles_id_idx" ON "payload_locked_documents_rels" USING btree ("principles_id");
+  CREATE INDEX "payload_locked_documents_rels_challenge_about_id_idx" ON "payload_locked_documents_rels" USING btree ("challenge_about_id");
   CREATE INDEX "payload_locked_documents_rels_standards_id_idx" ON "payload_locked_documents_rels" USING btree ("standards_id");
   CREATE INDEX "payload_locked_documents_rels_application_id_idx" ON "payload_locked_documents_rels" USING btree ("application_id");
+  CREATE INDEX "payload_locked_documents_rels_about_id_idx" ON "payload_locked_documents_rels" USING btree ("about_id");
   CREATE INDEX "payload_locked_documents_rels_cta_id_idx" ON "payload_locked_documents_rels" USING btree ("cta_id");
+  CREATE INDEX "payload_locked_documents_rels_executive_profile_id_idx" ON "payload_locked_documents_rels" USING btree ("executive_profile_id");
+  CREATE INDEX "payload_locked_documents_rels_perspective_id_idx" ON "payload_locked_documents_rels" USING btree ("perspective_id");
+  CREATE INDEX "payload_locked_documents_rels_impact_id_idx" ON "payload_locked_documents_rels" USING btree ("impact_id");
+  CREATE INDEX "payload_locked_documents_rels_focus_id_idx" ON "payload_locked_documents_rels" USING btree ("focus_id");
   CREATE INDEX "payload_preferences_key_idx" ON "payload_preferences" USING btree ("key");
   CREATE INDEX "payload_preferences_updated_at_idx" ON "payload_preferences" USING btree ("updated_at");
   CREATE INDEX "payload_preferences_created_at_idx" ON "payload_preferences" USING btree ("created_at");
@@ -579,14 +702,22 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "response_images" CASCADE;
   DROP TABLE "response" CASCADE;
   DROP TABLE "response_card" CASCADE;
-  DROP TABLE "principles_items" CASCADE;
-  DROP TABLE "principles" CASCADE;
+  DROP TABLE "challenge_about_items" CASCADE;
+  DROP TABLE "challenge_about" CASCADE;
   DROP TABLE "standards_cards" CASCADE;
   DROP TABLE "standards" CASCADE;
   DROP TABLE "application_cards" CASCADE;
   DROP TABLE "application" CASCADE;
+  DROP TABLE "about" CASCADE;
   DROP TABLE "cta_cards" CASCADE;
   DROP TABLE "cta" CASCADE;
+  DROP TABLE "executive_profile_paragraphs" CASCADE;
+  DROP TABLE "executive_profile" CASCADE;
+  DROP TABLE "perspective_images" CASCADE;
+  DROP TABLE "perspective" CASCADE;
+  DROP TABLE "impact" CASCADE;
+  DROP TABLE "focus_cards" CASCADE;
+  DROP TABLE "focus" CASCADE;
   DROP TABLE "payload_kv" CASCADE;
   DROP TABLE "payload_locked_documents" CASCADE;
   DROP TABLE "payload_locked_documents_rels" CASCADE;
@@ -603,7 +734,8 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_hero_blocks_rich_text_section_position";
   DROP TYPE "public"."enum_hero_blocks_bullet_list_position";
   DROP TYPE "public"."enum_response_card_bars";
-  DROP TYPE "public"."enum_principles_items_icon";
+  DROP TYPE "public"."enum_challenge_about_items_icon";
   DROP TYPE "public"."enum_standards_cards_icon";
-  DROP TYPE "public"."enum_application_cards_icon";`)
+  DROP TYPE "public"."enum_application_cards_icon";
+  DROP TYPE "public"."enum_focus_cards_icon";`)
 }

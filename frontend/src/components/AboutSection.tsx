@@ -2,15 +2,15 @@ import { getAboutData } from "@/lib/about";
 
 export async function AboutSection() {
   const items = await getAboutData();
-  const data = items[0]; // use first document; adjust as needed
+  const data = items[0];
 
   if (!data) return null;
 
   return (
     <section className="relative z-10 bg-black overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 md:py-52 lg:px-0">
-        <div className="pointer-events-none absolute -left-100 top-4 hidden h-88 w-88 rounded-full mr-[50px] border-[50px] border-zinc-700/60 md:block" />
-        <div className="pointer-events-none absolute -right-100 -bottom-6 hidden h-88 w-88 rounded-full border-[50px] border-zinc-700/60 md:block" />
+      <div className="relative mx-auto max-w-8xl px-6 py-24 md:px-10 md:py-52 lg:px-0">
+        <div className="pointer-events-none absolute -left-80 top-4 hidden h-88 w-88 rounded-full mr-[50px] border-[50px] border-zinc-700/60 md:block" />
+        <div className="pointer-events-none absolute -right-50 -bottom-6 h-88 w-88 rounded-full border-[50px] border-zinc-700/60 md:block" />
 
         <div className="mb-16 flex">
           <div className="flex-1" />

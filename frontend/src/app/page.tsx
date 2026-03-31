@@ -17,7 +17,6 @@ import { ApplicationSection } from "@/components/ApplicationSection";
 import { BlogSection } from "@/components/BlogSection";
 import { getHeroData } from "../lib/hero";
 import { getResponseData } from "../lib/response";
-import { getPrinciplesData } from "../lib/principles";
 import { getCtaData } from "@/lib/cta";
 import { getStandardsData } from "@/lib/standards";
 import { getFooterData } from "@/lib/footer";
@@ -32,7 +31,6 @@ export default async function Home() {
     heroData,
     industriesData,
     responseData,
-    principlesData,
     standardsData,
     ctaData,
     applicationData,
@@ -44,7 +42,6 @@ export default async function Home() {
     getHeroData(),
     getIndustriesData(),
     getResponseData(),
-    getPrinciplesData(),
     getStandardsData(),
     getCtaData(),
     getApplicationData(),
@@ -63,10 +60,6 @@ export default async function Home() {
       <ProfileSection data={standardsData} />
       <CaseStudiesTitleSection />
       <CaseStudiesSection caseStudies={caseStudies} />
-      {/* <TestimonialsSection
-        principles={principlesData.principles}
-        exploreCard={principlesData.exploreCard}
-      /> */}
       <ApplicationSection data={applicationData} />
       <BlogSection insights={insights} />
       <ContactUsCtaSection data={ctaData} />

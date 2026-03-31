@@ -26,13 +26,18 @@ import { Hero } from './collections/Hero'
 import { Challenge } from './collections/Challenge'
 import { Response } from './collections/Response'
 import { ResponseCard } from './collections/ResponseCard'
-import { Principles } from './collections/Principles'
+import { ChallengeAbout } from './collections/ChallengeAbout'
 import { Standards } from './collections/Standards'
 import { Cta } from './collections/Cta'
 import { Footer } from './collections/Footer'
 import { Industries } from './collections/Industries'
 import { Application } from './collections/Application'
 import { About } from './collections/About'
+import { ExecutiveProfile } from './collections/ExecutiveProfile'
+import { Perspective } from './collections/Perspective'
+import { Impact } from './collections/Impact'
+import { Focus } from './collections/Focus'
+import { FAQ } from './collections/Faq'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -45,7 +50,7 @@ export default buildConfig({
     },
     livePreview: {
       url: process.env.NEXT_PUBLIC_SITE_URL,
-      collections: ['my-insight', 'case-studies', 'ventures', 'challenge', 'hero', 'industries', 'response', 'response-card', 'principles', 'standards', 'cta', 'application', 'about'],
+      collections: ['my-insight', 'case-studies', 'ventures', 'challenge', 'hero', 'industries', 'response', 'response-card', 'challenge-about', 'standards', 'cta', 'application', 'about', 'executive-profile', 'perspective', 'impact', 'focus', 'faq'],
     },
   },
   cors: [
@@ -62,7 +67,7 @@ export default buildConfig({
     'https://sturdy-ie-66rb.vercel.app',
     process.env.NEXT_PUBLIC_SITE_URL ?? '',
   ],
-  collections: [Users, Media, Ventures, MyInsight, CaseStudies, Challenge, Hero, Industries, Response, ResponseCard, Principles, Standards, Application, About, Cta],
+  collections: [Users, Media, Ventures, MyInsight, CaseStudies, Challenge, Hero, Industries, Response, ResponseCard, ChallengeAbout, Standards, Application, About, Cta, ExecutiveProfile, Perspective, Impact, Focus, FAQ],
   globals: [Footer],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [

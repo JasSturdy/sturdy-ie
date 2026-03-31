@@ -6,8 +6,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, useInView } from "motion/react";
 import { Header } from "../../components/Header";
+import { getFooterData } from "@/lib/footer";
 import { FooterSection } from "../../components/FooterSection";
 import { FAQSection } from "../../components/FAQSection";
+import { getFAQData } from "@/lib/faq";
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -16,6 +18,14 @@ const contactSchema = z.object({
   interestArea: z.string().min(1, "Please select an interest area"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
+
+const [
+    footerData,
+    FaqData,
+  ] = await Promise.all([
+    getFooterData(),
+    getFAQData(),
+  ]);
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
@@ -245,8 +255,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <FAQSection />
-      <FooterSection />
+      <FAQSection data={FaqData}/>
+      <FooterSection data={footerData} />
     </main>
   );
 }

@@ -77,11 +77,16 @@ export interface Config {
     industries: Industry;
     response: Response;
     response_card: ResponseCard;
-    principles: Principle;
+    'challenge-about': ChallengeAbout;
     standards: Standard;
     application: Application;
     about: About;
     cta: Cta;
+    'executive-profile': ExecutiveProfile;
+    perspective: Perspective;
+    impact: Impact;
+    focus: Focus;
+    faq: Faq;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -99,11 +104,16 @@ export interface Config {
     industries: IndustriesSelect<false> | IndustriesSelect<true>;
     response: ResponseSelect<false> | ResponseSelect<true>;
     response_card: ResponseCardSelect<false> | ResponseCardSelect<true>;
-    principles: PrinciplesSelect<false> | PrinciplesSelect<true>;
+    'challenge-about': ChallengeAboutSelect<false> | ChallengeAboutSelect<true>;
     standards: StandardsSelect<false> | StandardsSelect<true>;
     application: ApplicationSelect<false> | ApplicationSelect<true>;
     about: AboutSelect<false> | AboutSelect<true>;
     cta: CtaSelect<false> | CtaSelect<true>;
+    'executive-profile': ExecutiveProfileSelect<false> | ExecutiveProfileSelect<true>;
+    perspective: PerspectiveSelect<false> | PerspectiveSelect<true>;
+    impact: ImpactSelect<false> | ImpactSelect<true>;
+    focus: FocusSelect<false> | FocusSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -781,14 +791,44 @@ export interface ResponseCard {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "principles".
+ * via the `definition` "challenge-about".
  */
-export interface Principle {
+export interface ChallengeAbout {
   id: number;
   /**
    * Internal label to identify this document in the CMS list.
    */
   sectionLabel?: string | null;
+  /**
+   * Small badge label above the heading (e.g. "Challenge").
+   */
+  badge?: string | null;
+  /**
+   * First part of heading rendered in lime (e.g. "How").
+   */
+  headingAccent?: string | null;
+  /**
+   * Second part of heading rendered in white (e.g. "I Work").
+   */
+  heading?: string | null;
+  /**
+   * Body paragraphs shown below the heading.
+   */
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   exploreHeading?: string | null;
   exploreBody?: {
     root: {
@@ -807,18 +847,14 @@ export interface Principle {
   } | null;
   exploreCtaLabel?: string | null;
   exploreCtaHref?: string | null;
+  exploreCtaLabel2?: string | null;
+  exploreCtaHref2?: string | null;
   exploreBackgroundImage?: (number | null) | Media;
-  /**
-   * Add, remove, or reorder cards here. Drag rows to reorder.
-   */
   items?:
     | {
-        /**
-         * Card title (e.g. "Trust").
-         */
         title: string;
         /**
-         * Description shown in the active card.
+         * Short tagline shown on the card.
          */
         body: {
           root: {
@@ -836,9 +872,6 @@ export interface Principle {
           [k: string]: unknown;
         };
         icon: 'trust' | 'control' | 'standards' | 'resilience';
-        /**
-         * Number of lime bars (1–8).
-         */
         bars: number;
         id?: string | null;
       }[]
@@ -1055,6 +1088,213 @@ export interface Cta {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "executive-profile".
+ */
+export interface ExecutiveProfile {
+  id: number;
+  /**
+   * Profile title (e.g. "Data Governance & Infrastructure").
+   */
+  title: string;
+  /**
+   * Each item is one paragraph of body text.
+   */
+  paragraphs?:
+    | {
+        text: string;
+        /**
+         * Renders this paragraph in bold white (for callout lines).
+         */
+        isBold?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Background image shown on the right side.
+   */
+  image: number | Media;
+  /**
+   * Controls display order. Lower numbers appear first.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "perspective".
+ */
+export interface Perspective {
+  id: number;
+  /**
+   * Small badge label above the heading.
+   */
+  badge?: string | null;
+  /**
+   * First line of the heading (rendered in lime).
+   */
+  heading: string;
+  /**
+   * Second line of the heading (rendered in white, lighter weight).
+   */
+  headingLight?: string | null;
+  /**
+   * Paragraph text beneath the heading.
+   */
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Text on the primary call-to-action button.
+   */
+  ctaLabel?: string | null;
+  /**
+   * URL the primary CTA button links to.
+   */
+  ctaHref?: string | null;
+  /**
+   * Text on the secondary call-to-action button.
+   */
+  ctaLabel2?: string | null;
+  /**
+   * URL the secondary CTA button links to.
+   */
+  ctaHref2?: string | null;
+  /**
+   * Up to 3 images shown in the stacked animation on the right.
+   */
+  images?:
+    | {
+        image: number | Media;
+        /**
+         * Alt text for accessibility.
+         */
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "impact".
+ */
+export interface Impact {
+  id: number;
+  /**
+   * Small badge label above the heading.
+   */
+  badge?: string | null;
+  /**
+   * Accent word rendered in lime (e.g. "Why").
+   */
+  headingAccent: string;
+  /**
+   * Main heading text rendered in white.
+   */
+  heading: string;
+  /**
+   * Paragraph text beneath the heading.
+   */
+  body?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Main image displayed on the left side of the section.
+   */
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "focus".
+ */
+export interface Focus {
+  id: number;
+  /**
+   * Small badge label above the heading.
+   */
+  badge?: string | null;
+  /**
+   * Accent word rendered in lime.
+   */
+  headingAccent?: string | null;
+  /**
+   * Main heading text rendered in white.
+   */
+  heading: string;
+  /**
+   * Focus area cards (max 6, displayed in 3-column grid).
+   */
+  cards?:
+    | {
+        /**
+         * Icon displayed at the top of the card.
+         */
+        icon: 'governance' | 'security' | 'infrastructure' | 'operating' | 'regulatory' | 'collaboration';
+        /**
+         * Card heading.
+         */
+        title: string;
+        /**
+         * Short description shown beneath the card title.
+         */
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: number;
+  /**
+   * The FAQ question text.
+   */
+  question: string;
+  /**
+   * The answer to the question.
+   */
+  answer: string;
+  /**
+   * Controls display order (ascending). e.g. 1, 2, 3...
+   */
+  order: number;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1118,8 +1358,8 @@ export interface PayloadLockedDocument {
         value: number | ResponseCard;
       } | null)
     | ({
-        relationTo: 'principles';
-        value: number | Principle;
+        relationTo: 'challenge-about';
+        value: number | ChallengeAbout;
       } | null)
     | ({
         relationTo: 'standards';
@@ -1136,6 +1376,26 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'cta';
         value: number | Cta;
+      } | null)
+    | ({
+        relationTo: 'executive-profile';
+        value: number | ExecutiveProfile;
+      } | null)
+    | ({
+        relationTo: 'perspective';
+        value: number | Perspective;
+      } | null)
+    | ({
+        relationTo: 'impact';
+        value: number | Impact;
+      } | null)
+    | ({
+        relationTo: 'focus';
+        value: number | Focus;
+      } | null)
+    | ({
+        relationTo: 'faq';
+        value: number | Faq;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1413,14 +1673,20 @@ export interface ResponseCardSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "principles_select".
+ * via the `definition` "challenge-about_select".
  */
-export interface PrinciplesSelect<T extends boolean = true> {
+export interface ChallengeAboutSelect<T extends boolean = true> {
   sectionLabel?: T;
+  badge?: T;
+  headingAccent?: T;
+  heading?: T;
+  body?: T;
   exploreHeading?: T;
   exploreBody?: T;
   exploreCtaLabel?: T;
   exploreCtaHref?: T;
+  exploreCtaLabel2?: T;
+  exploreCtaHref2?: T;
   exploreBackgroundImage?: T;
   items?:
     | T
@@ -1506,6 +1772,90 @@ export interface CtaSelect<T extends boolean = true> {
         alt?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "executive-profile_select".
+ */
+export interface ExecutiveProfileSelect<T extends boolean = true> {
+  title?: T;
+  paragraphs?:
+    | T
+    | {
+        text?: T;
+        isBold?: T;
+        id?: T;
+      };
+  image?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "perspective_select".
+ */
+export interface PerspectiveSelect<T extends boolean = true> {
+  badge?: T;
+  heading?: T;
+  headingLight?: T;
+  body?: T;
+  ctaLabel?: T;
+  ctaHref?: T;
+  ctaLabel2?: T;
+  ctaHref2?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "impact_select".
+ */
+export interface ImpactSelect<T extends boolean = true> {
+  badge?: T;
+  headingAccent?: T;
+  heading?: T;
+  body?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "focus_select".
+ */
+export interface FocusSelect<T extends boolean = true> {
+  badge?: T;
+  headingAccent?: T;
+  heading?: T;
+  cards?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  question?: T;
+  answer?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }

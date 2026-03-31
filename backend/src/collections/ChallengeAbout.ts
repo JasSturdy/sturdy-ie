@@ -1,15 +1,15 @@
 import { CollectionConfig } from 'payload';
 
-export const Principles: CollectionConfig = {
-    slug: 'principles',
+export const ChallengeAbout: CollectionConfig = {
+    slug: 'challenge-about',
     admin: {
         useAsTitle: 'sectionLabel',
         defaultColumns: ['sectionLabel', 'updatedAt'],
         livePreview: {
-            url: () => `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/#principles`,
+            url: () => `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/#challenge`,
         },
         preview: () =>
-            `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/#principles`,
+            `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/#challenge`,
     },
     access: {
         read: () => true,
@@ -22,10 +22,34 @@ export const Principles: CollectionConfig = {
             name: 'sectionLabel',
             label: 'Section Label',
             type: 'text',
-            defaultValue: 'Principles',
+            defaultValue: 'Challenge',
             admin: { description: 'Internal label to identify this document in the CMS list.' },
         },
-
+        {
+            name: 'badge',
+            type: 'text',
+            defaultValue: 'Challenge',
+            admin: { description: 'Small badge label above the heading (e.g. "Challenge").' },
+        },
+        {
+            name: 'headingAccent',
+            label: 'Heading (lime accent part)',
+            type: 'text',
+            defaultValue: 'How',
+            admin: { description: 'First part of heading rendered in lime (e.g. "How").' },
+        },
+        {
+            name: 'heading',
+            label: 'Heading (white part)',
+            type: 'text',
+            defaultValue: 'I Work',
+            admin: { description: 'Second part of heading rendered in white (e.g. "I Work").' },
+        },
+        {
+            name: 'body',
+            type: 'richText',
+            admin: { description: 'Body paragraphs shown below the heading.' },
+        },
         {
             name: 'exploreHeading',
             label: 'Explore Card — Heading',
@@ -36,43 +60,30 @@ export const Principles: CollectionConfig = {
             name: 'exploreBody',
             label: 'Explore Card — Body',
             type: 'richText',
-            defaultValue: {
-                root: {
-                    type: 'root',
-                    direction: 'ltr',
-                    format: '',
-                    indent: 0,
-                    version: 1,
-                    children: [{
-                        type: 'paragraph',
-                        version: 1,
-                        direction: 'ltr',
-                        format: '',
-                        indent: 0,
-                        children: [{
-                            type: 'text',
-                            version: 1,
-                            text: 'Examples of systems, platforms, and environments designed for regulated ecosystems',
-                            format: 0,
-                            detail: 0,
-                            mode: 'normal',
-                            style: '',
-                        }],
-                    }],
-                },
-            },
         },
         {
             name: 'exploreCtaLabel',
-            label: 'Explore Card — CTA Label',
+            label: 'Explore Card — CTA 1 Label',
             type: 'text',
             defaultValue: 'View Case Studies',
         },
         {
             name: 'exploreCtaHref',
-            label: 'Explore Card — CTA URL',
+            label: 'Explore Card — CTA 1 URL',
             type: 'text',
             defaultValue: '/case-studies',
+        },
+        {
+            name: 'exploreCtaLabel2',
+            label: 'Explore Card — CTA 2 Label',
+            type: 'text',
+            defaultValue: 'Explore Insights',
+        },
+        {
+            name: 'exploreCtaHref2',
+            label: 'Explore Card — CTA 2 URL',
+            type: 'text',
+            defaultValue: '/insights',
         },
         {
             name: 'exploreBackgroundImage',
@@ -80,26 +91,23 @@ export const Principles: CollectionConfig = {
             type: 'upload',
             relationTo: 'media',
         },
-
         {
             name: 'items',
-            label: 'Principle Cards',
+            label: 'Challenge Cards',
             type: 'array',
             minRows: 1,
             maxRows: 8,
-            admin: { description: 'Add, remove, or reorder cards here. Drag rows to reorder.' },
             fields: [
                 {
                     name: 'title',
                     type: 'text',
                     required: true,
-                    admin: { description: 'Card title (e.g. "Trust").' },
                 },
                 {
                     name: 'body',
                     type: 'richText',
                     required: true,
-                    admin: { description: 'Description shown in the active card.' },
+                    admin: { description: 'Short tagline shown on the card.' },
                 },
                 {
                     name: 'icon',
@@ -120,7 +128,6 @@ export const Principles: CollectionConfig = {
                     defaultValue: 1,
                     min: 1,
                     max: 8,
-                    admin: { description: 'Number of lime bars (1–8).' },
                 },
             ],
         },

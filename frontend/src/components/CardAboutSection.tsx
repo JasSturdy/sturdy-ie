@@ -1,56 +1,130 @@
 "use client";
 
-export function CardAboutSection() {
-  const cards = [
-    {
-      title: "Data Governance & Compliance",
-      description:
-        "Translating policy, regulation, and standards into working systems.",
-    },
-    {
-      title: "Security Architecture",
-      description:
-        "Designing environments with control, access, and resilience built in.",
-    },
-    {
-      title: "Data Infrastructure",
-      description:
-        "Enabling integration, interoperability, and structured data exchange.",
-    },
-    {
-      title: "Operating Models & Delivery",
-      description:
-        "Designing operating models that enable the effective use of data in practice.",
-    },
-  ];
+import type { ReactNode } from "react";
+
+const iconBtnProps = {
+  width: "100%",
+  height: "100%",
+  viewBox: "0 0 24 24",
+  fill: "none" as const,
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+function IconGovernance() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <polyline points="14 2 14 8 20 8" />
+      <line x1="16" y1="13" x2="8" y2="13" />
+      <line x1="16" y1="17" x2="8" y2="17" />
+      <polyline points="10 9 9 9 8 9" />
+    </svg>
+  );
+}
+function IconSecurity() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    </svg>
+  );
+}
+function IconInfrastructure() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <ellipse cx="12" cy="5" rx="9" ry="3" />
+      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+    </svg>
+  );
+}
+function IconOperating() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+    </svg>
+  );
+}
+function IconRegulatory() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+function IconCollaboration() {
+  return (
+    <svg {...iconBtnProps} aria-hidden>
+      <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+import type { CardAboutData, CardAboutIcon } from "@/lib/cardAbout";
+
+const FALLBACK_CARDS = [
+  { icon: "governance" as CardAboutIcon, title: "Data Governance & Compliance", description: "Translating policy, regulation, and standards into working systems." },
+  { icon: "security" as CardAboutIcon, title: "Security Architecture", description: "Designing environments with control, access, and resilience built in." },
+  { icon: "infrastructure" as CardAboutIcon, title: "Data Infrastructure", description: "Enabling integration, interoperability, and structured data exchange." },
+  { icon: "operating" as CardAboutIcon, title: "Operating Models & Delivery", description: "Designing operating models that enable the effective use of data in practice." },
+  { icon: "regulatory" as CardAboutIcon, title: "Regulatory Alignment", description: "Bridging regulatory intent with operational delivery across institutions." },
+  { icon: "collaboration" as CardAboutIcon, title: "Institutional Collaboration", description: "Enabling trusted data sharing and cross-institutional coordination at scale." },
+];
+
+const FALLBACK: CardAboutData = {
+  badge: "Focus",
+  headingAccent: "Core",
+  heading: "Areas of Focus",
+  cards: FALLBACK_CARDS,
+};
+
+const ICON_MAP: Record<CardAboutIcon, ReactNode> = {
+  governance:     <IconGovernance />,
+  security:       <IconSecurity />,
+  infrastructure: <IconInfrastructure />,
+  operating:      <IconOperating />,
+  regulatory:     <IconRegulatory />,
+  collaboration:  <IconCollaboration />,
+};
+
+export function CardAboutSection({ data }: { data?: CardAboutData | null }) {
+  const d = data ?? FALLBACK;
 
   return (
-    <section className="relative z-10 bg-black overflow-hidden">
-      <div className="relative mx-auto max-w-7xl px-6 py-24 md:px-10 lg:px-0">
-        <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
-          Core Areas of <span className="text-[#c5f018]">Focus</span>
+    <section className="">
+      <div className="mx-auto max-w-8xl px-6 py-16 md:px-10 md:py-20 lg:px-0">
+        {/* Badge */}
+        <div className="mb-4 flex items-center justify-center gap-2 text-zinc-300">
+          <span
+            className="h-2 w-2 rounded-full bg-[#c5f018]"
+            style={{ animation: "dotPulse 1s ease-in-out infinite" }}
+          />
+          <span className="text-sm md:text-lg">{d.badge}</span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="mb-12 text-center text-4xl font-light leading-tight text-white md:text-5xl lg:text-6xl">
+          <span className="text-[#c5f018]">{d.headingAccent} </span>
+          {d.heading}
         </h2>
-        <p className="mb-12 max-w-3xl text-base leading-relaxed text-zinc-400 md:text-lg">
-          Focus areas where policy intent and operational delivery are translated
-          into practical, trusted systems.
-        </p>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {cards.map((card, index) => (
+
+        <div className="grid gap-4 md:grid-cols-3">
+          {d.cards.map((card) => (
             <div
               key={card.title}
-              className="group relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/70 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-600 hover:bg-zinc-900"
+              className="flex flex-col gap-4 rounded-2xl bg-zinc-800/80 p-6"
             >
-              <div className="mb-4 flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                  0{index + 1}
-                </span>
-                <span className="h-px w-16 bg-zinc-700 transition-colors duration-300 group-hover:bg-[#c5f018]/60" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#c5f018]/50 bg-[#c5f018]/10 p-3 text-[#c5f018]">
+                {ICON_MAP[card.icon] ?? ICON_MAP.governance}
               </div>
-
-              <h3 className="text-2xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-[#c5f018]">
+              <h3 className="text-xl font-light text-white md:text-2xl lg:text-3xl">
                 {card.title}
               </h3>
-              <p className="mt-4 text-lg leading-relaxed text-zinc-400">
+              <p className="text-sm leading-relaxed text-white">
                 {card.description}
               </p>
             </div>

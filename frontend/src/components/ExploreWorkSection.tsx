@@ -20,10 +20,10 @@ const cards = [
 
 export function ExploreWorkSection() {
   return (
-    <section className="relative z-10 bg-black overflow-hidden">
-      <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10 lg:px-0">
+    <section className="relative z-10 overflow-hidden">
+      <div className="relative mx-auto max-w-8xl px-6 py-24 md:px-10 lg:px-0">
         {/* Heading */}
-        <h2 className="mb-16 text-center text-2xl font-bold text-white md:text-3xl">
+        <h2 className="mb-16 text-center text-2xl font-light text-white lg:text-6xl md:text-6xl">
           Explore My Work
         </h2>
 

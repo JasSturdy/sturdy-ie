@@ -1,4 +1,4 @@
-const PRINCIPLES = [
+const CHALLENGE = [
   {
     number: "01",
     title: "See Responsibly",
@@ -16,12 +16,12 @@ const PRINCIPLES = [
   },
 ];
 
-export function PrinciplesSection() {
+export function ChallengeAboutSection() {
   return (
     <section className="border-b border-zinc-900/60 bg-gradient-to-b from-black to-slate-950">
       <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-20 lg:px-0">
         <div className="grid gap-6 md:grid-cols-3">
-          {PRINCIPLES.map((item) => (
+          {CHALLENGE.map((item) => (
             <article
               key={item.number}
               className="flex flex-col gap-4 rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6"

@@ -1,59 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
+import type { FAQItem } from "@/lib/faq";
 
-const FAQS = [
-  {
-    question: "1. What types of organisations do you collaborate with?",
-    answer:
-      "I collaborate with research institutions, public sector bodies, financial services, health organisations, and venture partners engaged in sovereign infrastructure, secure collaboration, and governance-aligned innovation.",
-  },
-  {
-    question: "2. Are you offering consulting services through this site?",
-    answer:
-      "This site is not a services catalogue. It exists to share my work and enable aligned collaboration.",
-  },
-  {
-    question: '3. What are "Case Studies" referring to?',
-    answer:
-      "Case studies describe governance-aligned delivery, sovereign infrastructure, and secure collaboration initiatives across regulated ecosystems.",
-  },
-  {
-    question: "4. What stage are your ventures at?",
-    answer:
-      "Ventures span exploratory initiatives through active platform development—shared to signal direction and invite aligned collaboration where relevant.",
-  },
-  {
-    question: "5. Can organisations collaborate on ventures or research environments?",
-    answer:
-      "Yes. Collaboration across research environments, ventures, and platform initiatives is welcomed where there is clear alignment.",
-  },
-];
-
-function FAQItem({
+function FAQItemCard({
   faq,
   isOpen,
   onClick,
   index,
   sectionInView,
 }: {
-  faq: { question: string; answer: string };
+  faq: FAQItem;
   isOpen: boolean;
   onClick: () => void;
   index: number;
   sectionInView: boolean;
 }) {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
-    }
-  }, [isOpen]);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -75,13 +38,10 @@ function FAQItem({
       </div>
 
       <div
-        style={{
-          height: height,
-          overflow: "hidden",
-          transition: "height 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
+        className="grid transition-all duration-300 ease-in-out"
+        style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >
-        <div ref={contentRef}>
+        <div className="overflow-hidden">
           <p className="mt-4 pb-4 font-light text-lg leading-relaxed text-white">
             {faq.answer}
           </p>
@@ -91,15 +51,15 @@ function FAQItem({
   );
 }
 
-export function FAQSection() {
+export function FAQSection({ data }: { data?: FAQItem[] | null }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
 
+  if (!data?.length) return null;
+
   return (
     <section ref={ref} className="relative z-10 mx-auto max-w-8xl px-10 md:px-20 mb-20">
-
-      {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -117,11 +77,10 @@ export function FAQSection() {
         </p>
       </motion.div>
 
-      {/* Accordion — each item staggers in */}
       <div className="flex flex-col gap-4">
-        {FAQS.map((faq, i) => (
-          <FAQItem
-            key={i}
+        {data.map((faq, i) => (
+          <FAQItemCard
+            key={faq.id}
             faq={faq}
             isOpen={openIndex === i}
             onClick={() => setOpenIndex(openIndex === i ? null : i)}

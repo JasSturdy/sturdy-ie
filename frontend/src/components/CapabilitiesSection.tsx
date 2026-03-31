@@ -178,7 +178,7 @@ export function CapabilitiesSection({
           </h2>
         </div>
 
-        <div className="flex items-end text-[0.95rem] leading-snug text-zinc-300 [&_p]:text-sm [&_p]:md:text-base [&_p]:mb-0 [&_p]:leading-snug">
+        <div className="flex items-end text-[0.95rem] leading-snug text-white [&_p]:text-sm [&_p]:md:text-base [&_p]:mb-0 [&_p]:leading-snug">
           <LexicalRenderer data={d.body} />
         </div>
       </div>

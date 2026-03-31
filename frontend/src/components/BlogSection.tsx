@@ -53,7 +53,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
   if (!featured) return null;
 
   return (
-    <section className="mx-auto max-w-8xl px-8 py-10 md:px-16 md:py-16">
+    <section className="mx-auto max-w-8xl py-10 md:py-16">
       <div className="mb-8 flex flex-col items-start justify-between md:mb-16">
         <motion.div
           ref={headerRef}
@@ -73,7 +73,9 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
           <div className="min-w-0 flex-1">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
-              animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={
+                headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+              }
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
               className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl"
             >
@@ -84,18 +86,23 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              animate={
+                headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+              }
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.22 }}
               className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-lg"
             >
-              Short perspectives on designing systems that work in regulated environments
+              Short perspectives on designing systems that work in regulated
+              environments
             </motion.p>
           </div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={
-              headerInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }
+              headerInView
+                ? { opacity: 1, scale: 1 }
+                : { opacity: 0, scale: 0.7 }
             }
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
             className="shrink-0 self-start lg:self-center"
@@ -193,7 +200,11 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
       {smallPosts.length > 0 && (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {smallPosts.map((post) => (
-            <Link key={post.slug} href={`/myinsight/${post.slug}`} className="group block">
+            <Link
+              key={post.slug}
+              href={`/myinsight/${post.slug}`}
+              className="group block"
+            >
               <div className="flex h-full flex-row overflow-hidden rounded-xl border border-[#68800a] transition-colors duration-300">
                 <div className="relative w-28 shrink-0 overflow-hidden sm:w-32 lg:w-75">
                   {post.img && (

@@ -9,7 +9,7 @@ export function CaseStudiesTitleSection() {
         <span className="text-sm md:text-lg text-white">Case Studies</span>
       </div>
       <p className="text-center font-light pt-4 mb-8 text-2xl md:text-6xl text-white">
-        From challenge to <span className="text-[#c5f018]">change</span>
+        From Challenge To Change
       </p>
     </div>
   );

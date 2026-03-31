@@ -48,7 +48,7 @@ export function ContactUsCtaSection({ data }: { data?: CtaData | null }) {
     const headerInView = useInView(headerRef, { once: true, margin: '0px 0px -60px 0px' });
 
     return (
-        <section className="relative w-full px-4 sm:px-8 md:px-14 py-20">
+        <section className="max-w-8xl mx-auto relative w-full px-4 sm:px-8 md:px-14 py-20">
             <div
                 className="relative overflow-hidden rounded-xl border border-zinc-600 pb-0 pt-10 sm:pt-16 md:pt-24"
                 style={{
@@ -63,7 +63,7 @@ export function ContactUsCtaSection({ data }: { data?: CtaData | null }) {
                         className="mx-auto max-w-3xl text-2xl font-light leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl"
                     >
                         {d.headingStart}{' '}
-                        <span className="font-light text-[#c5f018]">{d.headingMiddle}{' '}</span>
+                        <span className="font-bold text-[#c5f018]">{d.headingMiddle}{' '}</span>
                         <span className="text-white">{d.headingEnd}</span>
                     </motion.h2>
 
@@ -71,7 +71,7 @@ export function ContactUsCtaSection({ data }: { data?: CtaData | null }) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                        className="mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-zinc-300 sm:text-base md:text-lg"
+                        className="mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-white sm:text-base md:text-lg"
                     >
                         {d.subheading}
                     </motion.p>

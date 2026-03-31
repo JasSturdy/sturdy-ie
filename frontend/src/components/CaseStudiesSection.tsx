@@ -182,7 +182,7 @@ export function CaseStudiesSection({
       <div ref={wrapperRef} className="hidden md:block min-h-[200vh]">
         <section
           className="relative flex w-full flex-col border-b border-zinc-900/60 bg-black md:sticky md:top-0 md:z-10 md:h-screen"
-          aria-label="Case studies"
+          aria-label="Case Studies"
         >
           <div className="relative flex flex-1 md:overflow-x-clip">
             {unique.length > 0 ? (

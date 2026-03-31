@@ -115,7 +115,7 @@ function CardInterior({ card, index }: { card: IndustryCard; index: number }) {
         </h3>
         <p
           className={`text-[0.7rem] leading-relaxed sm:text-xs md:text-sm [overflow-wrap:anywhere] ${
-            isAlt ? "text-black" : "text-zinc-300"
+            isAlt ? "text-black" : "text-white"
           }`}
         >
           {description}
@@ -172,14 +172,14 @@ export function CapabilitiesSection({
             {/*<span className="text-[#c5f018]">Operating</span>
             {" Across"}
             <br />*/}
-            <span className="text-[#c5f018]"> {d.headingAccent} </span>
+            <span className="text-[#c5f018] font-bold"> {d.headingAccent} </span>
             {d.headingRegular}{" "}
             <span className="font-light text-white">{d.headingLight}</span>
           </h2>
         </div>
 
-        <div className="flex items-start lg:items-end text-[0.95rem] leading-snug text-white [&_p]:text-sm [&_p]:md:text-base [&_p]:mb-0 [&_p]:leading-snug">
-          <LexicalRenderer data={d.body} />
+        <div className="flex items-start text-white lg:items-end text-[0.95rem] leading-snug  [&_p]:text-sm [&_p]:md:text-base [&_p]:mb-0 [&_p]:leading-snug">
+          <LexicalRenderer  data={d.body} />
         </div>
       </div>
 

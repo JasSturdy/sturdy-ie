@@ -23,7 +23,7 @@ export function CollaborationCtaSection() {
               <br />
               <span className="font-bold text-white">Collaboration</span>?
             </h2>
-            <p className="text-sm leading-relaxed text-zinc-300 md:text-base">
+            <p className="text-sm leading-relaxed text-white md:text-base">
               Open to partnerships across research, regulated innovation, and
               venture initiatives where sovereign infrastructure, governance,
               and standards-aligned data exchange are critical.

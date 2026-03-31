@@ -119,7 +119,7 @@ function ServiceCard({
       </div>
       <div className="space-y-2 md:space-y-4 text-center md:text-left md:px-0 md:pb-0">
         <h3 className="md:text-2xl text-base font-medium text-white">{item.title}</h3>
-        <p className="md:text-sm text-xs leading-relaxed text-zinc-300">{item.body}</p>
+        <p className="md:text-sm text-xs leading-relaxed text-white">{item.body}</p>
       </div>
     </motion.div>
   );
@@ -176,12 +176,12 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
                 <span className="text-sm md:text-lg">{d.badge}</span>
               </div>
 
-              <h2 className="text-2xl font-light leading-tight text-[#c5f018] md:text-5xl">
+              <h2 className="text-2xl font-bold leading-tight text-[#c5f018] md:text-5xl">
                 {d.heading}{" "}
                 <span className="font-light text-white">{d.headingLight}</span>
               </h2>
 
-              <div className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-300 md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
+              <div className="mt-4 max-w-xl text-sm leading-relaxed text-white md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
                 <LexicalRenderer data={d.body} />
               </div>
 
@@ -190,7 +190,7 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
                 style={{ backgroundImage: `url('${d.imageUrl}')` }}
               />
 
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-zinc-300 md:text-base">
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white md:text-base">
                 {d.imageCaption}
               </p>
             </div>

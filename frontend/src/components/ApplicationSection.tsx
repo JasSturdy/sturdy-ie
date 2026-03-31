@@ -243,7 +243,7 @@ export function ApplicationSection({ data }: { data?: ApplicationData | null }) 
         className="text-3xl font-light leading-tight text-white md:text-5xl lg:text-6xl"
       >
         {d.heading}{" "}
-        <span className="text-[#c5f018]">{d.headingAccent}</span>
+        <span className="font-bold text-[#c5f018]">{d.headingAccent}</span>
       </motion.h2>
 
       {/* Body */}
@@ -251,7 +251,7 @@ export function ApplicationSection({ data }: { data?: ApplicationData | null }) 
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="mt-4 max-w-6xl text-sm leading-relaxed text-zinc-400 md:text-base"
+        className="mt-4 max-w-6xl text-sm leading-relaxed text-white md:text-base"
       >
         <LexicalRenderer data={d.body} />
       </motion.div>

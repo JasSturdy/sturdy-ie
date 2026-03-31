@@ -169,7 +169,7 @@ export function InsightsPreviewSection({
         <div className="mb-10 lg:w-1/2">
           {/* Badge */}
           <div
-            className="mb-4 flex items-center gap-2 text-xs font-medium text-zinc-300"
+            className="mb-4 flex items-center gap-2 text-xs font-medium text-white"
             style={{
               opacity: 0,
               animation: visible ? "fadeUp 2s forwards" : "none",
@@ -185,11 +185,11 @@ export function InsightsPreviewSection({
           {/* Heading */}
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl">
             {d.heading}{" "}
-            <span className="font-light text-[#c5f018]">{d.headingLight}</span>
+            <span className="font-bold text-[#c5f018]">{d.headingLight}</span>
           </h2>
 
           {/* Body */}
-          <div className="mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
+          <div className="mt-4 max-w-2xl text-sm leading-relaxed text-white md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
             <LexicalRenderer data={d.body} />
           </div>
 

@@ -37,6 +37,9 @@ export default async function AboutPage() {
     getCardAboutData(),
   ]);
 
+    console.log("executiveProfileData:", executiveProfileData); // tambah ini
+  console.log("executiveProfileData length:", executiveProfileData.length);
+
   return (
     <main className="relative w-full overflow-x-hidden text-sm text-zinc-200">
       <Header />

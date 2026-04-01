@@ -3515,11 +3515,19 @@
           "primaryKey": true,
           "notNull": true
         },
-        "title": {
-          "name": "title",
+        "section_heading": {
+          "name": "section_heading",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false,
+          "default": "'Executive'"
+        },
+        "section_heading_accent": {
+          "name": "section_heading_accent",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Profile'"
         },
         "image_id": {
           "name": "image_id",
@@ -3785,6 +3793,20 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'/myinsights'"
+        },
+        "cta_label2": {
+          "name": "cta_label2",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Learn More'"
+        },
+        "cta_href2": {
+          "name": "cta_href2",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/about'"
         },
         "updated_at": {
           "name": "updated_at",
@@ -4148,6 +4170,89 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.faq": {
+      "name": "faq",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "question": {
+          "name": "question",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "answer": {
+          "name": "answer",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "faq_updated_at_idx": {
+          "name": "faq_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "faq_created_at_idx": {
+          "name": "faq_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.payload_kv": {
       "name": "payload_kv",
       "schema": "",
@@ -4418,6 +4523,12 @@
         },
         "focus_id": {
           "name": "focus_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "faq_id": {
+          "name": "faq_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -4753,6 +4864,21 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
+        },
+        "payload_locked_documents_rels_faq_id_idx": {
+          "name": "payload_locked_documents_rels_faq_id_idx",
+          "columns": [
+            {
+              "expression": "faq_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
         }
       },
       "foreignKeys": {
@@ -5009,6 +5135,19 @@
           "tableTo": "focus",
           "columnsFrom": [
             "focus_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_faq_fk": {
+          "name": "payload_locked_documents_rels_faq_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "faq",
+          "columnsFrom": [
+            "faq_id"
           ],
           "columnsTo": [
             "id"
@@ -5688,6 +5827,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "18082b02-8619-48a8-8d57-d917f3bf69d1",
+  "id": "90556f9a-4ebd-45ac-a50c-b3a1f4411db7",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

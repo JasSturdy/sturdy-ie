@@ -3,8 +3,8 @@ import type { CollectionConfig } from 'payload'
 export const ExecutiveProfile: CollectionConfig = {
     slug: 'executive-profile',
     admin: {
-        useAsTitle: 'title',
-        defaultColumns: ['title', 'updatedAt'],
+        useAsTitle: 'sectionHeading',
+        defaultColumns: ['order', 'updatedAt'],
         livePreview: {
             url: () => `${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/#profile`,
         },
@@ -19,10 +19,16 @@ export const ExecutiveProfile: CollectionConfig = {
     },
     fields: [
         {
-            name: 'title',
+            name: 'sectionHeading',
             type: 'text',
-            required: true,
-            admin: { description: 'Profile title (e.g. "Data Governance & Infrastructure").' },
+            defaultValue: 'Executive',
+            admin: { description: 'First part of the section heading (rendered in lime green).' },
+        },
+        {
+            name: 'sectionHeadingAccent',
+            type: 'text',
+            defaultValue: 'Profile',
+            admin: { description: 'Second part of the section heading (rendered in white).' },
         },
         {
             name: 'paragraphs',

@@ -1093,9 +1093,13 @@ export interface Cta {
 export interface ExecutiveProfile {
   id: number;
   /**
-   * Profile title (e.g. "Data Governance & Infrastructure").
+   * First part of the section heading (rendered in lime green).
    */
-  title: string;
+  sectionHeading?: string | null;
+  /**
+   * Second part of the section heading (rendered in white).
+   */
+  sectionHeadingAccent?: string | null;
   /**
    * Each item is one paragraph of body text.
    */
@@ -1780,7 +1784,8 @@ export interface CtaSelect<T extends boolean = true> {
  * via the `definition` "executive-profile_select".
  */
 export interface ExecutiveProfileSelect<T extends boolean = true> {
-  title?: T;
+  sectionHeading?: T;
+  sectionHeadingAccent?: T;
   paragraphs?:
     | T
     | {

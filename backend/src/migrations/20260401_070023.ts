@@ -346,7 +346,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "executive_profile" (
   	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar NOT NULL,
+  	"section_heading" varchar DEFAULT 'Executive',
+  	"section_heading_accent" varchar DEFAULT 'Profile',
   	"image_id" integer NOT NULL,
   	"order" numeric DEFAULT 0,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
@@ -369,6 +370,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"body" jsonb DEFAULT '{"root":{"type":"root","children":[{"type":"paragraph","version":1,"children":[{"type":"text","text":"Addressing the gap between policy, systems, and real-world use requires more than technology.","version":1}]},{"type":"paragraph","version":1,"children":[{"type":"text","text":"It requires approaches that embed governance, standards, and collaboration into how systems are designed and operated.","version":1}]}],"direction":"ltr","format":"","indent":0,"version":1}}'::jsonb,
   	"cta_label" varchar DEFAULT 'Explore Insights',
   	"cta_href" varchar DEFAULT '/myinsights',
+  	"cta_label2" varchar DEFAULT 'Learn More',
+  	"cta_href2" varchar DEFAULT '/about',
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
@@ -398,6 +401,15 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"badge" varchar DEFAULT 'Focus',
   	"heading_accent" varchar DEFAULT 'Core',
   	"heading" varchar DEFAULT 'Areas of Focus' NOT NULL,
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "faq" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"question" varchar NOT NULL,
+  	"answer" varchar NOT NULL,
+  	"order" numeric DEFAULT 0 NOT NULL,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
@@ -438,7 +450,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"executive_profile_id" integer,
   	"perspective_id" integer,
   	"impact_id" integer,
-  	"focus_id" integer
+  	"focus_id" integer,
+  	"faq_id" integer
   );
   
   CREATE TABLE "payload_preferences" (
@@ -542,6 +555,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_perspective_fk" FOREIGN KEY ("perspective_id") REFERENCES "public"."perspective"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_impact_fk" FOREIGN KEY ("impact_id") REFERENCES "public"."impact"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_focus_fk" FOREIGN KEY ("focus_id") REFERENCES "public"."focus"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_faq_fk" FOREIGN KEY ("faq_id") REFERENCES "public"."faq"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_preferences"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "footer_nav_items" ADD CONSTRAINT "footer_nav_items_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."footer"("id") ON DELETE cascade ON UPDATE no action;
@@ -639,6 +653,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "focus_cards_parent_id_idx" ON "focus_cards" USING btree ("_parent_id");
   CREATE INDEX "focus_updated_at_idx" ON "focus" USING btree ("updated_at");
   CREATE INDEX "focus_created_at_idx" ON "focus" USING btree ("created_at");
+  CREATE INDEX "faq_updated_at_idx" ON "faq" USING btree ("updated_at");
+  CREATE INDEX "faq_created_at_idx" ON "faq" USING btree ("created_at");
   CREATE UNIQUE INDEX "payload_kv_key_idx" ON "payload_kv" USING btree ("key");
   CREATE INDEX "payload_locked_documents_global_slug_idx" ON "payload_locked_documents" USING btree ("global_slug");
   CREATE INDEX "payload_locked_documents_updated_at_idx" ON "payload_locked_documents" USING btree ("updated_at");
@@ -665,6 +681,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_locked_documents_rels_perspective_id_idx" ON "payload_locked_documents_rels" USING btree ("perspective_id");
   CREATE INDEX "payload_locked_documents_rels_impact_id_idx" ON "payload_locked_documents_rels" USING btree ("impact_id");
   CREATE INDEX "payload_locked_documents_rels_focus_id_idx" ON "payload_locked_documents_rels" USING btree ("focus_id");
+  CREATE INDEX "payload_locked_documents_rels_faq_id_idx" ON "payload_locked_documents_rels" USING btree ("faq_id");
   CREATE INDEX "payload_preferences_key_idx" ON "payload_preferences" USING btree ("key");
   CREATE INDEX "payload_preferences_updated_at_idx" ON "payload_preferences" USING btree ("updated_at");
   CREATE INDEX "payload_preferences_created_at_idx" ON "payload_preferences" USING btree ("created_at");
@@ -718,6 +735,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "impact" CASCADE;
   DROP TABLE "focus_cards" CASCADE;
   DROP TABLE "focus" CASCADE;
+  DROP TABLE "faq" CASCADE;
   DROP TABLE "payload_kv" CASCADE;
   DROP TABLE "payload_locked_documents" CASCADE;
   DROP TABLE "payload_locked_documents_rels" CASCADE;

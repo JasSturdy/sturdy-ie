@@ -7,7 +7,8 @@ export type ProfileParagraph = {
 
 export type ExecutiveProfileData = {
   id: string;
-  title: string;
+  sectionHeading: string;
+  sectionHeadingAccent: string;
   paragraphs: ProfileParagraph[];
   imageUrl: string;
   order: number;
@@ -25,9 +26,11 @@ export async function getExecutiveProfiles(): Promise<ExecutiveProfileData[]> {
     if (!Array.isArray(docs)) return [];
 
     return docs.map((d: any) => ({
-      id:    d.id    ?? "",
-      title: d.title ?? "",
-      order: d.order ?? 0,
+      id:                   d.id                   ?? "",
+      title:                d.title                ?? "",
+      sectionHeading:       d.sectionHeading       ?? "Executive",
+      sectionHeadingAccent: d.sectionHeadingAccent ?? "Profile",
+      order:                d.order                ?? 0,
       paragraphs: Array.isArray(d.paragraphs)
         ? d.paragraphs.map((p: any) => ({
             text:   p.text   ?? "",

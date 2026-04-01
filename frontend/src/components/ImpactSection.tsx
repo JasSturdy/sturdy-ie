@@ -135,12 +135,12 @@ export function ImpactSection({ data }: { data?: ImpactData | null }) {
 
           {/* Heading — accent word first then white */}
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl mb-5">
-            <span className="text-[#c5f018] font-light">{d.headingAccent} </span>
+            <span className="text-[#c5f018] font-bold">{d.headingAccent} </span>
             {d.heading}
           </h2>
 
           {/* Body */}
-          <div className="text-sm leading-relaxed text-zinc-300 md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
+          <div className="text-sm leading-relaxed text-white md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
             <LexicalRenderer data={d.body} />
           </div>
         </div>

@@ -60,7 +60,7 @@ export function Header() {
           />
 
           <span className="text-2xl font-medium tracking-wide">
-            <span className="font-light text-white">Sturdy.ie</span>
+            <span className="font-bold text-white">Sturdy.ie</span>
           </span>
         </Link>
 

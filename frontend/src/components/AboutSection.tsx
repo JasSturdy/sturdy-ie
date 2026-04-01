@@ -7,8 +7,8 @@ export async function AboutSection() {
   if (!data) return null;
 
   return (
-    <section className="relative z-10 bg-black overflow-hidden">
-      <div className="relative mx-auto max-w-8xl px-6 py-24 md:px-10 md:py-52 lg:px-0">
+    <section className="relative z-10 bg-black overflow-visible">
+      <div className="relative mx-auto max-w-8xl px-6 py-20 md:px-10 md:py-32 lg:px-0">
         <div className="pointer-events-none absolute -left-80 top-4 hidden h-88 w-88 rounded-full mr-[50px] border-[50px] border-zinc-700/60 md:block" />
         <div className="pointer-events-none absolute -right-50 -bottom-6 h-88 w-88 rounded-full border-[50px] border-zinc-700/60 md:block" />
 
@@ -17,20 +17,19 @@ export async function AboutSection() {
           <div className="h-px flex-1 bg-zinc-700" />
         </div>
 
-        <div className="relative mb-16 grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="flex items-center">
-            <p className="max-w-xl text-lg leading-relaxed text-white md:text-xl">
-              {data.subtitle}
-            </p>
-          </div>
-          <div className="flex justify-end">
-            <h1 className="text-5xl font-light text-white text-right md:text-6xl lg:text-7xl">
-              {data.heading}
-            </h1>
-          </div>
+        <div className="relative mb-16">
+          <h1 className="mx-auto text-center text-5xl font-bold text-white md:text-6xl lg:text-7xl">
+            {data.heading}
+          </h1>
+
+          <div className="mx-auto mt-8 h-px w-full max-w-3xl bg-zinc-700" />
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-lg leading-relaxed text-white md:text-xl">
+            {data.subtitle}
+          </p>
         </div>
 
-        <div className="mt-16 flex gap-4 items-center">
+        <div className="mt-10 flex gap-4 items-center">
           <div className="h-px flex-1 bg-zinc-700" />
           <div className="flex h-10 w-10 items-center justify-center text-lime-200">
             <svg

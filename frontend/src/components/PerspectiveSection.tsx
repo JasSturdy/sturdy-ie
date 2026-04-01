@@ -212,8 +212,9 @@ export function PerspectiveSection({
 
           {/* Heading */}
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl">
-            {d.heading}{" "}
-            <span className="font-light text-[#c5f018]">{d.headingLight}</span>
+            <span className="font-light ">Where </span>
+            <span className="font-bold text-[#c5f018]">Policy</span>{" "}
+            <span className="font-light ">,Systems and Operations Meet</span>
           </h2>
 
           {/* Body */}

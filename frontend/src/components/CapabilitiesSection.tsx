@@ -1,90 +1,39 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LexicalRenderer } from "@/components/LexicalRenderer";
-import type { IndustriesData, IndustryCard } from "@/lib/industries";
+import type { IndustryCard } from "@/lib/industries";
 
 //Fallback
 
-const FALLBACK: IndustriesData = {
-  sectionLabel: "Industries",
-  headingRegular: "Operating Across",
-  headingAccent: "Regulated",
-  headingLight: "Environments",
-  body: {
-    root: {
-      type: "root",
-      children: [
-        {
-          type: "paragraph",
-          version: 1,
-          children: [
-            {
-              type: "text",
-              text: "Across public sector, financial services, healthcare, and critical infrastructure environments, organisations operate under increasing regulatory expectations while managing complex data systems.",
-              version: 1,
-            },
-          ],
-        },
-        {
-          type: "paragraph",
-          version: 1,
-          children: [
-            {
-              type: "text",
-              text: "The challenge is not a lack of data or policy. It is making both work together in practice.",
-              version: 1,
-            },
-          ],
-        },
-        {
-          type: "paragraph",
-          version: 1,
-          children: [
-            {
-              type: "text",
-              text: "My work focuses on bridging that gap, designing systems and operating models that align governance, infrastructure, and real-world use.",
-              version: 1,
-            },
-          ],
-        },
-      ],
-      direction: "ltr",
-      format: "",
-      indent: 0,
-      version: 1,
-    },
+const CARDS: IndustryCard[] = [
+  {
+    title: "Healthcare & Medical",
+    description:
+      "Clinical, research, and population health data infrastructure",
+    imageUrl:
+      "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
-  cards: [
-    {
-      title: "Healthcare & Medical",
-      description:
-        "Clinical, research, and population health data infrastructure",
-      imageUrl:
-        "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      title: "Financial Services",
-      description:
-        "Digital environments enabling collaboration across research and health institutions",
-      imageUrl:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      title: "Government & Public",
-      description:
-        "Policy implementation, national infrastructure, and governance",
-      imageUrl:
-        "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-    {
-      title: "Defence",
-      description: "Secure, resilient systems in mission-critical environments",
-      imageUrl:
-        "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=800",
-    },
-  ],
-};
+  {
+    title: "Financial Services",
+    description:
+      "Digital environments enabling collaboration across research and health institutions",
+    imageUrl:
+      "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    title: "Government & Public",
+    description:
+      "Policy implementation, national infrastructure, and governance",
+    imageUrl:
+      "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+  {
+    title: "Defence",
+    description: "Secure, resilient systems in mission-critical environments",
+    imageUrl:
+      "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=800",
+  },
+];
 
 function CardInterior({ card, index }: { card: IndustryCard; index: number }) {
   const { title, description } = card;
@@ -125,13 +74,7 @@ function CardInterior({ card, index }: { card: IndustryCard; index: number }) {
   );
 }
 
-export function CapabilitiesSection({
-  data,
-}: {
-  data?: IndustriesData | null;
-}) {
-  const d = data ?? FALLBACK;
-
+export function CapabilitiesSection() {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -152,40 +95,46 @@ export function CapabilitiesSection({
   return (
     <section ref={ref} className="mx-auto max-w-8xl py-8 md:py-12 lg:py-16">
       <div
-        className="mb-10 grid grid-cols-1 gap-4 px-4 sm:px-6 lg:px-0 md:mb-12 lg:grid-cols-2 lg:gap-12 lg:mb-12"
+        className="mb-10 grid grid-cols-1 items-stretch gap-4 px-4 sm:px-6 lg:px-0 md:mb-12 lg:grid-cols-2 lg:gap-12 lg:mb-12"
         style={{
           opacity: visible ? undefined : 0,
           animation: visible ? "fadeUp 1s ease forwards" : "none",
         }}
       >
-        <div className="space-y-3">
+        <div className="flex h-full flex-col justify-between space-y-3">
           <div className="flex items-center gap-2">
             <span
               className="h-2 w-2 shrink-0 rounded-sm bg-[#c5f018]"
               style={{ animation: "dotPulse 1s ease-in-out infinite" }}
             />
-            <span className="text-sm text-white md:text-lg">
-              {d.sectionLabel}
-            </span>
+            <span className="text-sm text-white md:text-lg">Industries</span>
           </div>
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl">
-            {/*<span className="text-[#c5f018]">Operating</span>
-            {" Across"}
-            <br />*/}
-            <span className="text-[#c5f018] font-bold"> {d.headingAccent} </span>
-            {d.headingRegular}{" "}
-            <span className="font-light text-white">{d.headingLight}</span>
+            <span className="text-[#c5f018] font-bold">Operating </span>
+            Across
+            <br />
+            Regulated
+            <br />
+            Environment
           </h2>
         </div>
 
-        <div className="flex items-start text-white lg:items-end text-[0.95rem] leading-snug  [&_p]:text-sm [&_p]:md:text-base [&_p]:mb-0 [&_p]:leading-snug">
-          <LexicalRenderer  data={d.body} />
+        <div className="flex h-full mt-6 items-center text-white text-[0.95rem] leading-snug">
+          <p className="max-w-3xl text-sm leading-snug md:text-base">
+          Across public sector, financial services, healthcare, and critical infrastructure environments, organisations operate under increasing regulatory expectations while managing complex data systems. The challenge is not a lack of data or policy, but ensuring both function effectively together in practice.
+            {" "}
+            The challenge is not a lack of data or policy. It is making both work together in
+            practice.
+            <br />
+            <br />
+            My work focuses on bridging that gap by designing systems and operating models that align governance, infrastructure, and real-world use. I help organisations translate regulatory intent into operational capability.
+          </p>
         </div>
       </div>
 
       <div className="px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-0">
-          {d.cards.map((card, index) => (
+          {CARDS.map((card, index) => (
             <div
               key={card.title}
               className="group border border-white/15 transition-all duration-500 cursor-pointer hover:-translate-y-4"

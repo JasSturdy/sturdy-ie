@@ -20,7 +20,6 @@ import { getResponseData } from "../lib/response";
 import { getCtaData } from "@/lib/cta";
 import { getStandardsData } from "@/lib/standards";
 import { getFooterData } from "@/lib/footer";
-import { getIndustriesData } from "@/lib/industries";
 import { getApplicationData } from "@/lib/application";
 import { getMyInsightsIndex } from "@/lib/myInsight";
 
@@ -29,7 +28,6 @@ export default async function Home() {
     caseStudies,
     challengeData,
     heroData,
-    industriesData,
     responseData,
     standardsData,
     ctaData,
@@ -40,7 +38,6 @@ export default async function Home() {
     getCaseStudiesIndex(),
     getChallengeData(),
     getHeroData(),
-    getIndustriesData(),
     getResponseData(),
     getStandardsData(),
     getCtaData(),
@@ -53,7 +50,7 @@ export default async function Home() {
     <main className="relative min-w-0 w-full max-w-full overflow-visible text-sm text-zinc-200">
       <Header />
       <HeroSection data={heroData} />
-      <CapabilitiesSection data={industriesData} />
+      <CapabilitiesSection />
       <ServicesSection data={challengeData} />
       <InsightsPreviewSection data={responseData} />
       <VenturesSection />

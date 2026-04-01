@@ -21,10 +21,10 @@ export function ExecutiveProfileSection({
   const sectionHeadingAccent = profiles[0].sectionHeadingAccent;
 
   return (
-    <div className="mt-12 md:mt-24 overflow-hidden bg-black">
+    <div className="mt-2 md:mt-4 overflow-hidden bg-transparent">
       <div className="px-6 md:px-10 lg:px-16 mb-8 md:mb-12">
         <h2 className="text-3xl font-light md:text-4xl lg:text-5xl">
-          <span className="text-[#c5f018]">{sectionHeading}</span>
+          <span className="font-bold text-[#c5f018]">{sectionHeading}</span>
           {sectionHeadingAccent && (
             <span className="text-white"> {sectionHeadingAccent}</span>
           )}
@@ -61,7 +61,7 @@ export function ExecutiveProfileSection({
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 16 }}
                 transition={{ duration: 0.5 }}
-                className="space-y-4 text-sm leading-relaxed text-zinc-300 md:text-base"
+                className="space-y-4 text-sm leading-relaxed text-white md:text-base"
               >
                 {current.paragraphs.map((para, i) => (
                   <p key={i} className={para.isBold ? "font-bold text-white" : ""}>

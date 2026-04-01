@@ -2,6 +2,10 @@ import { CollectionConfig } from 'payload';
 
 export const Focus: CollectionConfig = {
     slug: 'focus',
+    labels: {
+        singular: 'Focus',
+        plural: 'Focus',
+    },
     admin: {
         useAsTitle: 'heading',
         defaultColumns: ['title', 'updatedAt'],

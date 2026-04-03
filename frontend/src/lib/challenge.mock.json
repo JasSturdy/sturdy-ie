@@ -1,0 +1,51 @@
+{
+  "badge": "Infrastructure",
+  "heading": "Bridging the Gap Between",
+  "headingLight": "Policy and Practice",
+  "body": {
+    "root": {
+      "type": "root",
+      "direction": "ltr",
+      "format": "",
+      "indent": 0,
+      "version": 1,
+      "children": [
+        {
+          "type": "paragraph",
+          "version": 1,
+          "children": [
+            {
+              "type": "text",
+              "text": "Across regulated environments, the challenge is not technology. It is aligning governance, systems, and operations so data can be used effectively in practice.",
+              "version": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
+  "imageCaption": "",
+  "cards": [
+    {
+      "title": "Fragmented Governance",
+      "body": "Policies, controls, and delivery models are often disconnected across teams and institutions.",
+      "icon": "fragmented"
+    },
+    {
+      "title": "Legacy Systems",
+      "body": "Existing infrastructure limits adaptability, interoperability, and secure data use.",
+      "icon": "server"
+    },
+    {
+      "title": "Operational Complexity",
+      "body": "Coordinating governance, technology, risk, and operations creates significant delivery friction.",
+      "icon": "network"
+    },
+    {
+      "title": "Trust and Usability",
+      "body": "Systems may meet compliance requirements but fail to support practical, day-to-day use.",
+      "icon": "shieldCheck"
+    }
+  ]
+}

@@ -115,7 +115,7 @@ function ServiceCard({
       className="group flex flex-col items-center md:flex-row md:items-center gap-4 md:gap-8 rounded-lg md:rounded-2xl border border-[#677f06] p-6 md:p-0"
     >
       <div className="flex-shrink-0 flex h-14 w-14 md:h-45 md:w-40 items-center justify-center rounded-xl md:rounded-l-2xl md:rounded-r-none bg-[#c5f018] text-black">
-        <div className="w-7 h-7 md:w-14 md:h-14">{ICONS[item.icon] ?? ICONS.shield}</div>
+        <div className="w-10 h-10 md:w-20 md:h-20">{ICONS[item.icon] ?? ICONS.shield}</div>
       </div>
       <div className="space-y-2 md:space-y-4 text-center md:text-left md:px-0 md:pb-0">
         <h3 className="md:text-2xl text-base font-medium text-white">{item.title}</h3>

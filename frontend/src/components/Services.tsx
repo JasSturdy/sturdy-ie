@@ -190,7 +190,7 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
                   className="h-2 w-2 rounded-full bg-[#c5f018]"
                   style={{ animation: "dotPulse 1s ease-in-out infinite" }}
                 />
-                <span className="text-sm md:text-lg">{d.badge}</span>
+                <span className="text-sm md:text-lg">Challenges</span>
               </div>
 
               <h2 className="text-2xl font-bold leading-tight text-[#c5f018] md:text-5xl">

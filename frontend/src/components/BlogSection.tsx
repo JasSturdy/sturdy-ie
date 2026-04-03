@@ -92,8 +92,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.22 }}
               className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-lg"
             >
-              Short perspectives on designing systems that work in regulated
-              environments
+              Short perspectives on designing systems that can be governed, operated, and relied on in regulated environments.
             </motion.p>
           </div>
 

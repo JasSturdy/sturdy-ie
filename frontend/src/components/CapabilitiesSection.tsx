@@ -3,49 +3,63 @@
 import { useEffect, useRef, useState } from "react";
 import type { IndustryCard } from "@/lib/industries";
 
+/** Two-line headings for visual consistency across sector cards */
+type IndustryCardWithHeadingLines = IndustryCard & {
+  headingLines: [string, string];
+};
+
 //Fallback
 
-const CARDS: IndustryCard[] = [
+const CARDS: IndustryCardWithHeadingLines[] = [
   {
     title: "Healthcare & Medical",
+    headingLines: ["Healthcare ", "& Medical"],
     description:
-      "Clinical, research, and population health data infrastructure",
+      "Clinical systems, research environments, and population health data infrastructure.",
     imageUrl:
       "https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
     title: "Financial Services",
+    headingLines: ["Financial", "Services"],
     description:
-      "Digital environments enabling collaboration across research and health institutions",
+      "Governed data systems supporting risk, compliance, reporting, and operational resilience.",
     imageUrl:
       "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    title: "Government & Public",
+    title: "Government & Public Sector",
+    headingLines: ["Government ", "& Public Sector"],
     description:
-      "Policy implementation, national infrastructure, and governance",
+      "Policy implementation, national infrastructure, and cross-agency governance.",
     imageUrl:
       "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
   {
-    title: "Defence",
-    description: "Secure, resilient systems in mission-critical environments",
+    title: "Defence Infrastructure",
+    headingLines: ["Defence", "Infrastructure"],
+    description:
+      "Secure, resilient systems designed for mission-critical and sensitive environments.",
     imageUrl:
       "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
 ];
 
-function CardInterior({ card, index }: { card: IndustryCard; index: number }) {
-  const { title, description } = card;
+function CardInterior({
+  card,
+  index,
+}: {
+  card: IndustryCardWithHeadingLines;
+  index: number;
+}) {
+  const { headingLines, description } = card;
   const isAlt = index % 2 !== 0;
 
   return (
     <div className="relative z-[1] mt-auto w-full transition-transform duration-500 ease-out group-hover/card:translate-y-[-2px]">
       <div
-        className={`px-3 py-3 backdrop-blur-sm sm:px-4 sm:py-4 min-h-[100px] max-h-[100px] md:min-h-[190px] md:max-h-[210px] lg:min-h-[210px] lg:max-h-[210px] ${
-          isAlt
-            ? "border-l-4 border-[#c5f018] bg-white"
-            : "border-t-2 border-[#c5f018]/70 bg-zinc-950/80"
+        className={`border-l-4 border-[#c5f018] px-3 py-3 backdrop-blur-sm sm:px-4 sm:py-4 min-h-[100px] max-h-[100px] md:min-h-[190px] md:max-h-[210px] lg:min-h-[210px] lg:max-h-[210px] ${
+          isAlt ? "bg-white" : "bg-zinc-950/80"
         }`}
       >
         <p
@@ -56,11 +70,12 @@ function CardInterior({ card, index }: { card: IndustryCard; index: number }) {
           {String(index + 1).padStart(2, "0")}
         </p>
         <h3
-          className={`mb-3 text-sm font-semibold leading-snug sm:text-base md:text-2xl [overflow-wrap:anywhere] ${
+          className={`mb-3 text-sm font-semibold leading-tight sm:text-base md:text-2xl [overflow-wrap:anywhere] ${
             isAlt ? "text-black" : "text-white"
           }`}
         >
-          {title}
+          <span className="block">{headingLines[0]}</span>
+          <span className="block">{headingLines[1]}</span>
         </h3>
         <p
           className={`text-[0.7rem] leading-relaxed sm:text-xs md:text-sm [overflow-wrap:anywhere] ${
@@ -110,25 +125,30 @@ export function CapabilitiesSection() {
             <span className="text-sm text-white md:text-lg">Industries</span>
           </div>
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl">
-            <span className="text-[#c5f018] font-bold">Operating </span>
-            Across
+            <span className="font-bold text-[#c5f018]">Operating Across</span>
             <br />
-            Regulated
-            <br />
-            Environment
+            Regulated Environments
           </h2>
         </div>
 
-        <div className="flex h-full mt-6 items-center text-white text-[0.95rem] leading-snug">
-          <p className="max-w-3xl text-sm leading-snug md:text-base">
-          Across public sector, financial services, healthcare, and critical infrastructure environments, organisations operate under increasing regulatory expectations while managing complex data systems. The challenge is not a lack of data or policy, but ensuring both function effectively together in practice.
-            {" "}
-            The challenge is not a lack of data or policy. It is making both work together in
-            practice.
-            <br />
-            <br />
-            My work focuses on bridging that gap by designing systems and operating models that align governance, infrastructure, and real-world use. I help organisations translate regulatory intent into operational capability.
-          </p>
+        <div className="mt-6 flex h-full items-center text-[0.95rem] leading-snug text-white">
+          <div className="max-w-3xl space-y-4 text-sm leading-relaxed md:text-base">
+            <p>
+              Across public sector, financial services, healthcare, and defence,
+              organisations face increasing regulatory pressure alongside complex,
+              fragmented data systems.
+            </p>
+            <p>
+              The challenge is rarely the absence of policy or data. It is making
+              both work together in practice.
+            </p>
+            <p>
+              My work focuses on closing that gap—designing systems and operating
+              models that align governance, infrastructure, and real-world use,
+              enabling organisations to turn regulatory intent into operational
+              capability.
+            </p>
+          </div>
         </div>
       </div>
 

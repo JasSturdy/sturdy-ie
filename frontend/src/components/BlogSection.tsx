@@ -81,7 +81,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
             >
               <span className="font-semibold text-[#c5f018]">Perspective </span>
               <span className="font-light text-white">
-                on Governance, Infrastructure, and Data Systems
+               on Governance, Infrastructure, and <br />Trusted Data Systems
               </span>
             </motion.h2>
             <motion.p

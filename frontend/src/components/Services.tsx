@@ -3,92 +3,107 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { LexicalRenderer } from "@/components/LexicalRenderer";
-import type { ChallengeData } from "@/lib/challenge";
+import {
+  CHALLENGE_DEFAULT,
+  type ChallengeCard,
+  type ChallengeData,
+} from "@/lib/challenge";
 
-const ICONS: Record<string, React.ReactNode> = {
+const svgProps = {
+  width: "100%" as const,
+  height: "100%" as const,
+  viewBox: "0 0 24 24",
+  fill: "none" as const,
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+/** Shattered glass — four pane shards + small loose fragment */
+const IconFragmented = (
+  <svg  viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <path d="M100 10 
+           L180 50 
+           L160 170 
+           Q100 230 40 170 
+           L20 50 
+           Z"
+        fill="none"
+        stroke="black"
+        stroke-width="10"
+        stroke-linejoin="round"/>
+
+  <path d="M105 20
+           L115 60
+           L90 95
+           L110 130
+           L95 180"
+        fill="none"
+        stroke="black"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+</svg>
+);
+
+/** Server stack — legacy systems */
+const IconServer = (
+  <svg {...svgProps}>
+    <rect x="2" y="2" width="20" height="8" rx="2" />
+    <rect x="2" y="14" width="20" height="8" rx="2" />
+    <line x1="6" y1="6" x2="6.01" y2="6" />
+    <line x1="6" y1="18" x2="6.01" y2="18" />
+  </svg>
+);
+
+/** Interconnected nodes — operational complexity */
+const IconNetwork = (
+  <svg {...svgProps}>
+    <circle cx="5" cy="6" r="2.5" />
+    <circle cx="19" cy="6" r="2.5" />
+    <circle cx="12" cy="19" r="2.5" />
+    <path d="M7 7.5 10 14M17 7.5 14 14M12 9v7" />
+  </svg>
+);
+
+/** Shield + check — trust, compliance, practical use */
+const IconShieldCheck = (
+  <svg {...svgProps}>
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <polyline points="9 12 11 14 15 10" />
+  </svg>
+);
+
+const ICONS: Record<ChallengeCard["icon"], React.ReactNode> = {
+  fragmented: IconFragmented,
+  server: IconServer,
+  network: IconNetwork,
+  shieldCheck: IconShieldCheck,
   shield: (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg {...svgProps}>
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
     </svg>
   ),
   layers: (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg {...svgProps}>
       <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
       <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
       <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
     </svg>
   ),
   activity: (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg {...svgProps}>
       <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
     </svg>
   ),
   globe: (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg {...svgProps}>
       <circle cx="12" cy="12" r="10" />
       <path d="M2 12h20" />
       <path d="M12 2a14.8 14.8 0 0 1 0 20 14.8 14.8 0 0 1 0-20" />
     </svg>
   ),
-};
-
-const FALLBACK: ChallengeData = {
-  badge: "Infrastructure",
-  heading: "Building Infrastructure",
-  headingLight: "That Operates at Scale",
-  body: {
-    root: {
-      type: "root",
-      children: [
-        {
-          type: "paragraph",
-          version: 1,
-          children: [
-            {
-              type: "text",
-              text: "The systems required in regulated environments go beyond individual tools or platforms.",
-              version: 1,
-            },
-          ],
-        },
-        {
-          type: "paragraph",
-          version: 1,
-          children: [
-            {
-              type: "text",
-              text: "They are infrastructure-level environments that integrate governance, security, and data exchange across organisations.",
-              version: 1,
-            },
-          ],
-        },
-      ],
-      direction: "ltr",
-      format: "",
-      indent: 0,
-      version: 1,
-    },
-  },
-  imageUrl:
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=80",
-  imageCaption:
-    "Infrastructure designed to operate across public sector, financial systems, and health environments",
-  cards: [
-    { title: "Sovereign Data Infrastructure", body: "Control, resilience, and jurisdictional integrity",  icon: "shield"   },
-    { title: "Secure Data Environments",       body: "Governed access and controlled data usage",          icon: "layers"   },
-    { title: "Cross-Institution Data Exchange",body: "Trusted collaboration across organisations",          icon: "activity" },
-    { title: "Regulated Data Platforms",       body: "Systems aligned to policy and operational use",      icon: "globe"    },
-  ],
-};
-
-type InfrastructureCard = {
-  title: string;
-  body: string;
-  icon: "shield" | "layers" | "activity" | "globe";
 };
 
 function ServiceCard({
@@ -98,7 +113,7 @@ function ServiceCard({
   scrollYProgress,
   isMobile,
 }: {
-  item: InfrastructureCard;
+  item: ChallengeCard;
   index: number;
   total: number;
   scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"];
@@ -115,7 +130,9 @@ function ServiceCard({
       className="group flex flex-col items-center md:flex-row md:items-center gap-4 md:gap-8 rounded-lg md:rounded-2xl border border-[#677f06] p-6 md:p-0"
     >
       <div className="flex-shrink-0 flex h-14 w-14 md:h-45 md:w-40 items-center justify-center rounded-xl md:rounded-l-2xl md:rounded-r-none bg-[#c5f018] text-black">
-        <div className="w-7 h-7 md:w-14 md:h-14">{ICONS[item.icon] ?? ICONS.shield}</div>
+        <div className="w-10 h-10 md:w-20 md:h-20">
+          {ICONS[item.icon] ?? ICONS.fragmented}
+        </div>
       </div>
       <div className="space-y-2 md:space-y-4 text-center md:text-left md:px-0 md:pb-0">
         <h3 className="md:text-2xl text-base font-medium text-white">{item.title}</h3>
@@ -126,7 +143,7 @@ function ServiceCard({
 }
 
 export function ServicesSection({ data }: { data?: ChallengeData | null }) {
-  const d = data ?? FALLBACK;
+  const d = data ?? CHALLENGE_DEFAULT;
   const total = d.cards.length;
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -190,9 +207,11 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
                 style={{ backgroundImage: `url('${d.imageUrl}')` }}
               />
 
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white md:text-base">
-                {d.imageCaption}
-              </p>
+              {d.imageCaption ? (
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-white md:text-base">
+                  {d.imageCaption}
+                </p>
+              ) : null}
             </div>
 
             <div className="w-full lg:w-1/2 space-y-4">

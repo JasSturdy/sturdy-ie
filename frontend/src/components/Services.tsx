@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { LexicalRenderer } from "@/components/LexicalRenderer";
 import {
-  CHALLENGE_DEFAULT,
   type ChallengeCard,
   type ChallengeData,
 } from "@/lib/challenge";
@@ -40,7 +39,6 @@ const IconFragmented = (
   </svg>
 );
 
-/** Server stack — legacy systems */
 const IconServer = (
   <svg {...svgProps}>
     <rect x="2" y="2" width="20" height="8" rx="2" />
@@ -50,7 +48,6 @@ const IconServer = (
   </svg>
 );
 
-/** Database cylinder — operational complexity (clean ellipse + arcs, scales with section) */
 const IconNetwork = (
   <svg {...svgProps} aria-hidden>
     <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -59,7 +56,6 @@ const IconNetwork = (
   </svg>
 );
 
-/** Shield + check — trust, compliance, practical use */
 const IconShieldCheck = (
   <svg {...svgProps}>
     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -135,8 +131,7 @@ function ServiceCard({
 }
 
 export function ServicesSection({ data }: { data?: ChallengeData | null }) {
-  const d = data ?? CHALLENGE_DEFAULT;
-  const total = d.cards.length;
+  const total = data?.cards.length ?? 0;
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMobile, setIsMobile] = useState(true);
@@ -153,7 +148,9 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
     offset: ["start start", "end end"],
   });
 
-  const gradientOpacity = useTransform(scrollYProgress, [1 / total, 1], [0, 1]);
+  const gradientOpacity = useTransform(scrollYProgress, [1 / (total || 1), 1], [0, 1]);
+
+  if (!data) return null;
 
   return (
     <div
@@ -186,28 +183,28 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
               </div>
 
               <h2 className="text-2xl font-bold leading-tight text-[#c5f018] md:text-5xl">
-                {d.heading}{" "}
-                <span className="font-light text-white">{d.headingLight}</span>
+                {data.heading}{" "}
+                <span className="font-light text-white">{data.headingLight}</span>
               </h2>
 
               <div className="mt-4 max-w-xl text-sm leading-relaxed text-white md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
-                <LexicalRenderer data={d.body} />
+                <LexicalRenderer data={data.body} />
               </div>
 
               <div
                 className="mt-8 h-64 w-full rounded-2xl bg-cover bg-center sm:h-80 lg:mt-10 lg:h-[420px]"
-                style={{ backgroundImage: `url('${d.imageUrl}')` }}
+                style={{ backgroundImage: `url('${data.imageUrl}')` }}
               />
 
-              {d.imageCaption ? (
+              {data.imageCaption ? (
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-white md:text-base">
-                  {d.imageCaption}
+                  {data.imageCaption}
                 </p>
               ) : null}
             </div>
 
             <div className="w-full lg:w-1/2 space-y-4">
-              {d.cards.map((item, index) => (
+              {data.cards.map((item, index) => (
                 <ServiceCard
                   key={item.title}
                   item={item}

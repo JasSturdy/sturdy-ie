@@ -38,6 +38,7 @@ import { Perspective } from './collections/Perspective'
 import { Impact } from './collections/Impact'
 import { Focus } from './collections/Focus'
 import { FAQ } from './collections/Faq'
+import { LeadershipPapers } from './collections/LeadershipPapers'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,7 +51,7 @@ export default buildConfig({
     },
     livePreview: {
       url: process.env.NEXT_PUBLIC_SITE_URL,
-      collections: ['my-insight', 'case-studies', 'ventures', 'challenge', 'hero', 'industries', 'response', 'response-card', 'challenge-about', 'standards', 'cta', 'application', 'about', 'executive-profile', 'perspective', 'impact', 'focus', 'faq'],
+      collections: ['my-insight', 'case-studies', 'ventures', 'challenge', 'hero', 'industries', 'response', 'response-card', 'challenge-about', 'standards', 'cta', 'application', 'about', 'executive-profile', 'perspective', 'impact', 'focus', 'faq', 'leadership-papers'],
     },
   },
   cors: [
@@ -67,7 +68,7 @@ export default buildConfig({
     'https://sturdy-ie-66rb.vercel.app',
     process.env.NEXT_PUBLIC_SITE_URL ?? '',
   ],
-  collections: [Users, Media, Ventures, MyInsight, CaseStudies, Challenge, Hero, Industries, Response, ResponseCard, ChallengeAbout, Standards, Application, About, Cta, ExecutiveProfile, Perspective, Impact, Focus, FAQ],
+  collections: [Users, Media, Ventures, MyInsight, CaseStudies, Challenge, Hero, Industries, Response, ResponseCard, ChallengeAbout, Standards, Application, About, Cta, ExecutiveProfile, Perspective, Impact, Focus, FAQ, LeadershipPapers],
   globals: [Footer],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
@@ -86,24 +87,24 @@ export default buildConfig({
     },
   }),
   plugins: [
- s3Storage({
-  collections: {
-    media: {
-      disableLocalStorage: true,
-      generateFileURL: (args) =>
-        `${process.env.PAYLOAD_API_URL}/api/media/file/${args.filename}`,
-    },
-  },
-  bucket: process.env.S3_BUCKET!,
-  config: {
-    region: 'auto',
-    endpoint: process.env.S3_ENDPOINT,
-    forcePathStyle: true,
-    credentials: {
-      accessKeyId: process.env.S3_ACCESS_KEY!,
-      secretAccessKey: process.env.S3_SECRET_KEY!,
-    },
-  },
-}),
-],
+    s3Storage({
+      collections: {
+        media: {
+          disableLocalStorage: true,
+          generateFileURL: (args) =>
+            `${process.env.PAYLOAD_API_URL}/api/media/file/${args.filename}`,
+        },
+      },
+      bucket: process.env.S3_BUCKET!,
+      config: {
+        region: 'auto',
+        endpoint: process.env.S3_ENDPOINT,
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY!,
+          secretAccessKey: process.env.S3_SECRET_KEY!,
+        },
+      },
+    }),
+  ],
 })

@@ -1,5 +1,3 @@
-import challengeMock from "./challenge.mock.json";
-
 const API_URL = (process.env.PAYLOAD_API_URL ?? "http://localhost:3001").replace(/\/$/, "");
 
 export type RichTextNode = {
@@ -10,13 +8,11 @@ export type RichTextNode = {
   };
 };
 
-/** Icons for Infrastructure cards — see `Services.tsx` ICONS map */
 export type ChallengeCardIcon =
   | "fragmented"
   | "server"
   | "network"
   | "shieldCheck"
-  /** legacy keys (Payload / older JSON) */
   | "shield"
   | "layers"
   | "activity"
@@ -38,50 +34,43 @@ export type ChallengeData = {
   cards: ChallengeCard[];
 };
 
-/** Local JSON (edit `challenge.mock.json`). */
-export const CHALLENGE_DEFAULT: ChallengeData =
-  challengeMock as ChallengeData;
-
-/**
- * Home page Infrastructure / Services section.
- * Defaults to JSON; set `CHALLENGE_SOURCE=payload` to use Payload `/api/challenge`.
- */
 export async function getChallengeData(): Promise<ChallengeData | null> {
-  if (process.env.CHALLENGE_SOURCE === "payload") {
-    try {
-      const res = await fetch(`${API_URL}/api/challenge?limit=1&depth=1`, {
-        cache: "no-store",
-      });
-      if (!res.ok) return CHALLENGE_DEFAULT;
+  try {
+    const res = await fetch(`${API_URL}/api/challenge?limit=1&depth=1`, {
+      next: { revalidate: 60 },
+    });
 
-      const { docs } = await res.json();
-      if (!Array.isArray(docs) || !docs.length) return CHALLENGE_DEFAULT;
-
-      const d = docs[0];
-
-      return {
-        badge: d.badge ?? "Challenge",
-        heading: d.heading ?? "",
-        headingLight: d.headingLight ?? "",
-        body: d.body ?? { root: { children: [] } },
-        imageUrl: d.image?.url
-          ? d.image.url.startsWith("http")
-            ? d.image.url
-            : `${API_URL}${d.image.url}`
-          : "",
-        imageCaption: d.imageCaption ?? "",
-        cards: Array.isArray(d.cards)
-          ? d.cards.map((c: any) => ({
-              title: c.title ?? "",
-              body: c.body ?? "",
-              icon: c.icon ?? "shield",
-            }))
-          : [],
-      };
-    } catch {
-      return CHALLENGE_DEFAULT;
+    if (!res.ok) {
+      console.warn(`[challenge] Payload returned ${res.status}`);
+      return null;
     }
-  }
 
-  return CHALLENGE_DEFAULT;
+    const { docs } = await res.json();
+    if (!Array.isArray(docs) || !docs.length) return null;
+
+    const d = docs[0];
+
+    return {
+      badge: d.badge ?? "Infrastructure",
+      heading: d.heading ?? "",
+      headingLight: d.headingLight ?? "",
+      body: d.body ?? { root: { children: [] } },
+      imageUrl: d.image?.url
+        ? d.image.url.startsWith("http")
+          ? d.image.url
+          : `${API_URL}${d.image.url}`
+        : "",
+      imageCaption: d.imageCaption ?? "",
+      cards: Array.isArray(d.cards)
+        ? d.cards.map((c: any) => ({
+            title: c.title ?? "",
+            body: c.body ?? "",
+            icon: (c.icon ?? "shield") as ChallengeCardIcon,
+          }))
+        : [],
+    };
+  } catch (err) {
+    console.warn("[challenge] Failed to fetch from Payload.", err);
+    return null;
+  }
 }

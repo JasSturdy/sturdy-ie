@@ -21,21 +21,21 @@ export const Challenge: CollectionConfig = {
         {
             name: 'badge',
             type: 'text',
-            defaultValue: 'Challenge',
-            admin: { description: 'Small badge label above the heading (e.g. "Challenge").' },
+            defaultValue: 'Infrastructure',
+            admin: { description: 'Small badge label above the heading (e.g. "Infrastructure").' },
         },
         {
             name: 'heading',
             type: 'text',
             required: true,
-            defaultValue: 'Building Challenge',
+            defaultValue: 'Bridging the Gap Between',
             admin: { description: 'First line of the heading (rendered in lime).' },
         },
         {
             name: 'headingLight',
             label: 'Heading (light part)',
             type: 'text',
-            defaultValue: 'That Operates at Scale',
+            defaultValue: 'Policy and Practice',
             admin: { description: 'Second line of the heading (rendered in white, lighter weight).' },
         },
         {
@@ -52,18 +52,7 @@ export const Challenge: CollectionConfig = {
                             children: [
                                 {
                                     type: 'text',
-                                    text: 'The systems required in regulated environments go beyond individual tools or platforms.',
-                                    version: 1,
-                                },
-                            ],
-                        },
-                        {
-                            type: 'paragraph',
-                            version: 1,
-                            children: [
-                                {
-                                    type: 'text',
-                                    text: 'They are Challenge-level environments that integrate governance, security, and data exchange across organisations.',
+                                    text: 'Across regulated environments, the challenge is not technology. It is aligning governance, systems, and operations so data can be used effectively in practice.',
                                     version: 1,
                                 },
                             ],
@@ -87,15 +76,14 @@ export const Challenge: CollectionConfig = {
             name: 'imageCaption',
             label: 'Image Caption',
             type: 'text',
-            defaultValue:
-                'Challenge designed to operate across public sector, financial systems, and health environments',
+            admin: { description: 'Optional caption beneath the image.' },
         },
         {
             name: 'cards',
             label: 'Service Cards',
             type: 'array',
             minRows: 1,
-            admin: { description: 'The four (or more) cards shown on the right column.' },
+            admin: { description: 'Cards shown in the right column.' },
             fields: [
                 {
                     name: 'title',
@@ -113,10 +101,14 @@ export const Challenge: CollectionConfig = {
                     type: 'select',
                     defaultValue: 'shield',
                     options: [
-                        { label: 'Shield (Sovereign)', value: 'shield' },
-                        { label: 'Layers (Secure)', value: 'layers' },
-                        { label: 'Activity (Exchange)', value: 'activity' },
-                        { label: 'Globe (Regulated)', value: 'globe' },
+                        { label: 'Fragmented (custom polygon)', value: 'fragmented' },
+                        { label: 'Server (legacy systems)',      value: 'server' },
+                        { label: 'Network / Database',           value: 'network' },
+                        { label: 'Shield + Check',               value: 'shieldCheck' },
+                        { label: 'Shield (plain)',               value: 'shield' },
+                        { label: 'Layers (Secure)',              value: 'layers' },
+                        { label: 'Activity (Exchange)',          value: 'activity' },
+                        { label: 'Globe (Regulated)',            value: 'globe' },
                     ],
                     admin: { description: 'Pick the icon that best represents this card.' },
                 },

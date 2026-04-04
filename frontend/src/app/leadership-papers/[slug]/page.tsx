@@ -1,43 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "../../../components/Header";
-import { getFooterData } from "@/lib/footer";
 import { FooterSection } from "@/components/FooterSection";
 import { LexicalRenderer } from "../../../components/LexicalRenderer";
 import { CopyGuard } from "../../../components/CopyGuard";
-import papers from "../../../lib/leadershipPapers.mock.json";
-
-type LeadershipPaper = {
-  slug: string;
-  title: string;
-  subtitle?: string;
-  category: string;
-  date: string;
-  summary: string;
-  executiveSummary?: string;
-  challengeContext?: string;
-  framework?: string;
-  realWorldApplication?: string;
-  infrastructureImplications?: string;
-  actionableRecommendations?: string;
-  perspective?: string;
-  closing?: string;
-  img?: string;
-  flagship?: boolean;
-};
-
-function toLexicalDocFromText(text: string): { root: { children: any[] } } {
-  return {
-    root: {
-      children: [
-        {
-          type: "paragraph",
-          children: [{ type: "text", text }],
-        },
-      ],
-    },
-  };
-}
+import { getFooterData } from "@/lib/footer";
+import {
+  getLeadershipPaperBySlug,
+  getLeadershipPapersIndex,
+} from "@/lib/leadershipPapers";
 
 export default async function LeadershipPaperDetailPage({
   params,
@@ -45,62 +16,16 @@ export default async function LeadershipPaperDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const footerData = await getFooterData();
 
-  const paper = papers.find((p) => (p as LeadershipPaper).slug === slug) as
-    | LeadershipPaper
-    | undefined;
+  const [paper, allPapers, footerData] = await Promise.all([
+    getLeadershipPaperBySlug(slug),
+    getLeadershipPapersIndex(),
+    getFooterData(),
+  ]);
+
   if (!paper) notFound();
 
-  const recentPapers = (papers as LeadershipPaper[])
-    .filter((p) => p.slug !== slug)
-    .slice(0, 2);
-
-  const summary = toLexicalDocFromText(paper.summary);
-  const sections = [
-    {
-      heading: "Executive Summary",
-      body: paper.executiveSummary
-        ? toLexicalDocFromText(paper.executiveSummary)
-        : null,
-    },
-    {
-      heading: "The Challenge / Context",
-      body: paper.challengeContext
-        ? toLexicalDocFromText(paper.challengeContext)
-        : null,
-    },
-    {
-      heading: "Framework",
-      body: paper.framework ? toLexicalDocFromText(paper.framework) : null,
-    },
-    {
-      heading: "Real-World Application",
-      body: paper.realWorldApplication
-        ? toLexicalDocFromText(paper.realWorldApplication)
-        : null,
-    },
-    {
-      heading: "Infrastructure Implications",
-      body: paper.infrastructureImplications
-        ? toLexicalDocFromText(paper.infrastructureImplications)
-        : null,
-    },
-    {
-      heading: "Actionable Recommendations",
-      body: paper.actionableRecommendations
-        ? toLexicalDocFromText(paper.actionableRecommendations)
-        : null,
-    },
-    {
-      heading: "Perspective",
-      body: paper.perspective ? toLexicalDocFromText(paper.perspective) : null,
-    },
-    {
-      heading: "Closing",
-      body: paper.closing ? toLexicalDocFromText(paper.closing) : null,
-    },
-  ].filter((section) => section.body !== null);
+  const recentPapers = allPapers.filter((p) => p.slug !== slug).slice(0, 2);
 
   return (
     <CopyGuard>
@@ -127,9 +52,8 @@ export default async function LeadershipPaperDetailPage({
                 </p>
               )}
 
-              {/* richText summary rendered via LexicalRenderer */}
               <div className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base [&_p]:text-zinc-400">
-                <LexicalRenderer data={summary} />
+                <LexicalRenderer data={paper.summary} />
               </div>
 
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-500">
@@ -150,7 +74,6 @@ export default async function LeadershipPaperDetailPage({
               </div>
             </div>
 
-            {/* Featured image */}
             {paper.img && (
               <div className="mt-12 overflow-hidden rounded-2xl bg-zinc-900">
                 <img
@@ -167,19 +90,16 @@ export default async function LeadershipPaperDetailPage({
         {/* ── Body ── */}
         <div className="mx-auto max-w-8xl px-4 pt-14 sm:px-6 md:px-10 lg:px-0">
           <article className="space-y-14">
-            {sections.map(({ heading, body }, index) => {
-              if (!body) return null;
-              return (
-                <section key={index}>
-                  <h2 className="text-[28px] font-light leading-[1.1] text-white">
-                    {heading}
-                  </h2>
-                  <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-white [&_p]:text-white [&_li]:text-white">
-                    <LexicalRenderer data={body} />
-                  </div>
-                </section>
-              );
-            })}
+            {paper.sections.map(({ heading, body }, index) => (
+              <section key={index}>
+                <h2 className="text-[28px] font-light leading-[1.1] text-white">
+                  {heading}
+                </h2>
+                <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-white [&_p]:text-white [&_li]:text-white">
+                  <LexicalRenderer data={body} />
+                </div>
+              </section>
+            ))}
 
             {/* ── CTA ── */}
             <section className="pt-16">
@@ -218,7 +138,7 @@ export default async function LeadershipPaperDetailPage({
             </section>
           </article>
 
-          {/* ── Recent leadership papers ── */}
+          {/* ── Recent papers ── */}
           {recentPapers.length > 0 && (
             <section className="pt-20 pb-24">
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
@@ -252,24 +172,22 @@ export default async function LeadershipPaperDetailPage({
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                {recentPapers.map((insight) => (
+                {recentPapers.map((p) => (
                   <Link
-                    key={insight.slug}
-                    href={`/leadership-papers/${insight.slug}`}
+                    key={p.slug}
+                    href={`/leadership-papers/${p.slug}`}
                     className="group block rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 transition duration-300 hover:border-[#c5f018]/70 hover:shadow-[0_0_40px_rgba(197,240,24,0.16)]"
                   >
                     <div className="mb-5 flex items-start justify-end">
                       <span className="rounded-full border border-[#c5f018]/45 bg-[#c5f018]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
-                        {insight.category}
+                        {p.category}
                       </span>
                     </div>
-
                     <h3 className="text-2xl font-semibold leading-tight text-white transition-colors group-hover:text-[#e4f98a]">
-                      {insight.title}
+                      {p.title}
                     </h3>
                     <div className="my-4 h-px w-full bg-zinc-700/70" />
-
-                    <p className="text-xs text-zinc-400">{insight.date}</p>
+                    <p className="text-xs text-zinc-400">{p.date}</p>
                     <p
                       className="mt-4 min-h-[72px] text-sm leading-relaxed text-zinc-300"
                       style={{
@@ -279,9 +197,8 @@ export default async function LeadershipPaperDetailPage({
                         overflow: "hidden",
                       }}
                     >
-                      {insight.summary}
+                      {p.excerpt}
                     </p>
-
                     <div className="mt-6 flex items-center justify-end">
                       <span className="rounded-full border border-zinc-500 px-4 py-1.5 text-xs font-semibold text-zinc-200 transition group-hover:border-[#c5f018] group-hover:text-[#c5f018]">
                         Read more
@@ -299,4 +216,3 @@ export default async function LeadershipPaperDetailPage({
     </CopyGuard>
   );
 }
-

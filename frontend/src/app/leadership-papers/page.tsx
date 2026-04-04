@@ -1,9 +1,12 @@
 import { WritingClient } from "./WritingClient";
+import { getLeadershipPapersIndex } from "@/lib/leadershipPapers";
 import { getFooterData } from "@/lib/footer";
-import papers from "../../lib/leadershipPapers.mock.json";
 
 export default async function LeadershipPapersPage() {
-  const footerData = await getFooterData();
+  const [papers, footerData] = await Promise.all([
+    getLeadershipPapersIndex(),
+    getFooterData(),
+  ]);
+
   return <WritingClient papers={papers} footerData={footerData} />;
 }
-

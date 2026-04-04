@@ -87,6 +87,7 @@ export interface Config {
     impact: Impact;
     focus: Focus;
     faq: Faq;
+    'leadership-papers': LeadershipPaper;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -114,6 +115,7 @@ export interface Config {
     impact: ImpactSelect<false> | ImpactSelect<true>;
     focus: FocusSelect<false> | FocusSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
+    'leadership-papers': LeadershipPapersSelect<false> | LeadershipPapersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -466,7 +468,7 @@ export interface CaseStudy {
 export interface Challenge {
   id: number;
   /**
-   * Small badge label above the heading (e.g. "Challenge").
+   * Small badge label above the heading (e.g. "Infrastructure").
    */
   badge?: string | null;
   /**
@@ -499,9 +501,12 @@ export interface Challenge {
    * Image shown below the body text.
    */
   image: number | Media;
+  /**
+   * Optional caption beneath the image.
+   */
   imageCaption?: string | null;
   /**
-   * The four (or more) cards shown on the right column.
+   * Cards shown in the right column.
    */
   cards?:
     | {
@@ -513,7 +518,9 @@ export interface Challenge {
         /**
          * Pick the icon that best represents this card.
          */
-        icon?: ('shield' | 'layers' | 'activity' | 'globe') | null;
+        icon?:
+          | ('fragmented' | 'server' | 'network' | 'shieldCheck' | 'shield' | 'layers' | 'activity' | 'globe')
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1299,6 +1306,69 @@ export interface Faq {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leadership-papers".
+ */
+export interface LeadershipPaper {
+  id: number;
+  title: string;
+  slug: string;
+  subtitle?: string | null;
+  /**
+   * e.g. "Governance & Compliance"
+   */
+  category: string;
+  /**
+   * Display date e.g. "July 1, 2026"
+   */
+  date?: string | null;
+  summary: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image?: (number | null) | Media;
+  flagship?: boolean | null;
+  /**
+   * Add, reorder, or remove sections freely.
+   */
+  sections?:
+    | {
+        heading: string;
+        body: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1400,6 +1470,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'faq';
         value: number | Faq;
+      } | null)
+    | ({
+        relationTo: 'leadership-papers';
+        value: number | LeadershipPaper;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1861,6 +1935,31 @@ export interface FaqSelect<T extends boolean = true> {
   question?: T;
   answer?: T;
   order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leadership-papers_select".
+ */
+export interface LeadershipPapersSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  subtitle?: T;
+  category?: T;
+  date?: T;
+  summary?: T;
+  image?: T;
+  flagship?: T;
+  sections?:
+    | T
+    | {
+        heading?: T;
+        body?: T;
+        id?: T;
+      };
+  seoTitle?: T;
+  seoDescription?: T;
   updatedAt?: T;
   createdAt?: T;
 }

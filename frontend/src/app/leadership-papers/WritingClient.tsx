@@ -5,14 +5,7 @@ import Link from "next/link";
 import { Header } from "../../components/Header";
 import { FooterSection } from "../../components/FooterSection";
 import type { FooterData } from "@/lib/footer";
-
-type LeadershipPaper = {
-  slug: string;
-  title: string;
-  category: string;
-  date: string;
-  summary: string;
-};
+import type { LeadershipPaperIndex } from "@/lib/leadershipPapers";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -20,11 +13,12 @@ export function WritingClient({
   papers,
   footerData,
 }: {
-  papers: LeadershipPaper[];
+  papers: LeadershipPaperIndex[];
   footerData: FooterData | null;
 }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
+
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(papers.map((p) => p.category)))],
     [papers],
@@ -39,6 +33,7 @@ export function WritingClient({
   );
 
   const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+
   const paginated = useMemo(() => {
     const start = (currentPage - 1) * ITEMS_PER_PAGE;
     return filtered.slice(start, start + ITEMS_PER_PAGE);
@@ -71,6 +66,24 @@ export function WritingClient({
         </p>
       </section>
 
+      {/* Category filter */}
+      <section className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => handleCategoryChange(cat)}
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+                cat === activeCategory
+                  ? "bg-[#c5f018] text-black"
+                  : "border border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-white"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </section>
 
       {/* Leadership Papers */}
       <section className="bg-black">
@@ -111,9 +124,7 @@ export function WritingClient({
                   </h2>
                   <div className="my-4 h-px w-full bg-zinc-700/70" />
 
-                  <div className="space-y-1 text-xs text-zinc-400">
-                    <p>{paper.date}</p>
-                  </div>
+                  <p className="text-xs text-zinc-400">{paper.date}</p>
 
                   <p
                     className="mt-4 min-h-[72px] text-sm leading-relaxed text-zinc-300"
@@ -124,7 +135,7 @@ export function WritingClient({
                       overflow: "hidden",
                     }}
                   >
-                    {paper.summary}
+                    {paper.excerpt}
                   </p>
 
                   <div className="mt-6 flex items-center justify-end">
@@ -149,21 +160,19 @@ export function WritingClient({
               </button>
 
               <div className="flex items-center gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                  (page) => (
-                    <button
-                      key={page}
-                      onClick={() => handlePageChange(page)}
-                      className={`h-9 w-9 rounded-lg text-sm font-medium transition ${
-                        page === currentPage
-                          ? "bg-[#c5f018] text-black"
-                          : "border border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-zinc-500 hover:text-white"
-                      }`}
-                    >
-                      {page}
-                    </button>
-                  ),
-                )}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`h-9 w-9 rounded-lg text-sm font-medium transition ${
+                      page === currentPage
+                        ? "bg-[#c5f018] text-black"
+                        : "border border-zinc-700 bg-zinc-900 text-zinc-400 hover:border-zinc-500 hover:text-white"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
               </div>
 
               <button
@@ -182,4 +191,3 @@ export function WritingClient({
     </main>
   );
 }
-

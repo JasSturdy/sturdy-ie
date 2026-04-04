@@ -67,7 +67,7 @@ export function WritingClient({
       </section>
 
       {/* Category filter */}
-      <section className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
+      {/* <section className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
@@ -83,7 +83,7 @@ export function WritingClient({
             </button>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Leadership Papers */}
       <section className="bg-black">

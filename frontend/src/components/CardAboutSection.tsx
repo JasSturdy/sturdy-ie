@@ -64,23 +64,51 @@ function IconCollaboration() {
   );
 }
 
-import type { CardAboutData, CardAboutIcon } from "@/lib/cardAbout";
+import type { CardAboutIcon } from "@/lib/cardAbout";
 
-const FALLBACK_CARDS = [
-  { icon: "governance" as CardAboutIcon, title: "Data Governance & Compliance", description: "Translating policy, regulation, and standards into working systems." },
-  { icon: "security" as CardAboutIcon, title: "Security Architecture", description: "Designing environments with control, access, and resilience built in." },
-  { icon: "infrastructure" as CardAboutIcon, title: "Data Infrastructure", description: "Enabling integration, interoperability, and structured data exchange." },
-  { icon: "operating" as CardAboutIcon, title: "Operating Models & Delivery", description: "Designing operating models that enable the effective use of data in practice." },
-  { icon: "regulatory" as CardAboutIcon, title: "Regulatory Alignment", description: "Bridging regulatory intent with operational delivery across institutions." },
-  { icon: "collaboration" as CardAboutIcon, title: "Institutional Collaboration", description: "Enabling trusted data sharing and cross-institutional coordination at scale." },
+const CARDS: {
+  icon: CardAboutIcon;
+  line1: string;
+  line2: string;
+  description: string;
+}[] = [
+  {
+    icon: "governance",
+    line1: "Data Governance",
+    line2: "& Compliance",
+    description: "Translating regulatory requirements into operational systems and controls.",
+  },
+  {
+    icon: "security",
+    line1: "Security",
+    line2: "Architecture",
+    description: "Designing environments with built-in control, access management, and resilience.",
+  },
+  {
+    icon: "infrastructure",
+    line1: "Data",
+    line2: "Infrastructure",
+    description: "Building platforms that perform reliably in regulated and mission-critical settings.",
+  },
+  {
+    icon: "operating",
+    line1: "Operating",
+    line2: "Models & Delivery",
+    description: "Designing systems for adoption, usability, and long-term sustainability.",
+  },
+  {
+    icon: "regulatory",
+    line1: "Standards &",
+    line2: "Interoperability",
+    description: "Enabling secure, structured data exchange across systems and organisations.",
+  },
+  {
+    icon: "collaboration",
+    line1: "Resilience &",
+    line2: "System Integrity",
+    description: "Ensuring systems operate reliably under real-world conditions.",
+  },
 ];
-
-const FALLBACK: CardAboutData = {
-  badge: "Focus",
-  headingAccent: "Core",
-  heading: "Areas of Focus",
-  cards: FALLBACK_CARDS,
-};
 
 const ICON_MAP: Record<CardAboutIcon, ReactNode> = {
   governance:     <IconGovernance />,
@@ -91,9 +119,7 @@ const ICON_MAP: Record<CardAboutIcon, ReactNode> = {
   collaboration:  <IconCollaboration />,
 };
 
-export function CardAboutSection({ data }: { data?: CardAboutData | null }) {
-  const d = data ?? FALLBACK;
-
+export function CardAboutSection() {
   return (
     <section className="">
       <div className="mx-auto max-w-8xl px-6 py-16 md:px-10 md:py-20 lg:px-0">
@@ -103,26 +129,28 @@ export function CardAboutSection({ data }: { data?: CardAboutData | null }) {
             className="h-2 w-2 rounded-full bg-[#c5f018]"
             style={{ animation: "dotPulse 1s ease-in-out infinite" }}
           />
-          <span className="text-sm md:text-lg">{d.badge}</span>
+          <span className="text-sm md:text-lg">Focus</span>
         </div>
 
         {/* Heading */}
         <h2 className="mb-12 text-center text-4xl font-light leading-tight text-white md:text-5xl lg:text-6xl">
-          <span className="text-[#c5f018]">{d.headingAccent} </span>
-          {d.heading}
+          <span className="text-[#c5f018]">Core </span>
+          Areas of Focus
         </h2>
 
         <div className="grid gap-4 md:grid-cols-3">
-          {d.cards.map((card) => (
+          {CARDS.map((card) => (
             <div
-              key={card.title}
+              key={`${card.line1}-${card.line2}`}
               className="flex flex-col gap-4 rounded-2xl bg-zinc-800/80 p-6"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#c5f018]/50 bg-[#c5f018]/10 p-3 text-[#c5f018]">
                 {ICON_MAP[card.icon] ?? ICON_MAP.governance}
               </div>
-              <h3 className="text-xl font-light text-white md:text-2xl lg:text-3xl">
-                {card.title}
+              <h3 className="text-xl font-light leading-tight text-white md:text-2xl lg:text-3xl">
+                {card.line1}
+                <br />
+                {card.line2}
               </h3>
               <p className="text-sm leading-relaxed text-white">
                 {card.description}

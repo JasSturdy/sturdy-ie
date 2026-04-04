@@ -14,8 +14,6 @@ import { ImpactSection } from "@/components/ImpactSection";
 import { getImpactData } from "@/lib/impact";
 import { getCtaData } from "@/lib/cta";
 import { ContactUsCtaSection } from "@/components/ContactUsCtaSection";
-import { getCardAboutData } from "@/lib/cardAbout";
-
 export const dynamic = "force-dynamic";
 
 export default async function AboutPage() {
@@ -26,7 +24,6 @@ export default async function AboutPage() {
     perspectiveData,
     impactData,
     ctaData,
-    cardAboutData,
   ] = await Promise.all([
     getChallengesData(),
     getFooterData(),
@@ -34,7 +31,6 @@ export default async function AboutPage() {
     getPerspectiveData(),
     getImpactData(),
     getCtaData(),
-    getCardAboutData(),
   ]);
 
     console.log("executiveProfileData:", executiveProfileData); // tambah ini
@@ -55,7 +51,7 @@ export default async function AboutPage() {
       />
       <PerspectiveSection data={perspectiveData} />
       <ImpactSection data={impactData} />
-      <CardAboutSection data={cardAboutData} />
+      <CardAboutSection />
       <ContactUsCtaSection data={ctaData} />
       <ExploreWorkSection />
       <FooterSection data={footerData} />

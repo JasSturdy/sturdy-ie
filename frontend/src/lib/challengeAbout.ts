@@ -95,7 +95,8 @@ const FALLBACK: ChallengePayload = {
     ctaHref:         "/case-studies",
     ctaLabel2:       "Explore Insights",
     ctaHref2:        "/insights",
-    backgroundImage: "/bg-contact.png",
+    backgroundImage:
+      "https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
 };
 

@@ -107,24 +107,27 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 lg:h-full lg:min-h-0">
           <div className="flex items-center gap-3">
             <span className="text-4xl font-semibold text-[#c5f018]">✳</span>
             <div className="h-px flex-1 bg-zinc-700" />
           </div>
 
           {/* Image */}
-          <div
-            className="h-64 w-full rounded-2xl bg-zinc-800 bg-cover bg-center sm:h-80 md:h-full"
-            style={{
-              backgroundImage: exploreCard.backgroundImage
-                ? `url('${exploreCard.backgroundImage}')`
-                : undefined,
-            }}
-          />
+          <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-zinc-800 sm:h-80 lg:h-auto lg:min-h-[280px] lg:flex-1">
+            {exploreCard.backgroundImage ? (
+              <img
+                src={exploreCard.backgroundImage}
+                alt={exploreCard.heading}
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+            ) : null}
+          </div>
 
           <div className="text-sm leading-relaxed text-white md:text-base [&_p]:mb-0">
-            <LexicalRenderer data={exploreCard.body} />
+          <div className="font-bold">Selected examples of systems, platforms, and environments designed for regulated settings.</div>
+<br></br>Explore how governance, infrastructure, and delivery come together in practice.
+
           </div>
 
           {/* CTA Buttons — size and hover animation matched to HeroSection */}

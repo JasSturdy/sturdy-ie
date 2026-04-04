@@ -194,27 +194,10 @@ function FocusCard({
       className="group relative shrink-0"
       style={{ flex: "0 0 clamp(220px, 24vw, 320px)" }}
     >
-      <div className="relative aspect-[3/4] w-full overflow-visible rounded-[1.5rem] border border-zinc-800/90 bg-zinc-950 shadow-black/40 transition-all duration-500 ease-out hover:-translate-y-2 hover:border-zinc-700/90 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.65)]">
-        <div className="absolute inset-0 overflow-hidden rounded-[1.5rem]">
-          {card.imageUrl ? (
-            <img
-              src={card.imageUrl}
-              alt=""
-              className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-          ) : (
-            <div className="h-full w-full bg-zinc-900" />
-          )}
-
+      <div className="relative flex aspect-[3/4] w-full flex-col overflow-hidden rounded-[1.5rem] border border-zinc-800/80 border-l-[3px] border-l-[#c5f018]/85 bg-gradient-to-b from-zinc-900/95 via-zinc-950 to-black p-5 shadow-[0_4px_28px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-white/[0.05] transition-all duration-500 ease-out before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_90%_60%_at_100%_0%,rgba(197,240,24,0.09),transparent_55%)] after:pointer-events-none after:absolute after:inset-0 after:opacity-[0.22] after:[background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] after:bg-[length:22px_22px] hover:-translate-y-2 hover:border-zinc-600/70 hover:border-l-[#c5f018] hover:shadow-[0_28px_56px_-14px_rgba(0,0,0,0.72),0_0_48px_-12px_rgba(197,240,24,0.14)] hover:ring-[#c5f018]/10 md:p-6">
+        <div className="relative z-[1] flex items-start justify-between">
           <div
-            className="absolute inset-0 rounded-[1.5rem] bg-gradient-to-t from-black via-black/50 to-black/20"
-            aria-hidden
-          />
-        </div>
-
-        <div className="absolute left-0 right-0 top-0 z-[1] flex items-start justify-between p-4 md:p-5">
-          <div
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-300/25 bg-black/55 text-white shadow-[0_0_20px_rgba(0,0,0,0.18)] backdrop-blur-md transition-transform duration-500 group-hover:scale-110 md:h-[3.25rem] md:w-[3.25rem]"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-[#c5f018]/45 bg-[#c5f018]/10 text-[#c5f018] shadow-[0_0_24px_-4px_rgba(197,240,24,0.35)] transition-all duration-500 group-hover:scale-110 group-hover:border-[#c5f018]/70 group-hover:bg-[#c5f018]/15 group-hover:shadow-[0_0_28px_-2px_rgba(197,240,24,0.45)] md:h-[3.25rem] md:w-[3.25rem]"
             aria-hidden
           >
             <div className="h-[1.35rem] w-[1.35rem] md:h-7 md:w-7">
@@ -222,21 +205,19 @@ function FocusCard({
             </div>
           </div>
 
-          <span className="rounded-full border border-white/10 bg-black/40 px-2.5 py-1 font-mono text-[0.65rem] font-medium uppercase tracking-[0.2em] text-white backdrop-blur-sm md:text-xs">
+          <span className="rounded-full border border-zinc-600/50 bg-zinc-900/90 px-2.5 py-1 font-mono text-[0.65rem] font-medium uppercase tracking-[0.2em] text-zinc-400 transition-colors duration-300 group-hover:border-[#c5f018]/35 group-hover:text-[#c5f018] md:text-xs">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-[1] overflow-hidden rounded-b-[1.5rem]">
-          {/* <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-80" /> */}
-          <div className="bg-gradient-to-t from-black/95 via-black/75 to-transparent px-5 pb-7 pt-12 md:px-6 md:pb-8 md:pt-14">
-            <h3 className="text-xl font-light leading-snug tracking-tight text-white md:text-2xl">
-              {card.title}
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-white md:text-[0.95rem]">
-              {card.tagline}
-            </p>
-          </div>
+        <div className="relative z-[1] mt-auto flex flex-col pt-8 md:pt-10">
+          <div className="mb-4 h-px w-full bg-gradient-to-r from-[#c5f018]/25 via-zinc-700/60 to-transparent md:mb-5" aria-hidden />
+          <h3 className="text-xl font-light leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-[#f4ffc9] md:text-2xl">
+            {card.title}
+          </h3>
+          <p className="mt-2.5 text-sm leading-relaxed text-zinc-400 transition-colors duration-300 group-hover:text-zinc-300 md:text-[0.95rem]">
+            {card.tagline}
+          </p>
         </div>
       </div>
     </motion.article>

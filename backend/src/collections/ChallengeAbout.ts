@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+﻿import type { CollectionConfig } from 'payload';
 
 export const ChallengeAbout: CollectionConfig = {
     slug: 'approach',
@@ -52,42 +52,42 @@ export const ChallengeAbout: CollectionConfig = {
         },
         {
             name: 'exploreHeading',
-            label: 'Explore Card — Heading',
+            label: 'Explore Card â€” Heading',
             type: 'text',
             defaultValue: 'Explore My Work',
         },
         {
             name: 'exploreBody',
-            label: 'Explore Card — Body',
+            label: 'Explore Card â€” Body',
             type: 'richText',
         },
         {
             name: 'exploreCtaLabel',
-            label: 'Explore Card — CTA 1 Label',
+            label: 'Explore Card â€” CTA 1 Label',
             type: 'text',
             defaultValue: 'View Case Studies',
         },
         {
             name: 'exploreCtaHref',
-            label: 'Explore Card — CTA 1 URL',
+            label: 'Explore Card â€” CTA 1 URL',
             type: 'text',
             defaultValue: '/case-studies',
         },
         {
             name: 'exploreCtaLabel2',
-            label: 'Explore Card — CTA 2 Label',
+            label: 'Explore Card â€” CTA 2 Label',
             type: 'text',
             defaultValue: 'Explore Insights',
         },
         {
             name: 'exploreCtaHref2',
-            label: 'Explore Card — CTA 2 URL',
+            label: 'Explore Card â€” CTA 2 URL',
             type: 'text',
             defaultValue: '/insights',
         },
         {
             name: 'exploreBackgroundImage',
-            label: 'Explore Card — Background Image',
+            label: 'Explore Card â€” Background Image',
             type: 'upload',
             relationTo: 'media',
         },

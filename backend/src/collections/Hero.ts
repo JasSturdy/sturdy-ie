@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+﻿import type { CollectionConfig } from 'payload';
 
 export const Hero: CollectionConfig = {
   slug: 'hero',
@@ -48,7 +48,7 @@ export const Hero: CollectionConfig = {
     {
       name: 'tagline',
       type: 'text',
-      defaultValue: 'Data Governance • Security Architecture • Operating Models • Digital Infrastructure',
+      defaultValue: 'Data Governance â€¢ Security Architecture â€¢ Operating Models â€¢ Digital Infrastructure',
       admin: { description: 'Dot-separated disciplines line beneath the subheading.' },
     },
 
@@ -89,7 +89,7 @@ export const Hero: CollectionConfig = {
           ],
         },
 
-        // Block 2 — Bullet List
+        // Block 2 â€” Bullet List
         {
           slug: 'bulletList',
           labels: { singular: 'Bullet List', plural: 'Bullet Lists' },

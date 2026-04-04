@@ -1243,28 +1243,28 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Challenge'"
+          "default": "'Infrastructure'"
         },
         "heading": {
           "name": "heading",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true,
-          "default": "'Building Challenge'"
+          "default": "'Bridging the Gap Between'"
         },
         "heading_light": {
           "name": "heading_light",
           "type": "varchar",
           "primaryKey": false,
           "notNull": false,
-          "default": "'That Operates at Scale'"
+          "default": "'Policy and Practice'"
         },
         "body": {
           "name": "body",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": false,
-          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"The systems required in regulated environments go beyond individual tools or platforms.\",\"version\":1}]},{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"They are Challenge-level environments that integrate governance, security, and data exchange across organisations.\",\"version\":1}]}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+          "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"Across regulated environments, the challenge is not technology. It is aligning governance, systems, and operations so data can be used effectively in practice.\",\"version\":1}]}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
         "image_id": {
           "name": "image_id",
@@ -1276,8 +1276,7 @@
           "name": "image_caption",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false,
-          "default": "'Challenge designed to operate across public sector, financial systems, and health environments'"
+          "notNull": false
         },
         "updated_at": {
           "name": "updated_at",
@@ -1694,7 +1693,7 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Sturdy'"
+          "default": "'Jason'"
         },
         "subheading": {
           "name": "subheading",
@@ -1708,7 +1707,7 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false,
-          "default": "'Data Governance • Security Architecture • Operating Models • Digital Infrastructure'"
+          "default": "'Data Governance â€¢ Security Architecture â€¢ Operating Models â€¢ Digital Infrastructure'"
         },
         "primary_cta_label": {
           "name": "primary_cta_label",
@@ -4253,6 +4252,263 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.leadership_papers_sections": {
+      "name": "leadership_papers_sections",
+      "schema": "",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "heading": {
+          "name": "heading",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "body": {
+          "name": "body",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "leadership_papers_sections_order_idx": {
+          "name": "leadership_papers_sections_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "leadership_papers_sections_parent_id_idx": {
+          "name": "leadership_papers_sections_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "leadership_papers_sections_parent_id_fk": {
+          "name": "leadership_papers_sections_parent_id_fk",
+          "tableFrom": "leadership_papers_sections",
+          "tableTo": "leadership_papers",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.leadership_papers": {
+      "name": "leadership_papers",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subtitle": {
+          "name": "subtitle",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "summary": {
+          "name": "summary",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_id": {
+          "name": "image_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "flagship": {
+          "name": "flagship",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "seo_title": {
+          "name": "seo_title",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "seo_description": {
+          "name": "seo_description",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "leadership_papers_slug_idx": {
+          "name": "leadership_papers_slug_idx",
+          "columns": [
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "leadership_papers_image_idx": {
+          "name": "leadership_papers_image_idx",
+          "columns": [
+            {
+              "expression": "image_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "leadership_papers_updated_at_idx": {
+          "name": "leadership_papers_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "leadership_papers_created_at_idx": {
+          "name": "leadership_papers_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "leadership_papers_image_id_media_id_fk": {
+          "name": "leadership_papers_image_id_media_id_fk",
+          "tableFrom": "leadership_papers",
+          "tableTo": "media",
+          "columnsFrom": [
+            "image_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.payload_kv": {
       "name": "payload_kv",
       "schema": "",
@@ -4529,6 +4785,12 @@
         },
         "faq_id": {
           "name": "faq_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "leadership_papers_id": {
+          "name": "leadership_papers_id",
           "type": "integer",
           "primaryKey": false,
           "notNull": false
@@ -4879,6 +5141,21 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
+        },
+        "payload_locked_documents_rels_leadership_papers_id_idx": {
+          "name": "payload_locked_documents_rels_leadership_papers_id_idx",
+          "columns": [
+            {
+              "expression": "leadership_papers_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
         }
       },
       "foreignKeys": {
@@ -5148,6 +5425,19 @@
           "tableTo": "faq",
           "columnsFrom": [
             "faq_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_leadership_papers_fk": {
+          "name": "payload_locked_documents_rels_leadership_papers_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "leadership_papers",
+          "columnsFrom": [
+            "leadership_papers_id"
           ],
           "columnsTo": [
             "id"
@@ -5657,7 +5947,7 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": true,
-          "default": "'Copyright © All Rights Reserved Jason Sturdy'"
+          "default": "'Copyright Â© All Rights Reserved Jason Sturdy'"
         },
         "cta_label": {
           "name": "cta_label",
@@ -5727,6 +6017,10 @@
       "name": "enum_challenge_cards_icon",
       "schema": "public",
       "values": [
+        "fragmented",
+        "server",
+        "network",
+        "shieldCheck",
         "shield",
         "layers",
         "activity",
@@ -5827,6 +6121,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "671ef7f2-cfe7-4d47-af2c-633a9dfe33a7",
+  "id": "cbe45841-cacd-4fde-a779-0128154f9609",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+﻿import type { CollectionConfig } from 'payload';
 
 export const Challenge: CollectionConfig = {
   slug: 'challenge',
@@ -57,7 +57,7 @@ export const Challenge: CollectionConfig = {
       type: 'array',
       minRows: 1,
       maxRows: 4,
-      admin: { description: 'The 2×2 grid of expertise cards. Supports up to 4 items.' },
+      admin: { description: 'The 2Ã—2 grid of expertise cards. Supports up to 4 items.' },
       fields: [
         {
           name: 'title',

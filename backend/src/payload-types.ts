@@ -790,7 +790,7 @@ export interface ResponseCard {
    */
   body?: string | null;
   /**
-   * Number of lime bars shown top-right of the card (1–3).
+   * Number of lime bars shown top-right of the card (1â€“3).
    */
   bars: '1' | '2' | '3';
   updatedAt: string;

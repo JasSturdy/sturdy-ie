@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload';
+﻿import type { CollectionConfig } from 'payload';
 
 export const ResponseCard: CollectionConfig = {
     slug: 'response_card',
@@ -49,7 +49,7 @@ export const ResponseCard: CollectionConfig = {
                 { label: '2 bars', value: '2' },
                 { label: '3 bars', value: '3' },
             ],
-            admin: { description: 'Number of lime bars shown top-right of the card (1–3).' },
+            admin: { description: 'Number of lime bars shown top-right of the card (1â€“3).' },
         },
     ],
 };

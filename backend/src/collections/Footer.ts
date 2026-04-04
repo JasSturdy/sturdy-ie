@@ -1,4 +1,4 @@
-import type { GlobalConfig } from 'payload'
+﻿import type { GlobalConfig } from 'payload'
 
 export const Footer: GlobalConfig = {
     slug: 'footer',
@@ -14,7 +14,7 @@ export const Footer: GlobalConfig = {
             name: 'copyright',
             type: 'text',
             required: true,
-            defaultValue: 'Copyright © All Rights Reserved Jason Sturdy',
+            defaultValue: 'Copyright Â© All Rights Reserved Jason Sturdy',
         },
         {
             name: 'ctaLabel',

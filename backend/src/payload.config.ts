@@ -17,33 +17,33 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 import { s3Storage } from '@payloadcms/storage-s3'
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
-import { Ventures } from './collections/Ventures'
-import { MyInsight } from './collections/MyInsight'
-import { CaseStudies } from './collections/CaseStudies'
-import { Hero } from './collections/Hero'
-import { Challenge } from './collections/Challenge'
-import { Response } from './collections/Response'
-import { ResponseCard } from './collections/ResponseCard'
-import { ChallengeAbout } from './collections/ChallengeAbout'
-import { Standards } from './collections/Standards'
-import { Cta } from './collections/Cta'
-import { Footer } from './collections/Footer'
-import { Industries } from './collections/Industries'
-import { Application } from './collections/Application'
-import { About } from './collections/About'
-import { ExecutiveProfile } from './collections/ExecutiveProfile'
-import { Perspective } from './collections/Perspective'
-import { Impact } from './collections/Impact'
-import { Focus } from './collections/Focus'
-import { FAQ } from './collections/Faq'
-import { LeadershipPapers } from './collections/LeadershipPapers'
+import { Users } from './collections/Users.ts'
+import { Media } from './collections/Media.ts'
+import { Ventures } from './collections/Ventures.ts'
+import { MyInsight } from './collections/MyInsight.ts'
+import { CaseStudies } from './collections/CaseStudies.ts'
+import { Hero } from './collections/Hero.ts'
+import { Challenge } from './collections/Challenge.ts'
+import { Response } from './collections/Response.ts'
+import { ResponseCard } from './collections/ResponseCard.ts'
+import { ChallengeAbout } from './collections/ChallengeAbout.ts'
+import { Standards } from './collections/Standards.ts'
+import { Cta } from './collections/Cta.ts'
+import { Footer } from './collections/Footer.ts'
+import { Industries } from './collections/Industries.ts'
+import { Application } from './collections/Application.ts'
+import { About } from './collections/About.ts'
+import { ExecutiveProfile } from './collections/ExecutiveProfile.ts'
+import { Perspective } from './collections/Perspective.ts'
+import { Impact } from './collections/Impact.ts'
+import { Focus } from './collections/Focus.ts'
+import { FAQ } from './collections/Faq.ts'
+import { LeadershipPapers } from './collections/LeadershipPapers.ts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-export default buildConfig({
+const config = buildConfig({
   admin: {
     user: Users.slug,
     importMap: {
@@ -108,3 +108,5 @@ export default buildConfig({
     }),
   ],
 })
+
+export default config

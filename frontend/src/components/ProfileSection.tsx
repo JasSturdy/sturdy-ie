@@ -280,7 +280,7 @@ function FocusCard({
       className="group relative shrink-0"
       style={{ flex: "0 0 clamp(252px, 30vw, 340px)" }}
     >
-      <div className="relative flex aspect-[3/4] w-full flex-col overflow-hidden rounded-[1.5rem] border border-zinc-800/80 border-l-[3px] border-l-[#c5f018]/85 bg-gradient-to-b from-zinc-900/95 via-zinc-950 to-black p-5 shadow-[0_4px_28px_rgba(0,0,0,0.45)] ring-1 ring-inset ring-white/[0.05] transition-all duration-500 ease-out before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_90%_60%_at_100%_0%,rgba(197,240,24,0.09),transparent_55%)] after:pointer-events-none after:absolute after:inset-0 after:opacity-[0.22] after:[background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] after:bg-[length:22px_22px] hover:-translate-y-2 hover:border-zinc-600/70 hover:border-l-[#c5f018] hover:shadow-[0_28px_56px_-14px_rgba(0,0,0,0.72),0_0_48px_-12px_rgba(197,240,24,0.14)] hover:ring-[#c5f018]/10 md:p-6">
+      <div className="relative flex aspect-[3/4] w-full flex-col overflow-hidden rounded-[1.5rem] border border-zinc-800/80 bg-gradient-to-b from-zinc-900/95 via-zinc-950 to-black p-5 shadow-[inset_3px_0_0_0_rgba(197,240,24,0.82),0_10px_36px_-6px_rgba(0,0,0,0.55)] ring-1 ring-inset ring-white/[0.05] transition-all duration-500 ease-out before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_90%_60%_at_100%_0%,rgba(197,240,24,0.09),transparent_55%)] after:pointer-events-none after:absolute after:inset-0 after:opacity-[0.22] after:[background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] after:bg-[length:22px_22px] hover:-translate-y-1.5 hover:border-zinc-600/70 hover:shadow-[inset_3px_0_0_0_#c5f018,0_18px_48px_-8px_rgba(0,0,0,0.68),0_0_40px_-10px_rgba(197,240,24,0.12)] hover:ring-[#c5f018]/10 md:p-6">
         {/* Large grey ring (stroke only), clipped at right — mirrors hero graphic */}
         <div
           className="pointer-events-none absolute right-0 top-1/2 z-0 aspect-square w-[125%] max-w-[19rem] translate-x-[52%] -translate-y-1/2 rounded-full border-[10px] border-zinc-600/40 bg-transparent md:max-w-[21rem] md:border-[12px]"
@@ -375,7 +375,7 @@ export function ProfileSection({ data }: { data?: StandardsData | null }) {
         <span className="text-xs text-zinc-500 md:text-sm"></span>
       </motion.div>
 
-      <div className="relative mt-4 overflow-hidden pt-4 md:mt-6">
+      <div className="relative mt-4 overflow-hidden pt-12 pb-20 md:mt-6 md:pt-14 md:pb-24">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-black/20 to-transparent md:w-24" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-black/20 to-transparent md:w-24" />
 

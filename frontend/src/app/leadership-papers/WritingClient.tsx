@@ -66,24 +66,7 @@ export function WritingClient({
         </p>
       </section>
 
-      {/* Category filter */}
-      <section className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-0">
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleCategoryChange(cat)}
-              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
-                cat === activeCategory
-                  ? "bg-[#c5f018] text-black"
-                  : "border border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-white"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </section>
+   
 
       {/* Leadership Papers */}
       <section className="bg-black">

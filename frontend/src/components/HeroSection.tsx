@@ -126,11 +126,11 @@ export function HeroSection({ data }: Props) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_90%,rgba(197,240,24,0.55)_0%,rgba(160,210,0,0.55)_20%,transparent_65%)]" />
       </div>
 
-      <div className="relative mx-auto max-w-8xl px-4 py-24">
+      <div className="relative mx-auto max-w-8xl px-4 pt-24 pb-6 sm:pb-10 md:pb-14 xl:py-24">
         <div className="pointer-events-none absolute -left-50 bottom-100 hidden h-90 w-90 rounded-full mr-[50px] border-[50px] border-zinc-700/60 md:block" />
         <div className="pointer-events-none absolute -right-50 top-100 hidden h-90 w-90 rounded-full border-[50px] border-zinc-700/60 md:block" />
 
-        <div className="relative flex flex-col items-start gap-12 xl:flex-row xl:items-center xl:justify-between">
+        <div className="relative flex flex-col items-start gap-8 xl:gap-12 xl:flex-row xl:items-center xl:justify-between">
 
           <div className="w-full space-y-8 text-center sm:text-left">
 
@@ -236,7 +236,7 @@ export function HeroSection({ data }: Props) {
 
           </div>
 
-          <div className="relative mx-auto mt-10 flex w-full max-w-md flex-col items-end justify-end xl:absolute xl:bottom-0 xl:right-0 xl:mt-0 xl:h-full xl:w-[380px] xl:max-w-none xl:mr-6">
+          <div className="relative mx-auto mt-6 flex w-full max-w-md flex-col items-center justify-center sm:mt-10 xl:absolute xl:bottom-0 xl:right-0 xl:mt-0 xl:h-full xl:w-[380px] xl:max-w-none xl:mr-6 xl:items-end xl:justify-end">
             <div className="pointer-events-none absolute inset-0 blur-3xl" />
             <div className="relative h-[280px] w-[220px] min-[400px]:h-[360px] min-[400px]:w-[270px] sm:h-[460px] sm:w-[320px] md:h-[550px] md:w-[400px] xl:h-full xl:w-[380px]">
               <motion.div
@@ -251,7 +251,7 @@ export function HeroSection({ data }: Props) {
                     alt={data.portrait.alt}
                     fill
                     unoptimized
-                    className="object-contain -scale-x-100"
+                    className="object-contain object-bottom -scale-x-100"
                     priority
                   />
                 ) : (
@@ -259,7 +259,7 @@ export function HeroSection({ data }: Props) {
                     src={jasonPortrait}
                     alt="Portrait of Jason Sturdy"
                     fill
-                    className="object-contain -scale-x-100"
+                    className="object-contain object-bottom -scale-x-100"
                     priority
                   />
                 )}

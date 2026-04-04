@@ -52,9 +52,11 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
                   </p>
 
                   {/* Summary snippet */}
-                  <p className="mt-5 text-sm leading-relaxed text-zinc-400">
-                    {typeof post.summary === "string" ? post.summary : ""}
-                  </p>
+                  {post.excerpt ? (
+                    <p className="mt-5 line-clamp-4 text-sm leading-relaxed text-zinc-400">
+                      {post.excerpt}
+                    </p>
+                  ) : null}
 
                   {/* Button (bottom-right) - more neutral than My Insights */}
                   <div className="mt-auto pt-8 flex items-center justify-end">

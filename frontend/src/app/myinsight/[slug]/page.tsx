@@ -69,18 +69,6 @@ export default async function MyInsightDetailPage({
                 )}
                 </div>
             </div>
-
-            {/* Featured image */}
-            {myInsight.img && (
-              <div className="mt-12 overflow-hidden rounded-2xl bg-zinc-900">
-                <img
-                  src={myInsight.img}
-                  alt={myInsight.title}
-                  draggable={false}
-                  className="blog-feature-image h-[320px] w-full object-cover md:h-[480px] lg:h-[600px] pointer-events-none"
-                />
-              </div>
-            )}
           </div>
         </section>
 
@@ -171,29 +159,37 @@ export default async function MyInsightDetailPage({
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 {recentInsights.map((insight) => (
                   <Link
                     key={insight.slug}
                     href={`/myinsight/${insight.slug}`}
                     className="group block"
                   >
-                    <div className="relative overflow-hidden aspect-video bg-zinc-900 mb-4">
-                      {insight.img && (
-                        <img
-                          src={insight.img}
-                          alt={insight.title}
-                          draggable={false}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
-                        />
-                      )}
+                    <div className="flex min-h-[260px] flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/50 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.08)]">
+                      <div className="flex items-start justify-end">
+                        <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
+                          {insight.category}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-2xl font-light leading-[1.15] text-white transition-colors group-hover:text-[#d4ff2a] md:text-[28px]">
+                        {insight.title}
+                      </h3>
+                      <div className="mt-5 h-px w-full bg-zinc-800" />
+                      {insight.date ? (
+                        <p className="mt-4 text-sm text-zinc-500">{insight.date}</p>
+                      ) : null}
+                      {insight.excerpt ? (
+                        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-zinc-400">
+                          {insight.excerpt}
+                        </p>
+                      ) : null}
+                      <div className="mt-auto flex justify-end pt-6">
+                        <span className="inline-flex items-center rounded-xl border border-zinc-700 bg-transparent px-5 py-2.5 text-sm font-semibold text-white transition-colors group-hover:border-[#c5f018]/60 group-hover:text-[#d4ff2a]">
+                          Read insight
+                        </span>
+                      </div>
                     </div>
-                    <p className="text-[16px] text-zinc-500 mb-2">
-                      {[insight.category, insight.date].filter(Boolean).join(" • ")}
-                    </p>
-                    <h3 className="text-[48px] font-light leading-[1.1] text-white group-hover:text-zinc-200 transition-colors">
-                      {insight.title}
-                    </h3>
                   </Link>
                 ))}
               </div>

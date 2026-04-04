@@ -4,6 +4,7 @@ export interface CaseStudyIndex {
   slug: string;
   title: string;
   summary: any;
+  excerpt: string;
   theme: string;
   period: string;
   date: string;
@@ -25,27 +26,41 @@ function resolveImageUrl(url?: string): string {
   return url.startsWith("http") ? url : `${API_URL}${url}`;
 }
 
+function extractPlainText(lexical: any): string {
+  if (!lexical?.root?.children) return "";
+  function walk(node: any): string {
+    if (node.type === "text") return node.text ?? "";
+    if (node.children) return node.children.map(walk).join("");
+    return "";
+  }
+  return lexical.root.children.map(walk).join(" ").trim();
+}
+
 function mapBackendDocToIndex(c: any): CaseStudyIndex {
+  const summary = c.summary ?? { root: { children: [] } };
   return {
     slug:    c.slug,
     title:   c.title,
-    summary: c.summary ?? { root: { children: [] } },
+    summary,
+    excerpt: extractPlainText(summary),
     theme:   c.theme,
     period:  c.period ?? "",
     date:    c.date   ?? "",
-    img:     resolveImageUrl(c.image?.url), 
+    img:     resolveImageUrl(c.image?.url),
   };
 }
 
 function mapBackendDocToDetail(c: any): CaseStudyDetail {
+  const summary = c.summary ?? { root: { children: [] } };
   return {
     slug:     c.slug,
     title:    c.title,
-    summary:  c.summary ?? { root: { children: [] } }, 
+    summary,
+    excerpt:  extractPlainText(summary),
     theme:    c.theme,
     period:   c.period ?? "",
     date:     c.date   ?? "",
-    img:      resolveImageUrl(c.image?.url), 
+    img:      resolveImageUrl(c.image?.url),
     sections: Array.isArray(c.sections) ? c.sections : [],
   };
 }

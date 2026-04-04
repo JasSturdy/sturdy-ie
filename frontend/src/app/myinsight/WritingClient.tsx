@@ -4,30 +4,17 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Header } from "../../components/Header";
 import { FooterSection } from "../../components/FooterSection";
-import { MyInsightIndex, CATEGORY_STYLES } from "../../lib/myInsight";
-import { getFooterData } from "@/lib/footer";
-
-const CATEGORIES = [
-  "All",
-  "Governance & Compliance",
-  "Research Collaboration",
-  "Interoperability & Standards",
-  "Preventive Health Innovation",
-  "AI & Regulated Data",
-];
-
-  const [
-    footerData,
-  ] = await Promise.all([
-    getFooterData(),
-  ]);
+import type { FooterData } from "@/lib/footer";
+import type { MyInsightIndex } from "../../lib/myInsight";
 
 const ITEMS_PER_PAGE = 6;
 
 export function WritingClient({
   myInsights,
+  footerData,
 }: {
   myInsights: MyInsightIndex[];
+  footerData?: FooterData | null;
 }) {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);

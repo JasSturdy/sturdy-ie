@@ -21,6 +21,7 @@ import { getCtaData } from "@/lib/cta";
 import { getStandardsData } from "@/lib/standards";
 import { getFooterData } from "@/lib/footer";
 import { getApplicationData } from "@/lib/application";
+import { getIndustriesData } from "@/lib/industries";
 import { getMyInsightsIndex } from "@/lib/myInsight";
 
 export default async function Home() {
@@ -34,6 +35,7 @@ export default async function Home() {
     applicationData,
     insights,
     footerData,
+    industriesData,
   ] = await Promise.all([
     getCaseStudiesIndex(),
     getChallengeData(),
@@ -44,13 +46,14 @@ export default async function Home() {
     getApplicationData(),
     getMyInsightsIndex(),
     getFooterData(),
+    getIndustriesData(),
   ]);
 
   return (
     <main className="relative min-w-0 w-full max-w-full overflow-visible text-sm text-zinc-200">
       <Header />
       <HeroSection data={heroData} />
-      <CapabilitiesSection />
+      <CapabilitiesSection data={industriesData} />
       <ServicesSection data={challengeData} />
       <InsightsPreviewSection data={responseData} />
       <VenturesSection />

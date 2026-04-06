@@ -21,6 +21,8 @@ export type IndustriesData = {
   headingLight: string;
   body: RichTextNode;
   cards: IndustryCard[];
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 export async function getIndustriesData(): Promise<IndustriesData | null> {
@@ -41,6 +43,8 @@ export async function getIndustriesData(): Promise<IndustriesData | null> {
       headingAccent:  d.headingAccent  ?? "Regulated",
       headingLight:   d.headingLight   ?? "Environments",
       body:           d.body           ?? { root: { children: [] } },
+      ctaLabel:       d.ctaLabel       ?? "View Case Studies", 
+      ctaHref:        d.ctaHref        ?? "/case-studies",
       cards: Array.isArray(d.cards)
         ? d.cards.map((c: any) => ({
             title:       c.title       ?? "",

@@ -1,19 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import type { IndustryCard } from "@/lib/industries";
+import { LexicalRenderer } from "@/components/LexicalRenderer";
+import type { IndustriesData, IndustryCard } from "@/lib/industries";
 
 /** Two-line headings for visual consistency across sector cards */
 type IndustryCardWithHeadingLines = IndustryCard & {
   headingLines: [string, string];
 };
 
-//Fallback
-
-const CARDS: IndustryCardWithHeadingLines[] = [
+const FALLBACK_CARDS: IndustryCardWithHeadingLines[] = [
   {
     title: "Healthcare & Medical",
-    headingLines: ["Healthcare ", "& Medical"],
+    headingLines: ["Healthcare", "& Medical"],
     description:
       "Clinical systems, research environments, and population health data infrastructure.",
     imageUrl:
@@ -29,7 +29,7 @@ const CARDS: IndustryCardWithHeadingLines[] = [
   },
   {
     title: "Government & Public Sector",
-    headingLines: ["Government ", "& Public Sector"],
+    headingLines: ["Government", "& Public Sector"],
     description:
       "Policy implementation, national infrastructure, and cross-agency governance.",
     imageUrl:
@@ -44,6 +44,12 @@ const CARDS: IndustryCardWithHeadingLines[] = [
       "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=800",
   },
 ];
+
+function splitHeadingLines(title: string): [string, string] {
+  const words = title.split(" ");
+  const mid = Math.ceil(words.length / 2);
+  return [words.slice(0, mid).join(" "), words.slice(mid).join(" ")];
+}
 
 function CardInterior({
   card,
@@ -89,9 +95,19 @@ function CardInterior({
   );
 }
 
-export function CapabilitiesSection() {
+export function CapabilitiesSection({ data }: { data?: IndustriesData | null }) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
+
+  const ctaLabel = data?.ctaLabel;
+  const ctaHref  = data?.ctaHref ?? "/case-studies";
+
+  const cards: IndustryCardWithHeadingLines[] = data?.cards?.length
+    ? data.cards.map((c) => ({
+        ...c,
+        headingLines: splitHeadingLines(c.title),
+      }))
+    : FALLBACK_CARDS;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -116,45 +132,67 @@ export function CapabilitiesSection() {
           animation: visible ? "fadeUp 1s ease forwards" : "none",
         }}
       >
-        <div className="flex h-full flex-col justify-between space-y-3">
+        <div className="flex h-full flex-col justify-start space-y-3">
           <div className="flex items-center gap-2">
             <span
               className="h-2 w-2 shrink-0 rounded-sm bg-[#c5f018]"
               style={{ animation: "dotPulse 1s ease-in-out infinite" }}
             />
-            <span className="text-sm text-white md:text-lg">Industries</span>
+            <span className="text-sm text-white md:text-lg">
+              {data?.sectionLabel ?? "Industries"}
+            </span>
           </div>
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl">
-            <span className="font-bold text-[#c5f018]">Operating Across</span>
+            <span className="font-bold text-[#c5f018]">
+              {data?.headingAccent ?? "Operating Across"}
+            </span>
             <br />
-            Regulated Environments
+            {data?.headingRegular ?? "Regulated"}{" "}
+            {data?.headingLight ?? "Environments"}
           </h2>
         </div>
 
-        <div className="mt-6 flex h-full items-center text-[0.95rem] leading-snug text-white">
-          <div className="max-w-3xl space-y-4 text-sm leading-relaxed md:text-base">
-            <p>
-              Across public sector, financial services, healthcare, and defence,
-              organisations face increasing regulatory pressure alongside complex,
-              fragmented data systems.
-            </p>
-            <p>
-              The challenge is rarely the absence of policy or data. It is making
-              both work together in practice.
-            </p>
-            <p>
-              My work focuses on closing that gap—designing systems and operating
-              models that align governance, infrastructure, and real-world use,
-              enabling organisations to turn regulatory intent into operational
-              capability.
-            </p>
+        <div className="mt-6 flex h-full flex-col justify-start gap-8">
+          <div className="max-w-3xl space-y-4 text-sm leading-relaxed text-white md:text-base">
+            {data?.body && LexicalRenderer({ data: { root: data.body.root as any } })}
           </div>
+
+          {ctaLabel && (
+            <div
+              style={{
+                opacity: 0,
+                animation: visible ? "fadeUp 0.75s ease forwards 600ms" : "none",
+              }}
+            >
+              <Link
+                href={ctaHref}
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-3 py-3 text-sm font-semibold text-black transition duration-500 sm:w-auto sm:gap-2 sm:px-6 sm:py-4 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+              >
+                {ctaLabel}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
 
+      {/* Cards grid */}
       <div className="px-4 sm:px-6 lg:px-0">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-0">
-          {CARDS.map((card, index) => (
+          {cards.map((card, index) => (
             <div
               key={card.title}
               className="group border border-white/15 transition-all duration-500 cursor-pointer hover:-translate-y-4"
@@ -179,6 +217,7 @@ export function CapabilitiesSection() {
           ))}
         </div>
       </div>
+
     </section>
   );
 }

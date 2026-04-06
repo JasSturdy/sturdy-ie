@@ -708,6 +708,14 @@ export interface Industry {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Text on the CTA button. Leave blank to hide the button.
+   */
+  ctaLabel?: string | null;
+  /**
+   * URL the CTA button links to.
+   */
+  ctaHref?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1713,6 +1721,8 @@ export interface IndustriesSelect<T extends boolean = true> {
         image?: T;
         id?: T;
       };
+  ctaLabel?: T;
+  ctaHref?: T;
   updatedAt?: T;
   createdAt?: T;
 }

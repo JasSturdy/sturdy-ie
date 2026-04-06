@@ -138,5 +138,19 @@ export const Industries: CollectionConfig = {
                 },
             ],
         },
+        {
+            name: 'ctaLabel',
+            label: 'CTA Button Label',
+            type: 'text',
+            defaultValue: 'View Case Studies',
+            admin: { description: 'Text on the CTA button. Leave blank to hide the button.' },
+        },
+        {
+            name: 'ctaHref',
+            label: 'CTA Button URL',
+            type: 'text',
+            defaultValue: '/case-studies',
+            admin: { description: 'URL the CTA button links to.' },
+        },
     ],
 };

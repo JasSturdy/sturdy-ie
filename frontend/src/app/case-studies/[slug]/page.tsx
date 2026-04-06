@@ -40,16 +40,11 @@ export default async function CaseStudyDetailPage({
             >
               ← Case studies
             </Link>
-
             <div className="mt-10 text-center">
-              <h1 className="text-[48px] font-light leading-[1.08] text-white">
+              <h1 className="text-[64px] font-light leading-[1.08] text-white">
                 {study.title}
               </h1>
-
-              <div className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base [&_p]:text-zinc-400">
-                <LexicalRenderer data={study.summary} />
-              </div>
-
+             
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-500">
                 <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 font-semibold text-[#c5f018]">
                   {study.theme}
@@ -66,12 +61,15 @@ export default async function CaseStudyDetailPage({
         </section>
 
         <div className="mx-auto max-w-8xl px-4 pt-14 sm:px-6 md:px-10 lg:px-0">
+          <div className="mx-auto mt-5 mb-8 text-sm leading-relaxed text-white md:text-base [&_p]:text-white">
+                <LexicalRenderer data={study.summary} />
+              </div>
           <article className="space-y-14">
             {study.sections.map(({ heading, body }, index) => {
               if (!body) return null;
               return (
                 <section key={index}>
-                  <h2 className="text-[28px] font-light leading-[1.1] text-white">
+                  <h2 className="text-[48px] font-light leading-[1.1] text-white">
                     {heading}
                   </h2>
                   <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-white [&_p]:text-white [&_li]:text-white">

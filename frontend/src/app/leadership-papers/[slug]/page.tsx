@@ -43,7 +43,7 @@ export default async function LeadershipPaperDetailPage({
             </Link>
 
             <div className="mt-10 text-center">
-              <h1 className="text-[48px] font-light leading-[1.08] text-white">
+              <h1 className="text-[64px] font-light leading-[1.08] text-white">
                 {paper.title}
               </h1>
               {paper.subtitle && (
@@ -51,10 +51,6 @@ export default async function LeadershipPaperDetailPage({
                   {paper.subtitle}
                 </p>
               )}
-
-              <div className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base [&_p]:text-zinc-400">
-                <LexicalRenderer data={paper.summary} />
-              </div>
 
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-500">
                 <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 font-semibold text-[#c5f018]">
@@ -89,10 +85,13 @@ export default async function LeadershipPaperDetailPage({
 
         {/* ── Body ── */}
         <div className="mx-auto max-w-8xl px-4 pt-14 sm:px-6 md:px-10 lg:px-0">
+          <div className="mt-5 mb-8 text-sm leading-relaxed text-white md:text-base [&_p]:text-white">
+            <LexicalRenderer data={paper.summary} />
+          </div>
           <article className="space-y-14">
             {paper.sections.map(({ heading, body }, index) => (
               <section key={index}>
-                <h2 className="text-[28px] font-light leading-[1.1] text-white">
+                <h2 className="text-[48px] font-light leading-[1.1] text-white">
                   {heading}
                 </h2>
                 <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-white [&_p]:text-white [&_li]:text-white">

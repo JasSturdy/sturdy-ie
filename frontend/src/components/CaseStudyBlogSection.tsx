@@ -8,16 +8,16 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
     <section className="border-b border-zinc-900/60 bg-black">
       <div className="mx-auto max-w-8xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-0">
         {/* <div className="mb-12"> */}
-          {/* <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-sm bg-[#c5f018]" />
             <span className="text-xs font-semibold text-lime-300/80">
               All case studies
             </span>
           </div> */}
-          {/* <h2 className="mt-4 text-2xl font-semibold text-white md:text-4xl lg:text-5xl">
+        {/* <h2 className="mt-4 text-2xl font-semibold text-white md:text-4xl lg:text-5xl">
             Case studies &amp; delivery examples
           </h2> */}
-          {/* <p className="mt-3 max-w-4xl text-sm leading-relaxed text-zinc-400">
+        {/* <p className="mt-3 max-w-4xl text-sm leading-relaxed text-zinc-400">
             Selected examples of governance-aligned delivery, secure data
             collaboration, and regulatory compliance initiatives.
           </p> */}
@@ -25,10 +25,10 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((post) => (
-            <article key={post.slug} className="group">
+            <article key={post.slug} className="group h-full">
               <Link
                 href={`/case-studies/${post.slug}`}
-                className="block"
+                className="block h-full"
               >
                 <div className="flex flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/60 to-black p-6 min-h-[290px] transition-all duration-300 group-hover:border-zinc-600 group-hover:shadow-[0_0_60px_rgba(197,240,24,0.06)]">
                   {/* Category pill (top-right) - outline style to differentiate */}
@@ -39,7 +39,7 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
                   </div>
 
                   {/* Title */}
-                  <h3 className="mt-6 text-[28px] font-light leading-[1.12] text-white transition-colors">
+                  <h3 className="mt-6 text-[28px] font-light leading-[1.12] text-white transition-colors min-h-[96px]">
                     {post.title}
                   </h3>
 

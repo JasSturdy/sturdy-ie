@@ -103,7 +103,7 @@ const FALLBACK: ChallengePayload = {
 export async function getChallengesData(): Promise<ChallengePayload> {
   try {
     const res = await fetch(
-      `${API_URL}/api/challenge-about?limit=1&depth=1`,
+      `${API_URL}/api/approach?limit=1&depth=1`,
       { cache: "no-store" },
     );
     if (!res.ok) return FALLBACK;

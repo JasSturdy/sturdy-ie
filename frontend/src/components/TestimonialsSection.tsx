@@ -126,8 +126,6 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
           </div>
 
           <div className="text-sm leading-relaxed text-white md:text-base [&_p]:mb-0">
-            <div className="font-bold">{exploreCard.heading}</div>
-            <br />
             <LexicalRenderer data={exploreCard.body} />
           </div>
 

@@ -39,9 +39,9 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
                   </div>
 
                   {/* Title */}
-                  <h3 className="mt-6 text-[28px] font-light leading-[1.12] text-white transition-colors min-h-[96px]">
-                    {post.title}
-                  </h3>
+                  <h3 className="mt-6 text-[28px] font-light leading-[1.12] text-white transition-colors min-h-[128px]">
+  {post.title}
+</h3>
 
                   {/* Divider */}
                   <div className="mt-6 h-px w-full bg-zinc-800" />

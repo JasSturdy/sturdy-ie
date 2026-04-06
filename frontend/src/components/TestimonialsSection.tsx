@@ -5,7 +5,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView } from "motion/react";
 import { LexicalRenderer } from "@/components/LexicalRenderer";
-import type { ChallengeData, ExploreCardData, ChallengeIcon, ChallengePayload } from "@/lib/challengeAbout";
+import type { ChallengeIcon, ChallengePayload } from "@/lib/challengeAbout";
 
 const iconBtnProps = {
   width: "100%",
@@ -60,10 +60,10 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
   const headingInView = useInView(headingRef, { once: true, margin: "0px 0px -60px 0px" });
 
   return (
-    <section className="mx-auto max-w-8xl px-4 py-12 md:px-4 md:py-20 lg:px-0">
+    <section className="mx-auto mt-10 max-w-8xl px-4 py-12 md:mt-16 md:px-4 md:py-20 lg:px-0">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
 
-        <div className="flex flex-col gap-4">
+        <div className="order-2 flex flex-col gap-4 lg:order-2">
           {/* Badge */}
           <div className="flex items-center gap-2">
             <span
@@ -105,9 +105,10 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
               </div>
             ))}
           </div>
+
         </div>
 
-        <div className="flex flex-col gap-6 lg:h-full lg:min-h-0">
+        <div className="order-1 flex flex-col gap-6 lg:order-1 lg:h-full lg:min-h-0">
           <div className="flex items-center gap-3">
             <span className="text-4xl font-semibold text-[#c5f018]">✳</span>
             <div className="h-px flex-1 bg-zinc-700" />
@@ -125,9 +126,9 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
           </div>
 
           <div className="text-sm leading-relaxed text-white md:text-base [&_p]:mb-0">
-          <div className="font-bold">Selected examples of systems, platforms, and environments designed for regulated settings.</div>
-<br></br>Explore how governance, infrastructure, and delivery come together in practice.
-
+            <div className="font-bold">{exploreCard.heading}</div>
+            <br />
+            <LexicalRenderer data={exploreCard.body} />
           </div>
 
           {/* CTA Buttons — size and hover animation matched to HeroSection */}

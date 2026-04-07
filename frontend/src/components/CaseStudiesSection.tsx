@@ -70,7 +70,7 @@ function CaseStudyCard({
     >
       {item.img?.trim() ? (
         <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+          className="absolute inset-0 bg-cover bg-center bg-black transition-transform duration-500 group-hover:scale-105"
           style={{ backgroundImage: `url(${item.img})` }}
         />
       ) : (

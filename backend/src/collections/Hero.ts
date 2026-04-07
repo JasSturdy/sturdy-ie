@@ -129,7 +129,6 @@ export const Hero: CollectionConfig = {
 
       ],
     },
-
     {
       name: 'primaryCtaLabel',
       label: 'Primary CTA Label',
@@ -156,7 +155,6 @@ export const Hero: CollectionConfig = {
       type: 'text',
       defaultValue: '/myinsights',
     },
-
     {
       name: 'portrait',
       type: 'upload',

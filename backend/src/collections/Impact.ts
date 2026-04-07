@@ -95,5 +95,18 @@ export const Impact: CollectionConfig = {
             required: true,
             admin: { description: 'Main image displayed on the left side of the section.' },
         },
+        {
+            name: 'primaryCtaLabel',
+            label: 'Primary CTA Label',
+            type: 'text',
+            defaultValue: 'Let\'s Connect',
+            admin: { description: 'Text on the primary (lime) button.' },
+        },
+        {
+            name: 'primaryCtaHref',
+            label: 'Primary CTA URL',
+            type: 'text',
+            defaultValue: '/contact',
+        },
     ],
 };

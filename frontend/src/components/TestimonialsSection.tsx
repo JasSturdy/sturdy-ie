@@ -140,7 +140,7 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
                 <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
-            <Link
+            {/* <Link
               href={exploreCard.ctaHref2}
               className="inline-flex items-center gap-2 rounded-lg border border-lime-400/70 bg-transparent px-6 py-5 text-lg font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] hover:bg-[#CCFF00] hover:text-black"
             >
@@ -148,7 +148,7 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
                 <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-            </Link>
+            </Link> */}
           </div>
         </div>
 

@@ -18,6 +18,8 @@ export interface CardAboutData {
   badge: string;
   headingAccent: string;
   heading: string;
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
   cards: CardAboutItem[];
 }
 
@@ -39,6 +41,8 @@ export async function getCardAboutData(): Promise<CardAboutData | null> {
       badge:         data.badge         ?? 'Focus',
       headingAccent: data.headingAccent ?? 'Core',
       heading:       data.heading       ?? '',
+      primaryCtaLabel: data.primaryCtaLabel ?? '',
+      primaryCtaHref:  data.primaryCtaHref  ?? '',
       cards: (data.cards ?? []).map((c: CardAboutItem) => ({
         icon:        c.icon,
         title:       c.title,

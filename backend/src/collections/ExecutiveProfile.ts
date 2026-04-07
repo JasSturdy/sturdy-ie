@@ -64,5 +64,31 @@ export const ExecutiveProfile: CollectionConfig = {
             defaultValue: 0,
             admin: { description: 'Controls display order. Lower numbers appear first.' },
         },
+        {
+      name: 'primaryCtaLabel',
+      label: 'Primary CTA Label',
+      type: 'text',
+      defaultValue: 'View Case Studies',
+      admin: { description: 'Text on the primary (lime) button.' },
+    },
+    {
+      name: 'primaryCtaHref',
+      label: 'Primary CTA URL',
+      type: 'text',
+      defaultValue: '/case-studies',
+    },
+    {
+      name: 'secondaryCtaLabel',
+      label: 'Secondary CTA Label',
+      type: 'text',
+      defaultValue: 'Explore Insights',
+      admin: { description: 'Text on the secondary (outline) button.' },
+    },
+    {
+      name: 'secondaryCtaHref',
+      label: 'Secondary CTA URL',
+      type: 'text',
+      defaultValue: '/myinsights',
+    },
     ],
 }

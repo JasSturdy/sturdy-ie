@@ -1,7 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { LexicalRenderer } from "@/components/LexicalRenderer";
+import { motion, useInView } from "motion/react";
+import Link from "next/link";
+
 export interface ImpactData {
   badge: string;
   heading: string;
@@ -12,6 +15,8 @@ export interface ImpactData {
     url: string;
     alt: string;
   };
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
 }
 
 const FALLBACK_BODY = {
@@ -59,10 +64,18 @@ const FALLBACK_BODY = {
   },
 };
 
+const ArrowIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 const FALLBACK: ImpactData = {
   badge: "Impact",
   heading: "This Matters",
   headingAccent: "Why",
+  primaryCtaLabel: "Let's Connect",
+  primaryCtaHref: "/contact",
   image: {
     url: "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=800",
     alt: "Digital globe with financial data",
@@ -74,21 +87,7 @@ export function ImpactSection({ data }: { data?: ImpactData | null }) {
   const d = data ?? FALLBACK;
 
   const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 },
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
 
   return (
     <section
@@ -98,12 +97,11 @@ export function ImpactSection({ data }: { data?: ImpactData | null }) {
       <div className="flex flex-col lg:flex-row gap-0 lg:gap-0 items-stretch">
 
         {/* Left — Image */}
-        <div
+        <motion.div
           className="lg:w-[42%] shrink-0"
-          style={{
-            opacity: 0,
-            animation: visible ? "fadeUp 1.2s 0.1s forwards" : "none",
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
         >
           <div
             className="w-full h-64 lg:h-full min-h-[320px] bg-cover bg-center"
@@ -114,15 +112,14 @@ export function ImpactSection({ data }: { data?: ImpactData | null }) {
             role="img"
             aria-label={d.image.alt}
           />
-        </div>
+        </motion.div>
 
         {/* Right — Content */}
-        <div
+        <motion.div
           className="lg:w-[58%] flex flex-col justify-center px-0 lg:pl-14 pt-8 lg:pt-0"
-          style={{
-            opacity: 0,
-            animation: visible ? "fadeUp 1.2s 0.25s forwards" : "none",
-          }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 1.2, ease: "easeOut", delay: 0.25 }}
         >
           {/* Badge */}
           <div className="mb-4 flex items-center gap-2 text-zinc-300">
@@ -133,7 +130,7 @@ export function ImpactSection({ data }: { data?: ImpactData | null }) {
             <span className="text-sm md:text-lg">{d.badge}</span>
           </div>
 
-          {/* Heading — accent word first then white */}
+          {/* Heading */}
           <h2 className="text-2xl font-light leading-tight text-white md:text-5xl mb-5">
             <span className="text-[#c5f018] font-bold">{d.headingAccent} </span>
             {d.heading}
@@ -143,7 +140,26 @@ export function ImpactSection({ data }: { data?: ImpactData | null }) {
           <div className="text-sm leading-relaxed text-white md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
             <LexicalRenderer data={d.body} />
           </div>
-        </div>
+
+          {/* CTA */}
+          <div className="flex flex-row gap-3 pt-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+              className="flex-1 sm:flex-none"
+            >
+              <Link
+                href={d.primaryCtaHref}
+                className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-3 py-3 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border-1 hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+              >
+                {d.primaryCtaLabel}
+              <ArrowIcon />
+              </Link>
+            </motion.div>
+          </div>
+
+        </motion.div>
       </div>
     </section>
   );

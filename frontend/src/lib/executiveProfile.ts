@@ -11,6 +11,10 @@ export type ExecutiveProfileData = {
   sectionHeadingAccent: string;
   paragraphs: ProfileParagraph[];
   imageUrl: string;
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
+  secondaryCtaLabel: string;
+  secondaryCtaHref: string;
   order: number;
 };
 
@@ -31,6 +35,10 @@ export async function getExecutiveProfiles(): Promise<ExecutiveProfileData[]> {
       sectionHeading:       d.sectionHeading       ?? "Executive",
       sectionHeadingAccent: d.sectionHeadingAccent ?? "Profile",
       order:                d.order                ?? 0,
+      primaryCtaLabel:    d.primaryCtaLabel ?? "",
+      primaryCtaHref:     d.primaryCtaHref ?? "",
+      secondaryCtaLabel:  d.secondaryCtaLabel ?? "",
+      secondaryCtaHref:   d.secondaryCtaHref ?? "",
       paragraphs: Array.isArray(d.paragraphs)
         ? d.paragraphs.map((p: any) => ({
             text:   p.text   ?? "",

@@ -1160,6 +1160,16 @@ export interface ExecutiveProfile {
    * Controls display order. Lower numbers appear first.
    */
   order?: number | null;
+  /**
+   * Text on the primary (lime) button.
+   */
+  primaryCtaLabel?: string | null;
+  primaryCtaHref?: string | null;
+  /**
+   * Text on the secondary (outline) button.
+   */
+  secondaryCtaLabel?: string | null;
+  secondaryCtaHref?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1271,6 +1281,11 @@ export interface Impact {
    * Main image displayed on the left side of the section.
    */
   image: number | Media;
+  /**
+   * Text on the primary (lime) button.
+   */
+  primaryCtaLabel?: string | null;
+  primaryCtaHref?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1312,6 +1327,11 @@ export interface Focus {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Text on the CTA button.
+   */
+  primaryCtaLabel?: string | null;
+  primaryCtaHref?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1909,6 +1929,10 @@ export interface ExecutiveProfileSelect<T extends boolean = true> {
       };
   image?: T;
   order?: T;
+  primaryCtaLabel?: T;
+  primaryCtaHref?: T;
+  secondaryCtaLabel?: T;
+  secondaryCtaHref?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1945,6 +1969,8 @@ export interface ImpactSelect<T extends boolean = true> {
   heading?: T;
   body?: T;
   image?: T;
+  primaryCtaLabel?: T;
+  primaryCtaHref?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1964,6 +1990,8 @@ export interface FocusSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  primaryCtaLabel?: T;
+  primaryCtaHref?: T;
   updatedAt?: T;
   createdAt?: T;
 }

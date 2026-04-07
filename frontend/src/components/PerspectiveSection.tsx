@@ -230,13 +230,13 @@ export function PerspectiveSection({
               animation: visible ? "fadeUp 2s forwards" : "none",
             }}
           >
-            <Link
+            {/* <Link
               href={d.ctaHref}
               className="inline-flex items-center gap-2 rounded-lg bg-[#c5f018] px-6 py-5 text-lg font-semibold text-black transition duration-500 hover:-translate-y-[1px] hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
             >
               {d.ctaLabel}
               <ArrowIcon />
-            </Link>
+            </Link> */}
             <Link
               href={d.ctaHref2}
               className="inline-flex items-center gap-2 rounded-lg border border-lime-400/70 bg-transparent px-6 py-5 text-lg font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] hover:bg-[#CCFF00] hover:text-black"

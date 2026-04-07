@@ -1,6 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
+import type { CardAboutData, CardAboutIcon } from "@/lib/cardAbout";
+import Link from "next/link";
 
 const iconBtnProps = {
   width: "100%",
@@ -64,62 +66,58 @@ function IconCollaboration() {
   );
 }
 
-import type { CardAboutIcon } from "@/lib/cardAbout";
-
-const CARDS: {
-  icon: CardAboutIcon;
-  line1: string;
-  line2: string;
-  description: string;
-}[] = [
-  {
-    icon: "governance",
-    line1: "Data Governance",
-    line2: "& Compliance",
-    description: "Translating regulatory requirements into operational systems and controls.",
-  },
-  {
-    icon: "security",
-    line1: "Security",
-    line2: "Architecture",
-    description: "Designing environments with built-in control, access management, and resilience.",
-  },
-  {
-    icon: "infrastructure",
-    line1: "Data",
-    line2: "Infrastructure",
-    description: "Building platforms that perform reliably in regulated and mission-critical settings.",
-  },
-  {
-    icon: "operating",
-    line1: "Operating",
-    line2: "Models & Delivery",
-    description: "Designing systems for adoption, usability, and long-term sustainability.",
-  },
-  {
-    icon: "regulatory",
-    line1: "Standards &",
-    line2: "Interoperability",
-    description: "Enabling secure, structured data exchange across systems and organisations.",
-  },
-  {
-    icon: "collaboration",
-    line1: "Resilience &",
-    line2: "System Integrity",
-    description: "Ensuring systems operate reliably under real-world conditions.",
-  },
-];
-
 const ICON_MAP: Record<CardAboutIcon, ReactNode> = {
-  governance:     <IconGovernance />,
-  security:       <IconSecurity />,
+  governance: <IconGovernance />,
+  security: <IconSecurity />,
   infrastructure: <IconInfrastructure />,
-  operating:      <IconOperating />,
-  regulatory:     <IconRegulatory />,
-  collaboration:  <IconCollaboration />,
+  operating: <IconOperating />,
+  regulatory: <IconRegulatory />,
+  collaboration: <IconCollaboration />,
 };
 
-export function CardAboutSection() {
+const FALLBACK: CardAboutData = {
+  badge: "Focus",
+  headingAccent: "Core",
+  heading: "Areas of Focus",
+  primaryCtaLabel: "Read Leadership Papers",
+  primaryCtaHref: "/leadership-papers",
+  cards: [
+    {
+      icon: "governance",
+      title: "Data Governance\n& Compliance",
+      description: "Translating regulatory requirements into operational systems and controls.",
+    },
+    {
+      icon: "security",
+      title: "Security\nArchitecture",
+      description: "Designing environments with built-in control, access management, and resilience.",
+    },
+    {
+      icon: "infrastructure",
+      title: "Data\nInfrastructure",
+      description: "Building platforms that perform reliably in regulated and mission-critical settings.",
+    },
+    {
+      icon: "operating",
+      title: "Operating\nModels & Delivery",
+      description: "Designing systems for adoption, usability, and long-term sustainability.",
+    },
+    {
+      icon: "regulatory",
+      title: "Standards &\nInteroperability",
+      description: "Enabling secure, structured data exchange across systems and organisations.",
+    },
+    {
+      icon: "collaboration",
+      title: "Resilience &\nSystem Integrity",
+      description: "Ensuring systems operate reliably under real-world conditions.",
+    },
+  ],
+};
+
+export function CardAboutSection({ data }: { data?: CardAboutData | null }) {
+  const d = data ?? FALLBACK;
+
   return (
     <section className="">
       <div className="mx-auto max-w-8xl px-6 py-16 md:px-10 md:py-20 lg:px-0">
@@ -129,34 +127,41 @@ export function CardAboutSection() {
             className="h-2 w-2 rounded-full bg-[#c5f018]"
             style={{ animation: "dotPulse 1s ease-in-out infinite" }}
           />
-          <span className="text-sm md:text-lg">Focus</span>
+          <span className="text-sm md:text-lg">{d.badge}</span>
         </div>
 
         {/* Heading */}
         <h2 className="mb-12 text-center text-4xl font-light leading-tight text-white md:text-5xl lg:text-6xl">
-          <span className="text-[#c5f018]">Core </span>
-          Areas of Focus
+          <span className="text-[#c5f018] font-semibold">{d.headingAccent} </span>
+          {d.heading}
         </h2>
 
         <div className="grid gap-4 md:grid-cols-3">
-          {CARDS.map((card) => (
+          {d.cards.map((card) => (
             <div
-              key={`${card.line1}-${card.line2}`}
+              key={card.title}
               className="flex flex-col gap-4 rounded-2xl bg-zinc-800/80 p-6"
             >
               <div className="flex h-14 w-14 items-center justify-center rounded-full border border-[#c5f018]/50 bg-[#c5f018]/10 p-3 text-[#c5f018]">
                 {ICON_MAP[card.icon] ?? ICON_MAP.governance}
               </div>
-              <h3 className="text-xl font-light leading-tight text-white md:text-2xl lg:text-3xl">
-                {card.line1}
-                <br />
-                {card.line2}
+              <h3 className="text-xl font-light leading-tight text-white md:text-2xl lg:text-3xl whitespace-pre-line">
+                {card.title}
               </h3>
               <p className="text-sm leading-relaxed text-white">
                 {card.description}
               </p>
             </div>
           ))}
+        </div>
+        {/* CTA */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href={d.primaryCtaHref}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-6 py-5 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00] sm:text-lg"
+          >
+            {d.primaryCtaLabel}
+          </Link>
         </div>
       </div>
     </section>

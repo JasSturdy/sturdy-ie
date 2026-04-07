@@ -6,6 +6,8 @@ interface ImpactCMSResponse {
   badge: string;
   heading: string;
   headingAccent: string;
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
   body: unknown;
   image: {
     url: string;
@@ -31,6 +33,8 @@ export async function getImpactData(): Promise<ImpactData | null> {
       heading: data.heading,
       headingAccent: data.headingAccent,
       body: data.body,
+      primaryCtaLabel:    data.primaryCtaLabel ?? "",
+      primaryCtaHref:     data.primaryCtaHref ?? "",
       image: {
         url: data.image?.url ?? "",
         alt: data.image?.alt ?? "",

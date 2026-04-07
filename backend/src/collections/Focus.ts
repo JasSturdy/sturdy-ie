@@ -78,5 +78,18 @@ export const Focus: CollectionConfig = {
                 },
             ],
         },
+        {
+            name: 'primaryCtaLabel',
+            label: 'Primary CTA Label',
+            type: 'text',
+            defaultValue: 'Read Leadership Papers',
+            admin: { description: 'Text on the CTA button.' },
+        },
+        {
+            name: 'primaryCtaHref',
+            label: 'Primary CTA URL',
+            type: 'text',
+            defaultValue: '/leadership-papers',
+        },
     ],
 };

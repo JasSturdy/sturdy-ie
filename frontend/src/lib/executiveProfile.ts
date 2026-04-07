@@ -35,10 +35,10 @@ export async function getExecutiveProfiles(): Promise<ExecutiveProfileData[]> {
       sectionHeading:       d.sectionHeading       ?? "Executive",
       sectionHeadingAccent: d.sectionHeadingAccent ?? "Profile",
       order:                d.order                ?? 0,
-      primaryCtaLabel:    d.primaryCtaLabel ?? "",
-      primaryCtaHref:     d.primaryCtaHref ?? "",
-      secondaryCtaLabel:  d.secondaryCtaLabel ?? "",
-      secondaryCtaHref:   d.secondaryCtaHref ?? "",
+      primaryCtaLabel:      d.primaryCtaLabel      || "View Case Studies",
+      primaryCtaHref:       d.primaryCtaHref       || "/case-studies",
+      secondaryCtaLabel:    d.secondaryCtaLabel    || "Read Leadership Papers",
+      secondaryCtaHref:     d.secondaryCtaHref     || "/leadership-papers",
       paragraphs: Array.isArray(d.paragraphs)
         ? d.paragraphs.map((p: any) => ({
             text:   p.text   ?? "",

@@ -1266,6 +1266,20 @@
           "notNull": false,
           "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"Across regulated environments, the challenge is not technology. It is aligning governance, systems, and operations so data can be used effectively in practice.\",\"version\":1}]}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
+        "cta_label": {
+          "name": "cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'View Case Studies'"
+        },
+        "cta_href": {
+          "name": "cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/case-studies'"
+        },
         "image_id": {
           "name": "image_id",
           "type": "integer",
@@ -2011,6 +2025,20 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"Across public sector, financial services, healthcare, and critical infrastructure environments, organisations operate under increasing regulatory expectations while managing complex data systems.\",\"version\":1}]},{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"The challenge is not a lack of data or policy. It is making both work together in practice.\",\"version\":1}]},{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"My work focuses on bridging that gap, designing systems and operating models that align governance, infrastructure, and real-world use.\",\"version\":1}]}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "cta_label": {
+          "name": "cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'View Case Studies'"
+        },
+        "cta_href": {
+          "name": "cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/case-studies'"
         },
         "updated_at": {
           "name": "updated_at",
@@ -2833,6 +2861,20 @@
           "notNull": false,
           "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"Operating within established standards and regulatory frameworks to ensure governance, interoperability, security, and trust across complex environments.\",\"version\":1}]},{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"They are infrastructure-level environments that integrate governance, security, and data exchange across organisations.\",\"version\":1}]}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
         },
+        "cta_label": {
+          "name": "cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Explore Standards'"
+        },
+        "cta_href": {
+          "name": "cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/standards'"
+        },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp(3) with time zone",
@@ -3060,6 +3102,20 @@
           "primaryKey": false,
           "notNull": false,
           "default": "'{\"root\":{\"type\":\"root\",\"children\":[{\"type\":\"paragraph\",\"version\":1,\"children\":[{\"type\":\"text\",\"text\":\"This infrastructure is designed to operate in environments where governance, security, and reliability are essential.\",\"version\":1}]}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"version\":1}}'::jsonb"
+        },
+        "cta_label": {
+          "name": "cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Explore Insights'"
+        },
+        "cta_href": {
+          "name": "cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/myinsights'"
         },
         "updated_at": {
           "name": "updated_at",
@@ -3541,6 +3597,34 @@
           "notNull": false,
           "default": 0
         },
+        "primary_cta_label": {
+          "name": "primary_cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'View Case Studies'"
+        },
+        "primary_cta_href": {
+          "name": "primary_cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/case-studies'"
+        },
+        "secondary_cta_label": {
+          "name": "secondary_cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Explore Insights'"
+        },
+        "secondary_cta_href": {
+          "name": "secondary_cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/myinsights'"
+        },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp(3) with time zone",
@@ -3905,6 +3989,20 @@
           "primaryKey": false,
           "notNull": true
         },
+        "primary_cta_label": {
+          "name": "primary_cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Let''s Connect'"
+        },
+        "primary_cta_href": {
+          "name": "primary_cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/contact'"
+        },
         "updated_at": {
           "name": "updated_at",
           "type": "timestamp(3) with time zone",
@@ -4114,6 +4212,20 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'Areas of Focus'"
+        },
+        "primary_cta_label": {
+          "name": "primary_cta_label",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Read Leadership Papers'"
+        },
+        "primary_cta_href": {
+          "name": "primary_cta_href",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'/leadership-papers'"
         },
         "updated_at": {
           "name": "updated_at",
@@ -6121,6 +6233,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "cbe45841-cacd-4fde-a779-0128154f9609",
+  "id": "184506ef-1059-47bf-a65b-1817f87c3089",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

@@ -42,7 +42,11 @@ export function CaseStudyCarousel({ caseStudies }: { caseStudies: CaseStudyIndex
                 <div className="absolute inset-0">
                   <div
                     className="h-full w-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${item.img})` }}
+                    style={{
+                      backgroundImage: item.img?.trim()
+                        ? `url("${item.img.replace(/"/g, '\\"')}")`
+                        : "none",
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
                 </div>

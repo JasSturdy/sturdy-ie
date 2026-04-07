@@ -1,4 +1,7 @@
+import { resolveCmsMediaUrl } from "@/lib/cmsUrl";
+
 const API_URL = (process.env.PAYLOAD_API_URL ?? "http://localhost:3001").replace(/\/$/, "");
+const PUBLIC_API_URL = (process.env.NEXT_PUBLIC_PAYLOAD_API_URL ?? API_URL).replace(/\/$/, "");
 
 export interface CaseStudyIndex {
   slug: string;
@@ -20,10 +23,15 @@ export interface CaseStudyDetail extends CaseStudyIndex {
   sections: CaseStudySection[];
 }
 
-// ✅ shared helper — handles both absolute and relative URLs
 function resolveImageUrl(url?: string): string {
-  if (!url) return "";
-  return url.startsWith("http") ? url : `${API_URL}${url}`;
+  const resolved = resolveCmsMediaUrl(url, PUBLIC_API_URL);
+  if (url && !resolved) {
+    console.warn("[caseStudies] empty resolved image", {
+      rawImageUrl: url,
+      publicApiUrl: PUBLIC_API_URL,
+    });
+  }
+  return resolved;
 }
 
 function extractPlainText(lexical: any): string {
@@ -67,7 +75,9 @@ function mapBackendDocToDetail(c: any): CaseStudyDetail {
 
 export async function getCaseStudiesIndex(): Promise<CaseStudyIndex[]> {
   const url = `${API_URL}/api/case-studies?limit=100&depth=1`;
+  console.log("[caseStudies] fetch index", { endpoint: url, publicApiUrl: PUBLIC_API_URL });
   const res = await fetch(url, { cache: "no-store" });
+  console.log("[caseStudies] fetch index status", { ok: res.ok, status: res.status });
   if (!res.ok) return [];
   const { docs } = await res.json();
   if (!Array.isArray(docs)) return [];
@@ -76,7 +86,9 @@ export async function getCaseStudiesIndex(): Promise<CaseStudyIndex[]> {
 
 export async function getCaseStudyBySlug(slug: string): Promise<CaseStudyDetail | null> {
   const url = `${API_URL}/api/case-studies?where[slug][equals]=${slug}&depth=1&limit=1`;
+  console.log("[caseStudies] fetch by slug", { slug, endpoint: url });
   const res = await fetch(url, { cache: "no-store" });
+  console.log("[caseStudies] fetch by slug status", { slug, ok: res.ok, status: res.status });
   if (!res.ok) throw new Error(`Failed to fetch case study — ${res.status} ${res.statusText}`);
   const { docs } = await res.json();
   if (!docs.length) return null;

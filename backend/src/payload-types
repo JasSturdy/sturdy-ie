@@ -498,6 +498,14 @@ export interface Challenge {
     [k: string]: unknown;
   } | null;
   /**
+   * Primary call-to-action button label shown below the body text.
+   */
+  ctaLabel?: string | null;
+  /**
+   * URL the primary CTA button links to.
+   */
+  ctaHref?: string | null;
+  /**
    * Image shown below the body text.
    */
   image: number | Media;
@@ -931,6 +939,14 @@ export interface Standard {
     [k: string]: unknown;
   } | null;
   /**
+   * Label for the call-to-action button shown below the cards.
+   */
+  ctaLabel?: string | null;
+  /**
+   * URL the CTA button links to.
+   */
+  ctaHref?: string | null;
+  /**
    * The horizontally scrollable focus area cards.
    */
   cards?:
@@ -1035,6 +1051,14 @@ export interface Application {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Primary call-to-action button label shown below the body text.
+   */
+  ctaLabel?: string | null;
+  /**
+   * URL the primary CTA button links to.
+   */
+  ctaHref?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1645,6 +1669,8 @@ export interface ChallengeSelect<T extends boolean = true> {
   heading?: T;
   headingLight?: T;
   body?: T;
+  ctaLabel?: T;
+  ctaHref?: T;
   image?: T;
   imageCaption?: T;
   cards?:
@@ -1797,6 +1823,8 @@ export interface StandardsSelect<T extends boolean = true> {
   heading?: T;
   headingAccent?: T;
   body?: T;
+  ctaLabel?: T;
+  ctaHref?: T;
   cards?:
     | T
     | {
@@ -1829,6 +1857,8 @@ export interface ApplicationSelect<T extends boolean = true> {
         icon?: T;
         id?: T;
       };
+  ctaLabel?: T;
+  ctaHref?: T;
   updatedAt?: T;
   createdAt?: T;
 }

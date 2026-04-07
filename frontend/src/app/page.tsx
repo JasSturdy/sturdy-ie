@@ -61,7 +61,7 @@ export default async function Home() {
       <CaseStudiesTitleSection />
       <CaseStudiesSection caseStudies={caseStudies} />
       <ApplicationSection data={applicationData} />
-      {/* <BlogSection insights={insights} /> */}
+      <BlogSection insights={insights} />
       <ContactUsCtaSection data={ctaData} />
       <FooterSection data={footerData} />
     </main>

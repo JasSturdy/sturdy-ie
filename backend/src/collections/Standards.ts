@@ -77,6 +77,20 @@ export const Standards: CollectionConfig = {
             },
         },
         {
+            name: 'ctaLabel',
+            label: 'CTA Button — Label',
+            type: 'text',
+            defaultValue: 'Explore Standards',
+            admin: { description: 'Label for the call-to-action button shown below the cards.' },
+        },
+        {
+            name: 'ctaHref',
+            label: 'CTA Button — URL',
+            type: 'text',
+            defaultValue: '/standards',
+            admin: { description: 'URL the CTA button links to.' },
+        },
+        {
             name: 'cards',
             label: 'Focus Cards',
             type: 'array',

@@ -29,6 +29,8 @@ export type ApplicationData = {
   heading: string;
   headingAccent: string;
   body: RichTextNode;
+  ctaLabel: string;
+  ctaHref: string;
   cards: ApplicationCard[];
 };
 
@@ -49,6 +51,8 @@ export async function getApplicationData(): Promise<ApplicationData | null> {
       heading:       d.heading       ?? "",
       headingAccent: d.headingAccent ?? "",
       body:          d.body          ?? { root: { children: [] } },
+      ctaLabel: d.ctaLabel ?? "",
+      ctaHref: d.ctaHref ?? "",
       cards: Array.isArray(d.cards)
         ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
           d.cards.map((c: any) => ({

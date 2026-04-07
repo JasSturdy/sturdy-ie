@@ -179,7 +179,7 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
                   className="h-2 w-2 rounded-full bg-[#c5f018]"
                   style={{ animation: "dotPulse 1s ease-in-out infinite" }}
                 />
-                <span className="text-sm md:text-lg">Challenges</span>
+                <span className="text-sm md:text-lg">{data.badge}</span>
               </div>
 
               <h2 className="text-2xl font-bold leading-tight text-[#c5f018] md:text-5xl">
@@ -191,8 +191,19 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
                 <LexicalRenderer data={data.body} />
               </div>
 
+              {data.ctaLabel && data.ctaHref && (
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href={data.ctaHref}
+                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-3 py-3 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border-1 hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+                >
+                    {data.ctaLabel}
+                  </a>
+                </div>
+              )}
+
               <div
-                className="mt-8 h-64 w-full rounded-2xl bg-cover bg-center sm:h-80 lg:mt-10 lg:h-[420px]"
+                className="mt-8 h-64 w-full rounded-2xl bg-cover bg-center sm:h-80 lg:mt-10 lg:h-[385px]"
                 style={{ backgroundImage: `url('${data.imageUrl}')` }}
               />
 
@@ -203,7 +214,7 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
               ) : null}
             </div>
 
-            <div className="w-full lg:w-1/2 space-y-4">
+            <div className="w-full lg:w-1/2 space-y-5">
               {data.cards.map((item, index) => (
                 <ServiceCard
                   key={item.title}

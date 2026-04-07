@@ -69,54 +69,51 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
           <span className="text-sm md:text-lg">Insights</span>
         </motion.div>
 
-        <div className="flex w-full flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div className="min-w-0 flex-1">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={
-                headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-              }
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
-              className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl"
-            >
-              <span className="font-semibold text-[#c5f018]">Perspective </span>
-              <span className="font-light text-white">
-               on Governance, Infrastructure, and <br />Trusted Data Systems
-              </span>
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
-              }
-              transition={{ duration: 1.2, ease: "easeOut", delay: 0.22 }}
-              className="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-lg"
-            >
-              Short perspectives on designing systems that can be governed, operated, and relied on in regulated environments.
-            </motion.p>
-          </div>
+        {/* Heading row */}
+        <div className="flex w-full flex-col gap-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
+            className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl"
+          >
+            <span className="font-semibold text-[#c5f018]">Perspective </span>
+            <span className="font-light text-white">
+              on Governance, Infrastructure, and <br />Trusted Data Systems
+            </span>
+          </motion.h2>
+        </div>
+
+        {/* Body + CTA side by side */}
+        <div className="mt-4 flex w-full flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 1.2, ease: "easeOut", delay: 0.22 }}
+            className="max-w-3xl text-sm leading-relaxed text-white md:text-lg"
+          >
+            Short perspectives on designing systems that can be governed,
+            operated, and relied on in regulated environments.
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
             animate={
-              headerInView
-                ? { opacity: 1, scale: 1 }
-                : { opacity: 0, scale: 0.7 }
+              headerInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }
             }
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="shrink-0 self-start lg:self-center"
+            className="shrink-0"
           >
             <Link
               href="/myinsight"
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-4 py-3 text-sm font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-6 sm:py-4 md:text-lg"
             >
-              View All
+              Explore Insights
               <svg
                 width="16"
                 height="16"
                 viewBox="0 0 16 16"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
                 aria-hidden
               >
                 <path
@@ -185,7 +182,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
                 {featured.category}
               </span>
               {featured.date && (
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-zinc-400">
+                <div className="flex items-center gap-2 text-xs text-zinc-400 sm:text-sm">
                   <CalendarIcon />
                   <span>{featured.date}</span>
                 </div>
@@ -223,7 +220,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
                       {post.category}
                     </span>
                     {post.date && (
-                      <div className="mt-2 flex items-center gap-2 text-xs sm:text-sm text-zinc-400">
+                      <div className="mt-2 flex items-center gap-2 text-xs text-zinc-400 sm:text-sm">
                         <CalendarIcon />
                         <span>{post.date}</span>
                       </div>

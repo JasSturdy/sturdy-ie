@@ -114,5 +114,19 @@ export const Application: CollectionConfig = {
                 },
             ],
         },
+        {
+            name: 'ctaLabel',
+            label: 'CTA Button — Label',
+            type: 'text',
+            defaultValue: 'Explore Insights',
+            admin: { description: 'Primary call-to-action button label shown below the body text.' },
+        },
+        {
+            name: 'ctaHref',
+            label: 'CTA Button — URL',
+            type: 'text',
+            defaultValue: '/myinsights',
+            admin: { description: 'URL the primary CTA button links to.' },
+        }, 
     ],
 };

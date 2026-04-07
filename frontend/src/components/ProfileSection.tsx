@@ -166,10 +166,30 @@ const ICONS: Record<StandardsCard["icon"], React.ReactNode> = {
   ),
 };
 
+const ArrowIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3 13L13 3M13 3H5M13 3V11"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const FALLBACK: StandardsData = {
   badge: "Standards",
   heading: "Standards,",
   headingAccent: "Frameworks & Ecosystems",
+  ctaLabel: "Explore Case Studies",
+  ctaHref: "/case-studies",
   body: {
     root: {
       type: "root",
@@ -375,7 +395,7 @@ export function ProfileSection({ data }: { data?: StandardsData | null }) {
         <span className="text-xs text-zinc-500 md:text-sm"></span>
       </motion.div>
 
-      <div className="relative mt-4 overflow-hidden pt-12 pb-20 md:mt-6 md:pt-14 md:pb-24">
+      <div className="relative mt-4 overflow-hidden pt-12 pb-20 md:mt-4 md:pt-4 md:pb-24">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-black/20 to-transparent md:w-24" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-black/20 to-transparent md:w-24" />
 
@@ -393,6 +413,23 @@ export function ProfileSection({ data }: { data?: StandardsData | null }) {
           </div>
         </div>
       </div>
+
+      {d.ctaLabel && d.ctaHref && (
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+          className="flex justify-center"
+        >
+          <a
+            href={d.ctaHref}
+            className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+            >
+            {d.ctaLabel}
+            <ArrowIcon />
+          </a>
+        </motion.div>
+      )}
 
       <style jsx>{`
         .marquee-track {

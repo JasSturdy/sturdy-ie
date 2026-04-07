@@ -29,6 +29,8 @@ export type StandardsData = {
   heading: string;
   headingAccent: string;
   body: RichTextNode;
+  ctaLabel: string;
+  ctaHref: string;
   cards: StandardsCard[];
 };
 
@@ -45,10 +47,12 @@ export async function getStandardsData(): Promise<StandardsData | null> {
     const d = docs[0];
 
     return {
-      badge:   d.badge   ?? "Standards",
-      heading: d.heading ?? "",
+      badge:         d.badge         ?? "Standards",
+      heading:       d.heading       ?? "",
       headingAccent: d.headingAccent ?? "",
-      body:         d.body         ?? { root: { children: [] } },
+      body:          d.body          ?? { root: { children: [] } },
+      ctaLabel:      d.ctaLabel      ?? "Explore Standards",
+      ctaHref:       d.ctaHref       ?? "/standards",
       cards: Array.isArray(d.cards)
         ? d.cards.map((c: any) => ({
             slug:     c.slug     ?? "",

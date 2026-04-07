@@ -5,6 +5,7 @@ import { motion, useInView } from "motion/react";
 import type { ApplicationData, ApplicationCard } from "@/lib/application";
 import { AiRegulationChipIcon } from "@/components/icons/AiRegulationChipIcon";
 import { LexicalRenderer } from "./LexicalRenderer";
+import Link from "next/link";
 
 const strokeIcon = {
   width: "100%",
@@ -38,12 +39,7 @@ const ICONS: Record<ApplicationCard["icon"], React.ReactNode> = {
       <path d="M7 12h7.5l2.5-5.5M7 12h7.5l2.5 5.5" />
     </svg>
   ),
-  health: (
-    <svg {...strokeIcon} aria-hidden>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 8v8M8 12h8" />
-    </svg>
-  ),
+  health: <MedicalGlobeIcon />,
   research: (
     <svg {...strokeIcon} aria-hidden>
       <path d="M3 3v18h18" />
@@ -67,6 +63,86 @@ const ICONS: Record<ApplicationCard["icon"], React.ReactNode> = {
   ),
 };
 
+function MedicalGlobeIcon() {
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="30 30 140 140"
+      xmlns="http://www.w3.org/2000/svg"
+
+    >
+      <defs>
+        <radialGradient id="mgGlobeGrad" cx="20%" cy="35%" r="60%">
+          <stop offset="0%" stopColor="#1e3012" />
+          <stop offset="100%" stopColor="#080f05" />
+        </radialGradient>
+        <radialGradient id="mgGlowGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#c5f018" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="#c5f018" stopOpacity="0" />
+        </radialGradient>
+        <clipPath id="mgGlobeClip">
+          <circle cx="100" cy="100" r="71" />
+        </clipPath>
+      </defs>
+
+      <circle cx="100" cy="100" r="90" fill="url(#mgGlowGrad)" />
+      <circle cx="100" cy="100" r="71" fill="url(#mgGlobeGrad)" />
+
+      <g
+        clipPath="url(#mgGlobeClip)"
+        fill="none"
+        stroke="#c5f018"
+        strokeOpacity="0.75"
+        strokeWidth="3"
+      >
+        <ellipse cx="100" cy="100" rx="71" ry="22" />
+        <ellipse cx="100" cy="100" rx="71" ry="62" />
+        <ellipse cx="100" cy="100" rx="22" ry="71" />
+        <line x1="100" y1="29" x2="100" y2="171" />
+      </g>
+
+      <circle
+        cx="100"
+        cy="100"
+        r="71"
+        fill="none"
+        stroke="#c5f018"
+        strokeWidth="3.5"
+        strokeOpacity="3"
+      />
+
+      <circle
+        cx="100"
+        cy="100"
+        r="27"
+        fill="#0b1507"
+        stroke="#c5f018"
+        strokeWidth="1.6"
+        strokeOpacity="0.7"
+      />
+
+      <rect x="91.5" y="83" width="17" height="34" rx="3.5" fill="#c5f018" />
+      <rect x="83" y="91.5" width="34" height="17" rx="3.5" fill="#c5f018" />
+
+      <rect x="94.5" y="83" width="4.5" height="34" rx="2" fill="#eaff6a" opacity="0.25" />
+      <rect x="83" y="94.5" width="34" height="4.5" rx="2" fill="#eaff6a" opacity="0.25" />
+    </svg>
+  );
+}
+
+const ArrowIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path
+      d="M3 13L13 3M13 3H5M13 3V11"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 function BarIcon({ bars }: { bars: number }) {
   return (
     <div className="flex gap-1 pt-1">
@@ -84,6 +160,8 @@ const FALLBACK: ApplicationData = {
   badge: "Application",
   heading: "Applied Across",
   headingAccent: "Critical Environments",
+  ctaLabel: "Explore Insights",
+  ctaHref: "/my-insights",
   body: {
     root: {
       type: "root",
@@ -170,14 +248,14 @@ function FocusCard({
         {/* Top row: icon + bars */}
         <div className="flex items-start justify-between">
           <div
-            className="flex h-10 w-10 items-center justify-center rounded-full border md:h-12 md:w-12 lg:h-14 lg:w-14"
+            className="flex h-10 w-10 items-center justify-center rounded-full border md:h-12 md:w-12 lg:h-16 lg:w-16"
             style={{
               borderColor: active ? "rgba(197,240,24,0.7)" : "rgba(197,240,24,0.4)",
               color: "#c5f018",
               backgroundColor: active ? "rgba(197,240,24,0.08)" : "transparent",
             }}
           >
-            <div className="h-6 w-6">
+            <div className="h-6 w-6 lg:h-10 lg:w-10">
               {ICONS[card.icon] ?? ICONS["data-governance"]}
             </div>
           </div>
@@ -242,14 +320,33 @@ export function ApplicationSection({ data }: { data?: ApplicationData | null }) 
         <span className="font-bold text-[#c5f018]">{d.headingAccent}</span>
       </motion.h2>
 
-      {/* Body */}
+      {/* Body + CTA row */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="mt-4 max-w-6xl text-sm leading-relaxed text-white md:text-base"
+        className="mt-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6"
       >
-        <LexicalRenderer data={d.body} />
+        <div className="max-w-4xl text-sm leading-relaxed text-white md:text-lg">
+          <LexicalRenderer data={d.body} />
+        </div>
+
+        {d.ctaLabel && d.ctaHref && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+            className="flex justify-center"
+          >
+            <a
+              href={d.ctaHref}
+              className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-4 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+            >
+              {d.ctaLabel}
+              <ArrowIcon />
+            </a>
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Cards — 1 col mobile, 2 col tablet, 4 col desktop */}

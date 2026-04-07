@@ -131,5 +131,6 @@ export const ChallengeAbout: CollectionConfig = {
                 },
             ],
         },
+        
     ],
 };

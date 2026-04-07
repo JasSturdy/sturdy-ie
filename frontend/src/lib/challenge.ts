@@ -29,6 +29,8 @@ export type ChallengeData = {
   heading: string;
   headingLight: string;
   body: RichTextNode;
+  ctaLabel: string;
+  ctaHref: string;
   imageUrl: string;
   imageCaption: string;
   cards: ChallengeCard[];
@@ -55,6 +57,8 @@ export async function getChallengeData(): Promise<ChallengeData | null> {
       heading: d.heading ?? "",
       headingLight: d.headingLight ?? "",
       body: d.body ?? { root: { children: [] } },
+      ctaLabel: d.ctaLabel ?? "",
+      ctaHref: d.ctaHref ?? "",
       imageUrl: d.image?.url
         ? d.image.url.startsWith("http")
           ? d.image.url

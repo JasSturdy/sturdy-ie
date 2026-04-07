@@ -93,7 +93,7 @@ function AiRegulationChipIcon() {
       height="100%"
       aria-hidden
     >
-      <rect x="30" y="30" width="140" height="140" rx="20" 
+      <rect x="30" y="30" width="140" height="140" rx="20"
         fill="#0d1a06" stroke="#c5f018" strokeWidth="2.5" />
 
       <line x1="75" y1="50" x2="75" y2="36" stroke="#c5f018" strokeWidth="2.5" strokeLinecap="round" />
@@ -301,12 +301,14 @@ function FocusCard({
       style={{ flex: "0 0 clamp(252px, 30vw, 340px)" }}
     >
       <div className="relative flex aspect-[3/4] w-full flex-col overflow-hidden rounded-[1.5rem] border border-zinc-800/80 bg-gradient-to-b from-zinc-900/95 via-zinc-950 to-black p-5 shadow-[inset_3px_0_0_0_rgba(197,240,24,0.82),0_10px_36px_-6px_rgba(0,0,0,0.55)] ring-1 ring-inset ring-white/[0.05] transition-all duration-500 ease-out before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_90%_60%_at_100%_0%,rgba(197,240,24,0.09),transparent_55%)] after:pointer-events-none after:absolute after:inset-0 after:opacity-[0.22] after:[background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] after:bg-[length:22px_22px] hover:-translate-y-1.5 hover:border-zinc-600/70 hover:shadow-[inset_3px_0_0_0_#c5f018,0_18px_48px_-8px_rgba(0,0,0,0.68),0_0_40px_-10px_rgba(197,240,24,0.12)] hover:ring-[#c5f018]/10 md:p-6">
+
         {/* Large grey ring (stroke only), clipped at right — mirrors hero graphic */}
         <div
           className="pointer-events-none absolute right-0 top-1/2 z-0 aspect-square w-[125%] max-w-[19rem] translate-x-[52%] -translate-y-1/2 rounded-full border-[10px] border-zinc-600/40 bg-transparent md:max-w-[21rem] md:border-[12px]"
           aria-hidden
         />
 
+        {/* Icon + index badge row */}
         <div className="relative z-[1] flex items-start justify-between">
           <div
             className="flex h-14 w-14 items-center justify-center rounded-full border border-[#c5f018]/45 bg-[#c5f018]/10 text-[#c5f018] shadow-[0_0_24px_-4px_rgba(197,240,24,0.35)] transition-all duration-500 group-hover:scale-110 group-hover:border-[#c5f018]/70 group-hover:bg-[#c5f018]/15 group-hover:shadow-[0_0_28px_-2px_rgba(197,240,24,0.45)] md:h-[3.8rem] md:w-[3.8rem]"
@@ -328,8 +330,16 @@ function FocusCard({
           </span>
         </div>
 
-        <div className="relative z-[1] mt-auto flex min-w-0 flex-col pt-8 md:pt-10">
-          <div className="mb-4 h-px w-full bg-gradient-to-r from-[#c5f018]/25 via-zinc-700/60 to-transparent md:mb-5" aria-hidden />
+        <div
+          className="pointer-events-none absolute left-5 right-5 z-[2] h-px md:left-6 md:right-6 top-[150px] md:top-[120px] lg:top-[230px]"
+          style={{
+            background: "linear-gradient(to right, rgba(197,240,24,0.4), rgba(113,113,122,0.5), transparent)"
+          }}
+          aria-hidden
+        />
+
+        {/* Title + tagline — pinned to bottom */}
+        <div className="relative z-[1] mt-auto flex min-w-0 flex-col pt-4 md:pt-5">
           <h3 className="min-w-0 text-pretty text-base font-bold leading-[1.18] tracking-tight text-[#c5f018] transition-colors duration-300 [overflow-wrap:anywhere] line-clamp-2 sm:text-lg md:text-xl group-hover:text-[#d4ff2a]">
             {card.title}
           </h3>
@@ -424,7 +434,7 @@ export function ProfileSection({ data }: { data?: StandardsData | null }) {
           <a
             href={d.ctaHref}
             className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
-            >
+          >
             {d.ctaLabel}
             <ArrowIcon />
           </a>

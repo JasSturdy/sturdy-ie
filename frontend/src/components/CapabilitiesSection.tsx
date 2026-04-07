@@ -206,7 +206,7 @@ export function CapabilitiesSection({ data }: { data?: IndustriesData | null }) 
               <article className="group/card relative w-full overflow-hidden bg-zinc-950/80 h-64 sm:h-80 md:h-96 lg:h-[28rem]">
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-60 transition-all duration-500 group-hover:opacity-80 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${card.imageUrl})` }}
+                  style={{ backgroundImage: card.imageUrl ? `url("${card.imageUrl}")` : "none" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
                 <div className="relative flex h-full min-h-0 flex-col justify-between p-4 sm:p-5">

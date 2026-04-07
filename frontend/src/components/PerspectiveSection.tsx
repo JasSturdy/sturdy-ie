@@ -247,7 +247,7 @@ export function PerspectiveSection({
           </div>
         </div>
 
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 items-center">
           <StackedImages images={d.images} />
         </div>
       </div>

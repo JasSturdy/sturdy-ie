@@ -42,8 +42,8 @@ export async function getImpactData(): Promise<ImpactData | null> {
       heading: data.heading,
       headingAccent: data.headingAccent,
       body: data.body,
-      primaryCtaLabel:    data.primaryCtaLabel ?? "",
-      primaryCtaHref:     data.primaryCtaHref ?? "",
+      primaryCtaLabel: data.primaryCtaLabel || "Let's Connect",
+      primaryCtaHref: data.primaryCtaHref || "/contact",
       image: {
         url: imageUrl,
         alt: data.image?.alt ?? "",

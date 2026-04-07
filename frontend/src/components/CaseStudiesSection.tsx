@@ -21,7 +21,9 @@ function CaseStudySlide({
       {item.img?.trim() ? (
         <div
           className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-          style={{ backgroundImage: `url(${item.img})` }}
+          style={{
+            backgroundImage: `url("${item.img.replace(/"/g, '\\"')}")`,
+          }}
         />
       ) : (
         <div className="absolute inset-0 bg-zinc-900" />
@@ -71,7 +73,9 @@ function CaseStudyCard({
       {item.img?.trim() ? (
         <div
           className="absolute inset-0 bg-cover bg-center bg-black transition-transform duration-500 group-hover:scale-105"
-          style={{ backgroundImage: `url(${item.img})` }}
+          style={{
+            backgroundImage: `url("${item.img.replace(/"/g, '\\"')}")`,
+          }}
         />
       ) : (
         <div className="absolute inset-0 bg-zinc-800" />

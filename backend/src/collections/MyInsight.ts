@@ -68,11 +68,11 @@ export const MyInsight: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        { label: 'Governance & Compliance',      value: 'Governance & Compliance' },
-        { label: 'Research Collaboration',        value: 'Research Collaboration' },
-        { label: 'Interoperability & Standards',  value: 'Interoperability & Standards' },
-        { label: 'Preventive Health Innovation',  value: 'Preventive Health Innovation' },
-        { label: 'AI & Regulated Data',           value: 'AI & Regulated Data' },
+        { label: 'Governance & Compliance', value: 'Governance & Compliance' },
+        { label: 'Research Collaboration', value: 'Research Collaboration' },
+        { label: 'Interoperability & Standards', value: 'Interoperability & Standards' },
+        { label: 'Preventive Health Innovation', value: 'Preventive Health Innovation' },
+        { label: 'AI & Regulated Data', value: 'AI & Regulated Data' },
       ],
     },
     {
@@ -84,10 +84,9 @@ export const MyInsight: CollectionConfig = {
     },
     {
       name: 'date',
-      type: 'date',
+      type: 'text',
       admin: {
-        description: 'Publication date.',
-        date: { pickerAppearance: 'dayOnly' },
+        description: 'Format: MM/YYYY e.g. 03/2025',
       },
     },
     {

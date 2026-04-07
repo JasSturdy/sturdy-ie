@@ -89,7 +89,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"slug" varchar NOT NULL,
   	"category" "enum_myinsights_category" NOT NULL,
   	"img_id" integer NOT NULL,
-  	"date" timestamp(3) with time zone,
+  	"date" varchar,
   	"summary" jsonb NOT NULL,
   	"flagship" boolean DEFAULT false,
   	"featured" boolean DEFAULT false,

@@ -91,7 +91,7 @@ export const CaseStudies: CollectionConfig = {
     {
       name: 'date',
       type: 'text',
-      admin: { description: 'Display date e.g. "March 2024"' },
+      admin: { description: 'Format: MM/YYYY e.g. 03/2025', },
     },
     {
       name: 'period',

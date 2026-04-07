@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { MyInsightIndex } from "../lib/myInsight";
 
@@ -31,21 +31,11 @@ const CalendarIcon = () => (
 );
 
 export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
-  const imgRef = useRef<HTMLDivElement>(null);
-  const [hovered, setHovered] = useState(false);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
   const headerRef = useRef(null);
   const headerInView = useInView(headerRef, {
     once: true,
     margin: "0px 0px -60px 0px",
   });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = imgRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-  };
 
   const featured = insights[0];
   const smallPosts = insights.slice(1, 3);
@@ -132,62 +122,38 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
       {/* ── Featured post ── */}
       <Link
         href={`/myinsight/${featured.slug}`}
-        className="group mb-4 block rounded-xl border border-[#68800a]"
+        className="group mb-4 block"
       >
-        <div className="relative flex flex-col overflow-hidden rounded-xl bg-zinc-900 transition-colors duration-300 sm:flex-row">
-          <div
-            ref={imgRef}
-            className="relative w-full shrink-0 cursor-none overflow-hidden sm:w-[40%]"
-            onMouseMove={handleMouseMove}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            {featured.img && (
-              <img
-                src={featured.img}
-                alt={featured.title}
-                className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-full sm:min-h-[220px]"
-              />
-            )}
-            <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/40" />
-            <div
-              className="pointer-events-none absolute left-0 top-0"
-              style={{
-                transform: `translate(${pos.x - 32}px, ${pos.y - 32}px)`,
-                opacity: hovered ? 1 : 0,
-                transition: "opacity 0.3s ease, transform 0.06s linear",
-                willChange: "transform",
-              }}
-            >
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-black/40 backdrop-blur-sm sm:h-20 sm:w-20">
-                <div className="absolute inset-0 rounded-full border-2 border-[#c5f018] shadow-[0_0_24px_6px_rgba(197,240,24,0.65)]" />
-                <svg width="24" height="24" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M3 13L13 3M13 3H5M13 3V11"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </div>
+        <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/60 group-hover:shadow-[0_0_60px_rgba(197,240,24,0.15)] min-h-[300px]">
+          <div className="flex items-start justify-end">
+            <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
+              {featured.category}
+            </span>
           </div>
-          <div className="flex flex-1 flex-col justify-between p-4 sm:p-5 lg:p-8">
-            <h3 className="text-xl font-light leading-tight text-white sm:text-2xl lg:text-5xl">
+
+          <h3 className="mt-6 text-[28px] font-light leading-[1.12] text-white transition-colors group-hover:text-[#d4ff2a] md:text-[42px]">
               {featured.title}
             </h3>
-            <div className="mt-4 flex flex-col gap-3 xs:flex-row xs:items-center xs:justify-between">
-              <span className="w-fit rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 text-xs font-semibold text-[#c5f018]">
-                {featured.category}
-              </span>
-              {featured.date && (
-                <div className="flex items-center gap-2 text-xs text-zinc-400 sm:text-sm">
-                  <CalendarIcon />
-                  <span>{featured.date}</span>
-                </div>
-              )}
+
+          <div className="mt-6 h-px w-full bg-zinc-800" />
+
+          {featured.date && (
+            <div className="mt-6 flex items-center gap-2 text-sm text-zinc-500">
+              <CalendarIcon />
+              <span>{featured.date}</span>
             </div>
+          )}
+
+          {featured.excerpt ? (
+            <p className="mt-5 line-clamp-3 text-sm leading-relaxed text-zinc-400">
+              {featured.excerpt}
+            </p>
+          ) : null}
+
+          <div className="mt-auto flex items-center justify-end pt-8">
+            <span className="inline-flex items-center rounded-xl border border-zinc-700 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors group-hover:border-[#c5f018]/60 group-hover:text-[#d4ff2a]">
+              Read more
+            </span>
           </div>
         </div>
       </Link>
@@ -199,33 +165,38 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
             <Link
               key={post.slug}
               href={`/myinsight/${post.slug}`}
-              className="group block"
+              className="group flex"
             >
-              <div className="flex h-full flex-row overflow-hidden rounded-xl border border-[#68800a] transition-colors duration-300">
-                <div className="relative w-28 shrink-0 overflow-hidden sm:w-32 lg:w-75">
-                  {post.img && (
-                    <img
-                      src={post.img}
-                      alt={post.title}
-                      className="h-full w-full min-h-[120px] object-cover transition-transform duration-500 group-hover:scale-105 sm:min-h-[140px]"
-                    />
-                  )}
+              <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/60 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.12)] min-h-[260px]">
+                <div className="flex items-start justify-end">
+                  <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
+                    {post.category}
+                  </span>
                 </div>
-                <div className="flex min-w-0 flex-1 flex-col justify-between p-3 sm:p-4 lg:p-8">
-                  <h3 className="line-clamp-2 text-sm font-light leading-snug text-white sm:text-base lg:text-2xl">
+
+                <h3 className="mt-5 line-clamp-2 text-2xl font-light leading-[1.15] text-white transition-colors group-hover:text-[#d4ff2a] md:text-[28px]">
                     {post.title}
-                  </h3>
-                  <div className="mt-2 sm:mt-3">
-                    <span className="w-fit rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-2 py-0.5 text-[10px] font-semibold text-[#c5f018]">
-                      {post.category}
-                    </span>
-                    {post.date && (
-                      <div className="mt-2 flex items-center gap-2 text-xs text-zinc-400 sm:text-sm">
-                        <CalendarIcon />
-                        <span>{post.date}</span>
-                      </div>
-                    )}
+                </h3>
+
+                <div className="mt-5 h-px w-full bg-zinc-800" />
+
+                {post.date && (
+                  <div className="mt-4 flex items-center gap-2 text-sm text-zinc-500">
+                    <CalendarIcon />
+                    <span>{post.date}</span>
                   </div>
+                )}
+
+                {post.excerpt ? (
+                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-zinc-400">
+                    {post.excerpt}
+                  </p>
+                ) : null}
+
+                <div className="mt-auto flex items-center justify-end pt-6">
+                  <span className="inline-flex items-center rounded-xl border border-zinc-700 bg-transparent px-5 py-2.5 text-sm font-semibold text-white transition-colors group-hover:border-[#c5f018]/60 group-hover:text-[#d4ff2a]">
+                    Read more
+                  </span>
                 </div>
               </div>
             </Link>

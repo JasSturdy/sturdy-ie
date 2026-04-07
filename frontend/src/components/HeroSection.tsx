@@ -200,16 +200,16 @@ export function HeroSection({ data }: Props) {
 
             <HeroSlot sections={sections} position="above-cta" />
 
-            <div className="flex flex-row justify-center gap-3 pt-2 sm:justify-start sm:gap-4">
+            <div className="flex flex-col justify-center gap-3 pt-2 sm:flex-row sm:justify-start sm:gap-4">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-                className="flex-1 sm:flex-none"
+                className="w-full sm:w-auto sm:flex-none"
               >
                 <Link
                   href={primaryCtaHref}
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-3 py-3 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border-1 hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-4 py-3 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border-1 hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
                 >
                   {primaryCtaLabel}
                   <ArrowIcon />
@@ -220,11 +220,11 @@ export function HeroSection({ data }: Props) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.58 }}
-                className="flex-1 sm:flex-none"
+                className="w-full sm:w-auto sm:flex-none"
               >
                 <Link
                   href={secondaryCtaHref}
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-3 py-3 text-sm font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-4 py-3 text-base font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
                 >
                   {secondaryCtaLabel}
                   <ArrowIcon />

@@ -18,7 +18,7 @@ interface ImpactCMSResponse {
 export async function getImpactData(): Promise<ImpactData | null> {
   try {
     const res = await fetch(
-      `${API_URL}/api/globals/impact`,
+      `${API_URL}/api/impact?limit=1&depth=1`,
       {
         next: { revalidate: 60 },
       },
@@ -26,7 +26,16 @@ export async function getImpactData(): Promise<ImpactData | null> {
 
     if (!res.ok) return null;
 
-    const data: ImpactCMSResponse = await res.json();
+    const { docs } = await res.json();
+    if (!Array.isArray(docs) || !docs.length) return null;
+    const data: ImpactCMSResponse = docs[0];
+
+    const rawImageUrl = data.image?.url ?? "";
+    const imageUrl = rawImageUrl
+      ? rawImageUrl.startsWith("http")
+        ? rawImageUrl
+        : `${API_URL}${rawImageUrl}`
+      : "";
 
     return {
       badge: data.badge,
@@ -36,7 +45,7 @@ export async function getImpactData(): Promise<ImpactData | null> {
       primaryCtaLabel:    data.primaryCtaLabel ?? "",
       primaryCtaHref:     data.primaryCtaHref ?? "",
       image: {
-        url: data.image?.url ?? "",
+        url: imageUrl,
         alt: data.image?.alt ?? "",
       },
     };

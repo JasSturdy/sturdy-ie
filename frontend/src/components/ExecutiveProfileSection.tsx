@@ -41,9 +41,9 @@ export function ExecutiveProfileSection({
   const secondaryCtaHref = current.secondaryCtaHref ?? "/myinsights";
 
   return (
-    <section ref={ref} className="mt-2 overflow-hidden bg-transparent md:mt-4">
-      <div className="mx-auto max-w-8xl px-6 md:px-10 lg:px-0">
-        <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+    <section ref={ref} className="mt-8 overflow-hidden bg-transparent md:mt-12">
+      <div className="mx-auto max-w-8xl px-6 pb-8 md:px-10 md:pb-12 lg:px-0">
+        <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           {/* Image */}
           <div className="relative h-64 overflow-hidden rounded-2xl sm:h-80 md:h-96 lg:order-2 lg:h-auto lg:min-h-[min(520px,70vh)]">
             <AnimatePresence mode="wait">
@@ -65,16 +65,16 @@ export function ExecutiveProfileSection({
           </div>
 
           {/* Text */}
-          <div className="flex min-h-0 flex-col justify-center lg:order-1 lg:py-4">
+          <div className="flex min-h-0 flex-col justify-center lg:order-1 lg:py-6">
             <div className="w-full">
-              <h2 className="mb-6 text-left text-4xl font-light leading-tight text-white md:mb-8 md:text-5xl lg:text-6xl">
+              <h2 className="mb-8 text-left text-4xl font-light leading-tight text-white md:mb-10 md:text-5xl lg:text-6xl">
                 <span className="font-bold text-[#c5f018]">{sectionHeading}</span>
                 {sectionHeadingAccent && (
                   <span className="font-light text-white"> {sectionHeadingAccent}</span>
                 )}
               </h2>
 
-              <div className="rounded-2xl bg-[#222222] p-6 sm:p-8 md:p-10 lg:p-10 xl:p-12">
+              <div className="rounded-2xl bg-[#222222] p-7 sm:p-9 md:p-11 lg:p-11 xl:p-12">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current.id + "-text"}
@@ -82,7 +82,7 @@ export function ExecutiveProfileSection({
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 16 }}
                     transition={{ duration: 0.5 }}
-                    className="space-y-4 text-sm leading-relaxed text-white md:text-base"
+                    className="space-y-5 text-sm leading-loose text-white md:text-base"
                   >
                     {current.paragraphs.map((para, i) => (
                       <p key={i} className={para.isBold ? "font-bold text-white" : ""}>
@@ -118,16 +118,16 @@ export function ExecutiveProfileSection({
               </div>
             </div>
              {/* CTA Buttons */}
-                <div className="flex flex-row justify-center gap-3 pt-6 sm:justify-start sm:gap-4">
+                <div className="flex flex-col justify-center gap-3 pt-8 sm:flex-row sm:justify-start sm:gap-4">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-                    className="flex-1 sm:flex-none"
+                    className="w-full sm:w-auto sm:flex-none"
                   >
                     <Link
                       href={primaryCtaHref}
-                      className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-3 py-3 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+                      className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-4 py-3 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
                     >
                       {primaryCtaLabel}
                       <ArrowIcon />
@@ -138,11 +138,11 @@ export function ExecutiveProfileSection({
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.58 }}
-                    className="flex-1 sm:flex-none"
+                    className="w-full sm:w-auto sm:flex-none"
                   >
                     <Link
                       href={secondaryCtaHref}
-                      className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-3 py-3 text-sm font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
+                      className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-4 py-3 text-base font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
                     >
                       {secondaryCtaLabel}
                       <ArrowIcon />

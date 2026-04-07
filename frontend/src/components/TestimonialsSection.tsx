@@ -60,10 +60,10 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
   const headingInView = useInView(headingRef, { once: true, margin: "0px 0px -60px 0px" });
 
   return (
-    <section className="mx-auto mt-10 max-w-8xl px-4 py-12 md:mt-16 md:px-4 md:py-20 lg:px-0">
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+    <section className="mx-auto mt-14 max-w-8xl px-4 py-16 md:mt-20 md:px-4 md:py-24 lg:px-0">
+      <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
 
-        <div className="order-2 flex flex-col gap-4 lg:order-2">
+        <div className="order-2 flex flex-col gap-6 lg:order-2">
           {/* Badge */}
           <div className="flex items-center gap-2">
             <span
@@ -85,15 +85,15 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
             <span className="text-white">{heading}</span>
           </motion.h2>
 
-          <div className="text-sm leading-relaxed text-white md:text-base [&_p]:mb-3 [&_p:last-child]:mb-0">
+          <div className="text-sm leading-loose text-white md:text-base [&_p]:mb-4 [&_p:last-child]:mb-0">
             <LexicalRenderer data={body} />
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             {challenges.map((c) => (
               <div
                 key={c.id}
-                className="flex flex-col gap-4 rounded-2xl bg-zinc-800/80 p-6"
+                className="flex flex-col gap-4 rounded-2xl bg-zinc-800/80 p-7"
               >
                 <div className="flex h-14 w-14 bg-[#c5f018]/10 border-1 border-[#c5f018]/50 items-center justify-center rounded-full p-3 text-[#c5f018]">
                   {ICON_MAP[c.icon] ?? ICON_MAP.trust}
@@ -108,7 +108,7 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
 
         </div>
 
-        <div className="order-1 flex flex-col gap-6 lg:order-1 lg:h-full lg:min-h-0">
+        <div className="order-1 flex flex-col gap-7 lg:order-1 lg:h-full lg:min-h-0">
           <div className="flex items-center gap-3">
             <span className="text-4xl font-semibold text-[#c5f018]">✳</span>
             <div className="h-px flex-1 bg-zinc-700" />

@@ -66,8 +66,6 @@ export function WritingClient({
         </p>
       </section>
 
-
-
       {/* My Insights */}
       <section className="bg-black">
         <div className="mx-auto max-w-8xl px-4 py-16 sm:px-6 md:px-10 lg:px-0">
@@ -94,9 +92,9 @@ export function WritingClient({
                 <Link
                   key={insight.slug}
                   href={`/myinsight/${insight.slug}`}
-                  className="group block"
+                  className="group flex"
                 >
-                  <div className="flex flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 min-h-[290px] transition-all duration-300 group-hover:border-[#DB4401]/70 group-hover:shadow-[0_0_60px_rgba(219,68,1,0.22)]">
+                  <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#DB4401]/70 group-hover:shadow-[0_0_60px_rgba(219,68,1,0.22)]">
                     <div className="flex items-start justify-end">
                       <span
                         className="rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] bg-clip-text text-transparent"

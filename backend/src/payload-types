@@ -327,7 +327,7 @@ export interface Myinsight {
    */
   img: number | Media;
   /**
-   * Publication date.
+   * Format: MM/YYYY e.g. 03/2025
    */
   date?: string | null;
   /**
@@ -420,7 +420,7 @@ export interface CaseStudy {
    */
   theme: string;
   /**
-   * Display date e.g. "March 2024"
+   * Format: MM/YYYY e.g. 03/2025
    */
   date?: string | null;
   /**

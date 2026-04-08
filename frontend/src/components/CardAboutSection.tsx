@@ -155,10 +155,10 @@ export function CardAboutSection({ data }: { data?: CardAboutData | null }) {
           ))}
         </div>
         {/* CTA */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-12 flex justify-center px-1 sm:mt-10 sm:px-0">
           <Link
             href={d.primaryCtaHref}
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-6 py-5 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00] sm:text-lg"
+            className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-6 py-3.5 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00] sm:w-auto sm:max-w-none sm:px-6 sm:py-5 sm:text-lg"
           >
             {d.primaryCtaLabel}
           </Link>

@@ -80,7 +80,7 @@ function mapDoc(a: any): MyInsightDetail {
     slug:     a.slug,
     title:    a.title,
     category: a.category,
-    date:     formatDate(a.date),
+    date:     a.date ?? "",  // ← langsung pakai value dari API
     img:      resolveImageUrl(a.img?.url),
     excerpt:  extractPlainText(a.summary),
     flagship: a.flagship ?? false,

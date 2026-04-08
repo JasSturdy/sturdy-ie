@@ -92,11 +92,11 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
               headerInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }
             }
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="shrink-0"
+            className="flex sm:justify-center shrink-0"
           >
             <Link
               href="/myinsight"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-5 py-3.5 text-base font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-6 sm:py-4 md:text-lg"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-5 py-3.5 text-base font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-6 sm:py-4 md:text-lg w-full sm:w-auto"
             >
               Explore Insights
               <svg

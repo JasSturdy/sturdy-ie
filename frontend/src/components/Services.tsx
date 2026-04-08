@@ -110,11 +110,12 @@ function ServiceCard({
   const revealStart = index / total;
   const revealEnd   = revealStart + 0.5 / total;
   const opacity = useTransform(scrollYProgress, [revealStart, revealEnd], [0, 1]);
-  const x       = useTransform(scrollYProgress, [revealStart, revealEnd], [72, 0]);
+  const xDistance = isMobile ? 24 : 72;
+  const x       = useTransform(scrollYProgress, [revealStart, revealEnd], [xDistance, 0]);
 
   return (
     <motion.div
-      style={isMobile ? {} : { opacity, x }}
+      style={{ opacity, x }}
       className="group flex flex-col items-center md:flex-row md:items-center gap-4 md:gap-8 rounded-lg md:rounded-2xl border border-[#677f06] p-6 md:p-0"
     >
       <div className="flex-shrink-0 flex h-14 w-14 md:h-45 md:w-40 items-center justify-center rounded-xl md:rounded-l-2xl md:rounded-r-none bg-[#c5f018] text-black">

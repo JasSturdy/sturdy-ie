@@ -265,7 +265,7 @@ function FocusCard({
 
         {/* Bottom: title + divider + tagline */}
         <div className="mt-8 md:mt-10">
-          <h3 className="text-2xl font-semibold leading-snug text-white md:text-3xl lg:text-3xl">
+          <h3 className="text-xl font-semibold leading-snug text-white md:text-2xl lg:text-3xl">
             {card.title}
           </h3>
           <div
@@ -336,11 +336,11 @@ export function ApplicationSection({ data }: { data?: ApplicationData | null }) 
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-            className="flex justify-center"
+            className="flex sm:justify-center"
           >
             <a
               href={d.ctaHref}
-              className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-4 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+              className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-4 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black w-full sm:w-auto"
             >
               {d.ctaLabel}
               <ArrowIcon />

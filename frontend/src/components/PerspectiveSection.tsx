@@ -92,23 +92,35 @@ function StackedImages({ images }: { images: PerspectiveImage[] }) {
   }, []);
 
   const lerp = (a: number, b: number) => a + (b - a) * progress;
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const displayImages = images.length ? images.slice(0, 3) : FALLBACK_IMAGES;
 
   return (
-    <div ref={ref} className="relative w-full h-[400px] lg:h-[450px]">
+    <div
+      ref={ref}
+      className="relative mx-auto w-full max-w-sm aspect-square md:max-w-none md:aspect-[5/4] lg:aspect-[6/5]"
+    >
       {displayImages.map((img, i) => {
         const pos = STACK_POSITIONS[i];
+
+        // Keep the same animated stack behavior on all breakpoints.
+        const left = isMobile
+          ? 50 + (lerp(pos.startLeft, pos.endLeft) - 22) * 0.52
+          : lerp(pos.startLeft, pos.endLeft);
+        const top = isMobile
+          ? 5 + (lerp(pos.startTop, pos.endTop) - 22) * 0.75
+          : lerp(pos.startTop, pos.endTop);
+
         return (
           <div
             key={i}
-            className="absolute bg-cover bg-center"
+            className="absolute w-2/3 aspect-[5/4] bg-cover bg-center md:w-1/2"
             style={{
               backgroundImage: `url('${img.url}')`,
-              width: "50%",
-              height: "45%",
-              left: `${lerp(pos.startLeft, pos.endLeft)}%`,
-              top: `${lerp(pos.startTop, pos.endTop)}%`,
+              left: `${left}%`,
+              top: `${top}%`,
+              transform: isMobile ? "translateX(-50%)" : "none",
               zIndex: (i + 1) * 5,
               borderRadius: "10px",
             }}
@@ -239,7 +251,7 @@ export function PerspectiveSection({
             </Link> */}
             <Link
               href={d.ctaHref2}
-              className="inline-flex items-center gap-2 rounded-lg border border-lime-400/70 bg-transparent px-6 py-5 text-lg font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] hover:bg-[#CCFF00] hover:text-black"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-lime-400/70 bg-transparent px-5 py-3.5 text-base font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] hover:bg-[#CCFF00] hover:text-black sm:w-auto sm:px-6 sm:py-5 sm:text-lg"
             >
               {d.ctaLabel2}
               <ArrowIcon />
@@ -247,7 +259,7 @@ export function PerspectiveSection({
           </div>
         </div>
 
-        <div className="lg:w-1/2 items-center">
+        <div className="lg:w-1/2">
           <StackedImages images={d.images} />
         </div>
       </div>

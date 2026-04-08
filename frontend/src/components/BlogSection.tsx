@@ -68,8 +68,12 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
             className="text-[40px] font-light leading-[1.08] text-white sm:text-5xl md:text-5xl lg:text-6xl"
           >
             <span className="font-semibold text-[#c5f018]">Perspective </span>
-            <span className="font-light text-white">
-              on Governance, Infrastructure, and <br />Trusted Data Systems
+            <span className="font-light text-white md:hidden">
+              on Governance, Infrastructure, and Trusted Data Systems
+            </span>
+            <span className="hidden font-light text-white md:block">
+              <span className="block">on Governance, Infrastructure,</span>
+              <span className="block">and Trusted Data Systems</span>
             </span>
           </motion.h2>
         </div>

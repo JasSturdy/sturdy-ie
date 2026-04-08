@@ -24,11 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script 
-        id="Cookiebot" 
-        src="https://consent.cookiebot.com/uc.js" 
-        data-cbid="ee0102fd-4311-48f9-aac3-468b2db99826" 
-        data-blockingmode="auto" 
-        type="text/javascript">
+        id="cookieyes" 
+        type="text/javascript" 
+        src="https://cdn-cookieyes.com/client_data/34b654d4ee9b7f955ddedf3c38fd9063/script.js"
+        strategy="beforeInteractive">
         </Script>
       </head>
       <body className={`${poppins.className} antialiased bg-black text-zinc-100`}>

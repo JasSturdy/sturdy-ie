@@ -19,7 +19,7 @@ export default async function MyInsightDetailPage({
   ]);
   if (!myInsight) notFound();
 
-    const [
+  const [
     footerData,
   ] = await Promise.all([
     getFooterData(),
@@ -43,7 +43,7 @@ export default async function MyInsightDetailPage({
             </Link>
 
             <div className="mt-10 text-center">
-              <h1 className="text-[48px] font-light leading-[1.08] text-white">
+              <h1 className="text-[40px] md:text-[48px] lg:text-[48px] font-light leading-[1.08] text-white">
                 {myInsight.title}
               </h1>
 
@@ -67,7 +67,7 @@ export default async function MyInsightDetailPage({
                     <span className="text-zinc-500">{myInsight.date}</span>
                   </>
                 )}
-                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -92,7 +92,7 @@ export default async function MyInsightDetailPage({
             {/* ── CTA ── */}
             <section className="pt-16">
               <div className="rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950 to-black px-6 py-14 text-center shadow-[0_30px_120px_rgba(0,0,0,0.75)] md:px-10">
-                <h3 className="text-[48px] font-light leading-[1.1] text-white">
+                <h3 className="text-[40px] md:text-[48px] lg:text-[48px] font-light leading-[1.1] text-white">
                   Interested in{" "}
                   <span className="text-[#c5f018]">collaborating?</span>
                 </h3>
@@ -135,7 +135,7 @@ export default async function MyInsightDetailPage({
                     <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
                     My Insights
                   </p>
-                  <h2 className="text-[48px] font-light leading-[1.1] text-white">
+                  <h2 className="text-[40px] md:text-[48px] lg:text-[48px] font-light leading-[1.1] text-white">
                     More <span className="text-[#c5f018]">insights</span>
                   </h2>
                 </div>
@@ -159,12 +159,12 @@ export default async function MyInsightDetailPage({
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-stretch">
                 {recentInsights.map((insight) => (
                   <Link
                     key={insight.slug}
                     href={`/myinsight/${insight.slug}`}
-                    className="group block"
+                    className="group flex h-full"
                   >
                     <div className="flex min-h-[260px] flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/50 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.08)]">
                       <div className="flex items-start justify-end">

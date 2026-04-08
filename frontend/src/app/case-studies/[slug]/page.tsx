@@ -41,10 +41,10 @@ export default async function CaseStudyDetailPage({
               ← Case studies
             </Link>
             <div className="mt-10 text-center">
-              <h1 className="text-[64px] font-light leading-[1.08] text-white">
+              <h1 className="text-[40px] md:text-[64px] lg:text-[64px] font-light leading-[1.08] text-white">
                 {study.title}
               </h1>
-             
+
               <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-500">
                 <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 font-semibold text-[#c5f018]">
                   {study.theme}
@@ -62,14 +62,14 @@ export default async function CaseStudyDetailPage({
 
         <div className="mx-auto max-w-8xl px-4 pt-14 sm:px-6 md:px-10 lg:px-0">
           <div className="mx-auto mt-5 mb-8 text-sm leading-relaxed text-white md:text-base [&_p]:text-white">
-                <LexicalRenderer data={study.summary} />
-              </div>
+            <LexicalRenderer data={study.summary} />
+          </div>
           <article className="space-y-14">
             {study.sections.map(({ heading, body }, index) => {
               if (!body) return null;
               return (
                 <section key={index}>
-                  <h2 className="text-[48px] font-light leading-[1.1] text-white">
+                  <h2 className="text-[40px] md:text-[48px] lg:text-[48px] font-light leading-[1.1] text-white">
                     {heading}
                   </h2>
                   <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-white [&_p]:text-white [&_li]:text-white">
@@ -81,7 +81,7 @@ export default async function CaseStudyDetailPage({
 
             <section className="pt-16">
               <div className="rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950 to-black px-6 py-14 text-center shadow-[0_30px_120px_rgba(0,0,0,0.75)] md:px-10">
-                <h3 className="text-[48px] font-light leading-[1.1] text-white">
+                <h3 className="text-[40px] lg:text-[48px] md:text-[48px] font-light leading-[1.1] text-white">
                   Interested in a similar <span className="text-[#c5f018]">initiative?</span>
                 </h3>
                 <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base">
@@ -111,7 +111,7 @@ export default async function CaseStudyDetailPage({
                     <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
                     Case studies
                   </p>
-                  <h2 className="text-[48px] font-light leading-[1.1] text-white">
+                  <h2 className="text-[40px] md:text-[48px] lg:text-[48px] font-light leading-[1.1] text-white">
                     Recent <span className="text-[#c5f018]">case studies</span>
                   </h2>
                 </div>
@@ -126,10 +126,10 @@ export default async function CaseStudyDetailPage({
                   </svg>
                 </Link>
               </div>
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-stretch">
                 {recentStudies.map((cs) => (
-                  <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="group block">
-                    <div className="flex min-h-[260px] flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/50 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.08)]">
+                  <Link key={cs.slug} href={`/case-studies/${cs.slug}`} className="group flex h-full">
+                    <div className="flex h-full w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/50 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.08)]">
                       <div className="flex items-start justify-end">
                         <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
                           {cs.theme.split(" / ")[0]}

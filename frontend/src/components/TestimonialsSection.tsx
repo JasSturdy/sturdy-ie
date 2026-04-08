@@ -49,9 +49,9 @@ function IconResilience() {
 }
 
 const ICON_MAP: Record<ChallengeIcon, ReactNode> = {
-  trust:      <IconTrust />,
-  control:    <IconControl />,
-  standards:  <IconStandards />,
+  trust: <IconTrust />,
+  control: <IconControl />,
+  standards: <IconStandards />,
   resilience: <IconResilience />,
 };
 
@@ -67,10 +67,10 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
           {/* Badge */}
           <div className="flex items-center gap-2">
             <span
-                  className="h-2 w-2 rounded-full bg-[#c5f018]"
-                  style={{ animation: "dotPulse 1s ease-in-out infinite" }}
-                />
-                <span className="text-sm md:text-lg">{badge}</span>
+              className="h-2 w-2 rounded-full bg-[#c5f018]"
+              style={{ animation: "dotPulse 1s ease-in-out infinite" }}
+            />
+            <span className="text-sm md:text-lg">{badge}</span>
           </div>
 
           {/* Heading */}
@@ -130,17 +130,18 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
           </div>
 
           {/* CTA Buttons — size and hover animation matched to HeroSection */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:justify-start sm:gap-4">
             <Link
               href={exploreCard.ctaHref}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#c5f018] px-6 py-5 text-lg font-semibold text-black transition duration-500 hover:-translate-y-[1px] hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+              className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-4 py-3 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
             >
               {exploreCard.ctaLabel}
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
                 <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
-            {/* <Link
+          </div>
+          {/* <Link
               href={exploreCard.ctaHref2}
               className="inline-flex items-center gap-2 rounded-lg border border-lime-400/70 bg-transparent px-6 py-5 text-lg font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] hover:bg-[#CCFF00] hover:text-black"
             >
@@ -149,7 +150,6 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
                 <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link> */}
-          </div>
         </div>
 
       </div>

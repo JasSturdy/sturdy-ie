@@ -43,11 +43,11 @@ export default async function LeadershipPaperDetailPage({
             </Link>
 
             <div className="mt-10 text-center">
-              <h1 className="text-[64px] font-light leading-[1.08] text-white">
+              <h1 className="text-[40px] md:text-[64px] lg:text-[64px] font-light leading-[1.08] text-white">
                 {paper.title}
               </h1>
               {paper.subtitle && (
-                <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-zinc-300 md:text-xl">
+                <p className="mx-auto mt-4 max-w-4xl text-lg leading-relaxed text-zinc-300 md:text-xl lg:text-xl">
                   {paper.subtitle}
                 </p>
               )}
@@ -91,7 +91,7 @@ export default async function LeadershipPaperDetailPage({
           <article className="space-y-14">
             {paper.sections.map(({ heading, body }, index) => (
               <section key={index}>
-                <h2 className="text-[48px] font-light leading-[1.1] text-white">
+                <h2 className="text-[30px] lg:text-[48px] md:text-[48px]  font-light leading-[1.1] text-white">
                   {heading}
                 </h2>
                 <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-white [&_p]:text-white [&_li]:text-white">
@@ -103,7 +103,7 @@ export default async function LeadershipPaperDetailPage({
             {/* ── CTA ── */}
             <section className="pt-16">
               <div className="rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950 to-black px-6 py-14 text-center shadow-[0_30px_120px_rgba(0,0,0,0.75)] md:px-10">
-                <h3 className="text-[48px] font-light leading-[1.1] text-white">
+                <h3 className="text-[40px] lg:text-[48px] md:text-[48px] font-light leading-[1.1] text-white">
                   Interested in{" "}
                   <span className="text-[#c5f018]">collaborating?</span>
                 </h3>
@@ -146,7 +146,7 @@ export default async function LeadershipPaperDetailPage({
                     <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
                     Leadership Papers
                   </p>
-                  <h2 className="text-[48px] font-light leading-[1.1] text-white">
+                  <h2 className="text-[40px] md:text-[48px] lg:text-[48px] font-light leading-[1.1] text-white">
                     More <span className="text-[#c5f018]">papers</span>
                   </h2>
                 </div>
@@ -182,7 +182,7 @@ export default async function LeadershipPaperDetailPage({
                         {p.category}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-semibold leading-tight text-white transition-colors group-hover:text-[#e4f98a]">
+                    <h3 className="text-2xl md:text-2xl lg:text-2xl font-semibold leading-tight text-white transition-colors group-hover:text-[#e4f98a]">
                       {p.title}
                     </h3>
                     <div className="my-4 h-px w-full bg-zinc-700/70" />

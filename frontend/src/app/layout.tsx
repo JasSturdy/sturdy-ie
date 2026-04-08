@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Jason Sturdy",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/preview-image.png",
         width: 1200,
         height: 630,
         alt: "Jason Sturdy – Data Governance, Regulatory & Infrastructure Advisor",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: "Data Governance, Regulatory & Infrastructure Advisor",
     description:
       "Portfolio of Jason Sturdy, focused on designing governance-led data infrastructure and secure, interoperable systems for regulated environments across healthcare, research, the public sector, and defence.",
-    images: ["/og-image.jpg"],
+    images: ["/preview-image.png"],
   },
 
   keywords: [

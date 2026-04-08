@@ -5,6 +5,22 @@ import { Header } from "../../components/Header";
 import { FooterSection } from "../../components/FooterSection";
 import { FAQSection } from "../../components/FAQSection";
 import { ContactSection } from "../../components/ContactSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",  
+  description:
+    "Get in touch to discuss data governance, regulatory compliance, and infrastructure advisory services for healthcare, research, public sector, and defence.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact | Jason Sturdy",
+    description:
+      "Get in touch with Jason Sturdy to discuss data governance, regulatory compliance, and infrastructure advisory services.",
+    url: "https://sturdy.ie/contact",
+  },
+};
 
 export default async function ContactPage() {
   const [footerData, faqData] = await Promise.all([

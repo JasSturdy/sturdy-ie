@@ -14,7 +14,23 @@ import { ImpactSection } from "@/components/ImpactSection";
 import { getImpactData } from "@/lib/impact";
 import { getCtaData } from "@/lib/cta";
 import { ContactUsCtaSection } from "@/components/ContactUsCtaSection";
+import type { Metadata } from "next";
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "About", 
+  description:
+    "Learn about Jason Sturdy — specialising in governance-led data infrastructure, secure interoperable systems, and regulatory strategy for regulated industries.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About | Jason Sturdy",
+    description:
+      "Specialising in governance-led data infrastructure and regulatory strategy for healthcare, research, public sector, and defence.",
+    url: "https://sturdy.ie/about",
+  },
+};
 
 export default async function AboutPage() {
   const [

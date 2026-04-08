@@ -3,6 +3,22 @@ import { CaseStudyBlogSection } from "../../components/CaseStudyBlogSection";
 import { FooterSection } from "../../components/FooterSection";
 import { getCaseStudiesIndex } from "../../lib/caseStudies";
 import { getFooterData } from "@/lib/footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Case Studies",
+  description:
+    "Case studies by Jason Sturdy showcasing governance-led data infrastructure solutions across healthcare, research, public sector, and defence environments.",
+  alternates: {
+    canonical: "/case-studies",
+  },
+  openGraph: {
+    title: "Case Studies | Jason Sturdy",
+    description:
+      "Explore case studies showcasing governance-led data infrastructure solutions across regulated environments.",
+    url: "https://sturdy.ie/case-studies",
+  },
+};
 
 export default async function CaseStudiesPage() {
 

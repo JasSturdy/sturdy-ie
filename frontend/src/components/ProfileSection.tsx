@@ -330,22 +330,19 @@ function FocusCard({
           </span>
         </div>
 
-        <div
-          className="pointer-events-none absolute left-5 right-5 z-[2] h-px md:left-6 md:right-6 top-[150px] md:top-[120px] lg:top-[230px]"
-          style={{
-            background: "linear-gradient(to right, rgba(197,240,24,0.4), rgba(113,113,122,0.5), transparent)"
-          }}
-          aria-hidden
-        />
-
-        {/* Title + tagline — pinned to bottom */}
-        <div className="relative z-[1] mt-auto flex min-w-0 flex-col pt-4 md:pt-5">
-          <h3 className="min-w-0 text-pretty text-base font-bold leading-[1.18] tracking-tight text-[#c5f018] transition-colors duration-300 [overflow-wrap:anywhere] line-clamp-2 sm:text-lg md:text-xl group-hover:text-[#d4ff2a]">
-            {card.title}
-          </h3>
-          <p className="mt-2.5 text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white md:text-[0.95rem]">
-            {card.tagline}
-          </p>
+        <div className="relative z-[1] mt-auto flex min-w-0 flex-col gap-4 pt-8 h-[10rem] md:h-[10.5rem] md:pt-8">
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(to_right,_rgba(197,240,24,0.4),_rgba(113,113,122,0.5),_transparent)]"
+            aria-hidden
+          />
+          <div className="flex flex-col gap-2">
+            <h3 className="min-w-0 min-h-[2.6em] text-pretty text-base font-bold leading-[1.18] tracking-tight text-[#c5f018] transition-colors duration-300 [overflow-wrap:anywhere] line-clamp-2 sm:text-lg md:text-xl group-hover:text-[#d4ff2a]">
+              {card.title}
+            </h3>
+            <p className="text-sm leading-relaxed text-white transition-colors duration-300 group-hover:text-white md:text-[0.95rem]">
+              {card.tagline}
+            </p>
+          </div>
         </div>
       </div>
     </motion.article>

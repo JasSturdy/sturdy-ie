@@ -95,7 +95,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
             className="flex sm:justify-center shrink-0"
           >
             <Link
-              href="/myinsight"
+              href="/myinsights"
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-5 py-3.5 text-base font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-6 sm:py-4 md:text-lg w-full sm:w-auto"
             >
               Explore Insights

@@ -43,8 +43,8 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
   if (!featured) return null;
 
   return (
-    <section className="mx-auto max-w-8xl py-10 md:py-16">
-      <div className="mb-8 flex flex-col items-start justify-between md:mb-16">
+    <section className="mx-auto max-w-8xl px-6 py-10 sm:px-8 md:px-10 md:py-16 lg:px-0">
+      <div className="mb-8 flex flex-col items-start justify-between md:mb-14">
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -65,7 +65,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
             initial={{ opacity: 0, y: 30 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 1.2, ease: "easeOut", delay: 0.15 }}
-            className="text-2xl font-light leading-tight text-white md:text-5xl lg:text-6xl"
+            className="text-[40px] font-light leading-[1.08] text-white sm:text-5xl md:text-5xl lg:text-6xl"
           >
             <span className="font-semibold text-[#c5f018]">Perspective </span>
             <span className="font-light text-white">
@@ -75,7 +75,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
         </div>
 
         {/* Body + CTA side by side */}
-        <div className="mt-4 flex w-full flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-6 flex w-full flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -96,7 +96,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
           >
             <Link
               href="/myinsight"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-4 py-3 text-sm font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-6 sm:py-4 md:text-lg"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#c5f018] px-5 py-3.5 text-base font-medium text-black transition duration-300 hover:border hover:border-white hover:bg-black hover:text-[#c5f018] sm:px-6 sm:py-4 md:text-lg"
             >
               Explore Insights
               <svg
@@ -122,35 +122,35 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
       {/* ── Featured post ── */}
       <Link
         href={`/myinsight/${featured.slug}`}
-        className="group mb-4 block"
+        className="group mb-6 block"
       >
-        <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/60 group-hover:shadow-[0_0_60px_rgba(197,240,24,0.15)] min-h-[300px]">
+        <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-5 transition-all duration-300 group-hover:border-[#c5f018]/60 group-hover:shadow-[0_0_60px_rgba(197,240,24,0.15)] min-h-[280px] sm:p-6 sm:min-h-[300px]">
           <div className="flex items-start justify-end">
             <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
               {featured.category}
             </span>
           </div>
 
-          <h3 className="mt-6 text-[28px] font-light leading-[1.12] text-white transition-colors group-hover:text-[#d4ff2a] md:text-[42px]">
+          <h3 className="mt-5 text-[34px] font-light leading-[1.12] text-white transition-colors group-hover:text-[#d4ff2a] sm:mt-6 sm:text-[34px] md:text-[42px]">
               {featured.title}
             </h3>
 
-          <div className="mt-6 h-px w-full bg-zinc-800" />
+          <div className="mt-5 h-px w-full bg-zinc-800 sm:mt-6" />
 
           {featured.date && (
-            <div className="mt-6 flex items-center gap-2 text-sm text-zinc-500">
+            <div className="mt-5 flex items-center gap-2 text-sm text-zinc-500 sm:mt-6">
               <CalendarIcon />
               <span>{featured.date}</span>
             </div>
           )}
 
           {featured.excerpt ? (
-            <p className="mt-5 line-clamp-3 text-sm leading-relaxed text-zinc-400">
+            <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-zinc-400 sm:mt-5">
               {featured.excerpt}
             </p>
           ) : null}
 
-          <div className="mt-auto flex items-center justify-end pt-8">
+          <div className="mt-auto flex items-center justify-end pt-6 sm:pt-8">
             <span className="inline-flex items-center rounded-xl border border-zinc-700 bg-transparent px-6 py-3 text-sm font-semibold text-white transition-colors group-hover:border-[#c5f018]/60 group-hover:text-[#d4ff2a]">
               Read more
             </span>
@@ -160,14 +160,14 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
 
       {/* ── Small posts ── */}
       {smallPosts.length > 0 && (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           {smallPosts.map((post) => (
             <Link
               key={post.slug}
               href={`/myinsight/${post.slug}`}
               className="group flex"
             >
-              <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-6 transition-all duration-300 group-hover:border-[#c5f018]/60 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.12)] min-h-[260px]">
+              <div className="flex w-full flex-col rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-950/70 to-black p-5 transition-all duration-300 group-hover:border-[#c5f018]/60 group-hover:shadow-[0_0_48px_rgba(197,240,24,0.12)] min-h-[240px] sm:p-6 sm:min-h-[260px]">
                 <div className="flex items-start justify-end">
                   <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-[#c5f018]">
                     {post.category}

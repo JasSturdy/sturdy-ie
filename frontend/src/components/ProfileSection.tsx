@@ -430,7 +430,7 @@ export function ProfileSection({ data }: { data?: StandardsData | null }) {
         >
           <a
             href={d.ctaHref}
-            className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+            className="inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg border border-[#c5f018] bg-transparent px-5 py-3.5 text-base font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black sm:w-auto sm:max-w-none sm:px-6 sm:py-5 sm:text-lg md:text-xl"
           >
             {d.ctaLabel}
             <ArrowIcon />

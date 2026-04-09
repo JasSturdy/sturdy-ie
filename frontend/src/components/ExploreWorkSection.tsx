@@ -9,7 +9,7 @@ const cards = [
 export function ExploreWorkSection() {
   return (
     <section className="relative z-10 overflow-hidden">
-      <div className="relative mx-auto max-w-8xl px-6 py-24 md:px-10 lg:px-0">
+      <div className="relative mx-auto max-w-8xl px-4 py-24 sm:px-6 md:px-10 lg:px-4">
         {/* Heading */}
         <h2 className="mb-16 text-center text-2xl font-light text-white lg:text-6xl md:text-6xl">
           Explore My Work

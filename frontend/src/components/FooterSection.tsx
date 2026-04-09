@@ -134,8 +134,9 @@ export function FooterSection({ data }: { data?: FooterData | null }) {
           className="flex justify-center mb-10"
         >
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl md:text-4xl font-medium tracking-wide text-zinc-300">
-              Jason<span className="font-semibold text-white"> Sturdy</span>
+            <span className="text-2xl md:text-4xl font-medium tracking-wide">
+              <span className="text-[#c5f018]">Jason</span>
+              <span className="text-white"> Sturdy</span>
             </span>
           </Link>
         </motion.div>
@@ -161,7 +162,7 @@ export function FooterSection({ data }: { data?: FooterData | null }) {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 w-12 items-center justify-center rounded-sm border border-zinc-400 text-zinc-300 transition-all duration-300 hover:bg-black hover:scale-110"
+              className="flex h-12 w-12 items-center justify-center rounded-sm border border-zinc-400 text-white transition-all duration-300 hover:bg-black hover:scale-110"
               aria-label={social.label}
             >
               {SOCIAL_ICONS[social.label] ?? null}

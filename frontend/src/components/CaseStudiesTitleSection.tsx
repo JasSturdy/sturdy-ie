@@ -14,7 +14,7 @@ const ArrowIcon = () => (
 
 export function CaseStudiesTitleSection() {
   return (
-    <div className="flex w-full flex-col items-center justify-center px-8 py-8 md:py-14 lg:py-14">
+    <div className="flex w-full flex-col items-center justify-center px-4 py-8 sm:px-6 md:px-10 md:py-14 lg:px-4 lg:py-14">
       <div className="flex items-center gap-2">
         <span
           className="h-2 w-2 rounded-sm bg-[#c5f018]"
@@ -26,11 +26,11 @@ export function CaseStudiesTitleSection() {
         From Challenge to Operational Capability
       </p>
 
-      <div className="flex flex-row justify-center gap-3 sm:gap-4">
+      <div className="flex w-full max-w-sm flex-col justify-center gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:gap-4">
         {/* Primary CTA */}
         <Link
           href="/case-studies"
-          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-3 py-3 text-sm font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-5 py-3.5 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
         >
           View Case Studies
           <ArrowIcon />
@@ -39,7 +39,7 @@ export function CaseStudiesTitleSection() {
         {/* Secondary CTA */}
         <Link
           href="/contact"
-          className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-3 py-3 text-sm font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
+          className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-5 py-3.5 text-base font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
         >
           Let&apos;s Connect
           <ArrowIcon />

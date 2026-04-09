@@ -42,7 +42,7 @@ export function ExecutiveProfileSection({
 
   return (
     <section ref={ref} className="mt-8 overflow-hidden bg-transparent md:mt-12">
-      <div className="mx-auto max-w-8xl px-6 pb-8 md:px-10 md:pb-12 lg:px-0">
+      <div className="mx-auto max-w-8xl px-4 pb-8 sm:px-6 md:px-10 md:pb-12 lg:px-4">
         <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           {/* Image */}
           <div className="relative h-64 overflow-hidden rounded-2xl sm:h-80 md:h-96 lg:order-2 lg:h-auto lg:min-h-[min(520px,70vh)]">

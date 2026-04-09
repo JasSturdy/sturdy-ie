@@ -86,7 +86,7 @@ function CaseStudyCard({
       <div className="relative z-10 flex h-full w-full flex-col justify-end p-5 items-center text-center">
         <h3 className="text-lg font-light text-white">{item.title}</h3>
 
-        <p className="mt-1 text-xs leading-relaxed text-zinc-300 line-clamp-2">
+        <p className="mt-1 text-xs leading-relaxed text-white line-clamp-2">
           {item.theme?.trim() || item.summary || ""}
         </p>
       </div>

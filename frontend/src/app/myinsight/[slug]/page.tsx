@@ -37,7 +37,7 @@ export default async function MyInsightDetailPage({
           <div className="mx-auto max-w-8xl px-4 pt-16 sm:px-6 md:px-10 md:pt-20 lg:px-0">
             <Link
               href="/myinsight"
-              className="inline-flex items-center gap-1 text-sm font-medium text-zinc-400 transition hover:text-zinc-200"
+              className="inline-flex items-center gap-1 text-sm font-medium text-white transition hover:text-white"
             >
               ← My Insights
             </Link>
@@ -48,11 +48,11 @@ export default async function MyInsightDetailPage({
               </h1>
 
               {/* richText summary rendered via LexicalRenderer */}
-              <div className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base [&_p]:text-zinc-400">
+              <div className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-white md:text-base [&_p]:text-white">
                 <LexicalRenderer data={myInsight.summary} />
               </div>
 
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-zinc-500">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-white">
                 <span className="rounded-full border border-[#c5f018]/35 bg-[#c5f018]/10 px-3 py-1 font-semibold text-[#c5f018]">
                   {myInsight.category}
                 </span>
@@ -64,7 +64,7 @@ export default async function MyInsightDetailPage({
                 {myInsight.date && (
                   <>
                     <span className="text-zinc-700">•</span>
-                    <span className="text-zinc-500">{myInsight.date}</span>
+                    <span className="text-white">{myInsight.date}</span>
                   </>
                 )}
               </div>
@@ -96,7 +96,7 @@ export default async function MyInsightDetailPage({
                   Interested in{" "}
                   <span className="text-[#c5f018]">collaborating?</span>
                 </h3>
-                <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-zinc-400 md:text-base">
+                <p className="mx-auto mt-5 max-w-3xl text-sm leading-relaxed text-white md:text-base">
                   If this perspective resonates and you are exploring
                   collaboration across research, governance, or secure data
                   environments, I welcome the conversation.
@@ -177,10 +177,10 @@ export default async function MyInsightDetailPage({
                       </h3>
                       <div className="mt-5 h-px w-full bg-zinc-800" />
                       {insight.date ? (
-                        <p className="mt-4 text-sm text-zinc-500">{insight.date}</p>
+                        <p className="mt-4 text-sm text-white">{insight.date}</p>
                       ) : null}
                       {insight.excerpt ? (
-                        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-zinc-400">
+                        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-white">
                           {insight.excerpt}
                         </p>
                       ) : null}

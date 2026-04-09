@@ -14,7 +14,7 @@ export function HomeContactSection() {
               Collaboration{" "}
               <span className="text-[#c5f018]">enquiries</span>
             </h2>
-            <p className="mt-6 max-w-lg text-sm leading-relaxed text-zinc-300 md:text-base">
+            <p className="mt-6 max-w-lg text-sm leading-relaxed text-white md:text-base">
               If you are exploring partnerships across sovereign infrastructure,
               secure collaboration, regulated innovation, or aligned venture
               initiatives, I welcome the opportunity to connect.

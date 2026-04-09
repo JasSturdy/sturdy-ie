@@ -236,10 +236,10 @@ function FocusCard({
         delay: 0.08 * Math.min(index, 3),
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="group relative"
+      className="group relative h-full"
     >
       <div
-        className="relative flex min-h-[200px] md:min-h-[400px] lg:min-h-[400px] flex-col justify-between rounded-2xl border p-6 md:p-12 transition-all duration-300"
+        className="relative flex h-full flex-col justify-between rounded-2xl border p-6 md:p-12 transition-all duration-300"
         style={{
           backgroundColor: active ? "rgba(110, 143, 19, 0.55)" : "rgba(24,24,27,0.95)",
           borderColor: active ? "rgba(197,240,24,0.35)" : "rgba(63,63,70,0.8)",
@@ -350,7 +350,7 @@ export function ApplicationSection({ data }: { data?: ApplicationData | null }) 
       </motion.div>
 
       {/* Cards — 1 col mobile, 2 col tablet, 4 col desktop */}
-      <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <div className="mt-10 md:mt-12 grid grid-cols-1 auto-rows-fr gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
         {d.cards.map((card, index) => (
           <FocusCard
             key={card.slug}

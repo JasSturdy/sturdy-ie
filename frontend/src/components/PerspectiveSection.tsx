@@ -74,6 +74,7 @@ const STACK_POSITIONS = [
 function StackedImages({ images }: { images: PerspectiveImage[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,8 +92,15 @@ function StackedImages({ images }: { images: PerspectiveImage[] }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   const lerp = (a: number, b: number) => a + (b - a) * progress;
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   const displayImages = images.length ? images.slice(0, 3) : FALLBACK_IMAGES;
 

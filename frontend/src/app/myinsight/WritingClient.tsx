@@ -59,7 +59,7 @@ export function WritingClient({
             {" "}Insights
           </span>
         </h1>
-        <p className="mt-6 mx-auto max-w-3xl text-base leading-relaxed text-zinc-300">
+        <p className="mt-6 mx-auto max-w-3xl text-base leading-relaxed text-white">
           Executive perspectives on sovereign infrastructure, governance-led
           transformation, secure collaboration, and standards-led
           interoperability across regulated ecosystems.
@@ -69,7 +69,7 @@ export function WritingClient({
       {/* My Insights */}
       <section className="bg-black">
         <div className="mx-auto max-w-8xl px-4 py-16 sm:px-6 md:px-10 lg:px-0">
-          <p className="mb-10 text-xs text-zinc-500">
+          <p className="mb-10 text-xs text-white">
             Showing{" "}
             {Math.min((currentPage - 1) * ITEMS_PER_PAGE + 1, filtered.length)}–
             {Math.min(currentPage * ITEMS_PER_PAGE, filtered.length)} of{" "}
@@ -83,7 +83,7 @@ export function WritingClient({
           </p>
 
           {paginated.length === 0 ? (
-            <div className="py-24 text-center text-zinc-500">
+            <div className="py-24 text-center text-white">
               No insights in this category yet.
             </div>
           ) : (
@@ -119,10 +119,10 @@ export function WritingClient({
                     <div className="mt-6 h-px w-full bg-zinc-800" />
 
                     {/* Date */}
-                    <p className="mt-6 text-sm text-zinc-500">{insight.date}</p>
+                    <p className="mt-6 text-sm text-white">{insight.date}</p>
 
                     {/* Excerpt */}
-                    <p className="mt-5 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-5 text-sm leading-relaxed text-white">
                       {insight.excerpt}
                     </p>
 

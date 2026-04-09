@@ -53,7 +53,7 @@ export function CaseStudyCarousel({ caseStudies }: { caseStudies: CaseStudyIndex
 
                 <div className="relative z-10 flex h-full flex-1 items-center px-4 sm:px-8 md:px-12 lg:px-16">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 text-xs font-medium text-zinc-300">
+                    <div className="flex items-center gap-3 text-xs font-medium text-white">
                       {/* <span className="h-2 w-2 rounded-full bg-[#c5f018]" />
                       <span className="tracking-[0.25em] uppercase">Featured case study</span> */}
                     </div>

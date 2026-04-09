@@ -6,7 +6,7 @@ import { CaseStudyIndex } from "../lib/caseStudies";
 export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIndex[] }) {
   return (
     <section className="border-b border-zinc-900/60 bg-black">
-      <div className="mx-auto max-w-8xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-0">
+      <div className="mx-auto max-w-8xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-4">
         {/* <div className="mb-12"> */}
         {/* <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-sm bg-[#c5f018]" />
@@ -44,16 +44,16 @@ export function CaseStudyBlogSection({ caseStudies }: { caseStudies: CaseStudyIn
 </h3>
 
                   {/* Divider */}
-                  <div className="mt-6 h-px w-full bg-zinc-800" />
+                  <div className="mt-6 h-px w-full bg-gradient-to-r from-white/35 via-white/20 to-transparent" />
 
                   {/* Date */}
-                  <p className="mt-6 text-sm text-zinc-500">
+                  <p className="mt-6 text-sm text-white">
                     {post.date ? post.date : post.period ? post.period : "Case study"}
                   </p>
 
                   {/* Summary snippet */}
                   {post.excerpt ? (
-                    <p className="mt-5 line-clamp-4 text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-5 line-clamp-4 text-sm leading-relaxed text-white">
                       {post.excerpt}
                     </p>
                   ) : null}

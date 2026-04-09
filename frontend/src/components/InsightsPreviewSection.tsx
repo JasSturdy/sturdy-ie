@@ -72,6 +72,7 @@ const STACK_POSITIONS = [
 function StackedImages({ images }: { images: ResponseImage[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,24 +90,42 @@ function StackedImages({ images }: { images: ResponseImage[] }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   const lerp = (a: number, b: number) => a + (b - a) * progress;
 
   const displayImages = images.length ? images.slice(0, 3) : FALLBACK_IMAGES;
 
   return (
-    <div ref={ref} className="relative w-full h-[400px] lg:h-[450px]">
+    <div
+      ref={ref}
+      className="relative mx-auto w-full max-w-sm aspect-square md:max-w-none md:aspect-[5/4] lg:aspect-[6/5]"
+    >
       {displayImages.map((img, i) => {
         const pos = STACK_POSITIONS[i];
+
+        const left = isMobile
+          ? 50 + (lerp(pos.startLeft, pos.endLeft) - 22) * 0.52
+          : lerp(pos.startLeft, pos.endLeft);
+        const top = isMobile
+          ? 5 + (lerp(pos.startTop, pos.endTop) - 22) * 0.75
+          : lerp(pos.startTop, pos.endTop);
+
         return (
           <div
             key={i}
-            className="absolute bg-cover bg-center"
+            className="absolute w-2/3 aspect-[5/4] bg-cover bg-center md:w-1/2"
             style={{
               backgroundImage: `url('${img.url}')`,
-              width: "50%",
-              height: "45%",
-              left: `${lerp(pos.startLeft, pos.endLeft)}%`,
-              top: `${lerp(pos.startTop, pos.endTop)}%`,
+              left: `${left}%`,
+              top: `${top}%`,
+              transform: isMobile ? "translateX(-50%)" : "none",
               zIndex: (i + 1) * 5,
               borderRadius: "10px",
             }}
@@ -195,7 +214,7 @@ export function InsightsPreviewSection({
 
           {/* CTA Button */}
           <div
-            className="mt-10"
+            className="mt-10 w-full max-w-sm"
             style={{
               opacity: 0,
               animation: visible ? "fadeUp 2s forwards" : "none",
@@ -203,7 +222,7 @@ export function InsightsPreviewSection({
           >
             <Link
               href={d.ctaHref}
-              className="inline-flex items-center justify-center gap-2 text-lg md:text-xl rounded-lg border border-[#c5f018] bg-transparent px-6 py-5 text-sm font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#c5f018] bg-transparent px-5 py-3.5 text-base font-semibold text-[#c5f018] transition duration-500 hover:bg-[#c5f018] hover:text-black sm:w-auto sm:px-6 sm:py-5 sm:text-lg md:text-xl"
             >
               {d.ctaLabel}
               <ArrowIcon />

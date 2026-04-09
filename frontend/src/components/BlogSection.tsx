@@ -43,7 +43,7 @@ export function BlogSection({ insights }: { insights: MyInsightIndex[] }) {
   if (!featured) return null;
 
   return (
-    <section className="mx-auto max-w-8xl px-6 py-10 sm:px-8 md:px-10 md:py-16 lg:px-0">
+    <section className="mx-auto max-w-8xl px-4 py-10 sm:px-6 md:px-10 md:py-16 lg:px-4">
       <div className="mb-8 flex flex-col items-start justify-between md:mb-14">
         <motion.div
           ref={headerRef}

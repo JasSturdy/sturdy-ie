@@ -170,7 +170,7 @@ export function ServicesSection({ data }: { data?: ChallengeData | null }) {
           />
         )}
 
-        <div className="relative h-full mx-auto max-w-8xl py-2 md:py-12 lg:py-12 px-4 sm:px-8 md:px-4 lg:px-0 flex items-center">
+        <div className="relative mx-auto flex h-full max-w-8xl items-center px-4 py-2 sm:px-6 md:px-10 md:py-12 lg:px-4 lg:py-12">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 w-full">
 
             {/* Left column */}

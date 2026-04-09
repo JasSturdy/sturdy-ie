@@ -120,7 +120,7 @@ export function CardAboutSection({ data }: { data?: CardAboutData | null }) {
 
   return (
     <section className="">
-      <div className="mx-auto max-w-8xl px-6 py-16 md:px-10 md:py-20 lg:px-0">
+      <div className="mx-auto max-w-8xl px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-4">
         {/* Badge */}
         <div className="mb-4 flex items-center justify-center gap-2 text-zinc-300">
           <span

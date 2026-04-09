@@ -126,7 +126,7 @@ export function CapabilitiesSection({ data }: { data?: IndustriesData | null }) 
   return (
     <section ref={ref} className="mx-auto max-w-8xl py-8 md:py-12 lg:py-16">
       <div
-        className="mb-10 grid grid-cols-1 items-stretch gap-4 px-4 sm:px-6 lg:px-0 md:mb-12 lg:grid-cols-2 lg:gap-12 lg:mb-12"
+        className="mb-10 grid grid-cols-1 items-stretch gap-4 px-4 sm:px-6 md:px-10 md:mb-12 lg:grid-cols-2 lg:gap-12 lg:mb-12 lg:px-4"
         style={{
           opacity: visible ? undefined : 0,
           animation: visible ? "fadeUp 1s ease forwards" : "none",
@@ -190,7 +190,7 @@ export function CapabilitiesSection({ data }: { data?: IndustriesData | null }) 
       </div>
 
       {/* Cards grid */}
-      <div className="px-4 sm:px-6 lg:px-0">
+      <div className="px-4 sm:px-6 md:px-10 lg:px-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-0">
           {cards.map((card, index) => (
             <div

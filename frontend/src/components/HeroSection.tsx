@@ -20,7 +20,7 @@ function SectionBlock({ block }: { block: HeroSection }) {
 
   if (block.blockType === "bulletList") {
     return (
-      <ul className="list-disc list-inside space-y-1 text-sm text-zinc-400 max-w-4xl">
+      <ul className="list-disc list-inside space-y-1 text-sm text-white max-w-4xl">
         {block.items.map((item, i) => (
           <li key={i}>
             <LexicalRenderer data={item.text} />
@@ -150,7 +150,7 @@ export function HeroSection({ data }: Props) {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.15 }}
-              className="space-y-3 text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-relaxed text-zinc-200"
+              className="space-y-3 text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-relaxed text-white"
             >
               <p>{subheading}</p>
             </motion.div>

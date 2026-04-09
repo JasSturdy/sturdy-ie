@@ -60,7 +60,7 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
   const headingInView = useInView(headingRef, { once: true, margin: "0px 0px -60px 0px" });
 
   return (
-    <section className="mx-auto mt-14 max-w-8xl px-4 py-16 md:mt-20 md:px-4 md:py-24 lg:px-0">
+    <section className="mx-auto mt-14 max-w-8xl px-4 py-16 sm:px-6 md:mt-20 md:px-10 md:py-24 lg:px-4">
       <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
 
         <div className="order-2 flex flex-col gap-6 lg:order-2">

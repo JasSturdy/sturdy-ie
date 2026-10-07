@@ -115,12 +115,12 @@ export function TestimonialsSection({ badge, heading, headingAccent, body, chall
           </div>
 
           {/* Image */}
-          <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-zinc-800 sm:h-80 lg:h-auto lg:min-h-[280px] lg:flex-1">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-zinc-800 lg:aspect-auto lg:h-auto lg:min-h-[280px] lg:flex-1">
             {exploreCard.backgroundImage ? (
               <img
                 src={exploreCard.backgroundImage}
                 alt={exploreCard.heading}
-                className="absolute inset-0 h-full w-full object-cover object-center"
+                className="absolute inset-0 h-full w-full object-cover object-top lg:object-center"
               />
             ) : null}
           </div>

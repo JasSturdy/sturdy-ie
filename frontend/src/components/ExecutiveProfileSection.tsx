@@ -45,7 +45,7 @@ export function ExecutiveProfileSection({
       <div className="mx-auto max-w-8xl px-4 pb-8 sm:px-6 md:px-10 md:pb-12 lg:px-4">
         <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           {/* Image */}
-          <div className="relative h-64 overflow-hidden rounded-2xl sm:h-80 md:h-96 lg:order-2 lg:h-auto lg:min-h-[min(520px,70vh)]">
+          <div className="relative overflow-hidden rounded-2xl lg:order-2 lg:min-h-[min(520px,70vh)]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.id + "-image"}
@@ -53,12 +53,12 @@ export function ExecutiveProfileSection({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0"
+                className="lg:absolute lg:inset-0"
               >
                 <img
                   src={current.imageUrl}
                   alt={`${sectionHeading} ${sectionHeadingAccent ?? ""}`.trim()}
-                  className="h-full w-full object-contain"
+                  className="h-auto w-full lg:h-full lg:object-contain"
                 />
               </motion.div>
             </AnimatePresence>
@@ -113,42 +113,42 @@ export function ExecutiveProfileSection({
                   </div>
                 )}
 
-               
+
 
               </div>
             </div>
-             {/* CTA Buttons */}
-                <div className="flex flex-col justify-center gap-3 pt-8 sm:flex-row sm:justify-start sm:gap-4">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-                    className="w-full sm:w-auto sm:flex-none"
-                  >
-                    <Link
-                      href={primaryCtaHref}
-                      className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-4 py-3 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
-                    >
-                      {primaryCtaLabel}
-                      <ArrowIcon />
-                    </Link>
-                  </motion.div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col justify-center gap-3 pt-8 sm:flex-row sm:justify-start sm:gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+                className="w-full sm:w-auto sm:flex-none"
+              >
+                <Link
+                  href={primaryCtaHref}
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#c5f018] px-4 py-3 text-base font-semibold text-black transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:border hover:border-zinc-300 hover:bg-black hover:text-[#CCFF00]"
+                >
+                  {primaryCtaLabel}
+                  <ArrowIcon />
+                </Link>
+              </motion.div>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.58 }}
-                    className="w-full sm:w-auto sm:flex-none"
-                  >
-                    <Link
-                      href={secondaryCtaHref}
-                      className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-4 py-3 text-base font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
-                    >
-                      {secondaryCtaLabel}
-                      <ArrowIcon />
-                    </Link>
-                  </motion.div>
-                </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: 0.58 }}
+                className="w-full sm:w-auto sm:flex-none"
+              >
+                <Link
+                  href={secondaryCtaHref}
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-lime-400/70 bg-transparent px-4 py-3 text-base font-semibold text-lime-300 transition duration-500 hover:-translate-y-[1px] sm:w-auto sm:gap-2 sm:px-6 sm:py-5 sm:text-lg hover:bg-[#CCFF00] hover:text-black"
+                >
+                  {secondaryCtaLabel}
+                  <ArrowIcon />
+                </Link>
+              </motion.div>
+            </div>
           </div>
 
         </div>

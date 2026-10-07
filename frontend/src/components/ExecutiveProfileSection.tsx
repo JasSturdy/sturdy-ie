@@ -58,7 +58,7 @@ export function ExecutiveProfileSection({
                 <img
                   src={current.imageUrl}
                   alt={`${sectionHeading} ${sectionHeadingAccent ?? ""}`.trim()}
-                  className="h-auto w-full lg:h-full lg:object-contain"
+                  className="h-full w-full object-cover"
                 />
               </motion.div>
             </AnimatePresence>
